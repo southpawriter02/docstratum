@@ -72,27 +72,37 @@ docstratum/
 │       │   └── constants.py        # Canonical section names, token budget tiers
 │       └── logging_config.py       # Structured logging
 │
-├── tests/
+├── tests/                          # v0.1.3 — Test infrastructure (flat layout)
 │   ├── __init__.py
-│   ├── conftest.py                 # Shared fixtures (synthetic llms.txt files)
-│   ├── schema/
-│   │   ├── __init__.py
-│   │   ├── test_parsed.py          # Tests for parsed document models
-│   │   ├── test_validation.py      # Tests for validation result models
-│   │   ├── test_quality.py         # Tests for quality scoring models
-│   │   ├── test_classification.py  # Tests for document type classification
-│   │   ├── test_enrichment.py      # Tests for extended schema models
-│   │   ├── test_diagnostics.py     # Tests for error code registry
-│   │   └── test_round_trip.py      # FR-011: parse → validate → serialize → re-parse
-│   └── fixtures/                   # v0.1.3 — Synthetic test fixtures
-│       ├── gold_standard.md        # 100% conformance Type 1 Index
-│       ├── partial_conformance.md  # ~90% conformance (missing blockquote)
-│       ├── minimal_valid.md        # L0 parseable only (bare minimum)
-│       ├── non_conformant.md       # ~20% conformance (Cursor-like issues)
-│       └── type_2_full_excerpt.md  # Type 2 Full document excerpt
+│   ├── conftest.py                 # Shared fixtures + model factories [v0.1.3b]
+│   ├── test_diagnostics.py         # Tests for DiagnosticCode enum (26 codes)
+│   ├── test_constants.py           # Tests for canonical names, tiers, anti-patterns
+│   ├── test_classification.py      # Tests for document type + size tier classification
+│   ├── test_parsed.py              # Tests for ParsedLlmsTxt model hierarchy
+│   ├── test_validation.py          # Tests for ValidationResult + ValidationDiagnostic
+│   ├── test_quality.py             # Tests for QualityScore + DimensionScore + grades
+│   ├── test_enrichment.py          # Tests for Concept, FewShotExample, LLMInstruction
+│   └── fixtures/                   # v0.1.3a — Synthetic test fixtures
+│       ├── gold_standard.md        # ~95 score, Exemplary, L4 (Svelte/Pydantic archetype)
+│       ├── partial_conformance.md  # ~72 score, Strong, L2 (Anthropic/Stripe archetype)
+│       ├── minimal_valid.md        # ~35 score, Needs Work, L0 only (stub archetype)
+│       ├── non_conformant.md       # ~18 score, Critical, fails L1 (Cursor/NVIDIA archetype)
+│       └── type_2_full_excerpt.md  # Type 2 Full document excerpt (Vercel AI SDK archetype)
 │
 └── docs/
     └── design/                     # Design documents (v0.0.x research + v0.1.x foundation)
+        ├── 01-research/            # v0.0.x research phase (27 documents)
+        └── 02-foundation/          # v0.1.x foundation phase
+            ├── RR-SPEC-v0.1.0-project-foundation.md
+            ├── RR-SPEC-v0.1.1-environment-setup.md
+            ├── RR-SPEC-v0.1.2-schema-definition.md        (parent overview)
+            ├── RR-SPEC-v0.1.2a-diagnostic-infrastructure.md
+            ├── RR-SPEC-v0.1.2b-document-models.md
+            ├── RR-SPEC-v0.1.2c-validation-quality-models.md
+            ├── RR-SPEC-v0.1.2d-enrichment-models.md
+            ├── RR-SPEC-v0.1.3-sample-data.md               (parent overview)
+            ├── RR-SPEC-v0.1.3a-fixture-suite.md
+            └── RR-SPEC-v0.1.3b-test-infrastructure.md
 ```
 
 ### Directory Layout Rationale

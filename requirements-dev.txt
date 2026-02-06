@@ -1,0 +1,20 @@
+# DocStratum v0.1.x — Development Dependencies
+# ──────────────────────────────────────────────
+# Testing, linting, and code quality tools.
+# Mandated by NFR-010 (≥80% coverage) and NFR-011 (100% Black + Ruff).
+
+# Include runtime dependencies
+-r requirements.txt
+
+# Testing framework (NFR-010: ≥80% test coverage on core modules)
+pytest>=8.0.0,<9.0.0
+pytest-cov>=4.0.0,<6.0.0
+
+# Code formatting (NFR-011: 100% Black compliance)
+black>=24.0.0
+
+# Linting (NFR-011: 100% Ruff compliance)
+ruff>=0.5.0
+
+# Type checking (recommended for Pydantic v2 models — catches schema errors at dev time)
+mypy>=1.8.0

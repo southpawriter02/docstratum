@@ -308,5 +308,11 @@ This appendix maps the functional requirements from v0.0.5a that are fulfilled (
 ## Sub-Task Links
 
 - [v0.1.1 — Environment Setup](RR-SPEC-v0.1.1-environment-setup.md)
-- [v0.1.2 — Schema Definition](RR-SPEC-v0.1.2-schema-definition.md)
-- [v0.1.3 — Sample Data & Test Fixtures](RR-SPEC-v0.1.3-sample-data.md)
+- [v0.1.2 — Schema Definition](RR-SPEC-v0.1.2-schema-definition.md) *(parent overview)*
+  - [v0.1.2a — Diagnostic Infrastructure](RR-SPEC-v0.1.2a-diagnostic-infrastructure.md) — `diagnostics.py`, `constants.py`, cross-reference mapping
+  - [v0.1.2b — Document Models](RR-SPEC-v0.1.2b-document-models.md) — `classification.py`, `parsed.py`
+  - [v0.1.2c — Validation & Quality Models](RR-SPEC-v0.1.2c-validation-quality-models.md) — `validation.py`, `quality.py`
+  - [v0.1.2d — Enrichment Models](RR-SPEC-v0.1.2d-enrichment-models.md) — `enrichment.py`
+- [v0.1.3 — Sample Data & Test Fixtures](RR-SPEC-v0.1.3-sample-data.md) *(parent overview)*
+  - [v0.1.3a — Fixture Suite](RR-SPEC-v0.1.3a-fixture-suite.md) — 5 Markdown fixtures + expectation matrix
+  - [v0.1.3b — Test Infrastructure & Suites](RR-SPEC-v0.1.3b-test-infrastructure.md) — `conftest.py` + 7 test modules

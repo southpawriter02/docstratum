@@ -1,0 +1,20 @@
+# DocStratum v0.1.x — Foundation Phase Runtime Dependencies
+# ──────────────────────────────────────────────────────────
+# Validation engine core dependencies ONLY.
+# Agent/demo/LLM dependencies are deferred to their respective phases.
+# See v0.1.0 §Tech Stack for the full dependency plan.
+
+# Schema validation (DECISION-006: Pydantic for Schema Validation)
+pydantic>=2.0.0,<3.0.0
+
+# YAML frontmatter parsing (some llms.txt files include YAML frontmatter)
+PyYAML>=6.0,<7.0
+
+# Markdown parsing — CommonMark compliant (DECISION-003: GFM as standard)
+# mistletoe: lightweight, extensible, pure Python, CommonMark-compliant.
+# Alternative considered: markdown-it-py (heavier but better GFM table support).
+# DECISION: mistletoe for foundation; can swap if GFM table support needed in v0.3.x.
+mistletoe>=1.3.0,<2.0.0
+
+# Environment variable loading (minimal now; API keys added in v0.5.x)
+python-dotenv>=1.0.0,<2.0.0

@@ -1,36 +1,35 @@
-# Private design notes
-#docs/design/
-
-# macOS
-.DS_Store
-
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 *.egg-info/
 dist/
 build/
 *.egg
 
-# Virtual environments
+# Virtual environment
 .venv/
 venv/
 env/
 
-# Environment variables
-.env
-
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Environment (never commit secrets)
+.env
 
 # Testing
 .coverage
 htmlcov/
 .pytest_cache/
 
-# mypy
-.mypy_cache/
+# OS
+.DS_Store
+Thumbs.db
 
-# Ruff
+# Tool caches
 .ruff_cache/
+.mypy_cache/
