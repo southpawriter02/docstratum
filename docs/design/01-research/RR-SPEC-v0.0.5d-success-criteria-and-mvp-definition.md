@@ -6,6 +6,12 @@
 
 ## Sub-Part Overview
 
+This sub-part is the capstone of the v0.0.5 requirements definition series — converting the 68 functional requirements from v0.0.5a, the 21 non-functional requirements and 6 constraints from v0.0.5b, and the 32 out-of-scope items and scope defense system from v0.0.5c into a precise, testable definition of "done" for the DocStratum v0.6.0 MVP. Drawing on performance targets from v0.0.1c (token budgeting, hybrid pipeline architecture), quality standards from v0.0.4b (100-point composite scoring, content quality predictors), agent testing patterns from v0.0.4d (DECISION-015: AI coding assistants via MCP), and scope boundaries from v0.0.5c (in-scope statement, deferred features registry), this document establishes 32 MVP features organized across 7 modules with acceptance tests, 4 test scenarios with executable pseudocode, quantitative success metrics with statistical significance requirements, a timed demo scenario script, and a comprehensive Definition of Done checklist.
+
+**Distribution:** 32 MUST features define the minimum viable product (from v0.0.5a's MoSCoW analysis). 4 test scenarios cover the primary differentiators identified in v0.0.4d: disambiguation (concept map value), freshness (temporal awareness), few-shot adherence (example-driven output quality), and integration (end-to-end pipeline reliability). Quantitative targets are calibrated against NFR thresholds from v0.0.5b: parse time < 500ms, context build < 2s, agent latency ≤ 12s, memory < 200MB, test coverage ≥ 80%. The Definition of Done checklist spans 5 dimensions: Code & Implementation, Documentation, Demo & Testing, Success Metrics, and Portfolio Presentation — plus a Scope & Constraints gate referencing v0.0.5c boundaries.
+
+**Relationship to v0.0.5a, v0.0.5b, and v0.0.5c:** Every MVP feature in Part 1 traces directly to a MUST-priority functional requirement from v0.0.5a. Every quantitative target in Part 3 traces to an NFR from v0.0.5b. Every stretch goal in Part 8 is drawn from the deferred features registry in v0.0.5c or from SHOULD/COULD requirements in v0.0.5a. The Definition of Done checklist (Part 6) references v0.0.5c's scope boundaries as an explicit release gate — no out-of-scope features may be added to the MVP without passing the Scope Fence decision tree.
+
 ---
 
 ## Objective
@@ -76,7 +82,7 @@ v0.0.5d — Success Criteria (THIS TASK)
 
 The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every feature marked **SHOULD** is nice-to-have but not required for success.
 
-#### Module 1: Schema & Validation (6 MUST features)
+#### Module 1: Schema & Validation (7 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
@@ -86,14 +92,17 @@ The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every fea
 | Validation Level 1 (STRUCTURE) | FR-004 | Validator checks H1 title, H2 sections, entry counts; generates W-series warnings | Test 5+ structural violations; verify warnings are non-blocking |
 | Validation Level 4 (DOCSTRATUM) | FR-007 | Validator checks concept_id refs, layer_num range, few_shot_type enum | Test extended llms.txt with invalid refs; verify validation fails correctly |
 | Error reporting with line numbers | FR-008 | Every error includes: line#, code (E/W/I), severity, human-readable message | Generate 10+ error scenarios; verify all 4 fields present |
+| Schema round-trip (parse → validate → serialize → re-parse) | FR-011 | Load llms.txt; serialize to JSON; deserialize; verify document identity with no data loss | Unit test: load 5+ files; JSON round-trip; compare input vs. output fields |
 
-#### Module 2: Content Structure (3 MUST features)
+#### Module 2: Content Structure (5 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
 | Layer 0 (Master Index) implementation | FR-013 | Parse llms.txt; build index with title, URL, section, freshness metadata | Load 5 real llms.txt files; verify index has ≥ 80% coverage |
 | Layer 1 (Concept Map) implementation | FR-016 | Extract concepts from descriptions; assign unique IDs; verify no duplicates | Parse 5 llms.txt files; extract 50+ total concepts; verify IDs unique |
 | Layer 2 (Few-Shot Bank) implementation | FR-020 | Extract or manually create 5+ Q&A pairs per llms.txt; store with references | Load 3 llms.txt files; verify each has ≥ 5 Q&A examples available |
+| Three-layer cross-reference resolution | FR-024 | Navigate from FileEntry → concept → few-shot example; bidirectional reference chain works | Integration test: trace from entry to concept to example and back; verify all links resolve |
+| Export all three layers in JSON/YAML format | FR-025 | Serialize all layers to JSON; deserialize; verify no data loss; all references still valid | Serialize 5+ documents; re-load; compare reference integrity before and after |
 
 #### Module 3: Parser & Loader (2 MUST features)
 
@@ -102,15 +111,16 @@ The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every fea
 | Load and parse standard llms.txt from URL or file | FR-026 | Parser handles 10+ real llms.txt files without errors | Load 10 real files; verify all parse successfully |
 | Handle all line-ending variations (LF, CRLF, CR) | FR-027 | Parser normalizes line endings; output consistent regardless of input | Test same content with LF, CRLF, CR; verify identical parse results |
 
-#### Module 4: Context Builder (3 MUST features)
+#### Module 4: Context Builder (4 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
 | Processing methods (discovery, synthesis, ranking, filtering) | FR-032 | Implement all 4 methods; apply to 5+ llms.txt; results are distinct | Test each method independently; verify different outputs |
 | Token budgeting | FR-033 | Estimate tokens for each layer; build context within 4K token budget | Measure token counts; verify context assembled stays ≤ 4K total |
 | Hybrid pipeline combining all 3 layers | FR-034 | Assemble Master Index + Concepts + Examples into single agent context | Build context from 5 llms.txt files; verify all layers represented |
+| Query-aware context selection | FR-035 | Given a query, select most relevant entries, concepts, and examples from all layers | Feed 10+ test queries; verify top-3 results are relevant; compare with keyword match baseline |
 
-#### Module 5: Agent Integration (4 MUST features)
+#### Module 5: Agent Integration (6 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
@@ -118,36 +128,49 @@ The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every fea
 | Enhanced agent (DocStratum context) | FR-040 | LangChain agent answers same 5+ queries using optimized context + system prompt | Run agent on 5 queries; verify answers are sensible |
 | System prompt injection (2 distinct prompts) | FR-041 | Generic prompt (no concept refs); DocStratum prompt (concept-aware); both accepted by agent | Verify both prompts parse without syntax errors; agent executes both |
 | Context window management | FR-042 | Cap context + prompt + query ≤ model max tokens; prefer quality over quantity | Build oversized context; verify it's filtered to fit; check no truncation mid-sentence |
+| Few-shot in-context learning | FR-047 | Inject 3–5 Q&A examples before main agent query; agent references them in response | Select 3 most relevant examples for query; prepend to agent prompt; verify agent references them |
+| Agent testing harness (baseline vs. enhanced comparison) | FR-048 | Compare baseline vs. enhanced agent on same query set; measure accuracy, latency, token usage | Run both agents on 20+ test queries; display comparison table with all metrics |
 
-#### Module 6: A/B Testing Harness (3 MUST features)
+#### Module 6: A/B Testing Harness (6 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
 | Query runner (baseline vs. enhanced on same queries) | FR-051 | Load 20+ test queries; run both agents; collect responses | Run all 20 queries; verify both agents complete; results exported |
 | Response comparison (accuracy, completeness, relevance) | FR-052 | Implement 3+ comparison metrics; score response pairs; show diffs | Score 20+ response pairs; display side-by-side with scores |
 | Metrics collection (accuracy, latency, tokens, success rate) | FR-053 | Capture all metrics; compute mean/std/percentiles; export to table | Collect metrics for all 20 queries; export to CSV + JSON |
+| Baseline definition (quantitative benchmark) | FR-055 | Run baseline agent on 50+ queries; compute mean metrics; store as benchmark reference | Run baseline agent; compute mean accuracy, latency, token usage; persist as versioned benchmark |
+| Test query design (4-category coverage) | FR-056 | Include 5+ queries per category (disambiguation, freshness, few-shot, integration); 20+ total | Create query bank; verify each query tests intended capability; verify category distribution balanced |
+| Test result export (JSON/CSV for analysis) | FR-057 | Save results (queries, responses, scores, metrics) to JSON and CSV; verify parseable | Run tests; export both formats; re-import; verify all data fields present and correct |
 
-#### Module 7: Demo Layer (3 MUST features)
+#### Module 7: Demo Layer (2 MUST features)
 
 | Feature | FR ID | Acceptance Criteria | Test Method |
 |---|---|---|---|
 | Streamlit UI (load llms.txt, display structure) | FR-059 | Upload llms.txt to app; verify parsed structure displayed; validation results shown | Upload 5 files; verify parsing succeeds; validation visible |
 | Side-by-side agent view (query input, both agents' responses) | FR-060 | Type query; click "Run"; baseline response in left column, enhanced in right | Type 5 queries; verify both responses appear in correct columns |
-| Metrics display (accuracy, latency, tokens with visual indicators) | FR-061 | Show comparison metrics with badges/colors highlighting winner | Run demo query; verify accuracy scores, latency (ms), token counts visible |
 
-#### Module 8: Cross-Module (1 MUST feature)
-
-| Feature | FR ID | Acceptance Criteria | Test Method |
-|---|---|---|---|
-| Logging (key decisions logged at INFO level) | FR-067 | All modules log: loaded file, parsed entries, context selected | Run full pipeline; inspect logs; verify all key steps logged |
+> **Note on FR-061 (Metrics display):** FR-061 is classified as SHOULD priority in v0.0.5a, not MUST. However, the Demo Scenario Script (Part 5) relies on metrics being visible for the portfolio presentation. FR-061 is listed as a high-priority stretch goal in Part 8 — if implemented, it significantly enhances the demo impact. The demo can function without it (side-by-side text comparison is sufficient), but metrics add quantitative evidence to the qualitative comparison.
 
 ### MVP Feature Summary
 
-| Category | Count | Examples |
+| Category | Count | FR IDs |
 |---|---|---|
-| **MUST (MVP)** | 25 | FR-001, FR-002, FR-003, FR-004, FR-007, FR-008, FR-013, FR-016, FR-020, FR-026, FR-027, FR-032, FR-033, FR-034, FR-039, FR-040, FR-041, FR-042, FR-051, FR-052, FR-053, FR-059, FR-060, FR-061, FR-067 |
-| **SHOULD (nice-to-have)** | 35+ | FR-005, FR-006, etc. |
-| **COULD (if time)** | 8+ | FR-022, FR-031, FR-038, etc. |
+| **MUST (MVP)** | 32 | FR-001, FR-002, FR-003, FR-004, FR-007, FR-008, FR-011, FR-013, FR-016, FR-020, FR-024, FR-025, FR-026, FR-027, FR-032, FR-033, FR-034, FR-035, FR-039, FR-040, FR-041, FR-042, FR-047, FR-048, FR-051, FR-052, FR-053, FR-055, FR-056, FR-057, FR-059, FR-060 |
+| **SHOULD (important, not MVP-blocking)** | 29 | FR-005, FR-006, FR-009, FR-010, FR-012, FR-014, FR-015, FR-017, FR-018, FR-019, FR-021, FR-023, FR-028, FR-029, FR-030, FR-036, FR-037, FR-043, FR-044, FR-045, FR-046, FR-049, FR-054, FR-058, FR-061, FR-063, FR-064, FR-066, FR-067 |
+| **COULD (stretch goals)** | 7 | FR-022, FR-031, FR-038, FR-050, FR-062, FR-065, FR-068 |
+
+### MVP Module Distribution
+
+| Module | MUST Count | FR IDs | Key Deliverable |
+|---|---|---|---|
+| Schema & Validation | 7 | FR-001–004, FR-007–008, FR-011 | Validated Pydantic models + round-trip serialization |
+| Content Structure | 5 | FR-013, FR-016, FR-020, FR-024, FR-025 | 3-layer context with cross-references + JSON/YAML export |
+| Parser & Loader | 2 | FR-026, FR-027 | Robust llms.txt loader with line-ending normalization |
+| Context Builder | 4 | FR-032–035 | Token-aware, query-relevant context assembly |
+| Agent Integration | 6 | FR-039–042, FR-047, FR-048 | Baseline + enhanced agents with few-shot injection + testing harness |
+| A/B Testing | 6 | FR-051–053, FR-055–057 | Full test infrastructure with baselines, categories, and export |
+| Demo Layer | 2 | FR-059, FR-060 | Streamlit app with side-by-side comparison |
+| **TOTAL** | **32** | — | — |
 
 ---
 
@@ -686,7 +709,7 @@ The project is **DONE** when ALL of the following are true:
 
 #### Code & Implementation
 
-- [ ] All 25 MUST features (from Part 1) are implemented and tested
+- [ ] All 32 MUST features (from Part 1) are implemented and tested
 - [ ] All code passes Black + Ruff linters (zero violations)
 - [ ] Core modules (validation, parsing, context) have ≥ 80% test coverage
 - [ ] Unit tests pass (pytest with -v flag, 0 failures)
@@ -756,7 +779,7 @@ The project is **DONE** when ALL of the following are true:
 
 **DO NOT RELEASE** if any of these are true:
 
-- [ ] Any MUST feature is missing or partially working
+- [ ] Any of the 32 MUST features is missing or partially working
 - [ ] Test coverage < 75% on core modules
 - [ ] A/B test shows no significant improvement (p ≥ 0.05)
 - [ ] Demo crashes or shows errors
@@ -775,11 +798,13 @@ The project is **DONE** when ALL of the following are true:
 
 | Feature | Effort | Priority | Effort OK? | Notes |
 |---|---|---|---|---|
-| FR-014: Freshness signal detection | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Nice visual indicator |
-| FR-019: Authority assignment | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Mark canonical definitions |
-| FR-005: Content validation (L2) | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Check descriptions non-empty |
-| FR-062: Concept map graph visualization | 4–6 hours | COULD | Only if ≥ 8 hours remain | Fancy but not essential |
-| FR-031: Streaming parser | 3–4 hours | COULD | Only if ≥ 6 hours remain | For very large files |
+| FR-061: Metrics display (accuracy, latency, tokens w/ visual indicators) | 2–3 hours | SHOULD | Only if ≥ 4 hours remain | **Highest-impact stretch goal** — demo script (Part 5) relies on visible metrics; significantly enhances portfolio presentation |
+| FR-067: Cross-module logging (key decisions at INFO level) | 2–3 hours | SHOULD | Only if ≥ 4 hours remain | Important for debugging and traceability; strengthens code quality narrative for portfolio |
+| FR-014: Freshness signal detection | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Nice visual indicator; supports Test Scenario 2 (Freshness Test) |
+| FR-019: Authority assignment | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Mark canonical definitions per concept |
+| FR-005: Content validation (L2) | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Check descriptions non-empty; URL resolution |
+| FR-062: Concept map graph visualization | 4–6 hours | COULD | Only if ≥ 8 hours remain | Visually impressive but not essential |
+| FR-031: Streaming parser | 3–4 hours | COULD | Only if ≥ 6 hours remain | For very large files (>50MB) |
 | FR-050: Agent templates | 3–5 hours | COULD | Only if ≥ 8 hours remain | Chatbot vs Q&A vs copilot modes |
 | Write blog post | 2–4 hours | COULD | Only if ≥ 6 hours remain | "How we built DocStratum" |
 | Record video demo | 2–3 hours | COULD | Only if ≥ 5 hours remain | Screencast walkthrough |
@@ -788,40 +813,103 @@ The project is **DONE** when ALL of the following are true:
 
 **Only add a stretch goal if:**
 
-1. All 25 MUST features are complete and tested
-2. All 30 SHOULD features that matter are done (prioritize based on impact)
-3. Test coverage ≥ 80%
+1. All 32 MUST features are complete and tested
+2. Highest-impact SHOULD features prioritized first (FR-061 → FR-067 → FR-014 → others)
+3. Test coverage ≥ 80% on core modules
 4. Time remaining > effort estimate + 30% buffer
 5. The stretch goal doesn't risk breaking existing features
 
 ---
 
+## Part 9: Inputs from Previous Sub-Parts
+
+| Source | What It Provides | Used In |
+|--------|-----------------|---------|
+| v0.0.1 — Specification Deep Dive | 8 specification gaps with P0/P1/P2 priority; ABNF grammar defining parser behavior; 28 edge cases; bimodal document type classification (Type 1 Index vs Type 2 Full); 11 empirical specimen conformance data | Test Scenario 4 (integration with real llms.txt files); demo scenario (Stripe as example); acceptance test design (parse real files without errors) |
+| v0.0.1c — Context & Processing Patterns | 6-phase hybrid pipeline architecture; token budgeting strategy ("8K curated > 200K raw"); processing method tradeoff matrix; pipeline configuration interface | Part 3 quantitative metrics (context build < 2s, token budget ≤ 4K); MVP features FR-032–035 acceptance criteria; demo Part 2 timing budget |
+| v0.0.2 — Wild Examples Audit | 18 audited implementations + 6 specimen expansions; quality predictors (r ≈ 0.65 for code examples, r ≈ −0.05 for size); 5 archetypes; gold standards (Svelte 5/5, Pydantic 5/5); 15 best practices; 12 anti-patterns | Test Scenario 1 (disambiguation relies on concept map value); Part 4 qualitative criteria (code quality, documentation quality); demo scenario pacing and content selection |
+| v0.0.3 — Ecosystem Survey | Adoption Paradox (grassroots adoption, zero confirmed LLM provider usage); 75+ tools with zero formal validation; MCP as validated transport; 25 consolidated gaps; DECISION-015 (AI coding assistants via MCP as primary target) | Part 5 demo positioning ("DocStratum improves agent performance"); Part 4 portfolio value criteria; strategic framing of success metrics (target coding assistants, not search LLMs) |
+| v0.0.4 — Best Practices Synthesis | 57 automated checks; 100-point composite quality scoring; 22 anti-patterns with detection rules; 16 design decisions; token budget architecture (4 tiers); MUST/SHOULD/COULD framework | Part 3 quantitative metrics (validation accuracy ≥ 90%); Part 1 acceptance test design (validation levels referenced); Part 6 DoD code quality standards (Black + Ruff compliance) |
+| v0.0.5a — Functional Requirements | 68 FRs (FR-001–FR-068) with MoSCoW priorities; 32 MUST, 29 SHOULD, 7 COULD; module-level organization; acceptance tests per FR; traceability to research and implementation | Part 1 MVP Feature Checklist (all 32 MUST features); Part 8 stretch goals (drawn from SHOULD/COULD); MVP Module Distribution table; Test Scenario acceptance tests reference FR acceptance criteria |
+| v0.0.5b — Non-Functional Requirements & Constraints | 21 NFRs with measurable targets; 6 hard constraints (CONST-001–006); per-module quality targets; trade-off resolutions; risk mitigation strategies | Part 3 quantitative metrics (NFR-001: < 500ms, NFR-002: < 2s, NFR-003: < 8s, NFR-004: < 12s, NFR-005: < 200MB, NFR-010: ≥ 80%); Part 6 DoD success metrics thresholds; Part 7 warning signs (performance target failures) |
+| v0.0.5c — Scope Definition & Out-of-Scope Registry | 32 OOS items across 7 categories; in-scope boundary statement (9 deliverables); deferred features registry (11 items); Scope Fence decision tree; scope change management process | Part 6 DoD "Scope & Constraints Respected" gate; Part 8 stretch goals (informed by deferred features registry effort estimates); Part 7 warning signs (scope drift detection) |
+
+---
+
+## Part 10: Outputs to Next Phase
+
+| Output | Consumed By | How It's Used |
+|--------|------------|---------------|
+| 32 MVP features with acceptance tests (Part 1) | v0.1.0–v0.6.0 (Implementation) | Each implementation module knows exactly which features must pass which acceptance tests before the module is complete |
+| 4 test scenarios with executable pseudocode (Part 2) | v0.5.x (Testing & Validation) | Test scenarios become the integration test suite; pseudocode translates directly to pytest fixtures |
+| Quantitative success metrics with targets (Part 3) | v0.5.x (Testing & Validation) | Metrics targets become CI/CD quality gates; performance benchmarks run automatically |
+| A/B test statistical significance requirements (Part 3) | v0.5.x (Testing & Validation) | p < 0.05 requirement shapes sample size decisions; minimum 20 queries established |
+| Demo scenario script with timing (Part 5) | v0.6.0 (Demo Layer) | Streamlit UI design must support the exact 2-minute flow; all referenced features must work for the demo |
+| Definition of Done checklist (Part 6) | v0.6.0 (Release Gate) | Release manager (solo developer) uses this checklist as the final release gate; every unchecked item blocks release |
+| Warning signs list (Part 7) | v0.1.0–v0.6.0 (Continuous) | Early warning system; any warning sign triggers remediation before further feature work |
+| Stretch goals with effort estimates (Part 8) | v0.5.x–v0.6.0 (If Time Permits) | Decision rule gates stretch goal implementation; FR-061 and FR-067 are highest priority if time allows |
+| Test Query Bank — 20 sample questions (Appendix) | v0.5.x (Testing) | Starting point for the formal test query set; covers 20 distinct capability areas |
+
+---
+
+## Part 11: Limitations & Constraints
+
+1. **Accuracy metrics depend on LLM judge quality.** Part 3 defines agent accuracy as an LLM judge score (0–100%). The reliability of this metric depends on the judge model's ability to consistently evaluate response quality. Judge model selection (GPT-4, Claude) is an implementation decision deferred to v0.5.x. Variability in judge scoring may require calibration runs and inter-rater reliability checks before accepting A/B test results as statistically significant.
+
+2. **Baseline performance targets are estimates.** Part 3 targets baseline accuracy at 50–65% and enhanced accuracy at 70–85%. These ranges are informed by v0.0.4's quality predictor analysis and general LLM benchmark data, but actual performance depends on the specific llms.txt files used, the query complexity, and the LLM provider's response quality. Targets will be validated and potentially adjusted during v0.5.x (Testing & Validation).
+
+3. **Demo scenario script assumes specific UI layout.** Part 5 scripts a precise 2-minute flow with left/right columns, metrics badges, and concept map visualization. The actual Streamlit implementation may require layout adjustments based on widget capabilities. The script is a target to aim for, not a rigid specification — if a particular visual element (e.g., concept graph) is deferred (OOS-G1), the demo should gracefully omit it and emphasize available features.
+
+4. **Statistical significance requires sufficient query diversity.** Part 3 requires p < 0.05 from a t-test on 20+ queries. If the test query set lacks diversity (e.g., all queries test the same capability), the p-value may be misleading. The 4-category test design (FR-056) mitigates this, but the 20-query minimum is the floor, not the ceiling — 50+ queries (per FR-055) provide more reliable significance.
+
+5. **Definition of Done is strict by design.** Part 6's checklist is intentionally comprehensive. In a solo-developer context (CONST-001), some items may require pragmatic interpretation — for example, "code review complete (even self-review is okay for solo project)" acknowledges that external code review is infeasible. The DoD reflects aspirational professional quality, not bureaucratic compliance.
+
+6. **Stretch goal effort estimates are pre-implementation approximations.** Part 8's effort estimates (2–6 hours per feature) are based on research-phase understanding of complexity. Actual implementation effort may be higher if dependent features reveal unexpected integration challenges. The 30% buffer in the decision rule partially mitigates this risk.
+
+7. **Test Scenario 4 depends on external API availability.** The integration happy-path test (Part 2, Scenario 4) fetches a real llms.txt file from a production URL (e.g., Stripe). If the URL is unavailable at test time (CDN blocking, site changes, domain migration), the test must fall back to a locally cached specimen file. This limitation was already identified in v0.0.2a (CDN/WAF protections) and the Loader module (FR-030: caching) provides the mitigation.
+
+---
+
+## Part 12: User Stories
+
+> As a **solo developer building DocStratum**, I need a precise, unambiguous "Definition of Done" checklist so that I can answer "Is v0.6.0 ready to release?" with a binary yes/no by walking through the checklist — eliminating the subjective "feels done" trap that causes solo projects to either ship prematurely (missing features, broken tests) or never ship at all (perfectionism spiral, scope creep into stretch goals).
+
+> As a **solo developer managing my own quality bar (CONST-006: 40–60 hours)**, I need quantitative success metrics with specific numeric targets (accuracy ≥ 5 percentage points improvement, parse time < 500ms, p-value < 0.05) so that I can make evidence-based decisions about whether DocStratum actually works — not just whether it runs without errors. The metrics transform "I think it's better" into "it is measurably better, with statistical confidence."
+
+> As a **portfolio evaluator reviewing DocStratum**, I need to see a convincing 2-minute demo that shows DocStratum's value clearly — not a feature tour, but a side-by-side comparison proving that structured context improves LLM performance. The demo scenario script (Part 5) is designed for this audience: problem statement (30s), live demo (80s), aggregate results with statistical significance (30s), closing with impact statement (10s). The A/B test results are the "proof slide" — without statistically significant improvement, the portfolio narrative collapses.
+
+---
+
 ## Deliverables
 
-- [x] MVP feature checklist (25 MUST features with acceptance tests)
-- [x] Test scenarios with specific, measurable steps (4 key scenarios: disambiguation, freshness, few-shot, integration)
-- [x] Acceptance tests in pseudocode/Python (runnable tests for each feature)
-- [x] Quantitative success metrics (accuracy, latency, coverage targets)
-- [x] Qualitative success criteria (code quality, documentation, portfolio value)
-- [x] Demo scenario script (exact 2-minute presentation flow)
-- [x] Definition of Done checklist (precise conditions for release)
-- [x] Stretch goals with effort estimates (10+ optional features)
-- [x] Warning signs (when NOT to release)
+- [x] MVP feature checklist (32 MUST features with acceptance tests, aligned to v0.0.5a)
+- [x] Test scenarios with specific, measurable steps (4 scenarios × 4+ acceptance tests each)
+- [x] Acceptance tests in pseudocode/Python (runnable tests for each scenario)
+- [x] Quantitative success metrics with targets (traceable to v0.0.5b NFRs)
+- [x] Qualitative success criteria (6 dimensions with rubrics)
+- [x] Demo scenario script (2-minute timed walkthrough with section transitions)
+- [x] Definition of Done checklist (5 dimensions + scope gate)
+- [x] Warning signs and stretch goals with effort estimates and decision rules
+- [x] Inputs from Previous Sub-Parts (traceability to v0.0.1–v0.0.5c)
+- [x] Outputs to Next Phase (traceability to v0.1.0–v0.6.0)
+- [x] Limitations & Constraints (7 documented)
+- [x] User Stories (3 personas: solo developer, quality manager, portfolio evaluator)
 
 ---
 
 ## Acceptance Criteria
 
-- [x] Every MUST feature from v0.0.5a is included in MVP checklist
+- [x] Every MUST feature from v0.0.5a is included in MVP checklist (all 32: 7+5+2+4+6+6+2)
+- [x] No SHOULD or COULD features are misclassified as MUST (FR-061 and FR-067 correctly in stretch goals)
 - [x] Every MVP feature has acceptance test (specific, measurable, testable)
-- [x] Test scenarios are realistic (based on real llms.txt use cases)
-- [x] Quantitative metrics have targets (ms, %, points)
-- [x] Qualitative criteria are well-defined
-- [x] Demo scenario is timed and scripted (actually fits in 2 minutes)
-- [x] D.O.D. checklist is comprehensive and unambiguous
-- [x] Stretch goals are genuinely optional (not blocking release)
-- [x] Project team (you) is confident in these definitions
-- [x] Can answer "Is v0.6.0 done?" with this checklist
+- [x] Test scenarios are realistic (based on real llms.txt use cases from v0.0.2 specimens)
+- [x] Quantitative metrics have targets (ms, %, points) traceable to v0.0.5b NFRs
+- [x] Qualitative criteria are well-defined (6 dimensions with verification methods)
+- [x] Demo scenario is timed and scripted (actually fits in 2–3 minutes)
+- [x] D.O.D. checklist is comprehensive and unambiguous (5 dimensions + scope gate)
+- [x] Stretch goals are genuinely optional (not blocking release); decision rule gates implementation
+- [x] Document structure is consistent with v0.0.5a/b/c (includes Inputs, Outputs, Limitations, User Stories)
+- [x] Can answer "Is v0.6.0 done?" with a binary yes/no using the DoD checklist alone
 
 ---
 

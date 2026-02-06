@@ -167,7 +167,7 @@ If time permits:
 
 [v0.0.5c — Scope Definition & Out-of-Scope Registry](RR-SPEC-v0.0.5c-scope-definition-and-out-of-scope-registry.md) — 32+ out-of-scope items, Scope Fence decision tree, deferred features registry
 
-[v0.0.5d — Success Criteria & MVP Definition](RR-SPEC-v0.0.5d-success-criteria-and-mvp-definition.md) — 25 MVP features, 4 test scenarios, quantitative metrics, 2-minute demo script, Definition of Done
+[v0.0.5d — Success Criteria & MVP Definition](RR-SPEC-v0.0.5d-success-criteria-and-mvp-definition.md) — 32 MVP features (7+5+2+4+6+6+2 across 7 modules), 4 test scenarios, quantitative metrics traceable to NFRs, 2-minute demo script, Definition of Done with 5 dimensions + scope gate
 
 ---
 
