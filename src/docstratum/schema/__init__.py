@@ -39,6 +39,17 @@ from docstratum.schema.parsed import (
     ParsedLlmsTxt,
     ParsedSection,
 )
+from docstratum.schema.quality import (
+    DimensionScore,
+    QualityDimension,
+    QualityGrade,
+    QualityScore,
+)
+from docstratum.schema.validation import (
+    ValidationDiagnostic,
+    ValidationLevel,
+    ValidationResult,
+)
 
 __all__ = [
     "ANTI_PATTERN_REGISTRY",
@@ -54,13 +65,20 @@ __all__ = [
     "AntiPatternID",
     "CanonicalSectionName",
     "DiagnosticCode",
+    "DimensionScore",
     "DocumentClassification",
     "DocumentType",
     "ParsedBlockquote",
     "ParsedLink",
     "ParsedLlmsTxt",
     "ParsedSection",
+    "QualityDimension",
+    "QualityGrade",
+    "QualityScore",
     "Severity",
     "SizeTier",
     "TokenBudgetTier",
+    "ValidationDiagnostic",
+    "ValidationLevel",
+    "ValidationResult",
 ]

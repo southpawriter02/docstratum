@@ -64,6 +64,13 @@ addopts = [
     "--cov-fail-under=80",
     "-v",
 ]
+markers = [
+    "unit: Unit tests (no I/O, no network, no database)",
+    "integration: Integration tests (may use files, database, or multiple modules)",
+    "api: Tests requiring real API keys — skipped in CI by default",
+    "slow: Tests taking > 5 seconds",
+    "smoke: Quick sanity checks for CI pipeline health",
+]
 
 [tool.mypy]
 python_version = "3.11"

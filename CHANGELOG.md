@@ -15,6 +15,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.1.2c] - 2026-02-07
+
+**Validation & Quality Models — Output-side Pydantic models for the validation engine.**
+
+### Added
+
+#### Validation Models (`src/docstratum/schema/validation.py`)
+
+- `ValidationLevel(IntEnum)` — 5-level validation pipeline (L0_PARSEABLE through L4_DOCSTRATUM_EXTENDED), per v0.0.1b validation level definitions
+- `ValidationDiagnostic(BaseModel)` — single validation finding with 9 fields (code, severity, message, remediation, line_number, column, context, level, check_id); depends on `DiagnosticCode` and `Severity` from v0.1.2a
+- `ValidationResult(BaseModel)` — complete pipeline output with 6 computed properties (total_errors, total_warnings, total_info, is_valid, errors, warnings) and per-level pass/fail tracking
+
+#### Quality Models (`src/docstratum/schema/quality.py`)
+
+- `QualityDimension(StrEnum)` — 3-dimension composite scoring (STRUCTURAL 30pts, CONTENT 50pts, ANTI_PATTERN 20pts), per DECISION-014
+- `QualityGrade(StrEnum)` — 5-grade classification (EXEMPLARY 90+, STRONG 70+, ADEQUATE 50+, NEEDS_WORK 30+, CRITICAL 0–29) with `from_score()` classmethod, calibrated against gold standards (v0.0.4b §11.3)
+- `DimensionScore(BaseModel)` — per-dimension breakdown with 8 fields and `percentage` computed property (handles zero max_points)
+- `QualityScore(BaseModel)` — composite 0–100 score with grade and dimension breakdown, primary output of `docstratum-score`
+
+#### Public API
+
+- All 7 new types exported from `docstratum.schema` via `__init__.py`
+
+> **Style note:** Uses `X | None` union syntax instead of `Optional[X]` for ruff UP007 consistency with v0.1.2b.
+
+---
+
 ## [0.1.2b] - 2026-02-06
 
 **Document Models — Input-side Pydantic models for parsed llms.txt files.**
