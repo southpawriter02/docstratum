@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-AP-CRIT-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Registry ID** | AP-CRIT-003 |
 | **Category** | Critical |
 | **Check ID** | CHECK-003 (v0.0.4c) |
@@ -94,3 +94,4 @@ When processed by UTF-8 parser expecting: `with open(file, 'r', encoding='utf-8'
 | ASoT Version | Date | Change |
 |---|---|---|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.2 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

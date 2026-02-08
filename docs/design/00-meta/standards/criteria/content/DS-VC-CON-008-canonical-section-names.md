@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-008 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-01 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 5 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 5 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | DECISION-012: 11 canonical names derived from frequency analysis of 450+ projects in v0.0.2c; v0.0.4a CHECK-STR-006; v0.0.6 calibration confirms strong correlation with quality scores |
@@ -36,7 +36,7 @@ canonical_names = set(CanonicalSectionName) | set(SECTION_NAME_ALIASES.keys())
 h2_sections = extract_h2_headings(file_content)
 canonical_count = sum(1 for s in h2_sections if s.name.lower() in canonical_names)
 canonical_ratio = canonical_count / len(h2_sections) if h2_sections else 1.0
-assert canonical_ratio >= 0.70  # [CALIBRATION-NEEDED]
+assert canonical_ratio >= 0.70  #
 ```
 
 Files with zero H2 sections are considered as having no violations (the criterion is not applicable). Files with 70% or higher canonical alignment pass.
@@ -73,3 +73,4 @@ v0.0.2c frequency analysis of 450+ projects identified 11 section names appearin
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-004 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L1-04 |
 | **Dimension** | Structural (30%) |
 | **Level** | L1 — Structurally Valid |
-| **Weight** | 4 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 4 / 30 structural points |
 | **Pass Type** | HARD |
 | **Measurability** | Fully measurable |
 | **Provenance** | Official llms.txt spec: "H2-delimited sections"; v0.0.1a ABNF grammar defining section structure |
@@ -72,3 +72,4 @@ Primary content sections use heading levels other than H2:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

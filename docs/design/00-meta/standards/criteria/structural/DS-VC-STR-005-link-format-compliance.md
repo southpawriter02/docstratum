@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-005 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L1-05 |
 | **Dimension** | Structural (30%) |
 | **Level** | L1 — Structurally Valid |
-| **Weight** | 4 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 4 / 30 structural points |
 | **Pass Type** | HARD |
 | **Measurability** | Fully measurable |
 | **Provenance** | Official llms.txt spec: link list format `[title](url): description`; v0.0.1a formal grammar |
@@ -82,3 +82,4 @@ Links exhibit syntactic violations:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

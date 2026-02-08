@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-AP-STRAT-002 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Registry ID** | AP-STRAT-002 |
 | **Category** | Strategic |
 | **Check ID** | CHECK-017 |
@@ -93,3 +93,4 @@ troubleshooting steps, all FAQ, and all appendices in a single 250K token file.
 | ASoT Version | Date | Change |
 |---|---|---|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.2 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L2-03 |
 | **Dimension** | Content (50%) |
 | **Level** | L2 — Content Quality |
-| **Weight** | 3 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4c anti-pattern catalog; v0.0.2b: 3 of 24 audited files contained placeholder content; AP-CONT-002 (Blank Canvas) |
@@ -65,7 +65,7 @@ None directly. Placeholder detection is covered by anti-pattern **DS-AP-CONT-002
 
 The v0.0.2b audit found placeholder content in 12.5% of sampled files, making it relatively uncommon but important to detect. This is often a signal of auto-generated documentation or incompletely drafted files.
 
-The PLACEHOLDER_PATTERNS list [CALIBRATION-NEEDED] should be refined based on patterns discovered in the 11 empirical specimens. Additional patterns (e.g., locale-specific placeholder strings) may emerge during Phase C calibration.
+The PLACEHOLDER_PATTERNS list should be refined based on patterns discovered in the 11 empirical specimens. Additional patterns (e.g., locale-specific placeholder strings) may emerge during Phase C calibration.
 
 The `example.com` and `foo.bar` patterns are included because they commonly appear as placeholder URLs in documentation templates, though context-aware filtering may reduce false positives.
 
@@ -74,3 +74,4 @@ The `example.com` and `foo.bar` patterns are included because they commonly appe
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

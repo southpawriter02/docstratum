@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-005 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L2-05 |
 | **Dimension** | Content (50%) |
 | **Level** | L2 — Content Quality |
-| **Weight** | 3 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4c AP-STRUCT-003 (Duplicate Identity); v0.0.2c audit data |
@@ -59,10 +59,11 @@ None directly. Duplicate section detection is covered by anti-pattern **DS-AP-ST
 
 Duplicate sections are uncommon in well-maintained documentation but occur in auto-generated files where template logic creates repeated sections. None of the 6 v0.0.2c calibration specimens exhibit this issue, suggesting it is a relatively rare failure mode.
 
-However, the weight [CALIBRATION-NEEDED] should be refined once all 11 empirical specimens are scored in Phase C. If duplicate sections are indeed rare, the criterion's weight may be reduced relative to more common quality issues.
+However, the weight should be refined once all 11 empirical specimens are scored in Phase C. If duplicate sections are indeed rare, the criterion's weight may be reduced relative to more common quality issues.
 
 ## Change History
 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

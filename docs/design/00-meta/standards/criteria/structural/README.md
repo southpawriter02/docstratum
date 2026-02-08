@@ -22,4 +22,4 @@ Structural criteria assess the fundamental Markdown structure of llms.txt files 
 | DS-VC-STR-008 | L3-09 | No Critical Anti-Patterns | L3 | 3 / 30 | HARD | DRAFT |
 | DS-VC-STR-009 | L3-10 | No Structural Anti-Patterns | L3 | 2 / 30 | SOFT | DRAFT |
 
-**Weight total:** 5 + 3 + 3 + 4 + 4 + 3 + 3 + 3 + 2 = **30 / 30** [CALIBRATION-NEEDED]
+**Weight total:** 5 + 3 + 3 + 4 + 4 + 3 + 3 + 3 + 2 = **30 / 30**

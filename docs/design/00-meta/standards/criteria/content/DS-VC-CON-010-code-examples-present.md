@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-010 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-03 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 5 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 5 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4b; v0.0.2c pattern analysis: code examples are the strongest single predictor of quality score (r ≈ 0.65) across 450+ projects |
@@ -71,3 +71,4 @@ Files without code examples score below 60% on average. The presence of even a s
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

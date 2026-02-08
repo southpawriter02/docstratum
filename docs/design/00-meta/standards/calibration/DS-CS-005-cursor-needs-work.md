@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-CS-005 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Project** | Cursor |
 | **Expected Total Score** | 42 |
 | **Expected Grade** | Needs Work (30–49) |
@@ -95,3 +95,4 @@ Cursor's llms.txt is actively maintained and likely to change as the tool evolve
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.7 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

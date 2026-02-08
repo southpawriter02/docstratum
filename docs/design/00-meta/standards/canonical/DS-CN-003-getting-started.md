@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-CN-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Canonical Name** | Getting Started |
 | **Position** | 3 |
 | **Enum Value** | `CanonicalSectionName.GETTING_STARTED` |
@@ -50,3 +50,4 @@ Position **3** — Getting Started should be the third H2 section, following Mas
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.4 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

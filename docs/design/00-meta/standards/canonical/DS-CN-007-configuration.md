@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-CN-007 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Canonical Name** | Configuration |
 | **Position** | 7 |
 | **Enum Value** | `CanonicalSectionName.CONFIGURATION` |
@@ -49,3 +49,4 @@ Position **7** — Configuration should be the seventh H2 section, appearing aft
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.4 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

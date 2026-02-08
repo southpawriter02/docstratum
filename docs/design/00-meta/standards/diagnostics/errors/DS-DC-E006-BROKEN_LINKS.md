@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DC-E006 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Code** | E006 |
 | **Severity** | ERROR |
 | **Validation Level** | L1 — Structurally Valid (also emitted at L2 by DS-VC-CON-002) |
@@ -57,3 +57,4 @@ Emitted by DS-VC-STR-005 for syntactically malformed links and by DS-VC-CON-002 
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
 | 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

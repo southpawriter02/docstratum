@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L1-03 |
 | **Dimension** | Structural (30%) |
 | **Level** | L1 — Structurally Valid |
-| **Weight** | 3 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 30 structural points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | Official llms.txt spec: blockquote is "expected" section; v0.0.2c audit: 55% real-world compliance — low enough to warrant Warning, not Error |
@@ -73,3 +73,4 @@ No blockquote element found anywhere in the file:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

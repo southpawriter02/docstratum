@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-011 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-04 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 3 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4b; practical principle: language hints enable syntax-aware processing by LLM agents and syntax highlighters; improves readability and correctness inference |
@@ -73,3 +73,4 @@ Language specifiers are a zero-friction improvement. Top-scoring specimens consi
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

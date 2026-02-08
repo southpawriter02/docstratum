@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-CN-009 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Canonical Name** | Troubleshooting |
 | **Position** | 9 |
 | **Enum Value** | `CanonicalSectionName.TROUBLESHOOTING` |
@@ -49,3 +49,4 @@ Position **9** — Troubleshooting should be the ninth H2 section, appearing aft
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.4 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

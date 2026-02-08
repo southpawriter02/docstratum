@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-008 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-08 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 2 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 2 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Partially measurable |
 | **Provenance** | v0.0.4c AP-CONT-003 (Jargon Jungle); v0.0.1b Gap #7; practical: undefined jargon degrades LLM comprehension |
@@ -35,12 +35,12 @@ Domain-specific terms are accompanied by definitions or links:
 potential_jargon = identify_jargon_candidates(content)
 # High-confidence candidates: acronyms, capitalized multi-word terms,
 # uncommon words flagged as specialized vocabulary
-# [CALIBRATION-NEEDED: jargon detection heuristic, "standard dictionary" baseline]
+#  # TODO(v0.3.x): jargon detection heuristic, "standard dictionary" baseline
 
 for term in potential_jargon:
     # Check for nearby definition (e.g., "X is...", "X refers to...")
     has_definition = has_nearby_definition(term, content)
-    # [CALIBRATION-NEEDED: proximity threshold for "nearby"]
+    #  # TODO(v0.3.x): proximity threshold for "nearby"
 
     # Check for link to definition (e.g., [GraphQL](url) or [[GraphQL]])
     has_link = has_link_to_definition(term, content)
@@ -55,7 +55,7 @@ for term in potential_jargon:
 # (the file may not use specialized terminology)
 ```
 
-**Note:** Jargon detection is inherently heuristic. The validator may produce false positives (flagging well-known terms) and false negatives (missing obscure jargon). The implementation should err on the side of caution to avoid over-flagging. [CALIBRATION-NEEDED: refinement of detection sensitivity].
+**Note:** Jargon detection is inherently heuristic. The validator may produce false positives (flagging well-known terms) and false negatives (missing obscure jargon). The implementation should err on the side of caution to avoid over-flagging..
 
 ## Fail Condition
 
@@ -103,3 +103,4 @@ Top-scoring specimens (Svelte, Pydantic) show consistent patterns: jargon is eit
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

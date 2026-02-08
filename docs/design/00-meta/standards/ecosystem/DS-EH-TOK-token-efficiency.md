@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-EH-TOK |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Dimension** | Token Efficiency |
 | **Enum Value** | `EcosystemHealthDimension.TOKEN_EFFICIENCY` |
 | **Source Code** | `ecosystem.py` → `EcosystemHealthDimension.TOKEN_EFFICIENCY = "token_efficiency"` |
@@ -37,7 +37,7 @@ Where:
 - `gini_coefficient` = Statistical measure of distribution inequality (0 = perfect equality, 1 = perfect inequality)
 - `herfindahl_index` = Concentration index (0 = perfect dispersion, 1 = perfect concentration)
 - `file_token_counts` = Token count for each file in the ecosystem
-- `dimension_weight` = Weighting factor applied to this dimension [CALIBRATION-NEEDED]
+- `dimension_weight` = Weighting factor applied to this dimension
 
 **Red flags:**
 - Single file >80% of total tokens: Critical inefficiency
@@ -116,3 +116,4 @@ Distribution: Concentrated → Low efficiency score
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.6 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

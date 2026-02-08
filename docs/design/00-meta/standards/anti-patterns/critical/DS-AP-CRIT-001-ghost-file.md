@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-AP-CRIT-001 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Registry ID** | AP-CRIT-001 |
 | **Category** | Critical |
 | **Check ID** | CHECK-001 (v0.0.4c) |
@@ -72,3 +72,4 @@ This file technically has an H1, a blockquote, and an H2 section — but the sec
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

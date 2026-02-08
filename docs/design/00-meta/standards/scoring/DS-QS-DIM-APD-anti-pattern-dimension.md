@@ -3,113 +3,70 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-QS-DIM-APD |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Element Type** | Quality Dimension |
 | **Source Code** | `quality.py` → `QualityDimension.ANTI_PATTERN` |
 | **Provenance** | DECISION-014; DECISION-016; v0.0.3a anti-pattern taxonomy |
 
 ## Description
 
-The Anti-Pattern Detection Dimension measures the absence of quality anti-patterns — common documentation problems that degrade utility. Unlike the Structural and Content dimensions (which add points for positive attributes), the Anti-Pattern Dimension is **deduction-based**: files start with a perfect score of 20 points and lose points for each detected anti-pattern.
+The Anti-Pattern Detection Dimension measures documentation quality from the perspective of LLM optimization and anti-pattern avoidance. It uses a **criterion-based (additive) model** with 8 validation criteria (APD-001 through APD-008), each earning points for positive attributes or confirmed absence of problems.
 
-This dimension reflects the principle that avoiding bad practices is as important as implementing good ones. Critical anti-patterns (e.g., files that are unparseable or have broken links) trigger the gating mechanism that caps the total score. Other anti-patterns trigger proportional deductions based on severity.
+This dimension addresses two complementary concerns: (1) the presence of LLM-specific content enhancements (instructions, concept definitions, few-shot examples) and (2) the absence of documented anti-patterns across content, strategic, and ecosystem categories. Critical anti-patterns additionally trigger the gating mechanism (via DS-QS-GATE) that caps the total composite score at 29, regardless of this dimension's score.
 
-The Anti-Pattern Dimension contributes **20 points (20% of total weight)** to the composite quality score.
+The Anti-Pattern Detection Dimension contributes **20 points (20% of total weight)** to the composite quality score.
 
 ## Specification
 
 ### Weight and Scoring
 - **Maximum Points:** 20
-- **Weight Percentage:** 20% [CALIBRATION-NEEDED]
-- **Scoring Model:** Deduction-based (starts at max, loses points per detected pattern)
+- **Weight Percentage:** 20%
+- **Scoring Model:** Criterion-based (additive — points earned for positive attributes)
 - **Dimension ID:** `QualityDimension.ANTI_PATTERN`
 
-### Anti-Pattern Registry
+### Constituent Criteria
 
-The Anti-Pattern Dimension monitors **28 documented anti-patterns** across **5 severity categories**:
+The Anti-Pattern Detection Dimension is scored through 8 validation criteria, all at Level 4 (Exemplary):
 
-#### Critical Patterns (4 patterns)
-These patterns indicate fundamental document failure. Each triggers gating (score capped at 29) and causes large deductions:
+| Criterion | Points | Level | Pass | Description |
+|-----------|--------|-------|------|-------------|
+| DS-VC-APD-001 | 3 | L4 | SOFT | LLM Instructions Section — explicit machine-facing instructions present (15–23% improvement) |
+| DS-VC-APD-002 | 3 | L4 | SOFT | Concept Definitions — authoritative terminology section present (12–18% improvement) |
+| DS-VC-APD-003 | 3 | L4 | SOFT | Few-Shot Examples — structured pedagogical examples included (25–40% improvement) |
+| DS-VC-APD-004 | 3 | L4 | SOFT | No Content Anti-Patterns — free of 9 content-level anti-patterns (AP-CONT-001–009) |
+| DS-VC-APD-005 | 2 | L4 | SOFT | No Strategic Anti-Patterns — free of 4 strategic anti-patterns (AP-STRAT-001–004) |
+| DS-VC-APD-006 | 2 | L4 | SOFT | Token-Optimized Structure — no section exceeds 40% of total token budget |
+| DS-VC-APD-007 | 2 | L4 | SOFT | Relative URL Minimization — ≥90% of URLs are absolute (MCP consumption context) |
+| DS-VC-APD-008 | 2 | L4 | SOFT | Jargon Defined or Linked — domain-specific terms have definitions or links |
 
-| Anti-Pattern ID | Code | Points Lost | Description |
-|-----------------|------|-------------|-------------|
-| AP-CRIT-001 | `GHOST_FILE` | 20 | File is empty, unreadable, or not valid Markdown — effectively unparseable |
-| AP-CRIT-002 | `STRUCTURE_CHAOS` | 20 | Heading structure is completely broken — no valid hierarchy, multiple H1s, severe nesting errors |
-| AP-CRIT-003 | `ENCODING_DISASTER` | 20 | File contains invalid UTF-8 or other encoding errors that prevent parsing |
-| AP-CRIT-004 | `LINK_VOID` | 20 | 80% or more of links are broken (404s, invalid syntax, pointing to missing anchors) |
+**Total L4 Points:** 20 (APD-001 through APD-008)
+**Total Dimension Points:** 20
 
-#### Structural Patterns (5 patterns)
-These patterns indicate structural quality issues. Each causes moderate deductions:
+### Underlying Anti-Pattern Registry
 
-| Anti-Pattern ID | Code | Points Lost | Description |
-|-----------------|------|-------------|-------------|
-| AP-STRUC-001 | `NO_HEADINGS` | 4 | Document has no heading structure — all content appears as paragraphs |
-| AP-STRUC-002 | `EXCESSIVE_NESTING` | 3 | Heading hierarchy goes beyond H4 (more than 4 levels deep) |
-| AP-STRUC-003 | `ORPHAN_SECTIONS` | 2 | Sections exist without relationship to document structure (malformed markdown) |
-| AP-STRUC-004 | `UNBALANCED_SECTIONS` | 2 | Some sections are extremely long (10,000+ words) while others are stubs |
-| AP-STRUC-005 | `METADATA_MISSING` | 1 | Front matter or metadata table is absent or incomplete |
+The 28 documented anti-patterns (across 5 severity categories) are defined in individual standard files (DS-AP-*) and referenced by the criteria above. APD-004 evaluates the 9 content anti-patterns; APD-005 evaluates the 4 strategic anti-patterns. Critical and structural anti-patterns are evaluated by criteria in the Structural Dimension (DS-VC-STR-008 and DS-VC-STR-009 respectively). Ecosystem anti-patterns are evaluated by the Ecosystem Health dimensions (DS-EH-*).
 
-#### Content Patterns (9 patterns)
-These patterns indicate missing or low-quality content. Each causes small to moderate deductions:
-
-| Anti-Pattern ID | Code | Points Lost | Description |
-|-----------------|------|-------------|-------------|
-| AP-CONT-001 | `NO_CODE_EXAMPLES` | 3 | Document contains no code examples or runnable samples |
-| AP-CONT-002 | `NO_API_DOCS` | 2 | API functions/endpoints are undocumented or mention-only |
-| AP-CONT-003 | `VAGUE_EXPLANATIONS` | 2 | Explanations use jargon without definition; unclear to target audience |
-| AP-CONT-004 | `NO_QUICK_START` | 2 | No getting-started section; setup process must be inferred |
-| AP-CONT-005 | `NO_ERROR_HANDLING` | 1 | No documentation of common errors or troubleshooting |
-| AP-CONT-006 | `OUTDATED_INFO` | 2 | Documentation references outdated versions or deprecated features without warnings |
-| AP-CONT-007 | `NO_RELATED_LINKS` | 1 | Related documentation is not linked or referenced |
-| AP-CONT-008 | `MISSING_EXAMPLES` | 2 | Examples are present but are trivial, toy code, or not realistic |
-| AP-CONT-009 | `NO_CONFIG_GUIDANCE` | 1 | Configuration options are listed but not explained; no setup guidance |
-
-#### Strategic Patterns (4 patterns)
-These patterns indicate misalignment with documentation strategy. Each causes minor deductions:
-
-| Anti-Pattern ID | Code | Points Lost | Description |
-|-----------------|------|-------------|-------------|
-| AP-STRAT-001 | `NO_MASTER_INDEX` | 2 | Master Index or table of contents is missing |
-| AP-STRAT-002 | `WEAK_POSITIONING` | 1 | Document doesn't explain what problem it solves or for whom |
-| AP-STRAT-003 | `NON_CANONICAL_SECTIONS` | 1 | Document doesn't follow canonical section naming or ordering |
-| AP-STRAT-004 | `NOT_LLM_OPTIMIZED` | 1 | Content structure doesn't account for token limits or LLM reading patterns |
-
-#### Ecosystem Patterns (6 patterns)
-These patterns indicate poor integration with documentation ecosystem. Each causes minimal deductions:
-
-| Anti-Pattern ID | Code | Points Lost | Description |
-|-----------------|------|-------------|-------------|
-| AP-ECO-001 | `ORPHANED_DOCS` | 1 | Document is not referenced from any index or parent page |
-| AP-ECO-002 | `BROKEN_CROSS_REFS` | 1 | Cross-references to other docs are broken or outdated |
-| AP-ECO-003 | `VERSION_MISMATCH` | 1 | Documentation version doesn't match software version |
-| AP-ECO-004 | `NO_CHANGELOG` | 1 | Change history is missing or never updated |
-| AP-ECO-005 | `MISSING_LICENSE` | 0 | No license information (informational, not scored) |
-| AP-ECO-006 | `NO_MAINTAINER_INFO` | 0 | No contact or maintenance information (informational, not scored) |
+The full registry comprises: 4 critical (AP-CRIT-001–004), 5 structural (AP-STRUCT-001–005), 9 content (AP-CONT-001–009), 4 strategic (AP-STRAT-001–004), and 6 ecosystem (AP-ECO-001–006) patterns.
 
 ### Scoring Mechanism
 
-**Starting Score:** 20 points (perfect anti-pattern score)
+Each criterion contributes its point value based on how completely the documentation satisfies the criterion:
+- Full compliance → full points
+- Partial compliance → proportional points
+- No compliance → 0 points
 
-**Calculation:** For each detected anti-pattern, subtract the points listed in the registry:
-```
-anti_pattern_score = 20 - sum(points_lost for each detected pattern)
-anti_pattern_score = max(0, anti_pattern_score)  # Never below 0
-```
+The sum of all criterion points (out of 20) becomes the Anti-Pattern Detection Dimension score.
 
-**Gating Trigger:** If ANY critical pattern (AP-CRIT-001 through AP-CRIT-004) is detected, set `DimensionScore.is_gated = True` and the total composite score is capped at 29 (ensuring CRITICAL grade).
-
-**Multiple Patterns:** Multiple deductions stack. A file could have:
-- 1 Critical pattern (20 points lost, gated) + 2 Structural patterns (5 points lost) = score of −5 (capped at 0, but gating still applies)
-- 3 Content patterns (6 points lost) = score of 14 points
+**Gating Interaction:** Critical anti-patterns (AP-CRIT-001 through AP-CRIT-004) are evaluated by DS-VC-STR-008 in the Structural Dimension but trigger gating via DS-QS-GATE, capping the total composite score at 29 regardless of this dimension's score.
 
 ### Severity Model
 
-Deductions follow a four-tier severity model per DECISION-016:
-1. **Critical (Level 1):** 20 points — fundamental document failure
-2. **High (Level 2):** 3–4 points — structural quality severely impacted
-3. **Medium (Level 3):** 1–2 points — content or ecosystem quality affected
-4. **Low (Level 4):** 0 points — informational only, not scored
+The underlying 28 anti-patterns follow a four-tier severity model per DECISION-016. While the criterion-based scoring model is additive, the severity tiers determine which criteria evaluate which anti-patterns:
+1. **Critical (4 patterns):** Evaluated by DS-VC-STR-008; trigger gating (score cap at 29)
+2. **Structural (5 patterns):** Evaluated by DS-VC-STR-009
+3. **Content (9 patterns):** Evaluated by DS-VC-APD-004
+4. **Strategic (4 patterns):** Evaluated by DS-VC-APD-005
 
 ## Implementation Reference
 
@@ -117,40 +74,38 @@ Deductions follow a four-tier severity model per DECISION-016:
 `src/docstratum/quality.py` → `QualityDimension.ANTI_PATTERN` enum value and anti-pattern detection functions
 
 ### Scoring Pipeline
-1. **Pattern Detection Phase:** Document is scanned for each of the 28 anti-patterns
-2. **Severity Classification:** Detected patterns are classified by severity tier
-3. **Deduction Aggregation:** Points are subtracted based on detected patterns
-4. **Gating Check:** If critical patterns detected, `is_gated = True`
-5. **Dimensional Score:** Final anti-pattern score (20 or less, minimum 0)
+1. **Criterion Evaluation Phase:** Each criterion (APD-001 through APD-008) is evaluated against the document
+2. **Point Aggregation:** Points are accumulated from all L4 criteria
+3. **Dimensional Score:** Aggregated points (out of 20) form the Anti-Pattern Detection Dimension score
+4. **Gating Check:** Critical anti-pattern gating is handled separately by DS-VC-STR-008 and DS-QS-GATE
 
 ### Python Interface
 ```python
-from docstratum.quality import QualityDimension, DimensionScore, AntiPattern
+from docstratum.quality import QualityDimension, DimensionScore
 
 # During scoring
 dimension_score = DimensionScore(
     dimension=QualityDimension.ANTI_PATTERN,
-    earned_points=14,  # 20 - 6 deductions
+    earned_points=16,  # Earned across APD-001 through APD-008
     max_points=20,
-    is_gated=False  # True if critical pattern detected
+    is_gated=False  # Gating handled by structural dimension
 )
 
-# Detected patterns
-detected = [
-    AntiPattern.NO_CODE_EXAMPLES,  # -3
-    AntiPattern.VAGUE_EXPLANATIONS,  # -2
-    AntiPattern.NO_RELATED_LINKS,  # -1
-]
+# Retrieve
+apd_score = composite_score.dimensions[QualityDimension.ANTI_PATTERN].earned_points
 ```
 
 ## Related Standards
 
+### Quality Criteria
+- **DS-VC-APD-001** through **DS-VC-APD-008:** All anti-pattern detection validation criteria
+
 ### Anti-Pattern Specifications
-- **DS-AP-CRIT-001** through **DS-AP-CRIT-004:** Critical anti-patterns (gating triggers)
-- **DS-AP-STRUC-001** through **DS-AP-STRUC-005:** Structural anti-patterns
-- **DS-AP-CONT-001** through **DS-AP-CONT-009:** Content anti-patterns
-- **DS-AP-STRAT-001** through **DS-AP-STRAT-004:** Strategic anti-patterns
-- **DS-AP-ECO-001** through **DS-AP-ECO-006:** Ecosystem anti-patterns
+- **DS-AP-CRIT-001** through **DS-AP-CRIT-004:** Critical anti-patterns (gating triggers, evaluated by DS-VC-STR-008)
+- **DS-AP-STRUCT-001** through **DS-AP-STRUCT-005:** Structural anti-patterns (evaluated by DS-VC-STR-009)
+- **DS-AP-CONT-001** through **DS-AP-CONT-009:** Content anti-patterns (evaluated by DS-VC-APD-004)
+- **DS-AP-STRAT-001** through **DS-AP-STRAT-004:** Strategic anti-patterns (evaluated by DS-VC-APD-005)
+- **DS-AP-ECO-001** through **DS-AP-ECO-006:** Ecosystem anti-patterns (evaluated by DS-EH-* dimensions)
 
 ### Dimensions
 - **DS-QS-DIM-STR:** Structural Dimension (30% weight, complementary)
@@ -166,14 +121,15 @@ detected = [
 
 ## Rationale
 
-The Anti-Pattern Dimension is deduction-based (rather than additive) because avoiding common problems is fundamentally different from achieving excellence. A file that avoids all major pitfalls should not be penalized for not being exceptional. This model reflects the principle: "start with a good baseline (20 points), lose points only for detected problems."
+The Anti-Pattern Detection Dimension uses a criterion-based (additive) model rather than a deduction model to maintain consistency with the Structural and Content dimensions. All three dimensions use the same "earn points for meeting criteria" approach, making the composite score calculation uniform and predictable.
 
-The 20% weight for Anti-Patterns is positioned as a quality floor: files that avoid critical mistakes score reasonably well on this dimension, but files with critical patterns are immediately gated to ensure they never achieve a higher grade. This creates a safety mechanism that complements the positive weighting of Structural and Content.
+The 8 APD criteria split into two tiers: the "core four" (APD-001 through APD-004, 3 points each) address LLM-specific content enhancements and aggregate anti-pattern checks; the "supporting four" (APD-005 through APD-008, 2 points each) address secondary optimization concerns. This 3/3/3/3/2/2/2/2 distribution reflects the empirical evidence: LLM instructions, concept definitions, and few-shot examples show the strongest improvement signals (15–40%), while token optimization and URL strategy show more context-dependent benefits.
 
-The severity-weighted deduction model (DECISION-016) ensures that critical failures (unparseable files) have equal weight to major content gaps, while minor ecosystem issues don't drag down the score disproportionately.
+The 20% weight for Anti-Patterns positions this dimension as the differentiator between STRONG and EXEMPLARY grades. A file that excels in Structural (30) and Content (50) earns up to 80 points — enough for STRONG but not EXEMPLARY. The APD dimension's 20 points provide the path to the 90+ threshold required for EXEMPLARY, ensuring that only files with genuine LLM optimization reach the highest grade.
 
 ## Change History
 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.5 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

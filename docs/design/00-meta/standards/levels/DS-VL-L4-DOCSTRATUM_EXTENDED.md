@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VL-L4 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Level Number** | 4 |
 | **Level Name** | DocStratum Extended |
 | **Enum Value** | `ValidationLevel.L4_DOCSTRATUM_EXTENDED` |
@@ -101,3 +101,4 @@ L4 is the terminal level. It represents the highest aspirational standard for ll
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.1 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

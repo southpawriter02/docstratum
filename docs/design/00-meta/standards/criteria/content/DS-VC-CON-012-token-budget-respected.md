@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-012 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-05 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 4 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 4 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | DECISION-013: 3 token budget tiers established in v0.0.4a; v0.0.1b Gap #1 (maximum file size); empirical v0.0.4c finding: files above 50K tokens show degraded retrieval performance and LLM reasoning latency |
@@ -82,3 +82,4 @@ Empirical v0.0.4c finding: Turborepo's 116K-token file triggered degraded retrie
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

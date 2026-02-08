@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-001 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L2-01 |
 | **Dimension** | Content (50%) |
 | **Level** | L2 — Content Quality |
-| **Weight** | 5 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 5 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4b CHECK-CNT-003; v0.0.2c audit: files with descriptions score 23% higher; v0.0.2c: descriptions have r~0.45 quality correlation |
@@ -32,7 +32,7 @@ descriptions_with_text = [
     if link.description and link.description.strip()
 ]
 description_ratio = len(descriptions_with_text) / len(links) if links else 1.0
-assert description_ratio >= 0.5  # [CALIBRATION-NEEDED: threshold]
+assert description_ratio >= 0.5  #  # TODO(v0.3.x): threshold
 ```
 
 **Edge case handling:** Files with 1–2 total links are evaluated more leniently — a single bare link does not automatically fail the criterion. The description must be more than whitespace (i.e., `.strip()` must return non-empty string).
@@ -67,10 +67,11 @@ v0.0.2c empirical data shows description presence correlates with quality at r~0
 - **DS-CS-002 (Pydantic):** 87/89 links have descriptions — 97.8% descriptive.
 - Files scoring below 50 typically have >60% bare links.
 
-The 50% threshold [CALIBRATION-NEEDED] should be refined against the 11 empirical specimens once Phase C scoring is complete.
+The 50% threshold should be refined against the 11 empirical specimens once Phase C scoring is complete.
 
 ## Change History
 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

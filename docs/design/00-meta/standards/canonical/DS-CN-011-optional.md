@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-CN-011 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Canonical Name** | Optional |
 | **Position** | No fixed position (always last) |
 | **Enum Value** | `CanonicalSectionName.OPTIONAL` |
@@ -50,3 +50,4 @@ These aliases are defined in `SECTION_NAME_ALIASES` in `src/docstratum/schema/co
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.4 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-002 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L2-02 |
 | **Dimension** | Content (50%) |
 | **Level** | L2 — Content Quality |
-| **Weight** | 4 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 4 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Measurable with caveats |
 | **Provenance** | Official spec implicit (links should be usable); v0.0.4c AP-CRIT-004 (Link Void); practical: broken links degrade trust |
@@ -32,7 +32,7 @@ resolvable_urls = [
     if request_head(url, timeout=10).status_code in (200, 301, 302, 307, 308)
 ]
 resolution_ratio = len(resolvable_urls) / len(urls) if urls else 1.0
-assert resolution_ratio >= 0.5  # [CALIBRATION-NEEDED]
+assert resolution_ratio >= 0.5  #
 ```
 
 **Exclusions from failure count:**
@@ -68,7 +68,7 @@ More than 50% of links return HTTP 4xx or 5xx errors (other than 403, 401, 429) 
 
 URL resolution is environment-dependent. Some specimens have links valid on corporate networks but failing externally. The validator should support a `--skip-url-checks` flag for offline or fast-path validation.
 
-Threshold [CALIBRATION-NEEDED]: The 50% resolution ratio is provisional and should be calibrated against the 11 empirical specimens once Phase C scoring is complete. Early analysis suggests files with <50% resolution are typically in the bottom quartile of overall quality.
+Threshold: The 50% resolution ratio is provisional and should be calibrated against the 11 empirical specimens once Phase C scoring is complete. Early analysis suggests files with <50% resolution are typically in the bottom quartile of overall quality.
 
 Timeout considerations: A 10-second timeout per URL prevents the validator from hanging on unresponsive servers. For large files with many links, total validation time can be substantial — consider parallel HEAD requests where bandwidth permits.
 
@@ -77,3 +77,4 @@ Timeout considerations: A 10-second timeout per URL prevents the validator from 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-005 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-05 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 2 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 2 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Partially measurable |
 | **Provenance** | v0.0.4c anti-pattern catalog; 4 strategic anti-patterns (2 measurable, 2 require judgment) |
@@ -94,3 +94,4 @@ Top-scoring specimens (Svelte, Pydantic) are free of all strategic anti-patterns
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

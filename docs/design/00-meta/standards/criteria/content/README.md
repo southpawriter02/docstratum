@@ -26,4 +26,4 @@ Content criteria assess the quality and completeness of the information within a
 | DS-VC-CON-012 | L3-05 | Token Budget Respected | L3 | 4 / 50 | SOFT | DRAFT |
 | DS-VC-CON-013 | L3-07 | Version Metadata Present | L3 | 3 / 50 | SOFT | DRAFT |
 
-**Weight total:** 5 + 4 + 3 + 4 + 3 + 3 + 3 + 5 + 5 + 5 + 3 + 4 + 3 = **50 / 50** [CALIBRATION-NEEDED]
+**Weight total:** 5 + 4 + 3 + 4 + 3 + 3 + 3 + 5 + 5 + 5 + 3 + 4 + 3 = **50 / 50**

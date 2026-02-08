@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-002 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-002 |
 | **Date Decided** | 2026-01-15 (v0.0.4d) |
 | **Impact Area** | Content Structure (v0.3.x schema models in `enrichment.py`) |
@@ -81,3 +81,4 @@ The 3-layer approach provides a sweet spot: richer than a flat structure, simple
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

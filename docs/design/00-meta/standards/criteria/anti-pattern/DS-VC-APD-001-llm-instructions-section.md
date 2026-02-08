@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-001 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-01 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 3 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.0 Stripe LLM Instructions Pattern; v0.0.4d DECISION-002 (3-Layer Architecture); Stripe's implementation demonstrated measurable improvement in agent task completion |
@@ -82,3 +82,4 @@ Top-scoring specimens (Svelte, Pydantic) both include explicit instructions for 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

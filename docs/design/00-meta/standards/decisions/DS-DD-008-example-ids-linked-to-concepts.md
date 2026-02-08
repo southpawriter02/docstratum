@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-008 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-008 |
 | **Date Decided** | 2026-02-01 (v0.0.4d) |
 | **Impact Area** | Content Enrichment (`enrichment.py` → `FewShotExample.concept_ids`; deferred to v0.3.x) |
@@ -60,12 +60,12 @@ This structure enables:
 
 ## Impact on ASoT
 
-This decision impacts the Content Enrichment validation criteria (v0.3.x):
+This decision impacts the Content Enrichment validation criteria, **deferred to v0.3.x** (not yet defined in the current ASoT). When the enrichment layer is implemented, the following criteria are anticipated:
 
-- **DS-VC-ENR-001** (Example Presence): Examples must include YAML frontmatter with concept links
-- **DS-VC-ENR-002** (Concept Reference Validity): All concept_ids in FewShotExample.concept_ids must reference valid concepts in the concept registry
-- **DS-VC-ENR-003** (Example Discoverability): Example indices can be generated programmatically using concept_ids, enabling automated "related examples" sections
-- **DS-VC-ENR-004** (Metadata Completeness): Examples must include difficulty and language fields for filtering [CALIBRATION-NEEDED: should language be mandatory or optional for monolingual docs?]
+- **DS-VC-ENR-001** *(planned — v0.3.x)* (Example Presence): Examples must include YAML frontmatter with concept links
+- **DS-VC-ENR-002** *(planned — v0.3.x)* (Concept Reference Validity): All concept_ids in FewShotExample.concept_ids must reference valid concepts in the concept registry
+- **DS-VC-ENR-003** *(planned — v0.3.x)* (Example Discoverability): Example indices can be generated programmatically using concept_ids, enabling automated "related examples" sections
+- **DS-VC-ENR-004** *(planned — v0.3.x)* (Metadata Completeness): Examples must include difficulty and language fields for filtering
 
 The enrichment pipeline (v0.3.x+) will use the `FewShotExample.concept_ids` array to organize and present examples contextually. Any system that needs to find examples by concept will query this field.
 
@@ -76,7 +76,7 @@ The enrichment pipeline (v0.3.x+) will use the `FewShotExample.concept_ids` arra
 3. **Valid Concept IDs**: Every concept ID in `concept_ids` must exist in the active concept registry. References to non-existent concepts trigger validation errors.
 4. **Frontmatter Location**: YAML frontmatter must appear at the top of the example file (lines 1–N before the first non-YAML line).
 5. **Schema Compliance**: Examples must conform to the `FewShotExample` Pydantic model. Missing required fields trigger validation errors.
-6. **No Dangling Examples**: All examples must be registered in the enrichment index. Orphaned example files (not indexed) emit a warning [CALIBRATION-NEEDED: warning code?].
+6. **No Dangling Examples**: All examples must be registered in the enrichment index. Orphaned example files (not indexed) emit a warning.
 
 ## Related Decisions
 
@@ -90,3 +90,4 @@ The enrichment pipeline (v0.3.x+) will use the `FewShotExample.concept_ids` arra
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

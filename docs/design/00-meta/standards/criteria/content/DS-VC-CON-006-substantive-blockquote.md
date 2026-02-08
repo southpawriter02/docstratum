@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-006 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L2-06 |
 | **Dimension** | Content (50%) |
 | **Level** | L2 — Content Quality |
-| **Weight** | 3 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.2c audit: blockquotes under 20 chars correlate with lowest-quality files |
@@ -31,16 +31,16 @@ if blockquote_exists:
     h1_title = extract_h1_title(content).text.strip()
 
     # Condition 1: Sufficient length
-    assert len(text) >= 20  # [CALIBRATION-NEEDED]
+    assert len(text) >= 20  #
 
     # Condition 2: Not merely repeating the title
     similarity = string_similarity(text, h1_title)
-    assert similarity < 0.8  # [CALIBRATION-NEEDED]
+    assert similarity < 0.8  #
 ```
 
 If no blockquote exists, this criterion passes vacuously (the structural requirement is handled by **DS-VC-STR-003**).
 
-The 20-character threshold and 0.8 similarity threshold are provisional [CALIBRATION-NEEDED] and should be refined against the 11 empirical specimens.
+The 20-character threshold and 0.8 similarity threshold are provisional and should be refined against the 11 empirical specimens.
 
 ## Fail Condition
 
@@ -70,10 +70,11 @@ The 20-character threshold derives from v0.0.2c analysis. Blockquotes under 20 c
 - **DS-CS-001 (Svelte):** "Cybernetically enhanced web apps" (32 characters) — substantive and passes
 - **DS-CS-002 (Pydantic):** "Data validation using Python type annotations" (46 characters) — substantive and passes
 
-The 0.8 similarity threshold [CALIBRATION-NEEDED] should be calibrated against the 11 empirical specimens. Early analysis suggests that files with blockquotes near-identical to the H1 title are a rare edge case but important to flag when detected.
+The 0.8 similarity threshold should be calibrated against the 11 empirical specimens. Early analysis suggests that files with blockquotes near-identical to the H1 title are a rare edge case but important to flag when detected.
 
 ## Change History
 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-007 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-07 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 2 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 2 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | Practical: MCP-based consumption often strips base URL context; relative URLs break when file is consumed outside web context; v0.0.4a link checks |
@@ -40,7 +40,7 @@ relative_urls = [u for u in urls if not u.startswith(('http://', 'https://'))]
 if urls:
     relative_ratio = len(relative_urls) / len(urls)
     # Allow up to 10% relative URLs (anchors, etc.)
-    assert relative_ratio <= 0.10  # [CALIBRATION-NEEDED: 10% threshold]
+    assert relative_ratio <= 0.10  #  # TODO(v0.3.x): 10% threshold
 ```
 
 A small number of relative URLs (e.g., anchors like `#section`) or internal links within the same document may be acceptable. The threshold allows up to 10% relative URLs to account for this flexibility.
@@ -86,3 +86,4 @@ This criterion rewards files that are portable and robust across consumption mod
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

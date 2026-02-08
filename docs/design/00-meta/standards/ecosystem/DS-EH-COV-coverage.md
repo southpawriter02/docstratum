@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-EH-COV |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Dimension** | Coverage |
 | **Enum Value** | `EcosystemHealthDimension.COVERAGE` |
 | **Source Code** | `ecosystem.py` → `EcosystemHealthDimension.COVERAGE = "coverage"` |
@@ -29,7 +29,7 @@ coverage_score = (covered_categories / 11 canonical categories) × dimension_wei
 Where:
 - `covered_categories` = Count of unique `CanonicalSectionName` values found across all files in the ecosystem
 - `11 canonical categories` = The complete set of canonical section names (Getting Started, API Reference, Examples, Core Concepts, Troubleshooting, FAQ, Architecture, Installation, Best Practices, Changelog, Contributing)
-- `dimension_weight` = Weighting factor applied to this dimension [CALIBRATION-NEEDED]
+- `dimension_weight` = Weighting factor applied to this dimension
 
 A coverage score of 1.0 indicates all 11 canonical categories are represented. A score of 0.73 means 8 out of 11 categories are present.
 
@@ -84,3 +84,4 @@ Coverage calculation maps to ecosystem analysis in `ecosystem.py`:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.6 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

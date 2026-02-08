@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-011 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-011 |
 | **Date Decided** | 2026-02-04 (v0.0.4d) |
 | **Impact Area** | Validation Pipeline (diagnostic I006 OPTIONAL_SECTIONS_UNMARKED), Content Criteria |
@@ -49,7 +49,7 @@ The chosen option was selected because it provides the maximum signal to consume
 
 This decision directly determines:
 
-- **Diagnostic I006** (OPTIONAL_SECTIONS_UNMARKED): Emitted when optional sections lack the explicit marker. This is an informational diagnostic that doesn't block validation but indicates a missed opportunity for graceful degradation. [CALIBRATION-NEEDED] Consider severity weighting if we want to make this more prominent in quality scoring.
+- **Diagnostic I006** (OPTIONAL_SECTIONS_UNMARKED): Emitted when optional sections lack the explicit marker. This is an informational diagnostic that doesn't block validation but indicates a missed opportunity for graceful degradation. Consider severity weighting if we want to make this more prominent in quality scoring.
 
 - **Content Criteria Validation:** The presence of optional section markers becomes part of content richness scoring. Files that use optional sections strategically score higher in the "Accessibility for Context-Limited Consumption" sub-criterion.
 
@@ -89,3 +89,4 @@ This decision directly determines:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

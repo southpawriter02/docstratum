@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-015 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-015 |
 | **Date Decided** | 2026-02-05 (v0.0.4d) |
 | **Impact Area** | Entire validation philosophy — all quality criteria, token budgets, content standards, and scoring are optimized for MCP consumption by coding assistants |
@@ -103,3 +103,4 @@ This decision ripples across all quality criteria and scoring weights:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

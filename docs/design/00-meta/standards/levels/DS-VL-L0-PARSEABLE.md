@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VL-L0 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Level Number** | 0 |
 | **Level Name** | Parseable |
 | **Enum Value** | `ValidationLevel.L0_PARSEABLE` |
@@ -61,7 +61,7 @@ If **any** of these fail, the file receives `level_achieved = L0_PARSEABLE` with
 
 ## Scoring Impact
 
-L0 failures trigger the structural gating rule (DS-QS-CAP-structural-gating): the total quality score is capped at 29 (Critical grade). This is because a file that cannot be parsed provides zero value to an LLM agent, regardless of what content it might contain.
+L0 failures trigger the structural gating rule (DS-QS-GATE): the total quality score is capped at 29 (Critical grade). This is because a file that cannot be parsed provides zero value to an LLM agent, regardless of what content it might contain.
 
 ## Relationship to Other Levels
 
@@ -81,3 +81,4 @@ L0 is the only level that is purely a gate. It has no "soft pass" criteria — e
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
 | 0.0.0-scaffold | 2026-02-08 | Phase C update: L0 criteria confirmed as pipeline prerequisite gates (no VC files) per Path A resolution. DS Identifier column replaced with Diagnostic Code column. Note updated to explain rationale. |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

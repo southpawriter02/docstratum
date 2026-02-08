@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-AP-CRIT-004 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Registry ID** | AP-CRIT-004 |
 | **Category** | Critical |
 | **Check ID** | CHECK-004 (v0.0.4c) |
@@ -124,3 +124,4 @@ def is_valid_uri(url: str) -> bool:
 | ASoT Version | Date | Change |
 |---|---|---|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.2 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

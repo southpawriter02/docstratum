@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-EH-CONS |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Dimension** | Consistency |
 | **Enum Value** | `EcosystemHealthDimension.CONSISTENCY` |
 | **Source Code** | `ecosystem.py` → `EcosystemHealthDimension.CONSISTENCY = "consistency"` |
@@ -29,7 +29,7 @@ consistency_score = (consistent_checks / total_checks) × dimension_weight
 Where:
 - `consistent_checks` = Number of pairwise file comparisons that pass (project names match, versions agree, terminology consistent)
 - `total_checks` = Total number of pairwise comparisons performed
-- `dimension_weight` = Weighting factor applied to this dimension [CALIBRATION-NEEDED]
+- `dimension_weight` = Weighting factor applied to this dimension
 
 Checks performed:
 1. **Project Name Consistency:** All references to project name in all files match
@@ -91,3 +91,4 @@ Consistency checking in `ecosystem.py`:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.6 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

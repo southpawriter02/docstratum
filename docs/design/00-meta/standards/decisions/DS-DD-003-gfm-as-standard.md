@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-003 |
 | **Date Decided** | 2026-01-12 (v0.0.4d) |
 | **Impact Area** | Parser (`mistletoe` targeting CommonMark 0.30 + GFM) |
@@ -84,3 +84,4 @@ GFM was selected as the standard because it represents the practical reality of 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

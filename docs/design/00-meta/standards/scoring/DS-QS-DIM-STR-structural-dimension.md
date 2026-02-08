@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-QS-DIM-STR |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Element Type** | Quality Dimension |
 | **Source Code** | `quality.py` → `QualityDimension.STRUCTURAL` |
 | **Provenance** | DECISION-014; v0.0.4b §Content Best Practices |
@@ -23,26 +23,26 @@ The Structural Dimension contributes **30 points (30% of total weight)** to the 
 
 ### Weight and Scoring
 - **Maximum Points:** 30
-- **Weight Percentage:** 30% [CALIBRATION-NEEDED]
+- **Weight Percentage:** 30%
 - **Scoring Model:** Graduated (not binary pass/fail)
 - **Dimension ID:** `QualityDimension.STRUCTURAL`
 
 ### Constituent Criteria
 
-| Criterion | Points | Level | Description |
-|-----------|--------|-------|-------------|
-| DS-VC-STR-001 | 2 | L1 | Valid Markdown syntax — file is parseable as Markdown without errors |
-| DS-VC-STR-002 | 3 | L1 | Heading hierarchy — H1 or H2 start, proper nesting, no skips |
-| DS-VC-STR-003 | 3 | L1 | Link formatting — all links are properly bracketed and valid |
-| DS-VC-STR-004 | 3 | L1 | Code block formatting — backticks and fence markers properly closed |
-| DS-VC-STR-005 | 4 | L1 | Blockquote structure — `>` markers consistently applied, no malformed quotes |
-| DS-VC-STR-006 | 4 | L1 | Metadata table formatting — proper pipe delimiters, consistent column alignment |
-| DS-VC-STR-007 | 3 | L3 | Canonical section presence — file includes required canonical section names |
-| DS-VC-STR-008 | 3 | L3 | Canonical section ordering — required sections appear in canonical position order |
-| DS-VC-STR-009 | 2 | L3 | Document layout balance — reasonable distribution of headings, no extremely long sections |
+| Criterion | Points | Level | Pass | Description |
+|-----------|--------|-------|------|-------------|
+| DS-VC-STR-001 | 5 | L1 | HARD | H1 Title Present — document begins with exactly one H1 heading |
+| DS-VC-STR-002 | 3 | L1 | HARD | Single H1 Only — no duplicate H1 headings anywhere in the document |
+| DS-VC-STR-003 | 3 | L1 | SOFT | Blockquote Present — description blockquote appears after H1 |
+| DS-VC-STR-004 | 4 | L1 | HARD | H2 Section Structure — content organized into H2-delimited sections |
+| DS-VC-STR-005 | 4 | L1 | HARD | Link Format Compliance — all links use proper Markdown `[text](url)` syntax |
+| DS-VC-STR-006 | 3 | L1 | SOFT | No Heading Violations — heading levels follow proper nesting hierarchy |
+| DS-VC-STR-007 | 3 | L3 | SOFT | Canonical Section Ordering — required sections appear in canonical position order |
+| DS-VC-STR-008 | 3 | L3 | HARD | No Critical Anti-Patterns — none of the 4 critical anti-patterns detected |
+| DS-VC-STR-009 | 2 | L3 | SOFT | No Structural Anti-Patterns — none of the 5 structural anti-patterns detected |
 
-**Total L1 Points:** 22
-**Total L3 Points:** 8
+**Total L1 Points:** 22 (STR-001 through STR-006)
+**Total L3 Points:** 8 (STR-007 through STR-009)
 **Total Dimension Points:** 30
 
 ### Scoring Mechanism
@@ -116,3 +116,4 @@ Empirical analysis (v0.0.2c–v0.0.4b) shows that structural failures correlate 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.5 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

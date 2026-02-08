@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-009 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-009 |
 | **Date Decided** | 2026-02-02 (v0.0.4d) |
 | **Impact Area** | Validation Pipeline (v0.2.4; anti-pattern registry defined in `constants.py`, detection logic deferred) |
@@ -68,7 +68,7 @@ The validator (v0.2.4) is built on Pydantic models (DS-DD-006) and schema valida
 
 1. **Registry Finalization**: The anti-pattern registry in `constants.py` must be finalized and frozen before v0.2.4 release. Post-v0.2.4 changes require ASoT minor version bump (e.g., v0.0.5).
 2. **Ground Truth Examples**: v0.2.4 detection rules must be calibrated against documented examples of violations. Every anti-pattern rule must reference at least one real example from audit data.
-3. **False-Positive Threshold** [CALIBRATION-NEEDED: target rate]: Detection rules should achieve <5% false-positive rate measured against a holdout test set of v0.2.3 generator output.
+3. **False-Positive Threshold**: Detection rules should achieve <5% false-positive rate measured against a holdout test set of v0.2.3 generator output.
 4. **Message Quality**: Detected anti-patterns must include actionable messages. Not "invalid" but "Title missing capitalization in section XXX — should be 'Basic Overview' not 'basic overview'".
 5. **No Auto-Remediation**: v0.2.4 detection must not automatically fix issues. Reporting only; fixes are v0.3.0+.
 6. **Backward Compatibility**: Anti-pattern detection must not break parsing of valid v0.1.x or v0.2.x files. Rules detect problems; they don't reject correct files.
@@ -85,3 +85,4 @@ The validator (v0.2.4) is built on Pydantic models (DS-DD-006) and schema valida
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

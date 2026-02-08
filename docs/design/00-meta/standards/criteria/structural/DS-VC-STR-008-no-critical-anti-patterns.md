@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-008 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-09 |
 | **Dimension** | Structural (30%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 3 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 30 structural points |
 | **Pass Type** | HARD |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4c anti-pattern catalog with severity classification; DECISION-016 (anti-pattern categories) |
@@ -57,7 +57,7 @@ HARD failure — prevents ADEQUATE classification and caps total score at 29 poi
 
 ## Emitted Diagnostics
 
-- **No standalone diagnostic code:** Individual anti-pattern detections emit their own diagnostics (e.g., DS-DC-CRIT-001, DS-DC-CRIT-002, etc.). This criterion acts as a structural gate based on the detection results of those patterns.
+- **No standalone diagnostic code:** Individual anti-pattern detections emit their own diagnostics via their corresponding anti-pattern specifications (DS-AP-CRIT-001 through DS-AP-CRIT-004). This criterion acts as a structural gate based on the detection results of those patterns.
 
 ## Related Anti-Patterns
 
@@ -84,3 +84,4 @@ HARD failure — prevents ADEQUATE classification and caps total score at 29 poi
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

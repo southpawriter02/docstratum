@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-004 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-004 |
 | **Date Decided** | 2026-01-20 (v0.0.4d) |
 | **Impact Area** | Content Enrichment (`enrichment.py` → `Concept.id` uses `^[a-z0-9-]+$`) |
@@ -88,3 +88,4 @@ The domain-based format (e.g., AUTH-001, DB-042, API-017) was chosen for several
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

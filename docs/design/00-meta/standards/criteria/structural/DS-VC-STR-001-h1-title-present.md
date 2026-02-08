@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-001 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L1-01 |
 | **Dimension** | Structural (30%) |
 | **Level** | L1 — Structurally Valid |
-| **Weight** | 5 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 5 / 30 structural points |
 | **Pass Type** | HARD |
 | **Measurability** | Fully measurable |
 | **Provenance** | Official llms.txt spec §1 ("The file should begin with an H1"); v0.0.1a ABNF grammar (`llms-txt = h1-title ...`); v0.0.2c audit: 100% of valid specimens use single H1 |
@@ -66,3 +66,4 @@ The file contains **zero** H1 headings:
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
 | 0.0.0-scaffold | 2026-02-08 | Reverted from compound "Parseable Prerequisites" (L0-01 through L0-05) to atomic "H1 Title Present" (L1-01) per Phase A audit finding CRITICAL-001 (Path A resolution). L0 criteria deferred to Phase C. |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

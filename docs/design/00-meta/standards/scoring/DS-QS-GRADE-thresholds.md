@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-QS-GRADE |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Element Type** | Grade Thresholds |
 | **Source Code** | `quality.py` → `QualityGrade.from_score()` |
 | **Provenance** | DECISION-014; v0.0.3b gold standard calibration |
@@ -21,11 +21,11 @@ Each grade threshold is set based on empirical data from v0.0.3b calibration, in
 
 | Grade | Score Range | ASoT Level | Description | Numeric Threshold |
 |-------|-------|-----------|-------------|-------------------|
-| **EXEMPLARY** | 90–100 | L4 (DocStratum Extended) | Documentation exceeds best practices; highly optimized for LLM and developer consumption; rich content with excellent organization | ≥ 90 [CALIBRATION-NEEDED] |
-| **STRONG** | 70–89 | L3 (Best Practices) | Documentation meets best practices; well-structured, comprehensive content, good examples and guidance | ≥ 70 [CALIBRATION-NEEDED] |
-| **ADEQUATE** | 50–69 | L2 (Content Quality) | Documentation is functional; basic content present, though could be more complete or better organized | ≥ 50 [CALIBRATION-NEEDED] |
-| **NEEDS_WORK** | 30–49 | L1 (Structural) | Documentation has significant gaps or organizational issues; basic structure present but content is sparse | ≥ 30 [CALIBRATION-NEEDED] |
-| **CRITICAL** | 0–29 | L0 (Parseable Only) | Documentation has fundamental problems; unparseable, severely broken structure, or missing critical content | < 30 [CALIBRATION-NEEDED] |
+| **EXEMPLARY** | 90–100 | L4 (DocStratum Extended) | Documentation exceeds best practices; highly optimized for LLM and developer consumption; rich content with excellent organization | ≥ 90 |
+| **STRONG** | 70–89 | L3 (Best Practices) | Documentation meets best practices; well-structured, comprehensive content, good examples and guidance | ≥ 70 |
+| **ADEQUATE** | 50–69 | L2 (Content Quality) | Documentation is functional; basic content present, though could be more complete or better organized | ≥ 50 |
+| **NEEDS_WORK** | 30–49 | L1 (Structural) | Documentation has significant gaps or organizational issues; basic structure present but content is sparse | ≥ 30 |
+| **CRITICAL** | 0–29 | L0 (Parseable Only) | Documentation has fundamental problems; unparseable, severely broken structure, or missing critical content | < 30 |
 
 ### Calculation Method
 
@@ -224,3 +224,4 @@ This means a score of exactly 90 is EXEMPLARY, 70 is STRONG, etc.
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.5; calibrated thresholds from v0.0.3b gold standard specimens |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

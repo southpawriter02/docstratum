@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-006 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-06 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 2 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 2 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4a token allocation guidelines; v0.0.2c: top-scoring files show balanced token distribution across sections |
@@ -35,7 +35,7 @@ total_tokens = sum(section_tokens.values())
 
 if total_tokens > 0:
     max_section_ratio = max(section_tokens.values()) / total_tokens
-    assert max_section_ratio <= 0.40  # No section > 40% of total [CALIBRATION-NEEDED]
+    assert max_section_ratio <= 0.40  # No section > 40% of total
 ```
 
 Additionally, the validator may (aspirationally) check that high-value sections collectively contain more tokens than low-value sections, but this is a heuristic preference rather than a hard requirement:
@@ -96,3 +96,4 @@ The 40% threshold is empirically derived from top-scoring specimens. Files with 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

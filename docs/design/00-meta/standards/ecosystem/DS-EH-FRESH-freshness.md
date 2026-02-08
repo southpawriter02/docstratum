@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-EH-FRESH |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Dimension** | Freshness |
 | **Enum Value** | `EcosystemHealthDimension.FRESHNESS` |
 | **Source Code** | `ecosystem.py` → `EcosystemHealthDimension.FRESHNESS = "freshness"` |
@@ -29,7 +29,7 @@ freshness_score = (1 - normalized_version_drift) × temporal_recency_factor × d
 Where:
 - `normalized_version_drift` = Maximum version difference between any two files, normalized (0 = no drift, 1 = major version divergence)
 - `temporal_recency_factor` = Adjustment based on last-modified timestamps (1 = all updated recently, <1 = staggered updates)
-- `dimension_weight` = Weighting factor applied to this dimension [CALIBRATION-NEEDED]
+- `dimension_weight` = Weighting factor applied to this dimension
 
 **Perfect freshness:** `max_version_drift = 0` (all files reference the same version)
 
@@ -122,3 +122,4 @@ Result: Freshness = 0.75 (minor drift, recent updates)
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.6 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

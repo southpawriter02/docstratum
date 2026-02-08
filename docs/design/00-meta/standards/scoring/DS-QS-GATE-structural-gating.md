@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-QS-GATE |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Element Type** | Gating Rule |
 | **Source Code** | `quality.py` → `DimensionScore.is_gated` |
 | **Provenance** | DECISION-016; v0.0.3b anti-pattern severity classification |
@@ -54,7 +54,7 @@ The gating rule forces the composite score down to 29, ensuring the file receive
 
 ### Score Cap Value
 
-**Cap Value:** 29 [CALIBRATION-NEEDED]
+**Cap Value:** 29
 
 This cap value was chosen because:
 1. It is the maximum score that still maps to the CRITICAL grade (0–29)
@@ -256,3 +256,4 @@ File analysis:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.5; four critical patterns defined per DECISION-016 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

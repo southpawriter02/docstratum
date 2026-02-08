@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-009 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-02 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 5 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 5 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4a CHECK-STR-009; v0.0.2d finding: Master Index presence correlates with 87% vs 31% LLM task success rate; strong empirical signal for file utility |
@@ -76,3 +76,4 @@ v0.0.2d empirical finding: files with a Master Index section achieved 87% LLM ta
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

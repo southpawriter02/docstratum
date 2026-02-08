@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-APD-003 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L4-03 |
 | **Dimension** | Anti-Pattern Detection (20%) |
 | **Level** | L4 — Exemplary |
-| **Weight** | 3 / 20 anti-pattern points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 20 anti-pattern points |
 | **Pass Type** | SOFT |
 | **Measurability** | Heuristic |
 | **Provenance** | v0.0.4d DECISION-002 Layer 3 (Few-Shot Bank); in-context learning research: 1–3 examples dramatically improve LLM task performance; v0.0.1b Gap #2 |
@@ -57,7 +57,7 @@ has_examples_section = any(
 assert has_examples or has_examples_section
 ```
 
-**Note:** Pattern detection is heuristic. The validator searches for recognizable structural markers of examples. [CALIBRATION-NEEDED: refinement of pattern sensitivity and false positive reduction].
+**Note:** Pattern detection is heuristic. The validator searches for recognizable structural markers of examples..
 
 ## Fail Condition
 
@@ -102,3 +102,4 @@ Very few current llms.txt files include structured few-shot examples. The top-sc
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C exemplary criterion |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

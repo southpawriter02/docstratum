@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-AP-CRIT-002 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Registry ID** | AP-CRIT-002 |
 | **Category** | Critical |
 | **Check ID** | CHECK-002 (v0.0.4c) |
@@ -80,3 +80,4 @@ Add at minimum an H1 title and one H2 section with links. Structure content hier
 | ASoT Version | Date | Change |
 |---|---|---|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.2 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

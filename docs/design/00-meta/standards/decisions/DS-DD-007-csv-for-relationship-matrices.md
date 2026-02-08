@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-007 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-007 |
 | **Date Decided** | 2026-01-28 (v0.0.4d) |
 | **Impact Area** | Content Structure (v0.3.x — data storage format for concept graphs; deferred from v0.1.x) |
@@ -61,7 +61,7 @@ The validator (v0.2.4+) and any future relationship analysis tools must implemen
 1. **Fixed Column Structure**: Exactly three columns: `source_id`, `relationship_type`, `target_id`. Column order is mandatory.
 2. **Standard Delimiter**: Must use comma (U+002C) as the field delimiter. No other delimiters permitted.
 3. **No Headers**: CSV files must not include a header row; the first line is data.
-4. **Relationship Type Enumeration**: The `relationship_type` column must contain values from the `RelationshipType` enum (defined in `constants.py`). Invalid types cause validation errors [CALIBRATION-NEEDED: error severity — should this be E or W?].
+4. **Relationship Type Enumeration**: The `relationship_type` column must contain values from the `RelationshipType` enum (defined in `constants.py`). Invalid types cause validation errors.
 5. **ID Validation**: Both `source_id` and `target_id` must exist in the active concept registry at validation time.
 6. **Quoting Rules**: Fields containing commas must be quoted per RFC 4180. IDs should not contain commas.
 
@@ -77,3 +77,4 @@ The validator (v0.2.4+) and any future relationship analysis tools must implemen
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

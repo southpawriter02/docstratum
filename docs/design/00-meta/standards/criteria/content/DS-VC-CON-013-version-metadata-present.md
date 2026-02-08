@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-CON-013 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-07 |
 | **Dimension** | Content (50%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 3 / 50 content points [CALIBRATION-NEEDED] |
+| **Weight** | 3 / 50 content points |
 | **Pass Type** | SOFT |
 | **Measurability** | Measurable (pattern matching) |
 | **Provenance** | v0.0.1b Gap #2 (metadata); v0.0.4c AP-CONT-009 (Versionless Drift); practical principle: agents need to know if content is current and aligned with a specific product version |
@@ -82,3 +82,4 @@ The criterion's pattern-based approach is intentionally flexible to accommodate 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

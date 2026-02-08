@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-EH-COMP |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Dimension** | Completeness |
 | **Enum Value** | `EcosystemHealthDimension.COMPLETENESS` |
 | **Source Code** | `ecosystem.py` → `EcosystemHealthDimension.COMPLETENESS = "completeness"` |
@@ -29,7 +29,7 @@ completeness_score = (resolved_relationships / total_relationships) × dimension
 Where:
 - `resolved_relationships` = Count of cross-file relationships (links, includes, references) that successfully resolve to accessible content
 - `total_relationships` = Total number of cross-file relationships declared in the ecosystem index (llms.txt, navmaps, etc.)
-- `dimension_weight` = Weighting factor applied to this dimension [CALIBRATION-NEEDED]
+- `dimension_weight` = Weighting factor applied to this dimension
 
 This value maps directly to the `EcosystemScore.resolution_rate` property (a value between 0.0 and 1.0).
 
@@ -89,3 +89,4 @@ Completeness calculation in `ecosystem.py`:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.6 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

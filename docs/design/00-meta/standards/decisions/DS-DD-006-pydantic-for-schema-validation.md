@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-006 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-006 |
 | **Date Decided** | 2026-01-25 (v0.0.4d) |
 | **Impact Area** | All Schema Models (`src/docstratum/schema/*.py` — all 7 files use Pydantic v2 BaseModel) |
@@ -40,12 +40,13 @@ The v2 upgrade was chosen specifically for its performance improvements, stricte
 
 ## Impact on ASoT
 
-This decision affects all schema validation criteria in the ASoT standards:
-- **DS-VC-STR-001** (Schema Validity): All models must pass Pydantic v2 validation
-- **DS-VC-STR-002** (Type Consistency): Type hints in schema files are enforced at runtime via Pydantic
-- **DS-VC-ERR-001** (Error Message Quality): Validation errors must be human-readable and suggest corrections — a Pydantic strength
+This decision affects the DocStratum codebase broadly rather than specific validation criteria:
 
-The validation pipeline (v0.2.4+) will depend on Pydantic models for all detection and analysis operations. Any changes to Pydantic usage patterns must maintain backward compatibility with existing validation criteria.
+- **All schema models** (`src/docstratum/schema/*.py`): Every model inherits from `pydantic.BaseModel` with strict type validation
+- **Validation pipeline**: Detection and analysis operations depend on Pydantic models for input/output validation, ensuring malformed data is caught early with human-readable error messages
+- **Error handling**: Pydantic's built-in validation error formatting provides actionable messages that guide developers toward correct usage
+
+The validation pipeline (v0.2.4+) will depend on Pydantic models for all detection and analysis operations. Any changes to Pydantic usage patterns must maintain backward compatibility with existing schema definitions.
 
 ## Constraints Imposed
 
@@ -66,3 +67,4 @@ The validation pipeline (v0.2.4+) will depend on Pydantic models for all detecti
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

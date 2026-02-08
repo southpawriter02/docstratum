@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VL-L1 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Level Number** | 1 |
 | **Level Name** | Structural |
 | **Enum Value** | `ValidationLevel.L1_STRUCTURAL` |
@@ -70,7 +70,7 @@ SOFT criteria (DS-VC-STR-003, DS-VC-STR-006) are evaluated and emitted as warnin
 
 L1 criteria contribute to the **Structural dimension** (30 points max). The 6 criteria at this level account for 22 of 30 structural points. Specifically:
 
-- **HARD criteria failures** at L1 trigger the structural gating rule (DS-QS-CAP-structural-gating): if any critical structural element is missing (no H1, no sections), the total quality score is capped at 29 (CRITICAL grade).
+- **HARD criteria failures** at L1 trigger the structural gating rule (DS-QS-GATE): if any critical structural element is missing (no H1, no sections), the total quality score is capped at 29 (CRITICAL grade).
 - **SOFT criteria failures** at L1 reduce the structural dimension score proportionally but do not trigger the gate.
 
 ## Relationship to Other Levels
@@ -90,3 +90,4 @@ L1 builds directly on L0. Once a file is confirmed parseable (L0), L1 validates 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.1 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |

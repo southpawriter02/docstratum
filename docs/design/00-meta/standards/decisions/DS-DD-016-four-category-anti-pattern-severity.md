@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-DD-016 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Decision ID** | DECISION-016 |
 | **Date Decided** | 2026-02-06 (v0.0.4d) |
 | **Impact Area** | Anti-Pattern Detection (`constants.py` → `AntiPatternCategory` enum), Quality Scoring (DS-QS-DIM-APD Anti-Pattern Dimension), all 28+ AP standard files |
@@ -33,7 +33,7 @@ The solution was a four-category (later five-category) taxonomy that distinguish
 | **Binary pass/fail** | Simplest model, no nuance required | Treats "empty file" (AP-CON-001) the same as "wrong section order" (AP-STRUCT-003) — wildly different severity; no prioritization guidance for creators; inflexible |
 | **Three-tier (High/Medium/Low)** | Standard industry model, widely understood | Doesn't distinguish *type* of failure (structural vs. content), lumps different fix strategies into same tier, no alignment with quality scoring dimensions, doesn't enable per-category remediation |
 | **Four-category (CHOSEN)** | Maps naturally to scoring dimensions (3 dimensions + anti-pattern detection itself = 4 categories), each category has distinct fix strategy (structural = reorganize, content = write better, strategic = rethink approach), enables per-category penalties aligned with DS-DD-014 weights | Requires discipline in categorizing new patterns, more complex than binary/ternary, potential ambiguity when a pattern touches multiple categories |
-| **Five-category (expanded v0.0.7)** | Four-category model + ecosystem-level patterns for aggregate health (Index Island, Phantom Links, etc.) that don't fit file-level categories | Adds complexity; ecosystem patterns require different detection infrastructure (cross-file analysis vs. single-file); introduces new scoring dimension for ecosystem health [CALIBRATION-NEEDED] |
+| **Five-category (expanded v0.0.7)** | Four-category model + ecosystem-level patterns for aggregate health (Index Island, Phantom Links, etc.) that don't fit file-level categories | Adds complexity; ecosystem patterns require different detection infrastructure (cross-file analysis vs. single-file); introduces new scoring dimension for ecosystem health |
 
 ## Rationale
 
@@ -42,8 +42,8 @@ The four-category model was selected because it provides maximum alignment betwe
 1. **Alignment with quality dimensions (DS-DD-014):**
    - **Critical → Structural gating:** Files with critical anti-patterns have structural integrity so broken that content quality is irrelevant. Score capped at 29/100 regardless of content. (Structural dimension = 0, Content = 0, APD = 29)
    - **Structural → Structural dimension:** These anti-patterns degrade the structural dimension score (–3 to –8 points per pattern, configurable).
-   - **Content → Content dimension:** These reduce the content dimension score (–2 to –6 points per pattern, [CALIBRATION-NEEDED]).
-   - **Strategic → APD deduction:** These are direct deductions from the 20-point Anti-Pattern Detection dimension (–2 to –5 points per pattern, [CALIBRATION-NEEDED]).
+   - **Content → Content dimension:** These reduce the content dimension score (–2 to –6 points per pattern,).
+   - **Strategic → APD deduction:** These are direct deductions from the 20-point Anti-Pattern Detection dimension (–2 to –5 points per pattern,).
 
 2. **Category definitions (v0.0.4c + v0.0.7 refinements):**
 
@@ -100,7 +100,7 @@ The four-category model was selected because it provides maximum alignment betwe
    - **Structural:** Deduct N points from structural dimension (30 points available)
    - **Content:** Deduct M points from content dimension (50 points available)
    - **Strategic:** Deduct K points from anti-pattern dimension (20 points available)
-   - **Ecosystem:** [CALIBRATION-NEEDED] — ecosystem-level scoring requires new dimension or aggregation logic
+   - **Ecosystem:** — ecosystem-level scoring requires new dimension or aggregation logic
 
 ## Impact on ASoT
 
@@ -118,10 +118,10 @@ This decision directly determines:
 
 - **Quality scoring deductions (DS-DD-014):** Each anti-pattern detection results in a penalty calculated from its category:
   - Critical → file cap (29/100)
-  - Structural → structural dimension deduction (–3 to –8 points, [CALIBRATION-NEEDED] per pattern)
-  - Content → content dimension deduction (–2 to –6 points, [CALIBRATION-NEEDED] per pattern)
-  - Strategic → APD dimension deduction (–2 to –5 points, [CALIBRATION-NEEDED] per pattern)
-  - Ecosystem → [CALIBRATION-NEEDED] global aggregation logic
+  - Structural → structural dimension deduction (–3 to –8 points, per pattern)
+  - Content → content dimension deduction (–2 to –6 points, per pattern)
+  - Strategic → APD dimension deduction (–2 to –5 points, per pattern)
+  - Ecosystem → global aggregation logic
 
 - **Validation pipeline:** Anti-pattern detection occurs at different stages:
   - Critical patterns: Detected early (pre-content analysis)
@@ -141,7 +141,7 @@ This decision directly determines:
 
 4. **Ecosystem patterns require cross-file detection:** Ecosystem anti-patterns cannot be detected by single-file validators. A separate ecosystem audit tool or aggregation service is required.
 
-5. **Penalty magnitude calibration:** The exact deduction values for each category and pattern are marked [CALIBRATION-NEEDED] pending empirical evaluation against gold standards.
+5. **Penalty magnitude calibration:** The exact deduction values for each category and pattern are marked pending empirical evaluation against gold standards.
 
 ## Related Decisions
 
@@ -156,4 +156,5 @@ This decision directly determines:
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |
 | 0.0.7 (future) | TBD | Ecosystem category and 6 ecosystem patterns added; ecosystem-level scoring dimension introduced |

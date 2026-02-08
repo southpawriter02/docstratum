@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **DS Identifier** | DS-VC-STR-009 |
-| **Status** | DRAFT |
-| **ASoT Version** | 0.0.0-scaffold |
+| **Status** | RATIFIED |
+| **ASoT Version** | 1.0.0 |
 | **Platinum ID** | L3-10 |
 | **Dimension** | Structural (30%) |
 | **Level** | L3 — Best Practices |
-| **Weight** | 2 / 30 structural points [CALIBRATION-NEEDED] |
+| **Weight** | 2 / 30 structural points |
 | **Pass Type** | SOFT |
 | **Measurability** | Fully measurable |
 | **Provenance** | v0.0.4c anti-pattern catalog; 5 structural anti-patterns with heuristic detection rules |
@@ -95,3 +95,4 @@ SOFT failure — reduces structural score but does not block L1, L2, or L3 class
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase C |
+| 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |
