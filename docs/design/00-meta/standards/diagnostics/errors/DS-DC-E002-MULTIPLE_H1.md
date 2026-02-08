@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E002 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E002 |
-| Severity | ERROR |
-| Validation Level | L1 — Structurally Valid |
-| Check ID | STR-001 (v0.0.4a) |
-| Provenance | llms.txt spec §1; v0.0.1a ABNF grammar; v0.0.2c audit |
+| **DS Identifier** | DS-DC-E002 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E002 |
+| **Severity** | ERROR |
+| **Validation Level** | L1 — Structurally Valid |
+| **Check ID** | STR-001 (v0.0.4a) |
+| **Provenance** | llms.txt spec §1; v0.0.1a ABNF grammar; v0.0.2c audit |
 
 ## Message
 
@@ -38,8 +38,9 @@ The H1 serves as the document's title and metadata anchor. All other sections sh
 
 ## Triggering Criteria
 
-DS-VC-STR-002 (Single H1 Only)
+- **DS-VC-STR-002**: (Single H1 Only)
 
+Emitted by DS-VC-STR-002 when multiple H1 headings are detected.
 ## Related Anti-Patterns
 
 None directly.
@@ -50,6 +51,7 @@ None directly.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

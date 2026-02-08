@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W006 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W006 |
-| Severity | WARNING |
-| Validation Level | L2 — Content Quality |
-| Check ID | CNT-005 (v0.0.4b), CHECK-015 (v0.0.4c) |
-| Provenance | v0.0.4b content checks; v0.0.4c anti-patterns; v0.0.2c audit data |
+| **DS Identifier** | DS-DC-W006 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W006 |
+| **Severity** | WARNING |
+| **Validation Level** | L2 — Content Quality |
+| **Check ID** | CNT-005 (v0.0.4b), CHECK-015 (v0.0.4c) |
+| **Provenance** | v0.0.4b content checks; v0.0.4c anti-patterns; v0.0.2c audit data |
 
 ## Message
 
@@ -33,12 +33,11 @@ W006 fires when multiple sections or entries use identical or near-identical des
 
 W006 does not fire when each section has a unique, specific description that contextualizes its content, even if the descriptions follow a consistent structural pattern. It also does not fire for list items where identical descriptions are legitimately appropriate (e.g., repeating the same type constraint for similar parameters).
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-007: No Formulaic Descriptions**
+- **DS-VC-CON-007**: (No Formulaic Descriptions)
 
-Each section must have a unique, specific description that contextualizes its content and purpose. This criterion validates that descriptions are not mechanically repeated across sections.
-
+Emitted by DS-VC-CON-007 when link descriptions show formulaic, repetitive patterns (pairwise similarity > 80% across 5+ descriptions).
 ## Related Anti-Patterns
 
 **DS-AP-CONT-007: Formulaic Description** — Descriptions that follow a rigid pattern or are copied from a template without adaptation to the specific section's content.
@@ -49,6 +48,7 @@ Each section must have a unique, specific description that contextualizes its co
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

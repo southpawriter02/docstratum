@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I003 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I003 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | v0.0.1b Gap #2 (P0) |
-| Provenance | v0.0.1b Gap Analysis (P0 priority); few-shot prompting research |
+| **DS Identifier** | DS-DC-I003 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I003 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | v0.0.1b Gap #2 (P0) |
+| **Provenance** | v0.0.1b Gap Analysis (P0 priority); few-shot prompting research |
 
 ## Message
 
@@ -33,10 +33,11 @@ Few-shot examples significantly improve LLM agent performance by providing concr
 - The document includes a structured few-shot section with intent-tagged Q&A pairs.
 - Examples are embedded throughout the document and clearly linked to concepts.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-APD-003** (Few-Shot Examples): The document should include intent-tagged Q&A exemplars.
+- **DS-VC-APD-003**: (Few-shot Examples)
 
+Emitted by DS-VC-APD-003 when no few-shot Q&A examples are found in the file.
 ## Related Anti-Patterns
 
 None directly identified.
@@ -48,6 +49,7 @@ None directly identified.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

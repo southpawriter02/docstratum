@@ -8,7 +8,7 @@
 | **Platinum ID** | L1-01 |
 | **Dimension** | Structural (30%) |
 | **Level** | L1 — Structurally Valid |
-| **Weight** | TBD / 30 structural points (finalized by DS-QS-DIM-STR in Phase D) |
+| **Weight** | 5 / 30 structural points [CALIBRATION-NEEDED] |
 | **Pass Type** | HARD |
 | **Measurability** | Fully measurable |
 | **Provenance** | Official llms.txt spec §1 ("The file should begin with an H1"); v0.0.1a ABNF grammar (`llms-txt = h1-title ...`); v0.0.2c audit: 100% of valid specimens use single H1 |

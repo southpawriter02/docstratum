@@ -41,8 +41,9 @@ This distinction is architecturally significant: it demonstrates the difference 
 
 ## Triggering Criteria
 
-- **DS-VC-STR-003** (Blockquote Present): This diagnostic is emitted when criterion DS-VC-STR-003 fails its pass condition.
+- **DS-VC-STR-003**: (Blockquote Present)
 
+Emitted by DS-VC-STR-003 when no blockquote is found after the H1 title. SOFT pass — does not block L1 progression.
 ## Related Anti-Patterns
 
 - None directly. Blockquote absence is not classified as an anti-pattern because it is too common in the current ecosystem to warrant that label.
@@ -56,3 +57,4 @@ This distinction is architecturally significant: it demonstrates the difference 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

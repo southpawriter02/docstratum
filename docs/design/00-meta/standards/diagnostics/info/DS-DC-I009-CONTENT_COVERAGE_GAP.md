@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I009 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I009 |
-| Severity | INFO |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.3 |
-| Provenance | v0.0.7 §5.3 (Ecosystem-Level Informational Codes) |
+| **DS Identifier** | DS-DC-I009 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I009 |
+| **Severity** | INFO |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.3 |
+| **Provenance** | v0.0.7 §5.3 (Ecosystem-Level Informational Codes) |
 
 ## Message
 
@@ -34,10 +34,9 @@ A content coverage gap suggests either aspirational documentation planning (wher
 - All section categories referenced in the index have corresponding content pages.
 - The index accurately reflects the ecosystem structure.
 
-## Triggering Criterion
+## Triggering Criteria
 
-Ecosystem validation stage (no per-file VC criterion).
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when the index references categories with no detail page.
 ## Related Anti-Patterns
 
 None directly identified.
@@ -48,6 +47,7 @@ None directly identified.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

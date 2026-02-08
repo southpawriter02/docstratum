@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W016 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W016 |
-| Severity | WARNING |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.2 |
-| Provenance | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
+| **DS Identifier** | DS-DC-W016 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W016 |
+| **Severity** | WARNING |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.2 |
+| **Provenance** | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
 
 ## Message
 
@@ -31,8 +31,7 @@ Version inconsistency is a form of identity drift (companion to W015, which addr
 
 ## Triggering Criteria
 
-Cross-file diagnostic — includes source_files and version variations context. Ecosystem codes do not have per-file VC criterion; this code fires during ecosystem validation (Stage 4) when version consistency checks occur across the entire documentation set.
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when version metadata differs between files.
 ## Related Anti-Patterns
 
 - DS-AP-CONT-009 (Versionless Drift) — broader pattern of version information degradation across content
@@ -44,6 +43,7 @@ Cross-file diagnostic — includes source_files and version variations context. 
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

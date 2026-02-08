@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I006 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I006 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | DECISION-011 (v0.0.4d) |
-| Provenance | DECISION-011 (Optional Section Reserved Word); v0.0.4d design decisions |
+| **DS Identifier** | DS-DC-I006 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I006 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | DECISION-011 (v0.0.4d) |
+| **Provenance** | DECISION-011 (Optional Section Reserved Word); v0.0.4d design decisions |
 
 ## Message
 
@@ -33,10 +33,9 @@ Optional sections typically include appendices, deep-dive examples, historical c
 - Optional sections are marked with the `optional` reserved word.
 - Token estimates are provided for skippable content.
 
-## Triggering Criterion
+## Triggering Criteria
 
-No direct VC criterion (advisory observation per DECISION-011).
-
+Informational observation — no per-file VC criterion. Per C-DEC-04, L3-08 (Optional section used appropriately) is included as INFO-only and does not affect scoring.
 ## Related Anti-Patterns
 
 None directly identified.
@@ -47,6 +46,7 @@ None directly identified.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

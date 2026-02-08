@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W008 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W008 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | STR-004 (v0.0.4a) |
-| Provenance | v0.0.4a structural checks; v0.0.2c frequency analysis of section ordering |
+| **DS Identifier** | DS-DC-W008 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W008 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | STR-004 (v0.0.4a) |
+| **Provenance** | v0.0.4a structural checks; v0.0.2c frequency analysis of section ordering |
 
 ## Message
 
@@ -33,12 +33,11 @@ W008 fires when a file contains sections that do not appear in the canonical 10-
 
 W008 does not fire when all sections appear in the canonical order, or when the file is explicitly exempt from section ordering (e.g., free-form documents or files with non-standard structure justified by their purpose).
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-STR-007: Canonical Section Ordering**
+- **DS-VC-STR-007**: (Canonical Section Ordering)
 
-Files must organize sections in the canonical 10-step sequence. This criterion validates that section order is consistent across the ecosystem.
-
+Emitted by DS-VC-STR-007 when canonical sections appear in an order that contradicts the prescribed sequence.
 ## Related Anti-Patterns
 
 **DS-AP-STRUCT-004: Section Shuffle** — Sections appear in random or inconsistent order, degrading navigation and reader comprehension.
@@ -49,6 +48,7 @@ Files must organize sections in the canonical 10-step sequence. This criterion v
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

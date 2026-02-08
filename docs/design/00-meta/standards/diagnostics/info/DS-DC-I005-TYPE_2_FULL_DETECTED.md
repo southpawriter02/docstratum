@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I005 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I005 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | Document Type Classification (v0.0.1a enrichment) |
-| Provenance | v0.0.1a document type classification; TYPE_BOUNDARY_BYTES=256000 |
+| **DS Identifier** | DS-DC-I005 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I005 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | Document Type Classification (v0.0.1a enrichment) |
+| **Provenance** | v0.0.1a document type classification; TYPE_BOUNDARY_BYTES=256000 |
 
 ## Message
 
@@ -33,10 +33,9 @@ Type 2 Full documents consolidate all content into one file, prioritizing comple
 - The document is a Type 1 Index or other modular format.
 - File size is under the Type 2 threshold.
 
-## Triggering Criterion
+## Triggering Criteria
 
-No direct VC criterion per §5.7 (classification-level observation).
-
+Informational classification — no per-file VC criterion. This code indicates the file has been classified as Type 2 Full (inline documentation dump rather than Type 1 Index).
 ## Related Anti-Patterns
 
 None directly identified.
@@ -47,6 +46,7 @@ None directly identified.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

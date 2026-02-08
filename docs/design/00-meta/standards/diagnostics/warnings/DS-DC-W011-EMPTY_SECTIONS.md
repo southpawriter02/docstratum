@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W011 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W011 |
-| Severity | WARNING |
-| Validation Level | L2 — Content Quality |
-| Check ID | CHECK-011 (v0.0.4c Blank Canvas anti-pattern) |
-| Provenance | v0.0.4c anti-patterns catalog; v0.0.2b audit data |
+| **DS Identifier** | DS-DC-W011 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W011 |
+| **Severity** | WARNING |
+| **Validation Level** | L2 — Content Quality |
+| **Check ID** | CHECK-011 (v0.0.4c Blank Canvas anti-pattern) |
+| **Provenance** | v0.0.4c anti-patterns catalog; v0.0.2b audit data |
 
 ## Message
 
@@ -33,12 +33,11 @@ W011 fires when one or more sections contain only placeholder text, whitespace, 
 
 W011 does not fire when all sections contain substantive content, even if sections are brief. It also does not fire for sections explicitly marked as placeholders in a formal "Under Construction" or "Draft" status context.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-004: Non-Empty Sections**
+- **DS-VC-CON-004**: (Non-empty Sections)
 
-All sections must contain meaningful content. Placeholder sections are not acceptable. This criterion validates that sections are complete and substantive.
-
+Emitted by DS-VC-CON-004 when an H2 section contains no meaningful content (no links, paragraphs, code blocks, or lists). Fires per empty section.
 ## Related Anti-Patterns
 
 **DS-AP-CONT-002: Blank Canvas** — A section-level manifestation of emptiness, where section headings exist but contain no substantive content, creating a skeletal document.
@@ -49,6 +48,7 @@ All sections must contain meaningful content. Placeholder sections are not accep
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

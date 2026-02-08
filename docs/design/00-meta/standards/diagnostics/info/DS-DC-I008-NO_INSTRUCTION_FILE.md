@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I008 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I008 |
-| Severity | INFO |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.3 |
-| Provenance | v0.0.7 §5.3 (Ecosystem-Level Informational Codes) |
+| **DS Identifier** | DS-DC-I008 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I008 |
+| **Severity** | INFO |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.3 |
+| **Provenance** | v0.0.7 §5.3 (Ecosystem-Level Informational Codes) |
 
 ## Message
 
@@ -34,10 +34,9 @@ Without explicit LLM instructions, AI agents must infer intent and boundaries fr
 - A dedicated `llms-instructions.txt` file exists and is referenced by `llms.txt`.
 - The `llms.txt` file includes a structured `LLM Instructions` section.
 
-## Triggering Criterion
+## Triggering Criteria
 
-Ecosystem validation stage (no per-file VC criterion).
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when no llms-instructions.txt file or LLM Instructions section exists.
 ## Related Anti-Patterns
 
 **DS-AP-CONT-008** (Silent Agent): Ecosystem-level variant; lack of LLM instructions creates unpredictable agent behavior.
@@ -48,6 +47,7 @@ Ecosystem validation stage (no per-file VC criterion).
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

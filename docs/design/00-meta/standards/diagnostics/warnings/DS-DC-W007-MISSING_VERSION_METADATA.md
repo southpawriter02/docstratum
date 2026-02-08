@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W007 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W007 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | CNT-015 (v0.0.4b) |
-| Provenance | v0.0.4b content checks; staleness detection research |
+| **DS Identifier** | DS-DC-W007 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W007 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | CNT-015 (v0.0.4b) |
+| **Provenance** | v0.0.4b content checks; staleness detection research |
 
 ## Message
 
@@ -33,12 +33,11 @@ W007 fires when a file contains no discernible version or last-updated metadata.
 
 W007 does not fire when a file includes explicit version metadata, such as a "Last updated" date, a version number in a metadata block, or a change history table. System-generated files that use a unified versioning scheme may also be exempt if that scheme is documented.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-013: Version Metadata Present**
+- **DS-VC-CON-013**: (Version Metadata Present)
 
-Files should include version or last-updated metadata to indicate their recency and stability. This criterion validates that temporal information is available.
-
+Emitted by DS-VC-CON-013 when no version string, date stamp, or changelog reference is found.
 ## Related Anti-Patterns
 
 **DS-AP-CONT-009: Versionless Drift** — Documentation that lacks version markers and gradually becomes stale and unreliable without clear indication of its age or maintenance status.
@@ -49,6 +48,7 @@ Files should include version or last-updated metadata to indicate their recency 
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

@@ -39,8 +39,9 @@ In the v0.0.2 audit of 24 real-world implementations, 100% of structurally valid
 
 ## Triggering Criteria
 
-- **DS-VC-STR-001** (H1 Title Present): This diagnostic is emitted when criterion DS-VC-STR-001 fails its pass condition.
+- **DS-VC-STR-001**: (H1 Title Present)
 
+Emitted by DS-VC-STR-001 when zero H1 headings are found.
 ## Related Anti-Patterns
 
 - **DS-AP-CRIT-002** (Structure Chaos): Files lacking recognizable Markdown structure (no headers, no sections) will also trigger this code.
@@ -55,3 +56,4 @@ In the v0.0.2 audit of 24 real-world implementations, 100% of structurally valid
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

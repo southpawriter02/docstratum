@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W010 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W010 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | SIZ-001 (v0.0.4a), DECISION-013 |
-| Provenance | DECISION-013 (token budget tiers); v0.0.4a size checks; 3-tier budget system (Standard/Comprehensive/Extended) |
+| **DS Identifier** | DS-DC-W010 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W010 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | SIZ-001 (v0.0.4a), DECISION-013 |
+| **Provenance** | DECISION-013 (token budget tiers); v0.0.4a size checks; 3-tier budget system (Standard/Comprehensive/Extended) |
 
 ## Message
 
@@ -33,12 +33,11 @@ W010 fires when a file's token count exceeds the recommended budget for its assi
 
 W010 does not fire when a file stays within its tier's token budget, or when a file's complexity legitimately requires an exception (documented and approved). It also does not fire for files in the Extended tier operating at the maximum budgeted size.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-012: Token Budget Respected**
+- **DS-VC-CON-012**: (Token Budget Respected)
 
-Files must respect their tier's token budget to maintain usability and performance. This criterion validates that file size is appropriate.
-
+Emitted by DS-VC-CON-012 when file token count exceeds the recommended budget for its tier.
 ## Related Anti-Patterns
 
 **DS-AP-STRAT-002: Monolith Monster** — When a file significantly exceeds its token budget, combining content that should be split across multiple focused files, creating a bloated, unwieldy document.
@@ -49,6 +48,7 @@ Files must respect their tier's token budget to maintain usability and performan
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

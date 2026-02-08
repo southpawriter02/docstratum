@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E009 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E009 |
-| Severity | ERROR |
-| Validation Level | Ecosystem-level |
-| Check ID | v0.0.7 §5.1 |
-| Provenance | v0.0.7 §5.1 (Ecosystem-Level Error Codes) |
+| **DS Identifier** | DS-DC-E009 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E009 |
+| **Severity** | ERROR |
+| **Validation Level** | Ecosystem-level |
+| **Check ID** | v0.0.7 §5.1 |
+| **Provenance** | v0.0.7 §5.1 (Ecosystem-Level Error Codes) |
 
 ## Message
 
@@ -38,8 +38,7 @@ The llms.txt file must contain at least an H1 title describing the project and s
 
 ## Triggering Criteria
 
-Ecosystem validation stage (no per-file VC criterion — this is a cross-file check)
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when no llms.txt index file is found.
 ## Related Anti-Patterns
 
 - DS-AP-ECO-001 (Index Island)
@@ -51,6 +50,7 @@ Ecosystem validation stage (no per-file VC criterion — this is a cross-file ch
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

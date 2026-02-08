@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E008 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E008 |
-| Severity | ERROR |
-| Validation Level | L0 — Parseable |
-| Check ID | SIZ-003 (v0.0.4a), CHECK-003 (v0.0.4c Monolith Monster) |
-| Provenance | v0.0.4a size checks; DECISION-013 (token budget tiers); v0.0.4c anti-patterns |
+| **DS Identifier** | DS-DC-E008 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E008 |
+| **Severity** | ERROR |
+| **Validation Level** | L0 — Parseable |
+| **Check ID** | SIZ-003 (v0.0.4a), CHECK-003 (v0.0.4c Monolith Monster) |
+| **Provenance** | v0.0.4a size checks; DECISION-013 (token budget tiers); v0.0.4c anti-patterns |
 
 ## Message
 
@@ -37,8 +37,7 @@ The solution is to decompose the file into a tiered strategy: create an index fi
 
 ## Triggering Criteria
 
-L0 criterion (Phase C) — L0-04
-
+L0 pipeline prerequisite gate — no formal VC criterion file. Related to DS-VC-CON-012 (Token Budget Respected) which checks tier compliance at L3. L0-04 (Under Maximum Token Limit) check documented in DS-VL-L0-PARSEABLE.md.
 ## Related Anti-Patterns
 
 - DS-AP-STRAT-002 (Monolith Monster) — file too large for any single context window
@@ -49,6 +48,7 @@ L0 criterion (Phase C) — L0-04
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

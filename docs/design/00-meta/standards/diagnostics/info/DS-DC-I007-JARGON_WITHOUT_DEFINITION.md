@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I007 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I007 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | CNT-014 (v0.0.4b) |
-| Provenance | v0.0.4b content checks; LLM comprehension research |
+| **DS Identifier** | DS-DC-I007 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I007 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | CNT-014 (v0.0.4b) |
+| **Provenance** | v0.0.4b content checks; LLM comprehension research |
 
 ## Message
 
@@ -34,10 +34,11 @@ Undefined jargon creates comprehension barriers and undermines document clarity.
 - Jargon is defined inline within the sentence or paragraph where it appears.
 - Terms are linked to explicit concept definitions (e.g., via cross-reference or glossary).
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-APD-008** (Jargon Defined or Linked): Domain jargon must be defined inline or linked to concept definitions.
+- **DS-VC-APD-008**: (Jargon Defined or Linked)
 
+Emitted by DS-VC-APD-008 when domain-specific jargon is detected without a nearby definition or link.
 ## Related Anti-Patterns
 
 **DS-AP-CONT-003** (Jargon Jungle): Excessive undefined jargon is the core anti-pattern; this diagnostic identifies individual instances.
@@ -48,6 +49,7 @@ Undefined jargon creates comprehension barriers and undermines document clarity.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

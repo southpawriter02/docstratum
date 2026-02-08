@@ -19,15 +19,19 @@ L0 criteria are **pre-specification** — the llms.txt spec assumes them without
 
 ## Criteria at This Level
 
-> **Note:** L0 criteria do not have individual VC files in Phase A. They will be defined during Phase C. The checks are documented below by their Platinum Standard IDs.
+> **Note:** Under the Path A resolution (§3.2 numbering), L0 criteria are **pipeline prerequisite gates**
+> rather than scored validation criteria. They do not have individual DS-VC-* files because L0 checks
+> share identical behavior: if any fail, no further validation is possible. Representing them as separate
+> VC files would add granularity without adding information value. The checks are documented below by
+> their Platinum Standard IDs, with mappings to their corresponding diagnostic codes.
 
-| Platinum ID | Name | Pass Type | DS Identifier |
-|-------------|------|-----------|---------------|
-| L0-01 | Valid UTF-8 Encoding | HARD | Phase C |
-| L0-02 | Non-Empty Content | HARD | Phase C |
-| L0-03 | Valid Markdown Syntax | HARD | Phase C |
-| L0-04 | Under Maximum Token Limit | HARD | Phase C |
-| L0-05 | Line Feed Normalization | HARD | Phase C |
+| Platinum ID | Name | Pass Type | Diagnostic Code |
+|-------------|------|-----------|-----------------|
+| L0-01 | Valid UTF-8 Encoding | HARD | DS-DC-E003 |
+| L0-02 | Non-Empty Content | HARD | DS-DC-E007 |
+| L0-03 | Valid Markdown Syntax | HARD | DS-DC-E005 |
+| L0-04 | Under Maximum Token Limit | HARD | DS-DC-E008 |
+| L0-05 | Line Feed Normalization | HARD | DS-DC-E004 |
 
 ## Entry Conditions
 
@@ -76,3 +80,4 @@ L0 is the only level that is purely a gate. It has no "soft pass" criteria — e
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
+| 0.0.0-scaffold | 2026-02-08 | Phase C update: L0 criteria confirmed as pipeline prerequisite gates (no VC files) per Path A resolution. DS Identifier column replaced with Diagnostic Code column. Note updated to explain rationale. |

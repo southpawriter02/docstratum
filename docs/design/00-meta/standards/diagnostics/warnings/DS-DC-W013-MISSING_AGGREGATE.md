@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W013 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W013 |
-| Severity | WARNING |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.2 |
-| Provenance | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
+| **DS Identifier** | DS-DC-W013 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W013 |
+| **Severity** | WARNING |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.2 |
+| **Provenance** | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
 
 ## Message
 
@@ -31,8 +31,7 @@ The token threshold of 4,500 tokens in the index file indicates that the project
 
 ## Triggering Criteria
 
-Cross-file diagnostic — includes ecosystem-wide token count and file inventory context. Ecosystem codes do not have per-file VC criterion; this code fires during ecosystem validation (Stage 4) when size and completeness checks occur across the entire documentation set.
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when the project needs llms-full.txt but none exists.
 ## Related Anti-Patterns
 
 None directly.
@@ -43,6 +42,7 @@ None directly.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

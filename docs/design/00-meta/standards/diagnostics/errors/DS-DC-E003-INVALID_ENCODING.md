@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E003 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E003 |
-| Severity | ERROR |
-| Validation Level | L0 — Parseable |
-| Check ID | ENC-001 (v0.0.4a) |
-| Provenance | CommonMark spec (UTF-8 requirement); v0.0.1a formal grammar |
+| **DS Identifier** | DS-DC-E003 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E003 |
+| **Severity** | ERROR |
+| **Validation Level** | L0 — Parseable |
+| **Check ID** | ENC-001 (v0.0.4a) |
+| **Provenance** | CommonMark spec (UTF-8 requirement); v0.0.1a formal grammar |
 
 ## Message
 
@@ -37,8 +37,7 @@ BOM (Byte Order Mark) markers, though technically UTF-8 compatible, should be re
 
 ## Triggering Criteria
 
-L0 criterion (Phase C) — L0-01
-
+L0 pipeline prerequisite gate — no formal VC criterion file. Related to DS-VC-STR-008 (No Critical Anti-Patterns) via DS-AP-CRIT-003 (Encoding Disaster).
 ## Related Anti-Patterns
 
 - DS-AP-CRIT-003 (Encoding Disaster)
@@ -49,6 +48,7 @@ L0 criterion (Phase C) — L0-01
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

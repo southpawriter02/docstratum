@@ -2,7 +2,7 @@
 
 > **ASoT Version:** 0.0.0-scaffold
 > **Version Date:** 2026-02-08
-> **Status:** SCAFFOLDING — Phase B complete
+> **Status:** SCAFFOLDING — Phase C complete
 > **Governed By:** RR-META-asot-implementation-strategy.md
 
 ---
@@ -64,9 +64,45 @@
 | DS-DC-I008 | DC | diagnostics/info/DS-DC-I008-NO_INSTRUCTION_FILE.md | DRAFT | 2026-02-08 |
 | DS-DC-I009 | DC | diagnostics/info/DS-DC-I009-CONTENT_COVERAGE_GAP.md | DRAFT | 2026-02-08 |
 | DS-DC-I010 | DC | diagnostics/info/DS-DC-I010-ECOSYSTEM_SINGLE_FILE.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-002 | VC | criteria/structural/DS-VC-STR-002-single-h1-only.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-003 | VC | criteria/structural/DS-VC-STR-003-blockquote-present.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-004 | VC | criteria/structural/DS-VC-STR-004-h2-section-structure.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-005 | VC | criteria/structural/DS-VC-STR-005-link-format-compliance.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-006 | VC | criteria/structural/DS-VC-STR-006-no-heading-violations.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-007 | VC | criteria/structural/DS-VC-STR-007-canonical-section-ordering.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-008 | VC | criteria/structural/DS-VC-STR-008-no-critical-anti-patterns.md | DRAFT | 2026-02-08 |
+| DS-VC-STR-009 | VC | criteria/structural/DS-VC-STR-009-no-structural-anti-patterns.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-001 | VC | criteria/content/DS-VC-CON-001-non-empty-descriptions.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-002 | VC | criteria/content/DS-VC-CON-002-url-resolvability.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-003 | VC | criteria/content/DS-VC-CON-003-no-placeholder-content.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-004 | VC | criteria/content/DS-VC-CON-004-non-empty-sections.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-005 | VC | criteria/content/DS-VC-CON-005-no-duplicate-sections.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-006 | VC | criteria/content/DS-VC-CON-006-substantive-blockquote.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-007 | VC | criteria/content/DS-VC-CON-007-no-formulaic-descriptions.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-008 | VC | criteria/content/DS-VC-CON-008-canonical-section-names.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-009 | VC | criteria/content/DS-VC-CON-009-master-index-present.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-010 | VC | criteria/content/DS-VC-CON-010-code-examples-present.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-011 | VC | criteria/content/DS-VC-CON-011-code-language-specifiers.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-012 | VC | criteria/content/DS-VC-CON-012-token-budget-respected.md | DRAFT | 2026-02-08 |
+| DS-VC-CON-013 | VC | criteria/content/DS-VC-CON-013-version-metadata-present.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-001 | VC | criteria/anti-pattern/DS-VC-APD-001-llm-instructions-section.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-002 | VC | criteria/anti-pattern/DS-VC-APD-002-concept-definitions.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-003 | VC | criteria/anti-pattern/DS-VC-APD-003-few-shot-examples.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-004 | VC | criteria/anti-pattern/DS-VC-APD-004-no-content-anti-patterns.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-005 | VC | criteria/anti-pattern/DS-VC-APD-005-no-strategic-anti-patterns.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-006 | VC | criteria/anti-pattern/DS-VC-APD-006-token-optimized-structure.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-007 | VC | criteria/anti-pattern/DS-VC-APD-007-relative-url-minimization.md | DRAFT | 2026-02-08 |
+| DS-VC-APD-008 | VC | criteria/anti-pattern/DS-VC-APD-008-jargon-defined-or-linked.md | DRAFT | 2026-02-08 |
 
 > **Note:** Registry will be populated as standard files are authored across Phases A–D.
-> Phase A populates 9 example files. Phase B adds 35 diagnostic codes (38 total DC). Phase C adds 30 criteria.
+> Phase A populates 9 example files (including 3 DC exemplars: E001, W001, I001).
+> Phase B adds 35 new diagnostic codes, bringing the DC total to 38/38.
+> Phase C adds 29 new validation criteria (STR-002 through STR-009, CON-001 through CON-013,
+> APD-001 through APD-008). STR-001 already exists from Phase A.
+> **Count reconciliation:** Strategy counts assume no overlap. Actual unique totals:
+> Phase A = 9, Phase B = +35 (44 total), Phase C = +29 (73 total).
+> Strategy §6.7 states "30 new entries; total = 77" but double-counts STR-001 (Phase A)
+> and carries forward the Phase B inflation (47 → 44). Correct unique total: 73.
 > Phase D adds ~69 supporting standards. Phase E ratifies all entries.
 
 ## 3. Integrity Assertions
@@ -144,6 +180,35 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | DS-DC-I008 | diagnostics.py → DiagnosticCode.NO_INSTRUCTION_FILE | v0.0.7 §5.3 |
 | DS-DC-I009 | diagnostics.py → DiagnosticCode.CONTENT_COVERAGE_GAP | v0.0.7 §5.3 |
 | DS-DC-I010 | diagnostics.py → DiagnosticCode.ECOSYSTEM_SINGLE_FILE | v0.0.7 §5.3 |
+| DS-VC-STR-002 | RR-SPEC-v0.0.6 §L1-02; v0.0.1a ABNF grammar | diagnostics.py (E002), v0.0.2c audit |
+| DS-VC-STR-003 | RR-SPEC-v0.0.6 §L1-03; official spec (blockquote "expected") | diagnostics.py (W001), v0.0.2c audit (55% compliance) |
+| DS-VC-STR-004 | RR-SPEC-v0.0.6 §L1-04; official spec ("H2-delimited sections") | v0.0.1a ABNF grammar |
+| DS-VC-STR-005 | RR-SPEC-v0.0.6 §L1-05; official spec (link format) | diagnostics.py (E006), v0.0.1a formal grammar |
+| DS-VC-STR-006 | RR-SPEC-v0.0.6 §L1-06; v0.0.1a grammar | v0.0.2c audit (0% H3 section usage) |
+| DS-VC-STR-007 | RR-SPEC-v0.0.6 §L3-06; v0.0.4a CHECK-STR-008 | diagnostics.py (W008), constants.py (CANONICAL_SECTION_ORDER) |
+| DS-VC-STR-008 | RR-SPEC-v0.0.6 §L3-09; v0.0.4c anti-pattern catalog | constants.py (AP-CRIT-001 through AP-CRIT-004), DECISION-016 |
+| DS-VC-STR-009 | RR-SPEC-v0.0.6 §L3-10; v0.0.4c anti-pattern catalog | constants.py (AP-STRUCT-001 through AP-STRUCT-005) |
+| DS-VC-CON-001 | RR-SPEC-v0.0.6 §L2-01; v0.0.4b CHECK-CNT-003 | diagnostics.py (W003), v0.0.2c audit (r~0.45) |
+| DS-VC-CON-002 | RR-SPEC-v0.0.6 §L2-02; official spec (links usable) | diagnostics.py (E006), v0.0.4c AP-CRIT-004 |
+| DS-VC-CON-003 | RR-SPEC-v0.0.6 §L2-03; v0.0.4c anti-pattern catalog | v0.0.2b audit (12.5% placeholder rate), AP-CONT-002 |
+| DS-VC-CON-004 | RR-SPEC-v0.0.6 §L2-04; v0.0.4c AP-STRUCT-002 | diagnostics.py (W011), v0.0.2c audit |
+| DS-VC-CON-005 | RR-SPEC-v0.0.6 §L2-05; v0.0.4c AP-STRUCT-003 | v0.0.2c audit |
+| DS-VC-CON-006 | RR-SPEC-v0.0.6 §L2-06; v0.0.2c audit | v0.0.2c: <20 char blockquotes in bottom quartile |
+| DS-VC-CON-007 | RR-SPEC-v0.0.6 §L2-07; v0.0.4c AP-CONT-007 | diagnostics.py (W006), v0.0.2b auto-generation patterns |
+| DS-VC-CON-008 | RR-SPEC-v0.0.6 §L3-01; DECISION-012 | diagnostics.py (W002), constants.py (CanonicalSectionName, SECTION_NAME_ALIASES) |
+| DS-VC-CON-009 | RR-SPEC-v0.0.6 §L3-02; v0.0.4a CHECK-STR-009 | diagnostics.py (W009), v0.0.2d (87% vs 31% task success) |
+| DS-VC-CON-010 | RR-SPEC-v0.0.6 §L3-03; v0.0.4b | diagnostics.py (W004), v0.0.2c (r~0.65 quality correlation) |
+| DS-VC-CON-011 | RR-SPEC-v0.0.6 §L3-04; v0.0.4b | diagnostics.py (W005) |
+| DS-VC-CON-012 | RR-SPEC-v0.0.6 §L3-05; DECISION-013 | diagnostics.py (W010), constants.py (TOKEN_BUDGET_TIERS) |
+| DS-VC-CON-013 | RR-SPEC-v0.0.6 §L3-07; v0.0.1b Gap #2 | diagnostics.py (W007), v0.0.4c AP-CONT-009 |
+| DS-VC-APD-001 | RR-SPEC-v0.0.6 §L4-01; v0.0.0 Stripe Pattern | diagnostics.py (I001), v0.0.4d DECISION-002 |
+| DS-VC-APD-002 | RR-SPEC-v0.0.6 §L4-02; v0.0.1b Gap #7 | diagnostics.py (I002), v0.0.4d DECISION-002 Layer 2, AP-CONT-003 |
+| DS-VC-APD-003 | RR-SPEC-v0.0.6 §L4-03; v0.0.4d DECISION-002 Layer 3 | diagnostics.py (I003), in-context learning research |
+| DS-VC-APD-004 | RR-SPEC-v0.0.6 §L4-04; v0.0.4c anti-pattern catalog | constants.py (AP-CONT-001 through AP-CONT-009) |
+| DS-VC-APD-005 | RR-SPEC-v0.0.6 §L4-05; v0.0.4c anti-pattern catalog | constants.py (AP-STRAT-001 through AP-STRAT-004) |
+| DS-VC-APD-006 | RR-SPEC-v0.0.6 §L4-06; v0.0.4a token allocation | v0.0.2c (balanced distribution in top files) |
+| DS-VC-APD-007 | RR-SPEC-v0.0.6 §L4-07; practical (MCP consumption) | diagnostics.py (I004), v0.0.4a link checks |
+| DS-VC-APD-008 | RR-SPEC-v0.0.6 §L4-08; v0.0.4c AP-CONT-003 | diagnostics.py (I007), v0.0.1b Gap #7 |
 
 > **Note:** Provenance map will be populated alongside the file registry across Phases A–D.
 
@@ -155,3 +220,5 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | 0.0.0-scaffold | 2026-02-08 | Phase A example files authored (9 DRAFT entries) | DS-VC-STR-001, DS-DC-E001, DS-DC-W001, DS-DC-I001, DS-VL-L0, DS-DD-014, DS-AP-CRIT-001, DS-CS-001, DS-CN-001 |
 | 0.0.0-scaffold | 2026-02-08 | Path A resolution: DS-VC-STR-001 reverted from compound "Parseable Prerequisites" (L0) to atomic "H1 Title Present" (L1-01). L0 criteria deferred to Phase C. Updated DS-DC-E001, DS-VL-L0, DS-AP-CRIT-001, DS-CS-001 references. | DS-VC-STR-001, DS-DC-E001, DS-VL-L0, DS-AP-CRIT-001, DS-CS-001 |
 | 0.0.0-scaffold | 2026-02-08 | Phase B complete: 35 new diagnostic code files authored (E002–E010, W002–W018, I002–I010). Total DC files: 38/38. All README indexes updated. Error file slugs corrected. Warning Code field values normalized from enum names to short codes. | DS-DC-E002 through DS-DC-E010, DS-DC-W002 through DS-DC-W018, DS-DC-I002 through DS-DC-I010 |
+| 0.0.0-scaffold | 2026-02-08 | Phase B audit fixes: (1) Bold formatting added to metadata field names in 35 files per Template B.2, (2) "Triggering Criterion" normalized to "Triggering Criteria" in 19 files, (3) Change History columns corrected from "Version/Date/Notes" to "ASoT Version/Date/Change" in 35 files. Count reconciliation note added to registry (44 unique entries, not 47 per §5.7.5 due to 3 shared DC exemplars). | All Phase B DC files (E002–E010, W002–W018, I002–I010) |
+| 0.0.0-scaffold | 2026-02-08 | Phase C complete: 29 new validation criterion files authored (STR-002 through STR-009, CON-001 through CON-013, APD-001 through APD-008). 4 criteria README indexes updated. DS-VL-L0 updated to clarify L0 criteria are pipeline prerequisite gates (no VC files) per Path A resolution. Weight accounting: STR=30, CON=50, APD=20 (all [CALIBRATION-NEEDED]). Total registry entries: 73. | DS-VC-STR-002 through DS-VC-STR-009, DS-VC-CON-001 through DS-VC-CON-013, DS-VC-APD-001 through DS-VC-APD-008, DS-VL-L0 |

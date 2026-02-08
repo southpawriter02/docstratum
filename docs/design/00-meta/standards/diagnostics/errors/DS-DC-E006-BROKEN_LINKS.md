@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E006 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E006 |
-| Severity | ERROR |
-| Validation Level | L1 — Structurally Valid (also emitted at L2 by DS-VC-CON-002) |
-| Check ID | LNK-002 (v0.0.4a), CHECK-004 (v0.0.4c) |
-| Provenance | Markdown link syntax; v0.0.4a/c structural checks |
+| **DS Identifier** | DS-DC-E006 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E006 |
+| **Severity** | ERROR |
+| **Validation Level** | L1 — Structurally Valid (also emitted at L2 by DS-VC-CON-002) |
+| **Check ID** | LNK-002 (v0.0.4a), CHECK-004 (v0.0.4c) |
+| **Provenance** | Markdown link syntax; v0.0.4a/c structural checks |
 
 ## Message
 
@@ -39,9 +39,10 @@ This check is performed at both L1 (structural validation) and L2 (content valid
 
 ## Triggering Criteria
 
-- DS-VC-STR-005 (Link Format Compliance) — L1 structural check
-- DS-VC-CON-002 (URL Resolvability) — L2 content check
+- **DS-VC-STR-005**: (Link Format Compliance)
+- **DS-VC-CON-002**: (URL Resolvability)
 
+Emitted by DS-VC-STR-005 for syntactically malformed links and by DS-VC-CON-002 for links that fail HTTP resolution.
 ## Related Anti-Patterns
 
 - DS-AP-CRIT-004 (Link Void)
@@ -52,6 +53,7 @@ This check is performed at both L1 (structural validation) and L2 (content valid
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

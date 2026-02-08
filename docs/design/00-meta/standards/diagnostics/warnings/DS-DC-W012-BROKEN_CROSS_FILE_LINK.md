@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W012 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W012 |
-| Severity | WARNING |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.2 |
-| Provenance | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
+| **DS Identifier** | DS-DC-W012 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W012 |
+| **Severity** | WARNING |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.2 |
+| **Provenance** | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
 
 ## Message
 
@@ -31,8 +31,7 @@ The validation process scans all internal links (those using relative paths or f
 
 ## Triggering Criteria
 
-Cross-file diagnostic — includes `source_file` and `related_file` context. Ecosystem codes do not have per-file VC criterion; this code fires during ecosystem validation (Stage 4) when structural integrity checks occur across the entire documentation set.
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when a cross-file link references a nonexistent file.
 ## Related Anti-Patterns
 
 - DS-AP-ECO-002 (Phantom Links) — ecosystem-level pattern of broken or non-existent references
@@ -44,6 +43,7 @@ Cross-file diagnostic — includes `source_file` and `related_file` context. Eco
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W018 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W018 |
-| Severity | WARNING |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.2 |
-| Provenance | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
+| **DS Identifier** | DS-DC-W018 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W018 |
+| **Severity** | WARNING |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.2 |
+| **Provenance** | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
 
 ## Message
 
@@ -31,8 +31,7 @@ Well-organized documentation distributes content proportionally across files, wi
 
 ## Triggering Criteria
 
-Cross-file diagnostic — includes source_files, token_counts, and distribution analysis context. Ecosystem codes do not have per-file VC criterion; this code fires during ecosystem validation (Stage 4) when balance checks occur across the entire documentation set.
-
+Ecosystem-level diagnostic — no per-file VC criterion. Related to DS-VC-APD-006 (Token-optimized Structure) at the per-file level. Fires during ecosystem validation when one file consumes >70% of total ecosystem tokens.
 ## Related Anti-Patterns
 
 - DS-AP-ECO-005 (Token Black Hole) — ecosystem-level pattern of extreme token concentration in a single file
@@ -45,6 +44,7 @@ Cross-file diagnostic — includes source_files, token_counts, and distribution 
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E007 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E007 |
-| Severity | ERROR |
-| Validation Level | L0 — Parseable |
-| Check ID | CHECK-001 (v0.0.4c Ghost File anti-pattern) |
-| Provenance | v0.0.4c anti-patterns catalog; v0.0.2b audit data |
+| **DS Identifier** | DS-DC-E007 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E007 |
+| **Severity** | ERROR |
+| **Validation Level** | L0 — Parseable |
+| **Check ID** | CHECK-001 (v0.0.4c Ghost File anti-pattern) |
+| **Provenance** | v0.0.4c anti-patterns catalog; v0.0.2b audit data |
 
 ## Message
 
@@ -38,8 +38,7 @@ The minimum remediation is to add an H1 heading (the required document title), a
 
 ## Triggering Criteria
 
-L0 criterion (Phase C) — L0-02
-
+L0 pipeline prerequisite gate — no formal VC criterion file. Related to DS-VC-STR-008 (No Critical Anti-Patterns) via DS-AP-CRIT-001 (Ghost File). L0-02 (Non-Empty Content) check documented in DS-VL-L0-PARSEABLE.md.
 ## Related Anti-Patterns
 
 - DS-AP-CRIT-001 (Ghost File) — this diagnostic IS the Ghost File detection mechanism
@@ -50,6 +49,7 @@ L0 criterion (Phase C) — L0-02
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

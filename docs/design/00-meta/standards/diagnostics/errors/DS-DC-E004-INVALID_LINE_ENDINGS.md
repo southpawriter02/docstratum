@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-E004 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | E004 |
-| Severity | ERROR |
-| Validation Level | L0 — Parseable |
-| Check ID | ENC-002 (v0.0.4a) |
-| Provenance | CommonMark spec; Unix convention; v0.0.4a structural checks |
+| **DS Identifier** | DS-DC-E004 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | E004 |
+| **Severity** | ERROR |
+| **Validation Level** | L0 — Parseable |
+| **Check ID** | ENC-002 (v0.0.4a) |
+| **Provenance** | CommonMark spec; Unix convention; v0.0.4a structural checks |
 
 ## Message
 
@@ -37,8 +37,7 @@ Most modern editors (VS Code, Sublime Text, etc.) display the current line endin
 
 ## Triggering Criteria
 
-L0 criterion (Phase C) — L0-05
-
+L0 pipeline prerequisite gate — no formal VC criterion file. L0-05 (Line Feed Normalization) check documented in DS-VL-L0-PARSEABLE.md.
 ## Related Anti-Patterns
 
 - DS-AP-CRIT-003 (Encoding Disaster)
@@ -49,6 +48,7 @@ L0 criterion (Phase C) — L0-05
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

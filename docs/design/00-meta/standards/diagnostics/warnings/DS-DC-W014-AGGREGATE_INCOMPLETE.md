@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W014 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W014 |
-| Severity | WARNING |
-| Validation Level | Ecosystem-level (cross-file validation) |
-| Check ID | v0.0.7 §5.2 |
-| Provenance | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
+| **DS Identifier** | DS-DC-W014 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W014 |
+| **Severity** | WARNING |
+| **Validation Level** | Ecosystem-level (cross-file validation) |
+| **Check ID** | v0.0.7 §5.2 |
+| **Provenance** | v0.0.7 §5.2 (Ecosystem-Level Warning Codes) |
 
 ## Message
 
@@ -31,8 +31,7 @@ The validation process compares the set of files referenced in the index against
 
 ## Triggering Criteria
 
-Cross-file diagnostic — includes source_file, aggregate_file, and missing_files context. Ecosystem codes do not have per-file VC criterion; this code fires during ecosystem validation (Stage 4) when aggregate completeness checks occur across the entire documentation set.
-
+Ecosystem-level diagnostic — no per-file VC criterion. Fires during ecosystem validation (Stage 4) when llms-full.txt is incomplete.
 ## Related Anti-Patterns
 
 - DS-AP-ECO-003 (Shadow Aggregate) — ecosystem-level pattern of incomplete or stale aggregates
@@ -43,6 +42,7 @@ Cross-file diagnostic — includes source_file, aggregate_file, and missing_file
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

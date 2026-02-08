@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W009 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W009 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | STR-003 (v0.0.4a), DECISION-010 |
-| Provenance | DECISION-010 (Master Index as Navigation Root); v0.0.2c: 87% vs 31% LLM task success rate |
+| **DS Identifier** | DS-DC-W009 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W009 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | STR-003 (v0.0.4a), DECISION-010 |
+| **Provenance** | DECISION-010 (Master Index as Navigation Root); v0.0.2c: 87% vs 31% LLM task success rate |
 
 ## Message
 
@@ -33,12 +33,11 @@ W009 fires when a file does not contain a Master Index section as the first H2-l
 
 W009 does not fire when a Master Index is present and is the first H2 section in the file, complete with navigation links to other major sections. It also does not fire for stub files or files explicitly exempt from index requirements.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-009: Master Index Present**
+- **DS-VC-CON-009**: (Master Index Present)
 
-Documents must include a Master Index as the first H2 section, serving as the primary navigation aid. This criterion validates that navigation infrastructure is in place.
-
+Emitted by DS-VC-CON-009 when no Master Index section is found as the first H2 section.
 ## Related Anti-Patterns
 
 None directly related.
@@ -49,6 +48,7 @@ None directly related.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

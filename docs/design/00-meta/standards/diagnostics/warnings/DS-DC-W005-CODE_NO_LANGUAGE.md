@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W005 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W005 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | CNT-008 (v0.0.4b) |
-| Provenance | v0.0.4b content checks; CommonMark fenced code block syntax |
+| **DS Identifier** | DS-DC-W005 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W005 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | CNT-008 (v0.0.4b) |
+| **Provenance** | v0.0.4b content checks; CommonMark fenced code block syntax |
 
 ## Message
 
@@ -33,12 +33,11 @@ W005 fires when a fenced code block is found without a language identifier. This
 
 W005 does not fire when all code blocks include language specifiers (e.g., ```python, ```bash, ```javascript, etc.). It also does not fire for non-code fenced blocks where language specifiers are genuinely not applicable.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-011: Code Language Specifiers**
+- **DS-VC-CON-011**: (Code Language Specifiers)
 
-All fenced code blocks must include a language identifier. This criterion validates that code is presented with proper syntax highlighting markup.
-
+Emitted by DS-VC-CON-011 when a fenced code block does not include a language specifier. Fires per unspecified block.
 ## Related Anti-Patterns
 
 None directly related.
@@ -49,6 +48,7 @@ None directly related.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

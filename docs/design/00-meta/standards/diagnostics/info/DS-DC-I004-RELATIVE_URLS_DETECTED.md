@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I004 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I004 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | LNK-003 (v0.0.4a) |
-| Provenance | v0.0.4a link checks; AI agent URL resolution challenges |
+| **DS Identifier** | DS-DC-I004 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I004 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | LNK-003 (v0.0.4a) |
+| **Provenance** | v0.0.4a link checks; AI agent URL resolution challenges |
 
 ## Message
 
@@ -33,10 +33,11 @@ Relative URLs can cause broken links when documents are moved, shared outside th
 - All URLs are absolute (beginning with `http://`, `https://`, or a documented base).
 - Relative URLs are accompanied by explicit base URL documentation.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-APD-007** (Relative URL Minimization): Links should be absolute or base URL should be documented.
+- **DS-VC-APD-007**: (Relative URL Minimization)
 
+Emitted by DS-VC-APD-007 when relative URLs are detected in link entries.
 ## Related Anti-Patterns
 
 None directly identified.
@@ -48,6 +49,7 @@ None directly identified.
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

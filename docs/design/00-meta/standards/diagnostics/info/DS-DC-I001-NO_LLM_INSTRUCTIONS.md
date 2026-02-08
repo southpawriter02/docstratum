@@ -40,8 +40,9 @@ As of the v0.0.2 audit, **0% of real-world implementations** include an LLM Inst
 
 ## Triggering Criteria
 
-- **DS-VC-APD-001** (LLM Instructions Section): This diagnostic is emitted when criterion DS-VC-APD-001 detects the absence of an LLM Instructions section.
+- **DS-VC-APD-001**: (LLM Instructions Section)
 
+Emitted by DS-VC-APD-001 when no LLM Instructions section is found in the file.
 ## Related Anti-Patterns
 
 - **DS-AP-CONT-008** (Silent Agent): A file with no LLM-facing guidance despite being an AI documentation file. The presence of I001 is effectively a detection signal for the Silent Agent anti-pattern.
@@ -55,3 +56,4 @@ As of the v0.0.2 audit, **0% of real-world implementations** include an LLM Inst
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase A example file |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

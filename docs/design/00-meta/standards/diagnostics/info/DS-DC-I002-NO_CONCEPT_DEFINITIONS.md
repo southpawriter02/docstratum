@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-I002 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | I002 |
-| Severity | INFO |
-| Validation Level | L4 — DocStratum Extended |
-| Check ID | CNT-013 (v0.0.4b) |
-| Provenance | v0.0.4b content checks; v0.0.0 Stripe pattern; 3-Layer Architecture (DECISION-002) |
+| **DS Identifier** | DS-DC-I002 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | I002 |
+| **Severity** | INFO |
+| **Validation Level** | L4 — DocStratum Extended |
+| **Check ID** | CNT-013 (v0.0.4b) |
+| **Provenance** | v0.0.4b content checks; v0.0.0 Stripe pattern; 3-Layer Architecture (DECISION-002) |
 
 ## Message
 
@@ -33,10 +33,11 @@ When structured concept definitions are absent, readers and AI agents may strugg
 - The document includes a structured `Concepts` section with at least concept ID, description, and relationship fields.
 - Concept definitions are linked in an external, related document that is explicitly referenced.
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-APD-002** (Concept Definitions): The document must include structured concept definitions.
+- **DS-VC-APD-002**: (Concept Definitions)
 
+Emitted by DS-VC-APD-002 when no structured concept definitions are found in the file.
 ## Related Anti-Patterns
 
 **DS-AP-CONT-003** (Jargon Jungle): Lack of structured concept definitions is a root cause of the Jargon Jungle anti-pattern, where domain jargon proliferates without clear, unified definitions.
@@ -48,6 +49,7 @@ When structured concept definitions are absent, readers and AI agents may strugg
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |

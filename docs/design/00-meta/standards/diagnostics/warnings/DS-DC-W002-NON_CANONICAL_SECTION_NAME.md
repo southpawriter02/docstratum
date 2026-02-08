@@ -2,14 +2,14 @@
 
 | Field | Value |
 |-------|-------|
-| DS Identifier | DS-DC-W002 |
-| Status | DRAFT |
-| ASoT Version | 0.0.0-scaffold |
-| Code | W002 |
-| Severity | WARNING |
-| Validation Level | L3 — Best Practices |
-| Check ID | NAM-001 (v0.0.4a) |
-| Provenance | v0.0.4a naming checks; DECISION-012 (11 canonical names); v0.0.2c frequency analysis |
+| **DS Identifier** | DS-DC-W002 |
+| **Status** | DRAFT |
+| **ASoT Version** | 0.0.0-scaffold |
+| **Code** | W002 |
+| **Severity** | WARNING |
+| **Validation Level** | L3 — Best Practices |
+| **Check ID** | NAM-001 (v0.0.4a) |
+| **Provenance** | v0.0.4a naming checks; DECISION-012 (11 canonical names); v0.0.2c frequency analysis |
 
 ## Message
 
@@ -33,12 +33,11 @@ W002 fires when a section heading appears that does not match one of the 11 cano
 
 W002 does not fire when a section uses an exact match to one of the 11 canonical names, or when the file is explicitly exempt from canonical naming (e.g., specialized domain files with justified deviations).
 
-## Triggering Criterion
+## Triggering Criteria
 
-**DS-VC-CON-008: Canonical Section Names**
+- **DS-VC-CON-008**: (Canonical Section Names)
 
-Files must use canonical section names where applicable. This criterion validates that section headings align with the 11 canonical names.
-
+Emitted by DS-VC-CON-008 when an H2 section name does not match any of the 11 canonical names or 32 recognized aliases.
 ## Related Anti-Patterns
 
 **DS-AP-STRUCT-005: Naming Nebula** — Non-canonical names proliferate when no consistent naming policy is enforced, leading to fragmentation and reduced discoverability.
@@ -49,6 +48,7 @@ Files must use canonical section names where applicable. This criterion validate
 
 ## Change History
 
-| Version | Date | Notes |
-|---------|------|-------|
+| ASoT Version | Date | Change |
+|--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase B |
+| 0.0.0-scaffold | 2026-02-08 | Phase C backfill — added VC cross-references to Triggering Criteria section |
