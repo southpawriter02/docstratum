@@ -2,7 +2,7 @@
 
 > **ASoT Version:** 0.0.0-scaffold
 > **Version Date:** 2026-02-08
-> **Status:** SCAFFOLDING — Phase C complete
+> **Status:** SCAFFOLDING — Phase D complete
 > **Governed By:** RR-META-asot-implementation-strategy.md
 
 ---
@@ -26,9 +26,49 @@
 | DS-DC-I001 | DC | diagnostics/info/DS-DC-I001-NO_LLM_INSTRUCTIONS.md | DRAFT | 2026-02-08 |
 | DS-VL-L0 | VL | levels/DS-VL-L0-PARSEABLE.md | DRAFT | 2026-02-08 |
 | DS-DD-014 | DD | decisions/DS-DD-014-content-quality-primary-weight.md | DRAFT | 2026-02-08 |
+| DS-DD-001 | DD | decisions/DS-DD-001-markdown-over-json-yaml.md | DRAFT | 2026-02-08 |
+| DS-DD-002 | DD | decisions/DS-DD-002-three-layer-architecture.md | DRAFT | 2026-02-08 |
+| DS-DD-003 | DD | decisions/DS-DD-003-gfm-as-standard.md | DRAFT | 2026-02-08 |
+| DS-DD-004 | DD | decisions/DS-DD-004-concept-id-format.md | DRAFT | 2026-02-08 |
+| DS-DD-005 | DD | decisions/DS-DD-005-typed-directed-relationships.md | DRAFT | 2026-02-08 |
+| DS-DD-006 | DD | decisions/DS-DD-006-pydantic-for-schema-validation.md | DRAFT | 2026-02-08 |
+| DS-DD-007 | DD | decisions/DS-DD-007-csv-for-relationship-matrices.md | DRAFT | 2026-02-08 |
+| DS-DD-008 | DD | decisions/DS-DD-008-example-ids-linked-to-concepts.md | DRAFT | 2026-02-08 |
+| DS-DD-009 | DD | decisions/DS-DD-009-anti-pattern-detection-timing.md | DRAFT | 2026-02-08 |
+| DS-DD-010 | DD | decisions/DS-DD-010-master-index-priority.md | DRAFT | 2026-02-08 |
+| DS-DD-011 | DD | decisions/DS-DD-011-optional-sections-explicitly-marked.md | DRAFT | 2026-02-08 |
+| DS-DD-012 | DD | decisions/DS-DD-012-canonical-section-names.md | DRAFT | 2026-02-08 |
+| DS-DD-013 | DD | decisions/DS-DD-013-token-budget-tiers.md | DRAFT | 2026-02-08 |
+| DS-DD-015 | DD | decisions/DS-DD-015-mcp-as-target-consumer.md | DRAFT | 2026-02-08 |
+| DS-DD-016 | DD | decisions/DS-DD-016-four-category-anti-pattern-severity.md | DRAFT | 2026-02-08 |
 | DS-AP-CRIT-001 | AP | anti-patterns/critical/DS-AP-CRIT-001-ghost-file.md | DRAFT | 2026-02-08 |
+| DS-QS-DIM-STR | QS | scoring/DS-QS-DIM-STR-structural-dimension.md | DRAFT | 2026-02-08 |
+| DS-QS-DIM-CON | QS | scoring/DS-QS-DIM-CON-content-dimension.md | DRAFT | 2026-02-08 |
+| DS-QS-DIM-APD | QS | scoring/DS-QS-DIM-APD-anti-pattern-dimension.md | DRAFT | 2026-02-08 |
+| DS-QS-GRADE | QS | scoring/DS-QS-GRADE-thresholds.md | DRAFT | 2026-02-08 |
+| DS-QS-GATE | QS | scoring/DS-QS-GATE-structural-gating.md | DRAFT | 2026-02-08 |
+| DS-EH-COV | EH | ecosystem/DS-EH-COV-coverage.md | DRAFT | 2026-02-08 |
+| DS-EH-CONS | EH | ecosystem/DS-EH-CONS-consistency.md | DRAFT | 2026-02-08 |
+| DS-EH-COMP | EH | ecosystem/DS-EH-COMP-completeness.md | DRAFT | 2026-02-08 |
+| DS-EH-TOK | EH | ecosystem/DS-EH-TOK-token-efficiency.md | DRAFT | 2026-02-08 |
+| DS-EH-FRESH | EH | ecosystem/DS-EH-FRESH-freshness.md | DRAFT | 2026-02-08 |
 | DS-CS-001 | CS | calibration/DS-CS-001-svelte-exemplary.md | DRAFT | 2026-02-08 |
+| DS-CS-002 | CS | calibration/DS-CS-002-pydantic-exemplary.md | DRAFT | 2026-02-08 |
+| DS-CS-003 | CS | calibration/DS-CS-003-vercel-sdk-exemplary.md | DRAFT | 2026-02-08 |
+| DS-CS-004 | CS | calibration/DS-CS-004-shadcn-ui-strong.md | DRAFT | 2026-02-08 |
+| DS-CS-005 | CS | calibration/DS-CS-005-cursor-needs-work.md | DRAFT | 2026-02-08 |
+| DS-CS-006 | CS | calibration/DS-CS-006-nvidia-critical.md | DRAFT | 2026-02-08 |
 | DS-CN-001 | CN | canonical/DS-CN-001-master-index.md | DRAFT | 2026-02-08 |
+| DS-CN-002 | CN | canonical/DS-CN-002-llm-instructions.md | DRAFT | 2026-02-08 |
+| DS-CN-003 | CN | canonical/DS-CN-003-getting-started.md | DRAFT | 2026-02-08 |
+| DS-CN-004 | CN | canonical/DS-CN-004-core-concepts.md | DRAFT | 2026-02-08 |
+| DS-CN-005 | CN | canonical/DS-CN-005-api-reference.md | DRAFT | 2026-02-08 |
+| DS-CN-006 | CN | canonical/DS-CN-006-examples.md | DRAFT | 2026-02-08 |
+| DS-CN-007 | CN | canonical/DS-CN-007-configuration.md | DRAFT | 2026-02-08 |
+| DS-CN-008 | CN | canonical/DS-CN-008-advanced-topics.md | DRAFT | 2026-02-08 |
+| DS-CN-009 | CN | canonical/DS-CN-009-troubleshooting.md | DRAFT | 2026-02-08 |
+| DS-CN-010 | CN | canonical/DS-CN-010-faq.md | DRAFT | 2026-02-08 |
+| DS-CN-011 | CN | canonical/DS-CN-011-optional.md | DRAFT | 2026-02-08 |
 | DS-DC-E002 | DC | diagnostics/errors/DS-DC-E002-MULTIPLE_H1.md | DRAFT | 2026-02-08 |
 | DS-DC-E003 | DC | diagnostics/errors/DS-DC-E003-INVALID_ENCODING.md | DRAFT | 2026-02-08 |
 | DS-DC-E004 | DC | diagnostics/errors/DS-DC-E004-INVALID_LINE_ENDINGS.md | DRAFT | 2026-02-08 |
@@ -93,6 +133,37 @@
 | DS-VC-APD-006 | VC | criteria/anti-pattern/DS-VC-APD-006-token-optimized-structure.md | DRAFT | 2026-02-08 |
 | DS-VC-APD-007 | VC | criteria/anti-pattern/DS-VC-APD-007-relative-url-minimization.md | DRAFT | 2026-02-08 |
 | DS-VC-APD-008 | VC | criteria/anti-pattern/DS-VC-APD-008-jargon-defined-or-linked.md | DRAFT | 2026-02-08 |
+| DS-VL-L1 | VL | levels/DS-VL-L1-STRUCTURAL.md | DRAFT | 2026-02-08 |
+| DS-VL-L2 | VL | levels/DS-VL-L2-CONTENT_QUALITY.md | DRAFT | 2026-02-08 |
+| DS-VL-L3 | VL | levels/DS-VL-L3-BEST_PRACTICES.md | DRAFT | 2026-02-08 |
+| DS-VL-L4 | VL | levels/DS-VL-L4-DOCSTRATUM_EXTENDED.md | DRAFT | 2026-02-08 |
+| DS-AP-CRIT-002 | AP | anti-patterns/critical/DS-AP-CRIT-002-structure-chaos.md | DRAFT | 2026-02-08 |
+| DS-AP-CRIT-003 | AP | anti-patterns/critical/DS-AP-CRIT-003-encoding-disaster.md | DRAFT | 2026-02-08 |
+| DS-AP-CRIT-004 | AP | anti-patterns/critical/DS-AP-CRIT-004-link-void.md | DRAFT | 2026-02-08 |
+| DS-AP-STRUCT-001 | AP | anti-patterns/structural/DS-AP-STRUCT-001-sitemap-dump.md | DRAFT | 2026-02-08 |
+| DS-AP-STRUCT-002 | AP | anti-patterns/structural/DS-AP-STRUCT-002-orphaned-sections.md | DRAFT | 2026-02-08 |
+| DS-AP-STRUCT-003 | AP | anti-patterns/structural/DS-AP-STRUCT-003-duplicate-identity.md | DRAFT | 2026-02-08 |
+| DS-AP-STRUCT-004 | AP | anti-patterns/structural/DS-AP-STRUCT-004-section-shuffle.md | DRAFT | 2026-02-08 |
+| DS-AP-STRUCT-005 | AP | anti-patterns/structural/DS-AP-STRUCT-005-naming-nebula.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-001 | AP | anti-patterns/content/DS-AP-CONT-001-copy-paste-plague.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-002 | AP | anti-patterns/content/DS-AP-CONT-002-blank-canvas.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-003 | AP | anti-patterns/content/DS-AP-CONT-003-jargon-jungle.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-004 | AP | anti-patterns/content/DS-AP-CONT-004-link-desert.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-005 | AP | anti-patterns/content/DS-AP-CONT-005-outdated-oracle.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-006 | AP | anti-patterns/content/DS-AP-CONT-006-example-void.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-007 | AP | anti-patterns/content/DS-AP-CONT-007-formulaic-description.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-008 | AP | anti-patterns/content/DS-AP-CONT-008-silent-agent.md | DRAFT | 2026-02-08 |
+| DS-AP-CONT-009 | AP | anti-patterns/content/DS-AP-CONT-009-versionless-drift.md | DRAFT | 2026-02-08 |
+| DS-AP-STRAT-001 | AP | anti-patterns/strategic/DS-AP-STRAT-001-automation-obsession.md | DRAFT | 2026-02-08 |
+| DS-AP-STRAT-002 | AP | anti-patterns/strategic/DS-AP-STRAT-002-monolith-monster.md | DRAFT | 2026-02-08 |
+| DS-AP-STRAT-003 | AP | anti-patterns/strategic/DS-AP-STRAT-003-meta-documentation-spiral.md | DRAFT | 2026-02-08 |
+| DS-AP-STRAT-004 | AP | anti-patterns/strategic/DS-AP-STRAT-004-preference-trap.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-001 | AP | anti-patterns/ecosystem/DS-AP-ECO-001-index-island.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-002 | AP | anti-patterns/ecosystem/DS-AP-ECO-002-phantom-links.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-003 | AP | anti-patterns/ecosystem/DS-AP-ECO-003-shadow-aggregate.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-004 | AP | anti-patterns/ecosystem/DS-AP-ECO-004-duplicate-ecosystem.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-005 | AP | anti-patterns/ecosystem/DS-AP-ECO-005-token-black-hole.md | DRAFT | 2026-02-08 |
+| DS-AP-ECO-006 | AP | anti-patterns/ecosystem/DS-AP-ECO-006-orphan-nursery.md | DRAFT | 2026-02-08 |
 
 > **Note:** Registry will be populated as standard files are authored across Phases A–D.
 > Phase A populates 9 example files (including 3 DC exemplars: E001, W001, I001).
@@ -142,6 +213,21 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | DS-DC-I001 | diagnostics.py → DiagnosticCode.NO_LLM_INSTRUCTIONS | RR-SPEC-v0.0.6 §L4-02 |
 | DS-VL-L0 | validation.py → ValidationLevel.PARSEABLE | RR-SPEC-v0.0.6 §3.1 |
 | DS-DD-014 | RR-SPEC-v0.0.6 §5 (Scoring Methodology) | quality.py (QualityDimension weights) |
+| DS-DD-001 | v0.0.4d §Decision Log — DECISION-001 | Schema Models (all schema/*.py) |
+| DS-DD-002 | v0.0.4d §Decision Log — DECISION-002 | Content Structure (enrichment.py) |
+| DS-DD-003 | v0.0.4d §Decision Log — DECISION-003 | Parser (mistletoe, CommonMark 0.30 + GFM) |
+| DS-DD-004 | v0.0.4d §Decision Log — DECISION-004 | Content Enrichment (Concept.id) |
+| DS-DD-005 | v0.0.4d §Decision Log — DECISION-005 | Content Enrichment (RelationshipType enum) |
+| DS-DD-006 | v0.0.4d §Decision Log — DECISION-006 | All Schema Models (Pydantic v2 BaseModel) |
+| DS-DD-007 | v0.0.4d §Decision Log — DECISION-007 | Content Structure (deferred to v0.3.x) |
+| DS-DD-008 | v0.0.4d §Decision Log — DECISION-008 | Content Enrichment (FewShotExample.concept_ids) |
+| DS-DD-009 | v0.0.4d §Decision Log — DECISION-009 | Validation Pipeline (v0.2.4 timing) |
+| DS-DD-010 | v0.0.4d §Decision Log — DECISION-010 | Content Criteria (W009, Master Index) |
+| DS-DD-011 | v0.0.4d §Decision Log — DECISION-011 | Validation Pipeline (I006 diagnostic) |
+| DS-DD-012 | v0.0.4d §Decision Log — DECISION-012 | Constants (CanonicalSectionName, SECTION_NAME_ALIASES) |
+| DS-DD-013 | v0.0.4d §Decision Log — DECISION-013 | Constants (TOKEN_BUDGET_TIERS, SizeTier) |
+| DS-DD-015 | v0.0.4d §Decision Log — DECISION-015 | Entire Validation Philosophy (MCP target) |
+| DS-DD-016 | v0.0.4d §Decision Log — DECISION-016 | Anti-Pattern Detection (AntiPatternCategory enum) |
 | DS-AP-CRIT-001 | constants.py → ANTI_PATTERN_REGISTRY["ghost_file"] | RR-SPEC-v0.0.6 §4.3 |
 | DS-CS-001 | v0.0.2c frequency analysis | https://svelte.dev/llms.txt |
 | DS-CN-001 | constants.py → CanonicalSectionName.MASTER_INDEX | v0.0.2c frequency analysis (87% adoption) |
@@ -209,6 +295,37 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | DS-VC-APD-006 | RR-SPEC-v0.0.6 §L4-06; v0.0.4a token allocation | v0.0.2c (balanced distribution in top files) |
 | DS-VC-APD-007 | RR-SPEC-v0.0.6 §L4-07; practical (MCP consumption) | diagnostics.py (I004), v0.0.4a link checks |
 | DS-VC-APD-008 | RR-SPEC-v0.0.6 §L4-08; v0.0.4c AP-CONT-003 | diagnostics.py (I007), v0.0.1b Gap #7 |
+| DS-VL-L1 | validation.py → ValidationLevel.L1_STRUCTURAL | RR-SPEC-v0.0.6 §3.2; v0.0.4a structural checks |
+| DS-VL-L2 | validation.py → ValidationLevel.L2_CONTENT | RR-SPEC-v0.0.6 §3.3; v0.0.4b content checks |
+| DS-VL-L3 | validation.py → ValidationLevel.L3_BEST_PRACTICES | RR-SPEC-v0.0.6 §3.4; v0.0.4a/b/c best practice checks |
+| DS-VL-L4 | validation.py → ValidationLevel.L4_DOCSTRATUM_EXTENDED | RR-SPEC-v0.0.6 §3.5; v0.0.4d DocStratum enrichment |
+| DS-AP-CRIT-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-CRIT-002] | v0.0.4c §Anti-Patterns Catalog; v0.0.2c audit |
+| DS-AP-CRIT-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-CRIT-003] | v0.0.4c §Anti-Patterns; v0.0.4a §ENC-001, §ENC-002 |
+| DS-AP-CRIT-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-CRIT-004] | v0.0.4c §Anti-Patterns; v0.0.4a §LNK-002 |
+| DS-AP-STRUCT-001 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRUCT-001] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRUCT-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRUCT-002] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRUCT-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRUCT-003] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRUCT-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRUCT-004] | v0.0.4c §Anti-Patterns; constants.py (CANONICAL_SECTION_ORDER) |
+| DS-AP-STRUCT-005 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRUCT-005] | v0.0.4c §Anti-Patterns; constants.py (CanonicalSectionName, SECTION_NAME_ALIASES) |
+| DS-AP-CONT-001 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-001] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-CONT-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-002] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-CONT-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-003] | v0.0.4c §Anti-Patterns; v0.0.4b §CNT-014 |
+| DS-AP-CONT-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-004] | v0.0.4c §Anti-Patterns; v0.0.4b §CNT-004 |
+| DS-AP-CONT-005 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-005] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-CONT-006 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-006] | v0.0.4c §Anti-Patterns; v0.0.4b §CNT-007 (r~0.65) |
+| DS-AP-CONT-007 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-007] | v0.0.4c; v0.0.4b §CNT-005; v0.0.2b auto-generation patterns |
+| DS-AP-CONT-008 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-008] | v0.0.4c; v0.0.0 Stripe Pattern; v0.0.1b Gap Analysis |
+| DS-AP-CONT-009 | constants.py → ANTI_PATTERN_REGISTRY[AP-CONT-009] | v0.0.4c; v0.0.1b Gap #2 |
+| DS-AP-STRAT-001 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-001] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRAT-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-002] | v0.0.4c §Anti-Patterns; v0.0.4a §SIZ-003 |
+| DS-AP-STRAT-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-003] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRAT-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-004] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-ECO-001 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-001] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
+| DS-AP-ECO-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-002] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
+| DS-AP-ECO-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-003] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
+| DS-AP-ECO-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-004] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
+| DS-AP-ECO-005 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-005] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
+| DS-AP-ECO-006 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-006] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
 
 > **Note:** Provenance map will be populated alongside the file registry across Phases A–D.
 
@@ -222,3 +339,10 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | 0.0.0-scaffold | 2026-02-08 | Phase B complete: 35 new diagnostic code files authored (E002–E010, W002–W018, I002–I010). Total DC files: 38/38. All README indexes updated. Error file slugs corrected. Warning Code field values normalized from enum names to short codes. | DS-DC-E002 through DS-DC-E010, DS-DC-W002 through DS-DC-W018, DS-DC-I002 through DS-DC-I010 |
 | 0.0.0-scaffold | 2026-02-08 | Phase B audit fixes: (1) Bold formatting added to metadata field names in 35 files per Template B.2, (2) "Triggering Criterion" normalized to "Triggering Criteria" in 19 files, (3) Change History columns corrected from "Version/Date/Notes" to "ASoT Version/Date/Change" in 35 files. Count reconciliation note added to registry (44 unique entries, not 47 per §5.7.5 due to 3 shared DC exemplars). | All Phase B DC files (E002–E010, W002–W018, I002–I010) |
 | 0.0.0-scaffold | 2026-02-08 | Phase C complete: 29 new validation criterion files authored (STR-002 through STR-009, CON-001 through CON-013, APD-001 through APD-008). 4 criteria README indexes updated. DS-VL-L0 updated to clarify L0 criteria are pipeline prerequisite gates (no VC files) per Path A resolution. Weight accounting: STR=30, CON=50, APD=20 (all [CALIBRATION-NEEDED]). Total registry entries: 73. | DS-VC-STR-002 through DS-VC-STR-009, DS-VC-CON-001 through DS-VC-CON-013, DS-VC-APD-001 through DS-VC-APD-008, DS-VL-L0 |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.1 complete: 4 new validation level files authored (L1–L4). Levels README index updated with complete 5-level table and criteria distribution matrix. Each level file documents criteria, entry/exit conditions, diagnostic codes, and scoring impact per VL-L0 template. Total registry entries: 77. | DS-VL-L1, DS-VL-L2, DS-VL-L3, DS-VL-L4 |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.2 complete: 27 new anti-pattern files authored (3 critical, 5 structural, 9 content, 4 strategic, 6 ecosystem). 6 anti-pattern README indexes updated. Each file documents detection logic, synthetic examples, remediation, and cross-references per Template B.3. Critical README data error corrected (AP-CONT-001 → AP-CRIT-001). Total registry entries: 104. | DS-AP-CRIT-002 through DS-AP-CRIT-004, DS-AP-STRUCT-001 through DS-AP-STRUCT-005, DS-AP-CONT-001 through DS-AP-CONT-009, DS-AP-STRAT-001 through DS-AP-STRAT-004, DS-AP-ECO-001 through DS-AP-ECO-006 |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.3 complete: 15 new design decision files authored (DD-001 through DD-016, minus existing DD-014). Decisions README index updated with all 16 entries. Each file documents the decision, context, alternatives considered, rationale, ASoT impact, and constraints per DD-014 exemplar template. Total registry entries: 119. | DS-DD-001 through DS-DD-013, DS-DD-015, DS-DD-016 |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.4 complete: 10 new canonical name files authored (CN-002 through CN-011). Canonical README index updated with all 11 entries. Each file documents the section name, position, aliases, and related criteria per CN-001 exemplar template. | DS-CN-002 through DS-CN-011 (10 new) |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.5 complete: 5 new quality scoring framework files authored (3 dimensions, 1 grade thresholds, 1 gating rule). Scoring README index updated. Each file documents scoring logic, weight, criteria mappings, and implementation reference. | DS-QS-DIM-STR, DS-QS-DIM-CON, DS-QS-DIM-APD, DS-QS-GRADE, DS-QS-GATE |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.6 complete: 5 new ecosystem health dimension files authored (Coverage, Consistency, Completeness, Token Efficiency, Freshness). Ecosystem README index updated. Each file documents the measurement approach and related anti-patterns. | DS-EH-COV, DS-EH-CONS, DS-EH-COMP, DS-EH-TOK, DS-EH-FRESH |
+| 0.0.0-scaffold | 2026-02-08 | Phase D.7 complete: 5 new calibration specimen files authored (Pydantic 90, Vercel SDK 90, Shadcn UI 89, Cursor 42, NVIDIA 24). Calibration README index updated. Full quality spectrum coverage from Critical to Exemplary. Total registry entries: 144. Phase D complete. | DS-CS-002 through DS-CS-006 (5 new) |

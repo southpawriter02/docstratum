@@ -9,4 +9,7 @@
 
 | DS Identifier | Registry ID | Name | Check ID | Status |
 |---------------|-------------|------|----------|--------|
-| DS-AP-CRIT-001 | AP-CONT-001 | Ghost File | ghost_file | DRAFT |
+| DS-AP-CRIT-001 | AP-CRIT-001 | Ghost File | CHECK-001 | DRAFT |
+| DS-AP-CRIT-002 | AP-CRIT-002 | Structure Chaos | CHECK-002 | DRAFT |
+| DS-AP-CRIT-003 | AP-CRIT-003 | Encoding Disaster | CHECK-003 | DRAFT |
+| DS-AP-CRIT-004 | AP-CRIT-004 | Link Void | CHECK-004 | DRAFT |
