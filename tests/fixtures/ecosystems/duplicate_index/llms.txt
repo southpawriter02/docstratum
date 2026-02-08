@@ -1,0 +1,18 @@
+# Multi-Tenant SaaS
+
+> Multi-tenant Software-as-a-Service platform documentation - Duplicate Index.
+
+## Getting Started
+
+- [Installation Guide](https://example.com/install): Complete setup instructions
+- [User Guide](https://example.com/guide): How to use the platform
+
+## API
+
+- [REST API](https://api.example.com/docs): API endpoint documentation
+- [SDK Reference](https://example.com/sdk): Official SDKs for popular languages
+
+## Additional Resources
+
+- [Changelog](https://example.com/changelog): Version history and updates
+- [Security](https://example.com/security): Security best practices

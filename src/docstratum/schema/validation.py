@@ -55,6 +55,13 @@ class ValidationDiagnostic(BaseModel):
     triggers a note. Includes the diagnostic code, source location,
     context snippet, and remediation hint.
 
+    [v0.0.7] Ecosystem pivot adds two optional fields (``source_file`` and
+    ``related_file``) to support cross-file diagnostics. When a link in
+    llms.txt points to a content page that doesn't exist, the diagnostic
+    needs to identify both the source file (where the broken link lives) and
+    the related file (the missing target). These fields are None for
+    single-file diagnostics, preserving full backward compatibility.
+
     Attributes:
         code: The DiagnosticCode enum value (e.g., E001_NO_H1_TITLE).
         severity: Derived from the code prefix (ERROR, WARNING, INFO).
@@ -65,6 +72,11 @@ class ValidationDiagnostic(BaseModel):
         context: Snippet of the surrounding source text for display.
         level: Which validation level this diagnostic belongs to.
         check_id: The v0.0.4 check ID (e.g., "STR-001", "CNT-007").
+        source_file: [v0.0.7] Which file this diagnostic came from (for
+                     ecosystem context). None in single-file mode.
+        related_file: [v0.0.7] Which other file is involved (for cross-file
+                      issues like W012 broken cross-file links). None for
+                      single-file diagnostics.
 
     Example:
         diagnostic = ValidationDiagnostic(
@@ -76,8 +88,11 @@ class ValidationDiagnostic(BaseModel):
             level=ValidationLevel.L1_STRUCTURAL,
             check_id="STR-002",
         )
+
+    Traces to: v0.0.7 §4.2 (ValidationDiagnostic — Cross-File Context)
     """
 
+    # ── Original fields (unchanged) ──────────────────────────────────
     code: DiagnosticCode = Field(
         description="Diagnostic code from the error code registry.",
     )
@@ -112,6 +127,24 @@ class ValidationDiagnostic(BaseModel):
     check_id: str | None = Field(
         default=None,
         description="v0.0.4 check ID (e.g., 'STR-001', 'CNT-007', 'CHECK-011').",
+    )
+
+    # ── [v0.0.7] Ecosystem extension fields (optional, backward-compatible) ──
+    source_file: str | None = Field(
+        default=None,
+        description=(
+            "[v0.0.7] Filename of the file that produced this diagnostic. "
+            "None in single-file mode where the source is implicit. "
+            "Populated by the ecosystem pipeline for cross-file diagnostics."
+        ),
+    )
+    related_file: str | None = Field(
+        default=None,
+        description=(
+            "[v0.0.7] Filename of the related file involved in a cross-file "
+            "issue (e.g., the missing target of a broken link). None for "
+            "single-file diagnostics."
+        ),
     )
 
 

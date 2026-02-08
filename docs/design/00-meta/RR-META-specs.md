@@ -297,4 +297,50 @@ DocStratum should:
 
 ---
 
-Let me know if you'd like to export this as Markdown or Notion-compatible format for integration.
+# [v0.0.7] Ecosystem & Quality Standard Specifications
+
+> **Added:** 2026-02-07. These standalone specifications were produced during the ecosystem pivot analysis, extending DocStratum's scope from single-file validator to ecosystem-level documentation quality platform.
+
+## 📘 v0.0.6 — Platinum Standard Definition
+
+### 🔍 Overview
+
+Defines the complete validation standard that DocStratum measures against. The original llms.txt specification provides approximately 10 guidelines — insufficient for a comprehensive quality validator. This document establishes a 30-criterion, 5-level quality framework (L0 Parseable → L1 Structural → L2 Content Quality → L3 Best Practices → L4 Exemplary) with explicit provenance for every criterion, mapping to existing diagnostic codes, anti-patterns, and quality dimensions.
+
+### 🧾 Key Contributions
+
+- **5 quality levels** with measurable criteria at each level
+- **30 total criteria** — subsumes the original spec at L1, extends far beyond at L3–L4
+- **Provenance chain** — every criterion traces to a research phase document
+- **Maps to existing infrastructure** — diagnostic codes, anti-patterns, quality scoring dimensions
+
+---
+
+## 📘 v0.0.7 — Ecosystem Pivot Specification
+
+### 🔍 Overview
+
+Defines the architectural pivot from single-file validator to ecosystem-level documentation quality platform. Introduces a 3-layer ecosystem model (Navigation → Content → Aggregate), 6 new schema entities, 12 new diagnostic codes, 6 ecosystem anti-patterns, a 5-stage pipeline, and a 4-phase migration plan. 100% backward compatible — single-file input produces byte-identical output.
+
+### 🧾 Key Contributions
+
+- **3-layer ecosystem model:** Navigation (llms.txt index), Content (individual .md pages), Aggregate (llms-full.txt)
+- **6 new schema entities:** DocumentEcosystem, EcosystemFile, FileRelationship, EcosystemScore, EcosystemHealthDimension, LinkRelationship
+- **12 new diagnostic codes** (E009–E010, W012–W018, I008–I010) — total now 38
+- **6 ecosystem anti-patterns** (AP_ECO_001–006) — total now 28
+- **5-stage pipeline:** Discovery → Per-File Validation → Relationship Mapping → Ecosystem Validation → Ecosystem Scoring
+- **4-phase migration plan:** Design Docs → Schema Extension → Pipeline Extension → Test Infrastructure
+- **Backward compatibility:** single-file mode produces byte-identical output to pre-pivot design
+
+---
+
+# 📌 Summary Table (Updated)
+
+| Sub-Page | Key Focus | Delivered Content |
+| --- | --- | --- |
+| **v0.0.1a** | Grammar & Parsing | Formal grammar, parsing pseudocode, edge-case handling |
+| **v0.0.1b** | Spec Gaps & Impacts | Real-world implications of 8 spec gaps, schema extension justifications |
+| **v0.0.1c** | Processing Methods | Comparative analysis of 4 methods, FastHTML vs alternatives |
+| **v0.0.1d** | Standards Interplay | How llms.txt relates to robots.txt, sitemap.xml, humans.txt; positioning strategy |
+| **[v0.0.7] v0.0.6** | Platinum Standard | 30-criterion, 5-level quality framework for llms.txt validation |
+| **[v0.0.7] v0.0.7** | Ecosystem Pivot | 3-layer ecosystem model, 6 schema entities, 12 diagnostic codes, 5-stage pipeline |

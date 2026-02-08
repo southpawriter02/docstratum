@@ -7,7 +7,8 @@ Model Categories:
     Parsed models       What an existing llms.txt file contains (Markdown AST)
     Validation models   What the validator reports (diagnostics, levels)
     Quality models      How good the file is (composite score, grades)
-    Classification      What type of document it is (Type 1 vs. Type 2)
+    Classification      What type of document it is (Type 1–4)
+    Ecosystem models    [v0.0.7] Documentation ecosystem entities and scoring
     Enrichment models   DocStratum-extended schema (concepts, few-shot, instructions)
     Constants           Canonical section names, token budget tiers, check IDs
 """
@@ -33,7 +34,15 @@ from docstratum.schema.constants import (
     TokenBudgetTier,
 )
 from docstratum.schema.diagnostics import DiagnosticCode, Severity
+from docstratum.schema.ecosystem import (
+    DocumentEcosystem,
+    EcosystemFile,
+    EcosystemHealthDimension,
+    EcosystemScore,
+    FileRelationship,
+)
 from docstratum.schema.parsed import (
+    LinkRelationship,
     ParsedBlockquote,
     ParsedLink,
     ParsedLlmsTxt,
@@ -52,6 +61,7 @@ from docstratum.schema.validation import (
 )
 
 __all__ = [
+    # Constants
     "ANTI_PATTERN_REGISTRY",
     "CANONICAL_SECTION_ORDER",
     "SECTION_NAME_ALIASES",
@@ -64,21 +74,33 @@ __all__ = [
     "AntiPatternEntry",
     "AntiPatternID",
     "CanonicalSectionName",
+    "TokenBudgetTier",
+    # Diagnostics
     "DiagnosticCode",
-    "DimensionScore",
+    "Severity",
+    # Classification
     "DocumentClassification",
     "DocumentType",
+    "SizeTier",
+    # Parsed models
+    "LinkRelationship",
     "ParsedBlockquote",
     "ParsedLink",
     "ParsedLlmsTxt",
     "ParsedSection",
+    # Quality models
+    "DimensionScore",
     "QualityDimension",
     "QualityGrade",
     "QualityScore",
-    "Severity",
-    "SizeTier",
-    "TokenBudgetTier",
+    # Validation models
     "ValidationDiagnostic",
     "ValidationLevel",
     "ValidationResult",
+    # [v0.0.7] Ecosystem models
+    "DocumentEcosystem",
+    "EcosystemFile",
+    "EcosystemHealthDimension",
+    "EcosystemScore",
+    "FileRelationship",
 ]

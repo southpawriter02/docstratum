@@ -4,6 +4,14 @@
 
 ---
 
+> **REVISION NOTICE — v0.0.7 Ecosystem Pivot (2026-02-07)**
+>
+> This document was revised following the strategic pivot defined in `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md`. A new module (Section 10: Ecosystem Discovery & Validation) was added containing 17 functional requirements (FR-069 through FR-085). Changes are marked with `[v0.0.7]` tags. Original requirements (FR-001 through FR-068) are unchanged.
+>
+> **Impact summary:** FR count 68 → 85. Module count 7 → 8. MUST count 32 → 45. SHOULD count 29 → 33. COULD count unchanged at 7. Coverage matrix updated.
+
+---
+
 ## Sub-Part Overview
 
 This sub-part converts the collective findings from four completed research phases — v0.0.1 (Specification Deep Dive), v0.0.2 (Wild Examples Audit), v0.0.3 (Ecosystem Survey), and v0.0.4 (Best Practices Synthesis) — into 68 formally identified functional requirements (FR-001 through FR-068). Requirements are organized across 7 software modules (Schema & Validation, Content Structure, Parser & Loader, Context Builder, Agent Integration, A/B Testing Harness, and Demo Layer) plus 3 cross-module concerns. Each requirement carries a unique ID, MoSCoW priority, acceptance test, research source trace, and target implementation module — forming a complete traceability chain from research evidence through specification to implementation target.
@@ -256,16 +264,67 @@ Create a user-friendly Streamlit demo application that showcases DocStratum's va
 
 ---
 
-## 10. Requirement Coverage Matrix
+## [v0.0.7] 10. Ecosystem Discovery & Validation Module (FR-069 to FR-085)
+
+> **Added:** 2026-02-07 per v0.0.7 Ecosystem Pivot Specification.
+> **Rationale:** DocStratum's scope expanded from single-file validator to ecosystem-level documentation quality platform. These 17 requirements define the ecosystem layer that wraps the existing per-file pipeline.
+> **Source:** v0.0.6 (Platinum Standard Definition), v0.0.7 (Ecosystem Pivot Specification)
+> **Backward Compatibility:** All ecosystem FRs are additive. A single-file input MUST produce identical output to the pre-pivot design (see FR-083).
+
+### 10.1 Ecosystem Schema Models (FR-069 to FR-073)
+
+| ID | Requirement | Priority | Acceptance Test | Source | Target Module |
+|---|---|---|---|---|---|
+| FR-069 | `DocumentEcosystem` model: Top-level Pydantic model representing a complete documentation ecosystem with a root index file, file manifest, relationship graph, and aggregate health score | MUST | Instantiate `DocumentEcosystem` with 1 index + 2 content pages; verify `file_count == 3`, `index_file` returns the llms.txt, `content_pages` returns 2 pages, serialization round-trips to JSON | v0.0.7 (Section 4.3) | v0.1.2 (EcosystemSchema) |
+| FR-070 | `EcosystemFile` model: Wraps a parsed file with ecosystem-level metadata including file ID, type classification, per-file validation results, per-file quality score, and relationship list | MUST | Create `EcosystemFile` from existing `ParsedLlmsTxt`; verify `file_id` is unique UUID, `file_type` matches classification, `validation` and `quality` fields accept existing model instances | v0.0.7 (Section 4.3) | v0.1.2 (EcosystemSchema) |
+| FR-071 | `FileRelationship` model: Represents a directed relationship between two ecosystem files (INDEXES, REFERENCES, AGGREGATES, EXTERNAL) with source line, target URL, and resolution status | MUST | Create relationship from llms.txt link → content page; verify `relationship_type == INDEXES`, `is_resolved == True` when target exists, `is_resolved == False` when target missing | v0.0.7 (Section 4.3) | v0.1.2 (EcosystemSchema) |
+| FR-072 | `EcosystemScore` model: Aggregate health score with per-dimension breakdown (Completeness, Coverage), per-file score map, and overall grade using existing `QualityGrade` enum | MUST | Score a 3-file ecosystem; verify `total_score` in 0–100 range, `grade` is valid `QualityGrade`, `dimensions` contains both `COMPLETENESS` and `COVERAGE` entries, `per_file_scores` has 3 entries | v0.0.7 (Section 4.3) | v0.1.2 (EcosystemSchema) |
+| FR-073 | `LinkRelationship` enum and `ParsedLink` extension: Add optional `relationship`, `resolves_to`, and `target_file_type` fields to `ParsedLink` with safe defaults that preserve backward compatibility | MUST | Create `ParsedLink` without new fields — verify identical behavior to pre-pivot; create `ParsedLink` with `relationship=INDEXES` — verify field persists through serialization; existing tests MUST pass unchanged | v0.0.7 (Section 4.2) | v0.1.2 (ParsedModels) |
+
+### 10.2 Ecosystem Discovery (FR-074 to FR-076)
+
+| ID | Requirement | Priority | Acceptance Test | Source | Target Module |
+|---|---|---|---|---|---|
+| FR-074 | Directory-based ecosystem discovery: Given a project root directory, scan for `llms.txt` (required), `llms-full.txt` (optional), and `.md` files linked from the index; build file manifest | MUST | Point discovery at test directory containing llms.txt + 3 .md files + llms-full.txt; verify manifest contains all 5 files; point at directory with only llms.txt; verify manifest contains 1 file with I010 diagnostic | v0.0.7 (Section 7.1) | v0.3.1 (EcosystemDiscovery) |
+| FR-075 | File type classification for ecosystem members: Classify discovered files as TYPE_1_INDEX, TYPE_2_FULL, TYPE_3_CONTENT_PAGE, or TYPE_4_INSTRUCTIONS using filename patterns and content heuristics | SHOULD | Discover 5-file ecosystem; verify llms.txt classified as TYPE_1_INDEX, llms-full.txt as TYPE_2_FULL, linked .md files as TYPE_3_CONTENT_PAGE; verify llms-instructions.txt (if present) classified as TYPE_4_INSTRUCTIONS | v0.0.7 (Section 3.2) | v0.3.1 (EcosystemClassifier) |
+| FR-076 | Link extraction and relationship mapping: Extract all links from the index file, classify each as INDEXES (internal content page), REFERENCES (cross-page), AGGREGATES (index → full), or EXTERNAL (outside ecosystem), and build the `FileRelationship` graph | MUST | Index file with 5 links (3 internal .md, 1 external URL, 1 to llms-full.txt); verify 3 INDEXES relationships, 1 EXTERNAL, 1 AGGREGATES; verify graph has correct source/target file IDs | v0.0.7 (Section 3.3) | v0.3.1 (RelationshipMapper) |
+
+### 10.3 Ecosystem Validation (FR-077 to FR-080)
+
+| ID | Requirement | Priority | Acceptance Test | Source | Target Module |
+|---|---|---|---|---|---|
+| FR-077 | Cross-file link resolution: For each INDEXES and AGGREGATES relationship, verify the target file exists and is accessible; flag unresolved links as W012 (BROKEN_CROSS_FILE_LINK) with both source and target file context in the diagnostic | MUST | Ecosystem with 3 links: 2 resolved, 1 broken; verify 1 W012 diagnostic emitted with `source_file` and `related_file` populated; verify resolved links marked `is_resolved == True` | v0.0.7 (Section 5.2) | v0.2.7 (EcosystemValidator) |
+| FR-078 | Ecosystem-level diagnostic codes: Implement all 12 new diagnostic codes (E009–E010, W012–W018, I008–I010) with severity, message, and remediation text following existing `DiagnosticCode` patterns | MUST | Enumerate all 12 new codes; verify each has correct severity prefix (E=ERROR, W=WARNING, I=INFO); verify `.message` and `.remediation` properties return non-empty strings; verify `DiagnosticCode` enum total is 38 | v0.0.7 (Section 5) | v0.2.7 (DiagnosticCodes) |
+| FR-079 | Ecosystem anti-pattern detection: Implement detection for 6 ecosystem anti-patterns (AP_ECO_001 through AP_ECO_006) — Index Island, Phantom Links, Shadow Aggregate, Duplicate Ecosystem, Token Black Hole, Orphan Nursery | SHOULD | Run anti-pattern detection on 6 test fixtures (one per pattern); verify each fixture triggers exactly its target anti-pattern; verify clean ecosystem triggers zero ecosystem anti-patterns | v0.0.7 (Section 6.2) | v0.2.7 (EcosystemAntiPatterns) |
+| FR-080 | Per-file validation within ecosystem: Run the existing L0–L4 single-file validation pipeline on each discovered file and store results in `EcosystemFile.validation` and `EcosystemFile.quality`; existing pipeline behavior MUST be unchanged | MUST | Validate a 3-file ecosystem; verify each file has its own `ValidationResult` and `QualityScore`; compare per-file results with standalone single-file validation — output MUST be identical | v0.0.7 (Section 7.1) | v0.2.7 (EcosystemPipeline) |
+
+### 10.4 Ecosystem Scoring (FR-081 to FR-082)
+
+| ID | Requirement | Priority | Acceptance Test | Source | Target Module |
+|---|---|---|---|---|---|
+| FR-081 | Ecosystem Completeness scoring: Calculate a 0–100 score measuring what percentage of internal links (INDEXES, AGGREGATES) resolve to accessible, healthy files; weight by link importance (index links > cross-reference links) | MUST | Ecosystem with 10 links: 8 resolved (6 healthy, 2 with warnings), 2 broken; verify Completeness score reflects resolution rate and target health; verify 100% resolution → score ≥ 90; verify 50% resolution → score ≤ 50 | v0.0.7 (Section 4.3) | v0.2.8 (EcosystemScorer) |
+| FR-082 | Ecosystem Coverage scoring: Calculate a 0–100 score measuring how many of the 11 canonical section categories are represented across the ecosystem (not just within the index file); score rewards breadth of documentation coverage | SHOULD | Ecosystem covering 8 of 11 canonical categories → score ~73; ecosystem covering 11 of 11 → score ≥ 95; ecosystem with only 2 categories → score ≤ 25; verify score is independent of per-file quality scores | v0.0.7 (Section 4.3) | v0.2.8 (EcosystemScorer) |
+
+### 10.5 Ecosystem Integration (FR-083 to FR-085)
+
+| ID | Requirement | Priority | Acceptance Test | Source | Target Module |
+|---|---|---|---|---|---|
+| FR-083 | Backward-compatible single-file mode: When a single llms.txt file is provided (no project directory), the ecosystem layer wraps it transparently — discovery finds 1 file, per-file validation runs identically, I010 is emitted, ecosystem score reflects single-file limitations; ALL existing tests MUST pass without modification | MUST | Run full ecosystem pipeline on single file; diff per-file `ValidationResult` and `QualityScore` against standalone pipeline output — MUST be byte-identical; verify I010 (ECOSYSTEM_SINGLE_FILE) emitted; verify no E009 (no index) since the single file IS the index | v0.0.7 (Section 7.2) | v0.2.7 (EcosystemPipeline) |
+| FR-084 | Ecosystem validation pipeline orchestration: Implement the 5-stage pipeline (Discovery → Per-File Validation → Relationship Mapping → Ecosystem Validation → Ecosystem Scoring) with each stage producing typed intermediate results; pipeline MUST be stoppable after any stage | MUST | Run pipeline on 5-file ecosystem; verify all 5 stages execute in order; stop after stage 3 (Relationship Mapping); verify stages 4–5 did not execute; verify partial results are available for stages 1–3 | v0.0.7 (Section 7.1) | v0.2.7 (EcosystemPipeline) |
+| FR-085 | Ecosystem view in Streamlit demo: Add an "Ecosystem" tab or view to the Streamlit UI showing: file manifest with per-file grades, relationship graph (simple list or diagram), ecosystem health score with dimensional breakdown, and list of ecosystem-level diagnostics | SHOULD | Load ecosystem in demo; verify all discovered files listed with grades; verify relationships displayed; verify ecosystem score shown with Completeness and Coverage breakdowns; verify ecosystem diagnostics (W012, I010, etc.) displayed | v0.0.7 (Section 7.1) | v0.6.0 (EcosystemView) |
+
+---
+
+## [v0.0.7] 11. Requirement Coverage Matrix (Revised)
 
 ### By MoSCoW Category
 
-| Category | Count | FR IDs |
-|---|---|---|
-| **MUST** | 32 | FR-001–004, FR-007–008, FR-011, FR-013, FR-016, FR-020, FR-024–027, FR-032–035, FR-039–042, FR-047–048, FR-051–053, FR-055–057, FR-059–060 |
-| **SHOULD** | 29 | FR-005–006, FR-009–010, FR-012, FR-014–015, FR-017–019, FR-021, FR-023, FR-028–030, FR-036–037, FR-043–046, FR-049, FR-054, FR-058, FR-061, FR-063–064, FR-066–067 |
-| **COULD** | 7 | FR-022, FR-031, FR-038, FR-050, FR-062, FR-065, FR-068 |
-| **TOTAL** | 68 | — |
+| Category | Count (Original) | Count (v0.0.7 Revised) | FR IDs |
+|---|---|---|---|
+| **MUST** | 32 | 45 | FR-001–004, FR-007–008, FR-011, FR-013, FR-016, FR-020, FR-024–027, FR-032–035, FR-039–042, FR-047–048, FR-051–053, FR-055–057, FR-059–060, **[v0.0.7]** FR-069–074, FR-076–078, FR-080–081, FR-083–084 |
+| **SHOULD** | 29 | 33 | FR-005–006, FR-009–010, FR-012, FR-014–015, FR-017–019, FR-021, FR-023, FR-028–030, FR-036–037, FR-043–046, FR-049, FR-054, FR-058, FR-061, FR-063–064, FR-066–067, **[v0.0.7]** FR-075, FR-079, FR-082, FR-085 |
+| **COULD** | 7 | 7 | FR-022, FR-031, FR-038, FR-050, FR-062, FR-065, FR-068 |
+| **TOTAL** | 68 | **85** | — |
 
 ### By Module
 
@@ -328,12 +387,14 @@ FR-034 (Hybrid pipeline)
 
 ## Deliverables
 
-- [x] 68 formally identified functional requirements (FR-001 through FR-068)
-- [x] Requirements organized by 7 software modules
+- [x] 85 formally identified functional requirements (FR-001 through FR-085) **[v0.0.7: was 68]**
+- [x] Requirements organized by 8 software modules **[v0.0.7: was 7, added Ecosystem Discovery & Validation]**
 - [x] Each requirement includes: ID, description, priority, acceptance test, source, target module
 - [x] Traceability matrix connecting research to requirements and requirements to implementation
 - [x] MoSCoW prioritization across all requirements
 - [x] Coverage matrix showing distribution by priority and module
+- [x] **[v0.0.7]** 17 ecosystem-level functional requirements (FR-069 through FR-085) traced to v0.0.6 and v0.0.7 research
+- [x] **[v0.0.7]** Backward compatibility requirement (FR-083) ensuring single-file mode is byte-identical
 
 ---
 

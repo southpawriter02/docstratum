@@ -27,17 +27,36 @@ class DocumentType(StrEnum):
     Based on the bimodal distribution observed across 11 specimens (v0.0.1a).
     No specimens exist in the 225 KB - 1.3 MB range, confirming a natural boundary.
 
+    [v0.0.7] Ecosystem pivot adds two new document types for files discovered
+    within a documentation ecosystem: individual content pages linked from the
+    index (TYPE_3_CONTENT_PAGE) and explicit AI-agent instruction files
+    (TYPE_4_INSTRUCTIONS). These new types determine which validation rule set
+    the pipeline applies to each file.
+
     Attributes:
         TYPE_1_INDEX: Curated link catalog following the spec's intended format.
                       Receives full ABNF-based structural validation.
         TYPE_2_FULL: Inline documentation dump (llms-full.txt convention).
                      Receives size-appropriate diagnostics only.
         UNKNOWN: Classification could not be determined (e.g., empty file).
+        TYPE_3_CONTENT_PAGE: [v0.0.7] Individual Markdown content page linked
+                             from the index file. Receives content page
+                             validation rules (CP-01 through CP-05).
+        TYPE_4_INSTRUCTIONS: [v0.0.7] Explicit behavioral guidance file for AI
+                             agents (e.g., llms-instructions.txt). Receives
+                             instruction-specific validation rules.
+
+    Traces to: v0.0.7 §4.2 (DocumentType — New Values)
     """
 
+    # ── Original types (unchanged) ───────────────────────────────────
     TYPE_1_INDEX = "type_1_index"
     TYPE_2_FULL = "type_2_full"
     UNKNOWN = "unknown"
+
+    # ── [v0.0.7] Ecosystem types ─────────────────────────────────────
+    TYPE_3_CONTENT_PAGE = "type_3_content_page"
+    TYPE_4_INSTRUCTIONS = "type_4_instructions"
 
 
 class SizeTier(StrEnum):

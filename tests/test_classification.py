@@ -14,11 +14,13 @@ from docstratum.schema.classification import (
 
 @pytest.mark.unit
 def test_document_type_values():
-    """Verify DocumentType has exactly 3 members with correct string values."""
-    assert len(DocumentType) == 3
+    """Verify DocumentType has exactly 5 members with correct string values."""
+    assert len(DocumentType) == 5
     assert DocumentType.TYPE_1_INDEX == "type_1_index"
     assert DocumentType.TYPE_2_FULL == "type_2_full"
     assert DocumentType.UNKNOWN == "unknown"
+    assert DocumentType.TYPE_3_CONTENT_PAGE == "type_3_content_page"
+    assert DocumentType.TYPE_4_INSTRUCTIONS == "type_4_instructions"
 
 
 @pytest.mark.unit

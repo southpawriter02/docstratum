@@ -9,6 +9,14 @@
 
 ---
 
+> **REVISION NOTICE — v0.0.7 Ecosystem Pivot (2026-02-07)**
+>
+> This document was revised following the strategic pivot defined in `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md`. A new strategic initiative (SI6: Ecosystem-Level Documentation Quality Validation) was added to §4.3, and Phase 2 roadmap (§5.3) was updated with an ecosystem validation item. The opportunity and gap totals were updated accordingly. Changes are marked with `[v0.0.7]` tags. Original content is unchanged.
+>
+> **Impact summary:** Strategic initiatives 5 → 6. Opportunity total 20 → 21. Phase 2 roadmap expanded with P2.6 (Ecosystem Validation). Critical path extended: P1.1 → P2.1 → P2.6 → P2.3 → P3.1.
+
+---
+
 ## Executive Summary
 
 This document synthesizes all findings from v0.0.3a (Tools & Libraries Inventory), v0.0.3b (Key Players & Community Pulse), and v0.0.3c (Related Standards & Competing Approaches) into a unified gap analysis and prioritized opportunity map for DocStratum.
@@ -289,6 +297,7 @@ These are the core capabilities DocStratum should build.
 | SI3 | **Build quality scoring system** | T4, A2, A8 | Implements the 4-dimension scoring framework from v0.0.2b. Provides measurable ROI evidence for llms.txt maintenance (addressing barrier A2). Enables ecosystem-wide quality benchmarking. | SI1 (validation feeds scoring) |
 | SI4 | **Expose enriched output via MCP server** | R1, R2 | The validated consumption pathway is MCP → AI coding assistants. DocStratum's enriched llms.txt should be directly accessible as an MCP resource, not just a static file. Addresses Context7 competition by offering open-standard alternative. | SI2 (enrichment produces the content to serve) |
 | SI5 | **Build freshness monitoring and staleness detection** | T8, A4, S3 | Addresses the architectural staleness problem that critics (Redocly, Vercel) identify and that competing approaches (Context7, Vercel inline) solve differently. CI/CD integration makes this operationally automated. | SI1 (validation as monitoring baseline) |
+| **[v0.0.7]** SI6 | **Build ecosystem-level documentation quality validation** | T1, T2, T4, A8 | Zero existing tools validate across the full documentation ecosystem (llms.txt + llms-full.txt + content pages). DocStratum's 3-layer ecosystem model (Navigation, Content, Aggregate) with cross-file link resolution, relationship mapping, and ecosystem health scoring creates a new product category: documentation ecosystem governance. This directly addresses the gap between single-file validators and the reality that projects publish multi-file AI-facing documentation. | SI1 (per-file validation), SI3 (quality scoring for individual files) |
 
 ### 4.4 Foundation Work (High Effort, Moderate Impact)
 
@@ -356,6 +365,7 @@ The roadmap is organized into three phases aligned with DocStratum's development
 | P2.3 | Build enrichment pipeline MVP (SI2) | T2, A8 | v0.0.1c pipeline: validate → filter → fetch → enrich → wrap → budget | P2.1 (validation as first stage) |
 | P2.4 | Build freshness monitoring (SI5) | T8, A4, S3 | Link rot detection, content drift detection, staleness scoring | P2.1 (validation as baseline) |
 | P2.5 | GitHub Action / CI/CD integration | T3 | `docstratum-validate` as GitHub Action, GitLab CI template | P2.1 (CLI tool) |
+| **[v0.0.7]** P2.6 | Build ecosystem-level validation (SI6) | T1, T2, T4, A8 | Multi-file discovery, cross-file link resolution, ecosystem health scoring (v0.0.7 architecture) | P2.1 (per-file validation), P2.2 (quality scoring) |
 
 **Phase 2 success criteria:**
 
@@ -363,6 +373,7 @@ The roadmap is organized into three phases aligned with DocStratum's development
 - Quality scoring produces reproducible scores for the gold-standard implementations from v0.0.2
 - Enrichment pipeline produces measurably richer output than any existing tool
 - CI/CD integration blocks builds on validation failure
+- **[v0.0.7]** Ecosystem validation discovers multi-file documentation, resolves cross-file links, and produces meaningful health scores
 
 ---
 
@@ -628,14 +639,14 @@ The following capabilities have ZERO competition in the current ecosystem (verif
 - [x] 25+ unique gap items with severity assessments (25 gaps after deduplication)
 - [x] Gap deduplication matrix showing cross-document overlaps (§3.1)
 - [x] Prioritized roadmap with 3 phases and dependency chain (§5)
-- [x] 5 quick wins, 5 strategic initiatives, 4 foundation items, 6 deferred items (§4)
+- [x] 5 quick wins, 6 strategic initiatives **[v0.0.7: was 5]**, 4 foundation items, 6 deferred items (§4)
 - [x] Decision framework: "Should DocStratum Build This?" (§6)
 - [x] Explicit "What NOT to Build" guidance (§6.2)
 - [x] Risk assessment — 5 execution risks + 5 market risks with evidence sources (§7)
 - [x] Success metrics tied to phases, avoiding vanity metrics (§8)
 - [x] DocStratum positioning summary with integration architecture (§9)
 - [x] Honest assessment of limitations (§9.4)
-- [x] Critical path identified: grammar → validator → enrichment → MCP server (§5.5)
+- [x] Critical path identified: grammar → validator → ecosystem validation → enrichment → MCP server (§5.5) **[v0.0.7: ecosystem validation added to critical path]**
 - [x] All data traced to specific v0.0.3a-c findings with section references
 - [x] All fabricated template data replaced with verified findings
 
@@ -664,7 +675,7 @@ The following capabilities have ZERO competition in the current ecosystem (verif
 
 **Should Have:**
 
-- [x] 30+ gaps and opportunities — **25 gaps + 20 opportunities = 45+ items**
+- [x] 30+ gaps and opportunities — **25 gaps + 21 opportunities = 46+ items** **[v0.0.7: was 20 opportunities]**
 - [x] Competitive response scenarios — **5 competitive risks with mitigations in §7.2**
 - [x] Dependency chain visualization — **§5.5 ASCII diagram**
 - [x] Executive summary with key recommendations — **5 key findings in Executive Summary**

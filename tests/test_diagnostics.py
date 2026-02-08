@@ -7,17 +7,17 @@ from docstratum.schema.diagnostics import DiagnosticCode, Severity
 
 @pytest.mark.unit
 def test_diagnostic_code_counts():
-    """Verify exact count of diagnostic codes by type (8E/11W/7I)."""
+    """Verify exact count of diagnostic codes by type (10E/18W/10I)."""
     errors = [c for c in DiagnosticCode if c.severity == Severity.ERROR]
     warnings = [c for c in DiagnosticCode if c.severity == Severity.WARNING]
     infos = [c for c in DiagnosticCode if c.severity == Severity.INFO]
 
-    assert len(errors) == 8, f"Expected 8 errors, found {len(errors)}"
-    assert len(warnings) == 11, f"Expected 11 warnings, found {len(warnings)}"
-    assert len(infos) == 7, f"Expected 7 infos, found {len(infos)}"
+    assert len(errors) == 10, f"Expected 10 errors, found {len(errors)}"
+    assert len(warnings) == 18, f"Expected 18 warnings, found {len(warnings)}"
+    assert len(infos) == 10, f"Expected 10 infos, found {len(infos)}"
     assert (
-        len(DiagnosticCode) == 26
-    ), f"Expected 26 total codes, found {len(DiagnosticCode)}"
+        len(DiagnosticCode) == 38
+    ), f"Expected 38 total codes, found {len(DiagnosticCode)}"
 
 
 @pytest.mark.unit

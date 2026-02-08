@@ -1,0 +1,38 @@
+# DocStratum Project - Complete Documentation
+
+> Complete aggregated documentation for the DocStratum documentation analysis platform.
+
+## Getting Started
+
+Install DocStratum with pip:
+
+```bash
+pip install docstratum
+```
+
+Initialize a project:
+
+```bash
+docstratum init my-project
+```
+
+## API Reference
+
+### Core Functions
+
+- `analyze(ecosystem_path)` - Analyze a documentation ecosystem
+- `validate(config)` - Validate ecosystem configuration
+- `measure(metrics)` - Calculate documentation metrics
+
+## Configuration
+
+Set environment variables in `.env`:
+
+```
+DOCSTRATUM_LOG_LEVEL=INFO
+DOCSTRATUM_CACHE_DIR=/tmp/docstratum
+```
+
+## Advanced Topics
+
+The DocStratum ecosystem analyzer performs deep semantic analysis on documentation structure and content quality.

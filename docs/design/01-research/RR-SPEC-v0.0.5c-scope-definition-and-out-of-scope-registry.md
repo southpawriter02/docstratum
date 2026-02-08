@@ -4,6 +4,14 @@
 
 ---
 
+> **REVISION NOTICE — v0.0.7 Ecosystem Pivot (2026-02-07)**
+>
+> This document was revised following the strategic pivot defined in `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md`. DocStratum's scope expanded from **single-file llms.txt validator** to **ecosystem-level documentation quality platform**. Changes are marked with `[v0.0.7]` tags for traceability. The original scope boundaries (v0.6.0 MVP as single-file validator) remain valid as the *foundation* — the ecosystem layer is additive, not a replacement. The scope change was processed through the Part 5 Scope Change Management Process; see Part 14 (Scope Change Log) for the formal record.
+>
+> **Impact summary:** 3 sections revised (Parts 1, 2, 4), 1 section added (Part 14), 1 OOS item reclassified (OOS-G4 partial), 8 new OOS items added (Category H), 3 deferred features added. Total OOS count: 32 → 40.
+
+---
+
 ## Sub-Part Overview
 
 This sub-part complements v0.0.5a (Functional Requirements) and v0.0.5b (Non-Functional Requirements & Constraints) by drawing a hard perimeter around the v0.6.0 MVP — defining not only what DocStratum IS, but rigorously cataloging what it IS NOT and providing operational tooling to keep it that way during implementation. Drawing on scope risks surfaced across all four research phases — v0.0.1 (specification gaps inviting feature creep), v0.0.2 (wild variation suggesting unbounded scope), v0.0.3 (75+ ecosystem tools tempting integration sprawl), and v0.0.4 (best practices creating "nice-to-have" gravity) — this document establishes a formal scope defense system comprising 32 out-of-scope items (OOS-A1 through OOS-G5) across 7 exclusion categories, a "Scope Fence" decision tree for real-time feature evaluation, a deferred features registry preserving 11 valuable post-MVP ideas, a 5-step scope change management process, 7 explicit exclusion statements with rationale, and 5 health metrics for ongoing scope monitoring.
@@ -104,13 +112,17 @@ v0.0.5d — Success Criteria & MVP Definition
    - Formal grammar and parser
    - 3-layer context builder (Master Index, Concept Map, Few-Shot Bank)
    - A/B testing harness for agent performance evaluation
-4. **Demonstrates** improved AI agent performance via:
+4. **[v0.0.7] Validates documentation ecosystems** — not just individual files, but the relationships between `llms.txt`, `llms-full.txt`, individual content pages, and instruction files:
+   - Ecosystem discovery (scan a project for all AI-facing documentation)
+   - Cross-file relationship mapping and link resolution
+   - Ecosystem-level health scoring across 5 dimensions (Coverage, Consistency, Completeness, Token Efficiency, Freshness)
+5. **Demonstrates** improved AI agent performance via:
    - Baseline agent (raw llms.txt)
    - Enhanced agent (DocStratum context)
    - Side-by-side comparison in Streamlit UI
-5. **Publishes** everything (code, spec, findings) for community use
+6. **Publishes** everything (code, spec, findings) for community use
 
-### Project Boundaries (v0.6.0 MVP)
+### Project Boundaries (v0.6.0 MVP — Revised v0.0.7)
 
 **By release v0.6.0, the following WILL be complete:**
 
@@ -123,6 +135,13 @@ v0.0.5d — Success Criteria & MVP Definition
 - ✅ 20+ passing A/B test queries with statistical significance
 - ✅ Comprehensive documentation (README, API docs, design docs)
 - ✅ Clean, well-tested code (≥ 80% coverage on core modules)
+- ✅ **[v0.0.7]** Ecosystem-aware schema (models for `DocumentEcosystem`, `EcosystemFile`, `FileRelationship`, `EcosystemScore`)
+- ✅ **[v0.0.7]** Ecosystem discovery (scan project directory for `llms.txt`, `llms-full.txt`, linked `.md` content pages)
+- ✅ **[v0.0.7]** Cross-file link resolution (verify that links in `llms.txt` resolve to actual content within the ecosystem)
+- ✅ **[v0.0.7]** Ecosystem health score (at minimum: Completeness and Coverage dimensions)
+- ✅ **[v0.0.7]** 38 diagnostic codes (26 per-file + 12 ecosystem-level) and 28 anti-patterns (22 per-file + 6 ecosystem)
+
+**[v0.0.7] Note on scope expansion:** The ecosystem features represent an additive layer on top of the single-file validator, not a replacement. The single-file pipeline (L0–L4 validation, 100-point quality score, 26 diagnostic codes) is preserved in full. A user who provides only a single `llms.txt` file receives identical output to the pre-pivot design. The ecosystem features activate when a project directory or multi-file input is provided. This additive property is a hard requirement — see v0.0.7 Section 7.2 (Backward Compatibility).
 
 ### Technology Stack (Fixed)
 
@@ -147,6 +166,8 @@ Category C: Ecosystem Integration (Too many platforms; focus on proof-of-concept
 Category D: Advanced ML/AI (Beyond project goals)
 Category E: Deployment & Infrastructure (Beyond portfolio scope)
 Category F: Historical/Legacy Support (Focus on current standards)
+Category G: Nice-to-Have Features (Deferred for timeline reasons)
+Category H: Ecosystem Scope Boundaries [v0.0.7] (Ecosystem features beyond MVP)
 ```
 
 ---
@@ -219,6 +240,21 @@ Category F: Historical/Legacy Support (Focus on current standards)
 | **OOS-G3** | **Analytics Dashboard** | Web dashboard tracking which concepts/examples are used | Out of scope; portfolio demo doesn't need usage analytics | v1.5+ with usage tracking | Would need: analytics DB, frontend dashboard, privacy handling |
 | **OOS-G4** | **Batch Processing UI** | Web UI for batch-processing multiple llms.txt files | Out of scope; CLI sufficient for batch operations | v1.5+ with web UX | Would need: job queue, background processing, result storage |
 | **OOS-G5** | **Mobile App** | iOS/Android app for accessing llms.txt on mobile | Out of scope; web demo is sufficient | v2.0+ if mobile access is critical | Would need: React Native or native development |
+
+### **[v0.0.7] Category H: Ecosystem Scope Boundaries**
+
+> These items define the outer boundary of the ecosystem pivot. They represent ecosystem features that are valuable but exceed the v0.6.0 MVP budget. The ecosystem features that ARE in scope (discovery, link resolution, basic health scoring) are defined in Part 1 above.
+
+| # | Feature | What It Is | Why Out of Scope | When Feasible | What Would Change |
+|---|---|---|---|---|---|
+| **OOS-H1** | **Full 5-Dimension Ecosystem Scoring** | All 5 ecosystem health dimensions (Coverage, Consistency, Completeness, Token Efficiency, Freshness) fully implemented with calibrated weights | MVP includes 2 dimensions (Completeness, Coverage); remaining 3 require cross-file content analysis that exceeds time budget | v0.7.0 with ecosystem pipeline complete | Would need: content similarity analysis, version metadata extraction, token distribution calculator |
+| **OOS-H2** | **Content Page Validation Rules** | Dedicated validation rule set for individual `.md` content pages (self-containment checks, topic focus, cross-reference integrity) | MVP validates content pages through cross-file link resolution; dedicated rules require per-page NLP analysis | v0.7.0 with content page validator | Would need: per-page parser, self-containment heuristics, topic coherence metrics |
+| **OOS-H3** | **Instruction File Validation** | Dedicated validation for `llms-instructions.txt` files (DO/DON'T pattern detection, behavioral guidance quality checks) | MVP detects instruction sections within llms.txt (I001); standalone instruction files require new parser rules | v0.7.0 with instruction validator | Would need: instruction pattern parser, behavioral guidance quality metrics |
+| **OOS-H4** | **URL Crawl-Based Discovery** | Discover ecosystem files by crawling from a URL (starting at `https://domain.com/llms.txt` and following links) | MVP uses local directory scanning only; URL crawling requires HTTP client, rate limiting, redirect handling | v0.8.0 with web crawling module | Would need: async HTTP client, rate limiter, redirect resolver, robots.txt respect |
+| **OOS-H5** | **Context Compression Scoring** | Calculate a token-efficiency ratio measuring information density per token across the ecosystem | Novel metric with no precedent; requires calibration against ground truth | v1.0+ with compression research | Would need: information-theoretic analysis, ground truth dataset, calibration pipeline |
+| **OOS-H6** | **Ecosystem Report Generation** | Produce a Markdown or HTML report visualizing the ecosystem graph, per-file scores, and remediation recommendations | Valuable but presentation-layer concern; CLI output sufficient for MVP | v0.8.0 with reporting module | Would need: graph visualization, HTML template, report renderer |
+| **OOS-H7** | **Monorepo Sub-Ecosystem Support** | Handle monorepos with multiple independent `llms.txt` files as separate sub-ecosystems within one scan | MVP treats each `llms.txt` as a separate ecosystem root; sub-ecosystem relationships require graph modeling | v1.0+ with monorepo support | Would need: project boundary detection, sub-ecosystem linking, aggregate scoring across sub-ecosystems |
+| **OOS-H8** | **Ecosystem Manifest File** | Accept a `docstratum.json` or `llms-manifest.json` file listing all ecosystem members explicitly, rather than relying on discovery | MVP discovers files automatically; manifest files require spec authoring and community adoption | v1.0+ if community requests it | Would need: manifest schema definition, parser, validation against discovered files |
 
 ---
 
@@ -331,6 +367,9 @@ These are features that were considered valuable but are out of scope for v0.6.0
 | Slack Bot integration | Integration | COULD | 4–6 hours | v1.5+ | Fun but not essential; web demo covers use cases |
 | Performance benchmarking suite | QA | SHOULD | 4–6 hours | v1.5+ | Nice-to-have; basic latency testing covers MVP |
 | LLM fine-tuning | AI | COULD | 20–30 hours | v2.0+ | Advanced; base models sufficient for MVP |
+| **[v0.0.7]** Full ecosystem scoring (5 dimensions) | Ecosystem | SHOULD | 8–12 hours | v0.7.0 | 2 of 5 dimensions in MVP; remaining 3 need content analysis |
+| **[v0.0.7]** Content page validator | Ecosystem | SHOULD | 6–10 hours | v0.7.0 | Per-page validation beyond link resolution |
+| **[v0.0.7]** URL-based ecosystem discovery | Ecosystem | SHOULD | 8–12 hours | v0.8.0 | Web crawling from domain root; local-only in MVP |
 
 ---
 
@@ -422,6 +461,14 @@ Rationale: [Brief explanation]
 7. **Not a machine learning research project**
    - Justification: We use off-the-shelf models; don't do research on new architectures
    - How we handle it: Focus on empirical testing of existing approaches
+
+8. **[v0.0.7] Not a documentation generator or authoring tool**
+   - Justification: DocStratum validates and scores documentation ecosystems; it does not create or edit documentation files. Generation is a fundamentally different product (see OOS-B3).
+   - How we handle it: Provide diagnostic remediations that tell authors *what* to fix; the author makes the fixes.
+
+9. **[v0.0.7] Not a web crawler or documentation scraper**
+   - Justification: MVP ecosystem discovery operates on local directories only. URL-based crawling is deferred to v0.8.0 (OOS-H4). DocStratum does not index the web — it validates what you give it.
+   - How we handle it: Accept local directory paths or explicit file lists as input. URL crawling is a deferred feature with its own complexity budget.
 
 ---
 
@@ -525,7 +572,8 @@ Every out-of-scope item exists in relation to one or more functional requirement
 | E: Deployment | 5 | 3 FRs | CONST-002 (portfolio scope) |
 | F: Legacy | 4 | 4 FRs | NFR-014/015/016 (compatibility constraints) |
 | G: Nice-to-Have | 5 | 6 FRs | CONST-005 (v0.6.0 target), CONST-006 (time budget) |
-| **TOTAL** | **32** | **41 unique FRs referenced** | **All 6 constraints invoked** |
+| **[v0.0.7]** H: Ecosystem Boundaries | 8 | TBD (pending FR-070+ definition in v0.0.5a revision) | CONST-005 (v0.6.0 target), CONST-006 (time budget) |
+| **TOTAL** | **40** | **41+ unique FRs referenced** | **All 6 constraints invoked** |
 
 ---
 
@@ -611,18 +659,21 @@ Every out-of-scope decision is informed by research evidence from v0.0.1–v0.0.
 ## Deliverables
 
 - [x] Clear, explicit in-scope statement (what DocStratum is)
-- [x] 32+ out-of-scope items organized by 7 categories with detailed justifications
+- [x] 40+ out-of-scope items organized by 8 categories with detailed justifications **[v0.0.7: was 32/7]**
 - [x] "Scope Fence" decision tree with 3 worked examples
-- [x] Deferred features registry (11 valuable ideas for future versions with effort estimates)
+- [x] Deferred features registry (14 valuable ideas for future versions with effort estimates) **[v0.0.7: was 11]**
 - [x] Scope change management process (5-step procedure)
-- [x] Explicit exclusions with rationales (7 "what DocStratum is NOT" statements)
+- [x] Explicit exclusions with rationales (9 "what DocStratum is NOT" statements) **[v0.0.7: was 7]**
 - [x] Scope health metrics for monitoring (5 metrics with targets and failure actions)
-- [x] OOS-to-FR traceability matrix mapping all 32 OOS items to 41 unique functional requirements
+- [x] OOS-to-FR traceability matrix mapping all 32 original OOS items to 41 unique functional requirements
 - [x] Research-to-OOS traceability linking 12 key research findings to OOS decisions
 - [x] Inputs from previous sub-parts documented (7 sources mapped to specific outputs)
 - [x] Outputs to next sub-part documented (7 outputs mapped to consumers)
 - [x] Limitations acknowledged with rationale (6 documented limitations)
 - [x] User stories for 3 personas (developer, time-manager, evaluator)
+- [x] **[v0.0.7]** Scope Change Log with formal record of ecosystem pivot (Part 14)
+- [x] **[v0.0.7]** Category H: 8 ecosystem boundary OOS items (OOS-H1 through OOS-H8)
+- [x] **[v0.0.7]** 3 ecosystem-related deferred features added to registry
 
 ---
 
@@ -646,10 +697,61 @@ Every out-of-scope decision is informed by research evidence from v0.0.1–v0.0.
 
 ---
 
+## Part 14: Scope Change Log [v0.0.7]
+
+> This section records formal scope changes processed through the Part 5 Scope Change Management Process.
+
+### Scope Change #001: Ecosystem Pivot
+
+```
+Date: 2026-02-07
+Feature: Ecosystem-Level Documentation Quality Platform
+Request From: Ryan (project owner) — during v0.1.x Foundation phase
+Decision: APPROVED
+Effort: +15–25 hours on top of existing budget (schema: 4–6 hrs, pipeline: 10–15 hrs, tests: 3–5 hrs)
+Rationale: See below
+```
+
+**Step 1 — Document the Request:**
+During the v0.1.x Foundation phase, a foundational question surfaced: "What standards are we validating against?" The research to answer this question (v0.0.6 Platinum Standard) revealed that single-file validation, while necessary, is insufficient to assess the quality of a project's AI-ready documentation. The relationships between files (index → content pages → aggregate) are a quality dimension that no existing tool measures. Ryan directed the pivot: "I think we should evolve DocStratum into an ecosystem-level documentation quality platform."
+
+**Step 2 — Apply Scope Fence:**
+The Scope Fence decision tree was applied:
+- In OOS registry? NO — ecosystem validation was not previously an OOS item (it was unanticipated)
+- Supports main module? YES — directly extends Module 2 (Validation) and Module 5 (Quality Scoring)
+- Enables demo? YES — ecosystem view is a compelling differentiator for the Streamlit demo
+- Is it COULD have? No — this is a strategic direction change, not a nice-to-have
+- Research-driven? YES — v0.0.6 and v0.0.7 provide comprehensive evidence
+- **Result: Likely in scope**
+
+**Step 3 — Escalate (Ambiguous):**
+The scope expansion is substantial, so escalation questions were applied:
+1. Does it advance the core research goal? YES — ecosystem validation is a category-creating differentiator
+2. Can we deliver v0.6.0 MVP without it? YES for single-file, but the product would be undifferentiated
+3. Estimated effort < 2 hours? NO — estimated at 15–25 additional hours
+4. **Resolution:** Approve with phased implementation. Core ecosystem features (schema, discovery, link resolution, 2 of 5 scoring dimensions) in MVP. Advanced features (full scoring, content page validation, URL crawling, compression analysis) deferred to v0.7.0–v1.0+.
+
+**Step 4 — Decision: APPROVED with scope boundaries.**
+
+The following are IN SCOPE for v0.6.0 MVP:
+- Ecosystem-aware schema models
+- Directory-based ecosystem discovery
+- Cross-file link resolution
+- Basic ecosystem health score (Completeness + Coverage dimensions)
+- 12 new ecosystem diagnostic codes
+- 6 new ecosystem anti-patterns
+
+The following are OUT OF SCOPE (added as Category H, OOS-H1 through OOS-H8):
+- Full 5-dimension scoring, content page validation, instruction file validation, URL crawling, compression scoring, report generation, monorepo support, manifest files
+
+**Step 5 — Logged:** This entry constitutes the formal log record.
+
+---
+
 ## Next Step
 
-Once this sub-part is approved, proceed to:
+Once this sub-part revision is approved, proceed to:
 
-**v0.0.5d — Success Criteria & MVP Definition**
+**v0.0.5a — Functional Requirements (Revision)** — Add ecosystem-level functional requirements (FR-070+).
 
-This sub-part defines precisely what must work for v0.6.0 release, including test scenarios, acceptance tests, and "Definition of Done" checklist.
+**v0.0.5d — Success Criteria & MVP Definition (Revision)** — Add ecosystem acceptance scenarios and update the MVP Definition of Done checklist.

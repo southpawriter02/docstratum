@@ -1,0 +1,21 @@
+# Project Documentation
+
+> Documentation ecosystem with some broken internal references and missing content pages.
+
+## Getting Started
+
+- [Getting Started Guide](getting-started.md): Introduction for new users
+- [Migration Guide](missing-guide.md): How to migrate from v1 to v2
+
+## API Documentation
+
+- [API Reference](api-reference.md): Complete API method documentation
+- [Deprecated APIs](deleted-page.md): Information about removed functions
+
+## Advanced
+
+- [Legacy Documentation](old-docs.md): Archive of previous documentation versions
+
+## Core Concepts
+
+Review the getting-started and api-reference pages for foundational knowledge.

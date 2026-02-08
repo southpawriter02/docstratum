@@ -65,10 +65,10 @@ def test_token_zones_ordering():
 
 @pytest.mark.unit
 def test_anti_pattern_counts():
-    """Verify exactly 22 anti-patterns across 4 categories."""
-    assert len(AntiPatternID) == 22
-    assert len(AntiPatternCategory) == 4
-    assert len(ANTI_PATTERN_REGISTRY) == 22
+    """Verify exactly 28 anti-patterns across 5 categories."""
+    assert len(AntiPatternID) == 28
+    assert len(AntiPatternCategory) == 5
+    assert len(ANTI_PATTERN_REGISTRY) == 28
 
 
 @pytest.mark.unit

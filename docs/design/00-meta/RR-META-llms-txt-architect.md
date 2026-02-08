@@ -531,7 +531,9 @@ By completing The DocStratum, you will gain practical experience in:
 
 ---
 
-*Document Version: 1.0 | Status: Ready for Implementation*
+*Document Version: 1.1 | Status: Ready for Implementation*
+
+> **[v0.0.7] Ecosystem Pivot Note (2026-02-07):** DocStratum's scope has been expanded from single-file llms.txt validator to ecosystem-level documentation quality platform. The core architecture (3-layer context, validation pipeline, quality scoring) remains unchanged. New capabilities include: multi-file ecosystem discovery, cross-file link resolution, ecosystem health scoring, and 12 new diagnostic codes. All implementation targets (v0.1.x–v0.6.0) are unchanged; ecosystem features are integrated into existing modules (v0.1.2 for schema, v0.2.7–v0.2.8 for pipeline, v0.6.0 for demo). See `RR-SPEC-v0.0.6-platinum-standard-definition.md` and `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md` for full specifications.
 
 [Agentic Instructions — AI Collaborator Guide](RR-META-agentic-instructions-ai-collaborator-guide.md)
 
@@ -550,3 +552,9 @@ By completing The DocStratum, you will gain practical experience in:
 [v0.5.0 — Testing & Validation](RR-SPEC-v0.5.0-testing-and-validation.md)
 
 [v0.6.0 — Documentation & Release](RR-SPEC-v0.6.0-documentation-and-release.md)
+
+**[v0.0.7] Ecosystem & Quality Standard Specifications:**
+
+[v0.0.6 — Platinum Standard Definition](RR-SPEC-v0.0.6-platinum-standard-definition.md)
+
+[v0.0.7 — Ecosystem Pivot Specification](RR-SPEC-v0.0.7-ecosystem-pivot-specification.md)

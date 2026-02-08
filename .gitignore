@@ -22,7 +22,7 @@ env/
 .env
 
 # Testing
-.coverage
+.coverage*
 htmlcov/
 .pytest_cache/
 

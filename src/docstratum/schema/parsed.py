@@ -15,14 +15,74 @@ ABNF grammar reference (v0.0.1a):
     description = ">" SP desc-text CRLF
     section    = "##" SP section-name CRLF *entry
     entry      = "-" SP "[" link-title "](" url ")" [": " desc] CRLF
+
+[v0.0.7] Ecosystem pivot extensions:
+    - ``LinkRelationship`` enum: Classifies how a link relates to its target
+      within the documentation ecosystem (INDEXES, REFERENCES, EXTERNAL, UNKNOWN).
+    - ``ParsedLink`` gains three optional fields (``relationship``,
+      ``resolves_to``, ``target_file_type``) with safe defaults that preserve
+      full backward compatibility. All existing code that constructs a
+      ``ParsedLink`` without these fields continues to work identically.
+    Traces to: FR-073 (LinkRelationship enum + ParsedLink extension)
 """
+
+from __future__ import annotations
 
 import logging
 from datetime import datetime
+from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
+
+
+# ── [v0.0.7] Ecosystem Link Relationship ─────────────────────────────
+# Classifies how a link in one file relates to a target file within the
+# documentation ecosystem. Used by the ecosystem pipeline (Phase 3) to
+# build the FileRelationship graph. Defined here (not in ecosystem.py)
+# because it is a field on ParsedLink, which is a core parsed model.
+
+
+class LinkRelationship(StrEnum):
+    """How a link relates to its target within the documentation ecosystem.
+
+    When validating a single file in isolation, all links default to UNKNOWN
+    (their relationship cannot be determined without ecosystem context). When
+    running the ecosystem pipeline, the Relationship Mapping stage classifies
+    each link into one of the five relationship types.
+
+    Attributes:
+        INDEXES: The source file (typically llms.txt) links to a content page
+                 that it is indexing. This is the primary navigation relationship
+                 in the Navigation → Content layer direction.
+        AGGREGATES: The aggregate file (typically llms-full.txt) includes or
+                    references content from individual pages. This is the
+                    Aggregate → Content layer relationship, where the full-text
+                    file consolidates documentation for large-window models.
+        REFERENCES: A content page cross-references another content page.
+                    These are lateral relationships within the content layer.
+        EXTERNAL: The link points outside the documentation ecosystem entirely
+                  (e.g., to GitHub, a blog post, or an external API).
+        UNKNOWN: The relationship has not been classified yet. This is the
+                 default for single-file mode where no ecosystem context exists.
+
+    Example:
+        >>> LinkRelationship.INDEXES
+        <LinkRelationship.INDEXES: 'indexes'>
+        >>> LinkRelationship.AGGREGATES == "aggregates"
+        True
+        >>> LinkRelationship.UNKNOWN == "unknown"
+        True
+
+    Traces to: FR-073, v0.0.7 §3.3, §4.2 (ParsedLink — Optional Relationship Metadata)
+    """
+
+    INDEXES = "indexes"
+    AGGREGATES = "aggregates"
+    REFERENCES = "references"
+    EXTERNAL = "external"
+    UNKNOWN = "unknown"
 
 
 class ParsedBlockquote(BaseModel):
@@ -57,14 +117,31 @@ class ParsedLink(BaseModel):
     In the ABNF grammar, this maps to the ``entry`` rule:
         entry = "-" SP "[" link-title "](" url ")" [": " desc] CRLF
 
+    [v0.0.7] Ecosystem extensions add three optional fields (``relationship``,
+    ``resolves_to``, ``target_file_type``) that are populated only when the
+    ecosystem pipeline runs. These fields default to safe values (UNKNOWN, None,
+    None) so that all pre-pivot code constructing ParsedLink without them
+    continues to work identically. This is the core backward-compatibility
+    guarantee of FR-073.
+
     Attributes:
         title: The link text (content within square brackets).
         url: The URL (content within parentheses).
         description: Optional description after the link (content after ': ').
         line_number: Line number in the source file.
         is_valid_url: Whether the URL appears well-formed (syntactic check only).
+        relationship: [v0.0.7] How this link relates to its target within the
+                      ecosystem. Defaults to UNKNOWN (single-file mode).
+        resolves_to: [v0.0.7] Resolved file path within the ecosystem, if the
+                     target was found. None when unresolved or in single-file mode.
+        target_file_type: [v0.0.7] The DocumentType of the file this link points
+                          to, if known. None in single-file mode. Populated by
+                          the ecosystem classifier (FR-075).
+
+    Traces to: FR-073, v0.0.7 §4.2
     """
 
+    # ── Original fields (unchanged) ──────────────────────────────────
     title: str = Field(
         description="Link text from [title](url) format.",
     )
@@ -82,6 +159,33 @@ class ParsedLink(BaseModel):
     is_valid_url: bool = Field(
         default=True,
         description="Whether the URL passes basic syntactic validation.",
+    )
+
+    # ── [v0.0.7] Ecosystem extension fields (optional, backward-compatible) ──
+    relationship: LinkRelationship = Field(
+        default=LinkRelationship.UNKNOWN,
+        description=(
+            "[v0.0.7] How this link relates to its target within the ecosystem. "
+            "Defaults to UNKNOWN in single-file mode. Set by the Relationship "
+            "Mapping stage of the ecosystem pipeline."
+        ),
+    )
+    resolves_to: str | None = Field(
+        default=None,
+        description=(
+            "[v0.0.7] Resolved file path within the ecosystem. None when the "
+            "target has not been resolved or in single-file mode."
+        ),
+    )
+    target_file_type: str | None = Field(
+        default=None,
+        description=(
+            "[v0.0.7] The DocumentType string of the file this link points to, "
+            "if known. None in single-file mode. Uses str rather than "
+            "DocumentType to avoid a circular import with classification.py. "
+            "Valid values are DocumentType enum members (e.g., 'type_1_index', "
+            "'type_3_content_page')."
+        ),
     )
 
 

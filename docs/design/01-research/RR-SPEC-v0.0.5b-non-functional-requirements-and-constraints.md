@@ -4,13 +4,21 @@
 
 ---
 
+> **REVISION NOTICE — v0.0.7 Ecosystem Pivot (2026-02-07)**
+>
+> This document was revised following the strategic pivot defined in `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md`. A new section (§5a: Ecosystem Performance Requirements) was added containing 4 non-functional requirements (NFR-022 through NFR-025) for ecosystem discovery time, pipeline throughput, memory overhead, and link resolution accuracy. Quality standards (§9) and risk mitigation (§10) were updated with ecosystem-specific targets. Changes are marked with `[v0.0.7]` tags. Original NFRs (NFR-001 through NFR-021) and constraints (CONST-001 through CONST-006) are unchanged.
+>
+> **Impact summary:** NFR count 21 → 25. Quality dimensions unchanged (5). New entries in per-module quality standards (Module 8), risk register (+2 ecosystem risks), and traceability matrix (NFR-022–025 → ecosystem FRs).
+
+---
+
 ## Sub-Part Overview
 
-This sub-part complements v0.0.5a (Functional Requirements) by defining HOW WELL the system must perform and what immovable boundaries constrain its implementation. Drawing on performance insights from v0.0.1c (token budgeting, processing pipelines), quality standards from v0.0.4b (content scoring, description quality), usability patterns from v0.0.2 (error handling in real-world files), and ecosystem constraints from v0.0.3 (MCP transport, provider compatibility), this document establishes 21 formally identified non-functional requirements (NFR-001 through NFR-021) across 5 quality dimensions (Performance, Usability, Maintainability, Compatibility, Security) plus 6 hard constraints (CONST-001 through CONST-006) from project scope.
+This sub-part complements v0.0.5a (Functional Requirements) by defining HOW WELL the system must perform and what immovable boundaries constrain its implementation. Drawing on performance insights from v0.0.1c (token budgeting, processing pipelines), quality standards from v0.0.4b (content scoring, description quality), usability patterns from v0.0.2 (error handling in real-world files), ecosystem constraints from v0.0.3 (MCP transport, provider compatibility), **[v0.0.7]** platinum standard validation criteria from v0.0.6, and ecosystem pivot architecture from v0.0.7, this document establishes 25 formally identified non-functional requirements (NFR-001 through NFR-025) **[v0.0.7: was 21]** across 5 quality dimensions (Performance, Usability, Maintainability, Compatibility, Security) plus 6 hard constraints (CONST-001 through CONST-006) from project scope.
 
-**Distribution:** 2 MUST requirements define critical performance gates, 19 SHOULD requirements establish professional quality standards, and 0 COULD requirements — all NFRs are treated as essential quality attributes. All 21 NFRs include measurable targets (ms, MB, %, coverage thresholds) and explicit verification methods. The 6 hard constraints document immovable boundaries from the project's nature as a solo-developer portfolio piece with a fixed tech stack and 40–60 hour time budget.
+**Distribution:** 2 MUST requirements define critical performance gates, 23 SHOULD requirements establish professional quality standards **[v0.0.7: was 19]**, and 0 COULD requirements — all NFRs are treated as essential quality attributes. All 25 NFRs include measurable targets (ms, MB, %, coverage thresholds) and explicit verification methods. The 6 hard constraints document immovable boundaries from the project's nature as a solo-developer portfolio piece with a fixed tech stack and 40–60 hour time budget.
 
-**Relationship to v0.0.5a:** Each NFR constrains one or more functional requirements from v0.0.5a. For example, NFR-001 (parse time < 500ms) constrains FR-026 (parser implementation) and FR-003–004 (validation levels 0–1). NFR-010 (test coverage ≥ 80%) applies across all 68 functional requirements. The traceability section (§11) maps every NFR to the FRs it governs and the research phases that justify its target values.
+**Relationship to v0.0.5a:** Each NFR constrains one or more functional requirements from v0.0.5a. For example, NFR-001 (parse time < 500ms) constrains FR-026 (parser implementation) and FR-003–004 (validation levels 0–1). NFR-010 (test coverage ≥ 80%) applies across all 85 functional requirements **[v0.0.7: was 68]**. **[v0.0.7]** NFR-022–025 (ecosystem performance) constrain the ecosystem module FRs (FR-069–085). The traceability section (§11) maps every NFR to the FRs it governs and the research phases that justify its target values.
 
 ---
 
@@ -188,6 +196,30 @@ DocStratum is a portfolio project, not handling sensitive production data. Howev
 
 ---
 
+## [v0.0.7] 5a. Ecosystem Performance Requirements (NFR-022 to NFR-025)
+
+### Objective
+
+Define speed, accuracy, and resource usage targets for the ecosystem pipeline introduced in v0.0.7. These requirements complement the single-file performance targets (NFR-001–005) and ensure the ecosystem layer does not degrade the existing user experience. The ecosystem pipeline (discovery → per-file validation → relationship mapping → ecosystem validation → ecosystem scoring) introduces new computational overhead that must be bounded.
+
+| ID | Requirement | Target | Verification Method | Priority | Notes |
+|---|---|---|---|---|---|
+| NFR-022 | **Ecosystem discovery time (directory scan + manifest build)** | < 3s for ecosystems with ≤ 20 files | Benchmark on 5+ test ecosystems of 1, 5, 10, 20 files; measure wall-clock discovery time | SHOULD | Includes filesystem scan, file classification, and manifest construction; excludes file content parsing |
+| NFR-023 | **Ecosystem pipeline total time (all 5 stages)** | < 10s for ecosystems with ≤ 20 files | Benchmark on 5+ test ecosystems; measure end-to-end time from discovery through ecosystem scoring | SHOULD | Individual per-file validation still constrained by NFR-001 (< 500ms each); total = NFR-022 + (files × NFR-001) + relationship mapping + ecosystem scoring |
+| NFR-024 | **Ecosystem memory overhead** | < 50MB additional over single-file peak | Profile ecosystem pipeline with memory_profiler; compare peak memory against single-file mode on same files | SHOULD | Ecosystem metadata (relationships, scores, diagnostics) should not multiply memory usage; most data is per-file (already within NFR-005 budget) |
+| NFR-025 | **Cross-file link resolution accuracy** | 100% — zero false positives and zero false negatives | Test with 10+ ecosystem fixtures containing known-good and known-broken links; verify every link classified correctly | SHOULD | A false positive (healthy link flagged as broken) erodes user trust; a false negative (broken link missed) defeats the ecosystem value proposition; tolerance is zero |
+
+### Ecosystem Performance Context
+
+The ecosystem pipeline wraps the existing single-file pipeline with 4 additional stages. Performance targets are derived from the following rationale:
+
+- **Discovery time (3s):** Directory scanning is I/O-bound; 20 files × 200ms per stat is worst case ~4s, so 3s target assumes typical filesystem latency. For single-file input, discovery is trivially fast (< 100ms).
+- **Pipeline total (10s):** If per-file validation takes < 500ms (NFR-001) and there are 20 files, per-file validation alone could consume 10s. The 10s total budget allows for up to 15 files at full NFR-001 budgets plus ~2.5s for ecosystem-specific stages (relationship mapping, scoring). For ecosystems > 15 files, per-file validation should average well below 500ms (most content pages are simpler than index files).
+- **Memory overhead (50MB):** The ecosystem metadata model adds `DocumentEcosystem`, `EcosystemFile` wrappers, `FileRelationship` graph, and `EcosystemScore`. For 20 files, this is approximately: 20 × (EcosystemFile overhead ~500KB) + relationship graph (~100KB) + scoring (~50KB) ≈ 10.15MB. The 50MB budget provides 5× headroom.
+- **Link resolution accuracy (100%):** Unlike quality scoring (which is inherently subjective), link resolution is binary: the file either exists or it doesn't. There is no acceptable error rate for this check.
+
+---
+
 ## 6. Hard Constraints (from Agentic Instructions & Project Scope)
 
 ### Objective
@@ -212,6 +244,7 @@ Document immovable boundaries that define what the project is and is not.
 | Quality Dimension | NFRs | Key Targets |
 |---|---|---|
 | **Performance** | NFR-001–005 | Parse < 500ms, context < 2s, agent latency < 12s, memory < 200MB |
+| **[v0.0.7] Ecosystem Performance** | NFR-022–025 | Discovery < 3s, pipeline < 10s, memory overhead < 50MB, link resolution 100% accurate |
 | **Usability** | NFR-006–009 | Clear errors, complete docs, clean UI, responsive widgets |
 | **Maintainability** | NFR-010–013 | Test coverage ≥ 80%, Black + Ruff compliant, minimal deps, well-documented |
 | **Compatibility** | NFR-014–018 | Python 3.9+, multi-provider LLM support, cross-OS, HTTPS-only, input validated |
@@ -263,6 +296,7 @@ Given time and resource constraints, here are explicit trade-offs:
 | **Agent Integration** | LLM call < 8–12s | ≥ 70% (integration tests okay) | System prompts + LangChain integration documented |
 | **A/B Testing** | All tests complete < 5 min for 50 queries | ≥ 70% | Test design + metrics explained; statistical methods justified |
 | **Demo Layer** | UI response < 200ms | ≥ 60% (UI code has lower bar) | User guide + settings explained; example workflow documented |
+| **[v0.0.7] Ecosystem Discovery & Validation** | Discovery < 3s, pipeline < 10s, link accuracy 100% | ≥ 80% | Ecosystem schema models documented; pipeline stages explained; diagnostic codes with remediation; test fixtures documented |
 
 ---
 
@@ -278,6 +312,8 @@ Given time and resource constraints, here are explicit trade-offs:
 | **Token budget exhausted (context too large)** | Medium | High | Implement token budgeting early (FR-033); prioritize filtering over completeness |
 | **Test coverage gaps (critical code untested)** | Medium | Medium | Measure coverage in CI; require ≥ 80% before release; identify gaps early |
 | **Documentation falls behind code** | High | Medium | Write docs alongside code; README as living document; examples in code comments |
+| **[v0.0.7] Ecosystem pipeline breaks single-file backward compat** | Medium | Critical | FR-083 regression test suite; byte-identical output comparison; run on every CI build |
+| **[v0.0.7] Ecosystem discovery I/O overhead on slow filesystems** | Low | Medium | Discovery scan is I/O-bound; mitigate with lazy file reading (stat before read); test on network drives if accessible |
 
 ---
 
@@ -310,7 +346,7 @@ Every non-functional requirement constrains one or more functional requirements 
 
 | NFR | Constrains FRs | Rationale | Research Source |
 |-----|----------------|-----------|----------------|
-| NFR-010 (Test coverage ≥ 80%) | All 32 MUST FRs (core modules); relaxed for FR-059–065 (demo layer: ≥ 60%) | Core data processing (validation, parsing, context building) must have high coverage to prevent regressions; UI code has lower bar | v0.0.4 (quality standards), CONST-006 (time budget limits) |
+| NFR-010 (Test coverage ≥ 80%) | All 45 MUST FRs (core modules) **[v0.0.7: was 32]**; relaxed for FR-059–065 (demo layer: ≥ 60%); **[v0.0.7]** ecosystem module (FR-069–085) held to ≥ 80% | Core data processing (validation, parsing, context building, **[v0.0.7]** ecosystem discovery and validation) must have high coverage to prevent regressions; UI code has lower bar | v0.0.4 (quality standards), CONST-006 (time budget limits) |
 | NFR-011 (Black + Ruff compliance) | All FRs that produce Python code | 100% style compliance reduces review friction and ensures consistent appearance across all modules | v0.0.4 (maintainability best practices) |
 | NFR-012 (Dependency management < 15 direct deps) | FR-044 (multi-provider via LiteLLM), FR-039–040 (agents via LangChain), FR-059 (demo via Streamlit) | Each major framework (LangChain, Streamlit, Pydantic, LiteLLM) counts as one dependency; must justify every addition | v0.0.3 (ecosystem survey: supply-chain risk analysis) |
 | NFR-013 (Documentation-to-code ratio) | FR-032 (processing methods), FR-034 (hybrid pipeline), FR-035 (query-aware selection) | Complex algorithmic modules (context building, ranking, filtering) require inline comments explaining the "why" behind decisions | Project philosophy (Writer's Edge: structure is a feature) |
@@ -333,16 +369,26 @@ Every non-functional requirement constrains one or more functional requirements 
 | NFR-020 (URL validation) | FR-026 (loader), FR-005 (URL resolution), FR-015 (URL canonicalization) | Whitelist http/https only; parse with urllib; validate scheme/netloc before any fetch | v0.0.4 (security: SSRF prevention) |
 | NFR-021 (Input sanitization) | FR-026 (loader), FR-049 (trace/logging), FR-067 (cross-module logging) | Never use unsanitized user input in shell commands; escape special chars in logs | v0.0.4 (security: injection prevention) |
 
+### [v0.0.7] Ecosystem Performance NFRs → Functional Requirements
+
+| NFR | Constrains FRs | Rationale | Research Source |
+|-----|----------------|-----------|----------------|
+| NFR-022 (Ecosystem discovery < 3s) | FR-074 (directory discovery), FR-075 (file type classification), FR-076 (link extraction) | Discovery is the first pipeline stage and must complete quickly to avoid blocking downstream stages; filesystem I/O is the bottleneck | v0.0.7 (Section 7.1: pipeline architecture) |
+| NFR-023 (Ecosystem pipeline < 10s) | FR-084 (pipeline orchestration), FR-080 (per-file validation), FR-077 (cross-file resolution), FR-081 (completeness scoring) | Total pipeline time = sum of all 5 stages; per-file validation is the dominant cost (bounded by NFR-001 × file count) | v0.0.7 (Section 7.1), NFR-001 (parse time constraint) |
+| NFR-024 (Ecosystem memory overhead < 50MB) | FR-069 (DocumentEcosystem model), FR-070 (EcosystemFile wrappers), FR-071 (FileRelationship graph), FR-072 (EcosystemScore) | Ecosystem metadata structures add memory on top of per-file models; must not push total memory beyond acceptable limits for developer machines | v0.0.7 (Section 4.3), NFR-005 (base memory constraint) |
+| NFR-025 (Link resolution accuracy 100%) | FR-077 (cross-file link resolution), FR-078 (diagnostic codes — W012 accuracy) | Link resolution is a binary check (file exists or doesn't); any error directly undermines the ecosystem validation value proposition | v0.0.7 (Section 5.2: W012 specification) |
+
 ### Coverage Summary
 
 | Quality Dimension | NFR Count | FRs Constrained | Primary Research Source |
 |-------------------|-----------|-----------------|----------------------|
 | Performance | 5 | 15 unique FRs | v0.0.1c (processing methods, token budgeting) |
+| **[v0.0.7] Ecosystem Performance** | **4** | **10 unique FRs** | **v0.0.7 (ecosystem pipeline architecture)** |
 | Usability | 4 | 9 unique FRs | v0.0.1a (error registry), v0.0.4 (demo requirements) |
-| Maintainability | 4 | All 68 FRs (via code standards) | v0.0.4 (quality standards) |
+| Maintainability | 4 | All 85 FRs (via code standards) **[v0.0.7: was 68]** | v0.0.4 (quality standards) |
 | Compatibility | 5 | 12 unique FRs | v0.0.3 (ecosystem), v0.0.4 (DECISION-015) |
 | Security | 3 | 8 unique FRs | v0.0.4 (anti-patterns, security practices) |
-| **TOTAL** | **21** | **All 68 FRs covered** | **v0.0.1–v0.0.4 (complete research chain)** |
+| **TOTAL** | **25 [v0.0.7: was 21]** | **All 85 FRs covered [v0.0.7: was 68]** | **v0.0.1–v0.0.7 (complete research chain)** |
 
 ---
 
@@ -355,7 +401,9 @@ Every non-functional requirement constrains one or more functional requirements 
 | v0.0.2 — Wild Examples Audit | File size variance data (159B to 3.7M tokens); real-world error patterns; quality correlation analysis | NFR-005 (memory calibration), NFR-008 (error grouping rationale), NFR-018 (max file size) |
 | v0.0.3 — Ecosystem Survey | Provider compatibility landscape; Python version support across tools; cross-platform usage patterns | NFR-014 (Python version), NFR-015 (LLM providers), NFR-016 (OS support) |
 | v0.0.4 — Best Practices Synthesis | Quality scoring pipeline (57 checks); anti-pattern severity classification; security recommendations; demo requirements | NFR-006–009 (usability), NFR-010–013 (maintainability), NFR-019–021 (security) |
-| v0.0.5a — Functional Requirements | 68 functional requirements (FR-001 to FR-068) organized by module; MoSCoW priorities; acceptance tests | NFR-to-FR traceability (§11); per-module quality targets (§9) |
+| v0.0.5a — Functional Requirements | 85 functional requirements (FR-001 to FR-085) organized by 8 modules **[v0.0.7: was 68 across 7]**; MoSCoW priorities; acceptance tests | NFR-to-FR traceability (§11); per-module quality targets (§9) |
+| **[v0.0.7]** v0.0.6 — Platinum Standard Definition | 30-criterion, 5-level quality framework (L0–L4); validation criteria provenance | Informs what the ecosystem validation pipeline measures against; quality targets for validation accuracy |
+| **[v0.0.7]** v0.0.7 — Ecosystem Pivot Specification | 3-layer ecosystem model; 5-stage pipeline architecture; 6 new schema entities; 12 diagnostic codes; backward compatibility requirements | NFR-022–025 targets (ecosystem performance); risk register (backward compat risk); per-module quality standards (Module 8) |
 
 ---
 
@@ -363,7 +411,7 @@ Every non-functional requirement constrains one or more functional requirements 
 
 | Output | Consumed By | How It's Used |
 |--------|------------|---------------|
-| 21 NFRs with measurable targets | v0.0.5c (Scope Definition) | NFR targets constrain what's in scope — features that can't meet NFRs are candidates for deferral |
+| 25 NFRs with measurable targets **[v0.0.7: was 21]** | v0.0.5c (Scope Definition) | NFR targets constrain what's in scope — features that can't meet NFRs are candidates for deferral; **[v0.0.7]** ecosystem NFRs constrain ecosystem scope |
 | 6 hard constraints | v0.0.5c (Scope Definition) | CONST-001–006 define the immovable boundaries that the scope fence must respect |
 | Per-module quality targets (§9) | v0.0.5d (Success Criteria & MVP) | Quality standards become pass/fail criteria for the MVP definition |
 | Trade-off resolutions (§8) | v0.0.5d (Success Criteria) | Resolved trade-offs inform which stretch goals are realistic given constraints |
@@ -386,6 +434,10 @@ Every non-functional requirement constrains one or more functional requirements 
 
 6. **Test coverage relaxation for UI code.** NFR-010 relaxes the ≥ 80% target to ≥ 60% for the Demo Layer (FR-059–065) because Streamlit widget testing requires integration-level tooling that is disproportionately expensive for a portfolio demo.
 
+7. **[v0.0.7] Ecosystem pipeline total time target assumes homogeneous file sizes.** NFR-023 (< 10s for ≤ 20 files) assumes most content pages are simpler and faster to validate than the index file. If an ecosystem contains 20 files all as complex as a dense llms.txt index, total time could exceed 10s (20 × 500ms = 10s for per-file validation alone, excluding ecosystem-specific stages). The mitigation path is parallel per-file validation, which is deferred to post-MVP.
+
+8. **[v0.0.7] Link resolution accuracy (100%) applies only to filesystem-based resolution.** NFR-025 guarantees zero false positives/negatives for local file existence checks (does the file exist on disk?). It does not guarantee resolution accuracy for external URLs (which may be behind CDNs, require authentication, or be temporarily down). External URL link checking is deferred (OOS-H5 in v0.0.5c).
+
 ---
 
 ## 15. User Story
@@ -400,20 +452,21 @@ Every non-functional requirement constrains one or more functional requirements 
 
 ## Deliverables
 
-- [x] 21 formally identified non-functional requirements (NFR-001 through NFR-021)
+- [x] 25 formally identified non-functional requirements (NFR-001 through NFR-025) **[v0.0.7: was 21]**
 - [x] Performance requirements with specific targets (latency ms, memory MB, coverage %)
+- [x] **[v0.0.7]** Ecosystem performance requirements with specific targets (discovery < 3s, pipeline < 10s, memory overhead < 50MB, link accuracy 100%)
 - [x] Usability standards tied to user workflows (developer + portfolio audiences)
 - [x] Maintainability metrics (test coverage, style, documentation)
 - [x] Compatibility matrix (Python, LLM providers, OS)
 - [x] Security requirements protecting data integrity
 - [x] 6 hard constraints from project scope (CONST-001 through CONST-006)
 - [x] Trade-off analysis across performance/features/scope (9 explicit trade-offs resolved)
-- [x] Per-module quality standards (7 modules with performance, coverage, and documentation targets)
-- [x] Risk mitigation strategies (6 risks with likelihood/impact/mitigation)
-- [x] NFR-to-FR traceability matrix mapping all 21 NFRs to the 68 functional requirements they constrain
-- [x] Research source traceability linking NFRs to v0.0.1–v0.0.4 evidence base
+- [x] Per-module quality standards (8 modules with performance, coverage, and documentation targets) **[v0.0.7: was 7]**
+- [x] Risk mitigation strategies (8 risks with likelihood/impact/mitigation) **[v0.0.7: was 6]**
+- [x] NFR-to-FR traceability matrix mapping all 25 NFRs to the 85 functional requirements they constrain **[v0.0.7: was 21 NFRs to 68 FRs]**
+- [x] Research source traceability linking NFRs to v0.0.1–v0.0.7 evidence base **[v0.0.7: was v0.0.4]**
 - [x] Inputs/Outputs documentation connecting v0.0.5b to adjacent sub-parts
-- [x] Limitations acknowledged with rationale (6 documented limitations)
+- [x] Limitations acknowledged with rationale (8 documented limitations) **[v0.0.7: was 6]**
 - [x] User stories for 3 personas (developer, integrator, evaluator)
 
 ---
@@ -430,8 +483,10 @@ Every non-functional requirement constrains one or more functional requirements 
 - [x] Security requirements address data protection and input validation
 - [x] Hard constraints documented and ratified
 - [x] Trade-offs explicitly analyzed and resolved
-- [x] NFR-to-FR traceability matrix complete (all 21 NFRs mapped to FRs they constrain)
-- [x] Research source traceability complete (all NFRs traced to v0.0.1–v0.0.4)
+- [x] NFR-to-FR traceability matrix complete (all 25 NFRs mapped to FRs they constrain) **[v0.0.7: was 21]**
+- [x] Research source traceability complete (all NFRs traced to v0.0.1–v0.0.7) **[v0.0.7: was v0.0.4]**
+- [x] **[v0.0.7]** Ecosystem performance NFRs have measurable targets and verification methods
+- [x] **[v0.0.7]** Ecosystem NFR-to-FR traceability covers all 4 new NFRs → ecosystem FRs
 - [x] Inputs from previous sub-parts documented
 - [x] Outputs to next sub-part documented
 - [x] Limitations & constraints acknowledged

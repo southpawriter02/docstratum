@@ -4,13 +4,23 @@
 
 ---
 
+> **REVISION NOTICE — v0.0.7 Ecosystem Pivot (2026-02-07)**
+>
+> This document was revised following the strategic pivot defined in `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md`. Changes include: Module 8 (Ecosystem Discovery & Validation) added to MVP Feature Checklist with 13 MUST features (FR-069–074, FR-076–078, FR-080–081, FR-083–084); Test Scenario 5 (Ecosystem Validation) added; ecosystem performance metrics added to Part 3; Definition of Done updated with ecosystem gates; stretch goals expanded with ecosystem SHOULD features. Changes are marked with `[v0.0.7]` tags. Original content (Modules 1–7, Test Scenarios 1–4) is unchanged.
+>
+> **Impact summary:** MVP MUST features 32 → 45. Test scenarios 4 → 5. Modules 7 → 8. DoD checklist expanded with ecosystem dimension. Stretch goals expanded with 4 ecosystem SHOULD features.
+>
+> **Note:** v0.0.5a's revision header originally stated "MUST count 32 → 44" — this was a counting error (44 + 33 + 7 = 84 ≠ 85 total FRs). Corrected to 45 MUST during consistency review (2026-02-07). The correct count is 45 MUST, verified by enumerating the individual section priorities across all 8 modules.
+
+---
+
 ## Sub-Part Overview
 
-This sub-part is the capstone of the v0.0.5 requirements definition series — converting the 68 functional requirements from v0.0.5a, the 21 non-functional requirements and 6 constraints from v0.0.5b, and the 32 out-of-scope items and scope defense system from v0.0.5c into a precise, testable definition of "done" for the DocStratum v0.6.0 MVP. Drawing on performance targets from v0.0.1c (token budgeting, hybrid pipeline architecture), quality standards from v0.0.4b (100-point composite scoring, content quality predictors), agent testing patterns from v0.0.4d (DECISION-015: AI coding assistants via MCP), and scope boundaries from v0.0.5c (in-scope statement, deferred features registry), this document establishes 32 MVP features organized across 7 modules with acceptance tests, 4 test scenarios with executable pseudocode, quantitative success metrics with statistical significance requirements, a timed demo scenario script, and a comprehensive Definition of Done checklist.
+This sub-part is the capstone of the v0.0.5 requirements definition series — converting the 85 functional requirements from v0.0.5a **[v0.0.7: was 68]**, the 21 non-functional requirements and 6 constraints from v0.0.5b, and the 40 out-of-scope items and scope defense system from v0.0.5c **[v0.0.7: was 32]** into a precise, testable definition of "done" for the DocStratum v0.6.0 MVP. Drawing on performance targets from v0.0.1c (token budgeting, hybrid pipeline architecture), quality standards from v0.0.4b (100-point composite scoring, content quality predictors), agent testing patterns from v0.0.4d (DECISION-015: AI coding assistants via MCP), scope boundaries from v0.0.5c (in-scope statement, deferred features registry), **[v0.0.7]** platinum standard validation criteria from v0.0.6, and ecosystem pivot architecture from v0.0.7, this document establishes 45 MVP features organized across 8 modules **[v0.0.7: was 32 features across 7 modules]** with acceptance tests, 5 test scenarios **[v0.0.7: was 4]** with executable pseudocode, quantitative success metrics with statistical significance requirements, a timed demo scenario script, and a comprehensive Definition of Done checklist.
 
-**Distribution:** 32 MUST features define the minimum viable product (from v0.0.5a's MoSCoW analysis). 4 test scenarios cover the primary differentiators identified in v0.0.4d: disambiguation (concept map value), freshness (temporal awareness), few-shot adherence (example-driven output quality), and integration (end-to-end pipeline reliability). Quantitative targets are calibrated against NFR thresholds from v0.0.5b: parse time < 500ms, context build < 2s, agent latency ≤ 12s, memory < 200MB, test coverage ≥ 80%. The Definition of Done checklist spans 5 dimensions: Code & Implementation, Documentation, Demo & Testing, Success Metrics, and Portfolio Presentation — plus a Scope & Constraints gate referencing v0.0.5c boundaries.
+**Distribution:** 45 MUST features define the minimum viable product (from v0.0.5a's MoSCoW analysis) **[v0.0.7: was 32 MUST; 13 ecosystem MUST features added from FR-069–084]**. 5 test scenarios cover the primary differentiators: disambiguation (concept map value), freshness (temporal awareness), few-shot adherence (example-driven output quality), integration (end-to-end pipeline reliability), and **[v0.0.7]** ecosystem validation (multi-file discovery, cross-file link resolution, and ecosystem health scoring). Quantitative targets are calibrated against NFR thresholds from v0.0.5b: parse time < 500ms, context build < 2s, agent latency ≤ 12s, memory < 200MB, test coverage ≥ 80%, **[v0.0.7]** ecosystem discovery < 3s, ecosystem scoring < 1s. The Definition of Done checklist spans 5 dimensions: Code & Implementation, Documentation, Demo & Testing, Success Metrics, and Portfolio Presentation — plus a Scope & Constraints gate referencing v0.0.5c boundaries — **[v0.0.7]** with ecosystem-specific items added to each dimension.
 
-**Relationship to v0.0.5a, v0.0.5b, and v0.0.5c:** Every MVP feature in Part 1 traces directly to a MUST-priority functional requirement from v0.0.5a. Every quantitative target in Part 3 traces to an NFR from v0.0.5b. Every stretch goal in Part 8 is drawn from the deferred features registry in v0.0.5c or from SHOULD/COULD requirements in v0.0.5a. The Definition of Done checklist (Part 6) references v0.0.5c's scope boundaries as an explicit release gate — no out-of-scope features may be added to the MVP without passing the Scope Fence decision tree.
+**Relationship to v0.0.5a, v0.0.5b, v0.0.5c, v0.0.6, and v0.0.7:** Every MVP feature in Part 1 traces directly to a MUST-priority functional requirement from v0.0.5a. Every quantitative target in Part 3 traces to an NFR from v0.0.5b. Every stretch goal in Part 8 is drawn from the deferred features registry in v0.0.5c or from SHOULD/COULD requirements in v0.0.5a. The Definition of Done checklist (Part 6) references v0.0.5c's scope boundaries as an explicit release gate — no out-of-scope features may be added to the MVP without passing the Scope Fence decision tree. **[v0.0.7]** Ecosystem MVP features (Module 8) trace to v0.0.6 (Platinum Standard Definition) and v0.0.7 (Ecosystem Pivot Specification). Ecosystem stretch goals trace to SHOULD-priority FRs in v0.0.5a Section 10.
 
 ---
 
@@ -54,9 +64,10 @@ This sub-part converts the research, functional requirements, non-functional req
 ## Dependencies
 
 ```
-v0.0.5a — Functional Requirements (FR-001 through FR-068)
+v0.0.5a — Functional Requirements (FR-001 through FR-085) [v0.0.7: was FR-068]
     ├─ Establishes what features exist
-    └─ Prioritizes each as MUST/SHOULD/COULD
+    ├─ Prioritizes each as MUST/SHOULD/COULD
+    └─ [v0.0.7] Includes 17 ecosystem FRs (FR-069–085)
 
 v0.0.5b — Non-Functional Requirements (NFR-001 through NFR-021)
     ├─ Sets performance targets (parse time, latency, memory)
@@ -65,7 +76,17 @@ v0.0.5b — Non-Functional Requirements (NFR-001 through NFR-021)
 
 v0.0.5c — Scope Definition (In-scope + OOS Registry)
     ├─ Confirms MVP scope is locked
-    └─ Ensures focus on core features
+    ├─ Ensures focus on core features
+    └─ [v0.0.7] Expanded to 40 OOS items across 8 categories
+
+v0.0.6 — Platinum Standard Definition [v0.0.7: NEW]
+    ├─ 30-criterion, 5-level quality framework (L0–L4)
+    └─ Establishes what DocStratum validates against
+
+v0.0.7 — Ecosystem Pivot Specification [v0.0.7: NEW]
+    ├─ 3-layer ecosystem model (Navigation, Content, Aggregate)
+    ├─ 6 new schema entities + 12 diagnostic codes
+    └─ 4-phase migration plan
 
                             v
 v0.0.5d — Success Criteria (THIS TASK)
@@ -151,13 +172,33 @@ The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every fea
 
 > **Note on FR-061 (Metrics display):** FR-061 is classified as SHOULD priority in v0.0.5a, not MUST. However, the Demo Scenario Script (Part 5) relies on metrics being visible for the portfolio presentation. FR-061 is listed as a high-priority stretch goal in Part 8 — if implemented, it significantly enhances the demo impact. The demo can function without it (side-by-side text comparison is sufficient), but metrics add quantitative evidence to the qualitative comparison.
 
+#### [v0.0.7] Module 8: Ecosystem Discovery & Validation (13 MUST features)
+
+| Feature | FR ID | Acceptance Criteria | Test Method |
+|---|---|---|---|
+| `DocumentEcosystem` top-level model | FR-069 | Model instantiates with 1 index + 2 content pages; `file_count == 3`; JSON round-trip serialization | Unit test: instantiate with 3 files; verify fields; serialize and deserialize; compare |
+| `EcosystemFile` model wrapping parsed files | FR-070 | Wraps `ParsedLlmsTxt` with ecosystem metadata; unique UUID per file; accepts existing validation/quality instances | Unit test: create from parsed file; verify file_id unique, file_type correct, validation attached |
+| `FileRelationship` directed relationship model | FR-071 | Represents INDEXES/REFERENCES/AGGREGATES/EXTERNAL links; `is_resolved` tracks whether target exists | Unit test: create relationships; verify type enum; test resolved=True vs resolved=False |
+| `EcosystemScore` aggregate health model | FR-072 | Score in 0–100 range; `QualityGrade` enum; Completeness + Coverage dimensions; per-file score map | Unit test: score 3-file ecosystem; verify range, grade, 2 dimensions, 3 per-file entries |
+| `LinkRelationship` enum + `ParsedLink` extension | FR-073 | New optional fields on `ParsedLink`; backward compatible (existing tests pass unchanged) | Unit test: create ParsedLink without new fields (identical behavior); create with new fields (persist through serialization) |
+| Directory-based ecosystem discovery | FR-074 | Scan project root; find llms.txt (required) + llms-full.txt + linked .md files; build manifest | Integration test: test directory with 5 files; verify manifest complete; test with single file → I010 emitted |
+| Link extraction and relationship mapping | FR-076 | Extract links from index; classify as INDEXES/REFERENCES/AGGREGATES/EXTERNAL; build relationship graph | Unit test: index with 5 links (3 internal, 1 external, 1 to llms-full.txt); verify classification correct |
+| Cross-file link resolution | FR-077 | Verify target files exist for INDEXES/AGGREGATES links; flag broken links as W012 | Integration test: 3 links (2 resolved, 1 broken); verify 1 W012 with source/target context |
+| 12 new ecosystem diagnostic codes | FR-078 | E009–E010, W012–W018, I008–I010 implemented; correct severity prefixes; non-empty messages | Unit test: enumerate all 12; verify severity, message, remediation; verify enum total is 38 |
+| Per-file validation within ecosystem | FR-080 | Run existing L0–L4 pipeline on each discovered file; store results in `EcosystemFile`; output identical to standalone | Integration test: validate 3-file ecosystem; compare per-file results with standalone — MUST be identical |
+| Ecosystem Completeness scoring | FR-081 | 0–100 score measuring link resolution rate weighted by importance; 100% resolution → ≥ 90; 50% → ≤ 50 | Unit test: 10 links (8 resolved, 2 broken); verify score reflects resolution rate and target health |
+| Backward-compatible single-file mode | FR-083 | Single-file input wraps transparently; per-file output byte-identical to pre-pivot; I010 emitted; all existing tests pass | Regression test: diff ecosystem-wrapped single-file output against standalone output — MUST be byte-identical |
+| 5-stage ecosystem pipeline orchestration | FR-084 | Discovery → Per-File Validation → Relationship Mapping → Ecosystem Validation → Ecosystem Scoring; stoppable after any stage | Integration test: run 5-file ecosystem; verify all 5 stages; stop after stage 3 → stages 4–5 skipped; partial results available |
+
+> **Note on ecosystem SHOULD features:** FR-075 (file type classification heuristics), FR-079 (anti-pattern detection), FR-082 (coverage scoring), and FR-085 (Streamlit ecosystem view) are classified as SHOULD in v0.0.5a. They are listed as stretch goals in Part 8. The ecosystem MVP is functional without them — type classification uses filename patterns only (no content heuristics), anti-patterns are deferred, coverage scoring is deferred, and the Streamlit view can be added post-MVP.
+
 ### MVP Feature Summary
 
-| Category | Count | FR IDs |
-|---|---|---|
-| **MUST (MVP)** | 32 | FR-001, FR-002, FR-003, FR-004, FR-007, FR-008, FR-011, FR-013, FR-016, FR-020, FR-024, FR-025, FR-026, FR-027, FR-032, FR-033, FR-034, FR-035, FR-039, FR-040, FR-041, FR-042, FR-047, FR-048, FR-051, FR-052, FR-053, FR-055, FR-056, FR-057, FR-059, FR-060 |
-| **SHOULD (important, not MVP-blocking)** | 29 | FR-005, FR-006, FR-009, FR-010, FR-012, FR-014, FR-015, FR-017, FR-018, FR-019, FR-021, FR-023, FR-028, FR-029, FR-030, FR-036, FR-037, FR-043, FR-044, FR-045, FR-046, FR-049, FR-054, FR-058, FR-061, FR-063, FR-064, FR-066, FR-067 |
-| **COULD (stretch goals)** | 7 | FR-022, FR-031, FR-038, FR-050, FR-062, FR-065, FR-068 |
+| Category | Count (Original) | Count (v0.0.7 Revised) | FR IDs |
+|---|---|---|---|
+| **MUST (MVP)** | 32 | **45** | FR-001, FR-002, FR-003, FR-004, FR-007, FR-008, FR-011, FR-013, FR-016, FR-020, FR-024, FR-025, FR-026, FR-027, FR-032, FR-033, FR-034, FR-035, FR-039, FR-040, FR-041, FR-042, FR-047, FR-048, FR-051, FR-052, FR-053, FR-055, FR-056, FR-057, FR-059, FR-060, **[v0.0.7]** FR-069, FR-070, FR-071, FR-072, FR-073, FR-074, FR-076, FR-077, FR-078, FR-080, FR-081, FR-083, FR-084 |
+| **SHOULD (important, not MVP-blocking)** | 29 | **33** | FR-005, FR-006, FR-009, FR-010, FR-012, FR-014, FR-015, FR-017, FR-018, FR-019, FR-021, FR-023, FR-028, FR-029, FR-030, FR-036, FR-037, FR-043, FR-044, FR-045, FR-046, FR-049, FR-054, FR-058, FR-061, FR-063, FR-064, FR-066, FR-067, **[v0.0.7]** FR-075, FR-079, FR-082, FR-085 |
+| **COULD (stretch goals)** | 7 | **7** | FR-022, FR-031, FR-038, FR-050, FR-062, FR-065, FR-068 |
 
 ### MVP Module Distribution
 
@@ -170,7 +211,8 @@ The MVP is v0.6.0. Every feature marked **MUST** in v0.0.5a must work. Every fea
 | Agent Integration | 6 | FR-039–042, FR-047, FR-048 | Baseline + enhanced agents with few-shot injection + testing harness |
 | A/B Testing | 6 | FR-051–053, FR-055–057 | Full test infrastructure with baselines, categories, and export |
 | Demo Layer | 2 | FR-059, FR-060 | Streamlit app with side-by-side comparison |
-| **TOTAL** | **32** | — | — |
+| **[v0.0.7]** Ecosystem Discovery & Validation | **13** | FR-069–074, FR-076–078, FR-080–081, FR-083–084 | Ecosystem schema models + discovery + cross-file validation + pipeline orchestration |
+| **TOTAL** | **45** | — | **[v0.0.7: was 32]** |
 
 ---
 
@@ -526,6 +568,153 @@ def test_end_to_end_pipeline():
 
 ---
 
+### [v0.0.7] Test Scenario 5: Ecosystem Validation Test
+
+**Goal:** Verify the ecosystem pipeline discovers multi-file documentation, resolves cross-file links, detects broken references, and produces a meaningful health score.
+
+#### Scenario Description
+
+Real-world projects publish documentation across multiple files: an `llms.txt` index file linking to individual `.md` content pages, an optional `llms-full.txt` aggregation, and possibly instruction files. The ecosystem pipeline must discover all files, map relationships between them, validate cross-file link integrity, and score overall ecosystem health. A broken link (index references a file that doesn't exist) should be flagged, and an ecosystem with full coverage should score higher than one with gaps.
+
+#### Test Steps
+
+```
+1. Set up a test ecosystem directory with:
+   - llms.txt (index file with 5 links: 3 to .md pages, 1 to llms-full.txt, 1 external URL)
+   - 3 .md content pages (matching 3 of the 5 links)
+   - llms-full.txt (matching 1 of the 5 links)
+   - 1 broken link target (file referenced in llms.txt but NOT present)
+   Expected: 5 total files discovered; 1 broken link detected
+
+2. Run ecosystem discovery (Stage 1)
+   Expected: File manifest contains 4 files (llms.txt, 3 .md, llms-full.txt)
+   Expected: I010 NOT emitted (multi-file ecosystem, not single-file)
+   Expected: Discovery completes in < 3 seconds
+
+3. Run per-file validation (Stage 2)
+   Expected: Each file has independent ValidationResult and QualityScore
+   Expected: Per-file results identical to standalone validation (FR-080, FR-083)
+
+4. Run relationship mapping (Stage 3)
+   Expected: 5 FileRelationship objects created
+   Expected: 3 INDEXES (index → .md pages), 1 AGGREGATES (index → full), 1 EXTERNAL
+
+5. Run ecosystem validation (Stage 4)
+   Expected: W012 (BROKEN_CROSS_FILE_LINK) emitted for the missing file
+   Expected: W012 diagnostic includes source_file (llms.txt) and target URL
+
+6. Run ecosystem scoring (Stage 5)
+   Expected: Completeness score < 100 (4 of 5 links resolved = ~80%)
+   Expected: EcosystemScore has grade, dimensions, per-file score map
+
+7. Run same pipeline on single-file input (regression check)
+   Expected: I010 (ECOSYSTEM_SINGLE_FILE) emitted
+   Expected: Per-file output byte-identical to standalone pipeline (FR-083)
+```
+
+#### Acceptance Test
+
+```python
+# test_ecosystem_validation.py
+
+def test_ecosystem_discovery_and_validation():
+    """Ecosystem pipeline should discover files, resolve links, and score health."""
+
+    # Set up test ecosystem
+    ecosystem_dir = create_test_ecosystem(
+        index_links=5,  # 3 .md + 1 full + 1 external
+        content_pages=3,
+        has_full=True,
+        broken_links=1,  # 1 link target missing
+    )
+
+    # Run full ecosystem pipeline
+    pipeline = EcosystemPipeline()
+    result = pipeline.run(ecosystem_dir)
+
+    # Stage 1: Discovery
+    assert result.manifest.file_count == 4, \
+        f"Expected 4 files, got {result.manifest.file_count}"
+    assert result.manifest.index_file is not None, \
+        "Must discover index file (llms.txt)"
+
+    # Stage 2: Per-file validation
+    for eco_file in result.manifest.files:
+        assert eco_file.validation is not None, \
+            f"File {eco_file.file_id} missing validation results"
+        assert eco_file.quality is not None, \
+            f"File {eco_file.file_id} missing quality score"
+
+    # Stage 3: Relationship mapping
+    relationships = result.relationships
+    indexes_count = sum(1 for r in relationships if r.relationship_type == "INDEXES")
+    aggregates_count = sum(1 for r in relationships if r.relationship_type == "AGGREGATES")
+    external_count = sum(1 for r in relationships if r.relationship_type == "EXTERNAL")
+
+    assert indexes_count == 3, f"Expected 3 INDEXES, got {indexes_count}"
+    assert aggregates_count == 1, f"Expected 1 AGGREGATES, got {aggregates_count}"
+    assert external_count == 1, f"Expected 1 EXTERNAL, got {external_count}"
+
+    # Stage 4: Ecosystem validation
+    w012_diagnostics = [d for d in result.diagnostics if d.code == "W012"]
+    assert len(w012_diagnostics) == 1, \
+        f"Expected 1 W012 (broken link), got {len(w012_diagnostics)}"
+    assert w012_diagnostics[0].source_file is not None, \
+        "W012 must include source_file context"
+
+    # Stage 5: Ecosystem scoring
+    assert 0 <= result.score.total_score <= 100, \
+        f"Score out of range: {result.score.total_score}"
+    assert result.score.total_score < 100, \
+        "Score should be < 100 due to broken link"
+    assert "COMPLETENESS" in result.score.dimensions, \
+        "Must include COMPLETENESS dimension"
+    assert len(result.score.per_file_scores) == 4, \
+        f"Expected 4 per-file scores, got {len(result.score.per_file_scores)}"
+
+    print(f"✓ Ecosystem validation passed")
+    print(f"  Files discovered: {result.manifest.file_count}")
+    print(f"  Relationships mapped: {len(relationships)}")
+    print(f"  Broken links detected: {len(w012_diagnostics)}")
+    print(f"  Ecosystem score: {result.score.total_score:.1f} ({result.score.grade})")
+
+
+def test_single_file_backward_compatibility():
+    """Single-file input must produce byte-identical output to pre-pivot pipeline."""
+
+    single_file = load_test_file("sample_llms.txt")
+
+    # Run standalone (pre-pivot) pipeline
+    standalone_result = standalone_pipeline.validate(single_file)
+    standalone_quality = standalone_pipeline.score(single_file)
+
+    # Run ecosystem pipeline on single file
+    eco_result = EcosystemPipeline().run_single_file(single_file)
+
+    # Verify byte-identical per-file output
+    assert eco_result.files[0].validation == standalone_result, \
+        "Ecosystem-wrapped validation must be identical to standalone"
+    assert eco_result.files[0].quality == standalone_quality, \
+        "Ecosystem-wrapped quality must be identical to standalone"
+
+    # Verify I010 emitted
+    i010_diagnostics = [d for d in eco_result.diagnostics if d.code == "I010"]
+    assert len(i010_diagnostics) == 1, \
+        "Must emit I010 (ECOSYSTEM_SINGLE_FILE) for single-file input"
+```
+
+#### Success Criteria
+
+- [x] Discovery finds all files in a multi-file ecosystem (index + content pages + full)
+- [x] Per-file validation results are identical to standalone pipeline (byte-identical)
+- [x] Relationship mapping correctly classifies INDEXES, AGGREGATES, and EXTERNAL links
+- [x] Broken cross-file links detected and flagged as W012 with source context
+- [x] Ecosystem score reflects link resolution rate (broken link → score < 100)
+- [x] Single-file backward compatibility preserved (I010 emitted, output identical)
+- [x] Full 5-stage pipeline completes without errors on multi-file ecosystem
+
+---
+
 ## Part 3: Quantitative Success Metrics
 
 ### Performance Metrics
@@ -538,6 +727,9 @@ def test_end_to_end_pipeline():
 | **Agent response latency** | 5–8s | 8–12s | Measure wall-clock time for 20 test queries (p50, p95) |
 | **Memory usage (peak)** | < 150MB | < 200MB | Profile with memory_profiler on largest file |
 | **Test coverage (core modules)** | N/A | ≥ 80% | Run pytest with coverage on validation, parsing, context building |
+| **[v0.0.7] Ecosystem discovery time** | N/A | < 3s (≤ 20 files) | Measure with timeit on test ecosystems of varying size |
+| **[v0.0.7] Ecosystem pipeline total time** | N/A | < 10s (≤ 20 files) | Measure all 5 stages end-to-end on test ecosystems |
+| **[v0.0.7] Ecosystem memory overhead** | N/A | < 50MB additional | Profile ecosystem pipeline vs single-file on same files |
 
 ### Quality Metrics
 
@@ -549,6 +741,10 @@ def test_end_to_end_pipeline():
 | **Few-shot relevance** | 80%+ of examples relevant to queries | Evaluate similarity between selected examples and test queries |
 | **Demo responsiveness** | < 200ms for UI interactions | Measure Streamlit widget response time |
 | **Concept map connectivity** | ≥ 50% of concepts have relationships | Verify edges_count ≥ 0.5 * concepts_count |
+| **[v0.0.7] Ecosystem discovery time** | < 3s for ≤ 20 files | Measure discovery on test ecosystems of 1, 5, 10, 20 files |
+| **[v0.0.7] Ecosystem scoring time** | < 1s per ecosystem | Measure scoring on 5+ test ecosystems |
+| **[v0.0.7] Cross-file link resolution accuracy** | 100% (no false positives/negatives) | Test with known-good and known-broken links; verify zero misclassification |
+| **[v0.0.7] Backward compatibility (single-file)** | 100% byte-identical output | Diff ecosystem-wrapped vs standalone on 10+ files; zero differences |
 
 ### A/B Test Statistical Significance
 
@@ -709,11 +905,13 @@ The project is **DONE** when ALL of the following are true:
 
 #### Code & Implementation
 
-- [ ] All 32 MUST features (from Part 1) are implemented and tested
+- [ ] All 45 MUST features (from Part 1) are implemented and tested **[v0.0.7: was 32]**
 - [ ] All code passes Black + Ruff linters (zero violations)
 - [ ] Core modules (validation, parsing, context) have ≥ 80% test coverage
 - [ ] Unit tests pass (pytest with -v flag, 0 failures)
 - [ ] Integration tests pass (end-to-end pipeline on 5+ real llms.txt files)
+- [ ] **[v0.0.7]** Ecosystem integration tests pass (multi-file ecosystem on 3+ test fixtures)
+- [ ] **[v0.0.7]** Single-file backward compatibility test passes (byte-identical output, FR-083)
 - [ ] No console errors or warnings during test runs
 - [ ] Code review complete (even self-review is okay for solo project)
 
@@ -727,7 +925,7 @@ The project is **DONE** when ALL of the following are true:
   - [ ] Architecture diagram
   - [ ] Contributing guidelines
 - [ ] API documentation (docstrings) covers all public functions
-- [ ] Design documents (v0.0.1–v0.0.5 specs) are published
+- [ ] Design documents (v0.0.1–v0.0.7 specs) are published **[v0.0.7: was v0.0.5]**
 - [ ] Examples provided for:
   - [ ] Loading and parsing llms.txt
   - [ ] Building context layers
@@ -743,6 +941,9 @@ The project is **DONE** when ALL of the following are true:
 - [ ] 20+ test queries pass with expected metrics
 - [ ] A/B test shows statistically significant improvement (p < 0.05)
 - [ ] Demo scenario script runs without issues (2-minute flow is clean)
+- [ ] **[v0.0.7]** Ecosystem test scenario (Test Scenario 5) passes all acceptance criteria
+- [ ] **[v0.0.7]** Ecosystem discovery completes in < 3s for test fixtures (≤ 20 files)
+- [ ] **[v0.0.7]** W012 diagnostics correctly flag all broken cross-file links in test fixtures
 
 #### Success Metrics Met
 
@@ -753,6 +954,10 @@ The project is **DONE** when ALL of the following are true:
 - [ ] Memory usage: < 200MB peak
 - [ ] Test coverage: ≥ 80% on core modules
 - [ ] Validation accuracy: ≥ 90% on test files
+- [ ] **[v0.0.7]** Ecosystem discovery time: < 3s for ≤ 20 files
+- [ ] **[v0.0.7]** Ecosystem pipeline total time: < 10s for ≤ 20 files
+- [ ] **[v0.0.7]** Backward compatibility: 100% byte-identical single-file output
+- [ ] **[v0.0.7]** Cross-file link resolution: 100% accuracy (no false positives/negatives)
 
 #### Portfolio Presentation
 
@@ -765,11 +970,12 @@ The project is **DONE** when ALL of the following are true:
 
 #### Scope & Constraints Respected
 
-- [ ] No out-of-scope features added (v0.0.5c boundaries maintained)
+- [ ] No out-of-scope features added (v0.0.5c boundaries maintained, including 8 ecosystem OOS items **[v0.0.7]**)
 - [ ] Scope change process was followed for any changes
 - [ ] Time budget respected (≤ 60 hours)
 - [ ] Tech stack unchanged (Pydantic, LangChain, Streamlit, Anthropic API)
-- [ ] Research-driven design maintained (all features justified by v0.0.1–4)
+- [ ] Research-driven design maintained (all features justified by v0.0.1–4, v0.0.6, v0.0.7)
+- [ ] **[v0.0.7]** Ecosystem features limited to MVP scope (no full 5-dimension scoring, no content page validation, no URL crawl discovery — see v0.0.5c Category H)
 
 ---
 
@@ -779,7 +985,7 @@ The project is **DONE** when ALL of the following are true:
 
 **DO NOT RELEASE** if any of these are true:
 
-- [ ] Any of the 32 MUST features is missing or partially working
+- [ ] Any of the 45 MUST features is missing or partially working **[v0.0.7: was 32]**
 - [ ] Test coverage < 75% on core modules
 - [ ] A/B test shows no significant improvement (p ≥ 0.05)
 - [ ] Demo crashes or shows errors
@@ -789,6 +995,10 @@ The project is **DONE** when ALL of the following are true:
 - [ ] Documentation is incomplete or hard to follow
 - [ ] GitHub repo has unrelated files or mess
 - [ ] Any security issues (credentials, unsafe input handling)
+- [ ] **[v0.0.7]** Single-file backward compatibility broken (ecosystem-wrapped output differs from standalone)
+- [ ] **[v0.0.7]** Ecosystem discovery takes > 5s on test fixtures (≤ 20 files)
+- [ ] **[v0.0.7]** Cross-file link resolution has false positives or negatives
+- [ ] **[v0.0.7]** Ecosystem pipeline crashes or silently drops files during discovery
 
 ---
 
@@ -808,6 +1018,10 @@ The project is **DONE** when ALL of the following are true:
 | FR-050: Agent templates | 3–5 hours | COULD | Only if ≥ 8 hours remain | Chatbot vs Q&A vs copilot modes |
 | Write blog post | 2–4 hours | COULD | Only if ≥ 6 hours remain | "How we built DocStratum" |
 | Record video demo | 2–3 hours | COULD | Only if ≥ 5 hours remain | Screencast walkthrough |
+| **[v0.0.7]** FR-085: Streamlit ecosystem view (file manifest, relationships, health score) | 3–4 hours | SHOULD | Only if ≥ 6 hours remain | Ecosystem tab in demo; significantly enhances portfolio for ecosystem narrative |
+| **[v0.0.7]** FR-079: Ecosystem anti-pattern detection (6 patterns: Index Island, Phantom Links, etc.) | 2–3 hours | SHOULD | Only if ≥ 5 hours remain | Detection rules for AP_ECO_001–006; strengthens diagnostic depth |
+| **[v0.0.7]** FR-082: Ecosystem Coverage scoring (11 canonical categories across ecosystem) | 2–3 hours | SHOULD | Only if ≥ 4 hours remain | Second health dimension; Completeness (FR-081) alone is sufficient for MVP |
+| **[v0.0.7]** FR-075: File type classification heuristics (content analysis beyond filename) | 1–2 hours | SHOULD | Only if ≥ 3 hours remain | Filename patterns are sufficient for MVP; content heuristics add robustness |
 
 ### Decision Rule for Stretch Goals
 
@@ -832,7 +1046,9 @@ The project is **DONE** when ALL of the following are true:
 | v0.0.4 — Best Practices Synthesis | 57 automated checks; 100-point composite quality scoring; 22 anti-patterns with detection rules; 16 design decisions; token budget architecture (4 tiers); MUST/SHOULD/COULD framework | Part 3 quantitative metrics (validation accuracy ≥ 90%); Part 1 acceptance test design (validation levels referenced); Part 6 DoD code quality standards (Black + Ruff compliance) |
 | v0.0.5a — Functional Requirements | 68 FRs (FR-001–FR-068) with MoSCoW priorities; 32 MUST, 29 SHOULD, 7 COULD; module-level organization; acceptance tests per FR; traceability to research and implementation | Part 1 MVP Feature Checklist (all 32 MUST features); Part 8 stretch goals (drawn from SHOULD/COULD); MVP Module Distribution table; Test Scenario acceptance tests reference FR acceptance criteria |
 | v0.0.5b — Non-Functional Requirements & Constraints | 21 NFRs with measurable targets; 6 hard constraints (CONST-001–006); per-module quality targets; trade-off resolutions; risk mitigation strategies | Part 3 quantitative metrics (NFR-001: < 500ms, NFR-002: < 2s, NFR-003: < 8s, NFR-004: < 12s, NFR-005: < 200MB, NFR-010: ≥ 80%); Part 6 DoD success metrics thresholds; Part 7 warning signs (performance target failures) |
-| v0.0.5c — Scope Definition & Out-of-Scope Registry | 32 OOS items across 7 categories; in-scope boundary statement (9 deliverables); deferred features registry (11 items); Scope Fence decision tree; scope change management process | Part 6 DoD "Scope & Constraints Respected" gate; Part 8 stretch goals (informed by deferred features registry effort estimates); Part 7 warning signs (scope drift detection) |
+| v0.0.5c — Scope Definition & Out-of-Scope Registry | 40 OOS items across 8 categories **[v0.0.7: was 32 across 7]**; in-scope boundary statement (9 deliverables + ecosystem additions); deferred features registry (14 items **[v0.0.7: was 11]**); Scope Fence decision tree; scope change management process | Part 6 DoD "Scope & Constraints Respected" gate; Part 8 stretch goals (informed by deferred features registry effort estimates); Part 7 warning signs (scope drift detection); **[v0.0.7]** ecosystem OOS items (Category H) gate ecosystem scope creep |
+| **[v0.0.7]** v0.0.6 — Platinum Standard Definition | 30-criterion, 5-level quality framework (L0 Parseable → L4 Exemplary); explicit provenance for every criterion; maps to existing diagnostic codes, anti-patterns, and quality dimensions | **[v0.0.7]** Part 1 Module 8 validation criteria (what ecosystem validation measures against); Part 3 quality metrics (validation accuracy targets); Part 6 DoD (quality standards) |
+| **[v0.0.7]** v0.0.7 — Ecosystem Pivot Specification | 3-layer ecosystem model (Navigation, Content, Aggregate); 6 new schema entities; 12 new diagnostic codes (E009–E010, W012–W018, I008–I010); 6 new anti-patterns (AP_ECO_001–006); 5-stage pipeline architecture; 4-phase migration plan; backward compatibility requirements | **[v0.0.7]** Part 1 Module 8 (all 13 MUST features); Test Scenario 5 (ecosystem validation); Part 3 ecosystem metrics; Part 6 DoD ecosystem gates; Part 8 ecosystem stretch goals |
 
 ---
 
@@ -840,8 +1056,8 @@ The project is **DONE** when ALL of the following are true:
 
 | Output | Consumed By | How It's Used |
 |--------|------------|---------------|
-| 32 MVP features with acceptance tests (Part 1) | v0.1.0–v0.6.0 (Implementation) | Each implementation module knows exactly which features must pass which acceptance tests before the module is complete |
-| 4 test scenarios with executable pseudocode (Part 2) | v0.5.x (Testing & Validation) | Test scenarios become the integration test suite; pseudocode translates directly to pytest fixtures |
+| 45 MVP features with acceptance tests (Part 1) **[v0.0.7: was 32]** | v0.1.0–v0.6.0 (Implementation) | Each implementation module knows exactly which features must pass which acceptance tests before the module is complete; **[v0.0.7]** includes 13 ecosystem features for Module 8 |
+| 5 test scenarios with executable pseudocode (Part 2) **[v0.0.7: was 4]** | v0.5.x (Testing & Validation) | Test scenarios become the integration test suite; pseudocode translates directly to pytest fixtures; **[v0.0.7]** Test Scenario 5 covers ecosystem discovery, validation, and scoring |
 | Quantitative success metrics with targets (Part 3) | v0.5.x (Testing & Validation) | Metrics targets become CI/CD quality gates; performance benchmarks run automatically |
 | A/B test statistical significance requirements (Part 3) | v0.5.x (Testing & Validation) | p < 0.05 requirement shapes sample size decisions; minimum 20 queries established |
 | Demo scenario script with timing (Part 5) | v0.6.0 (Demo Layer) | Streamlit UI design must support the exact 2-minute flow; all referenced features must work for the demo |
@@ -849,6 +1065,9 @@ The project is **DONE** when ALL of the following are true:
 | Warning signs list (Part 7) | v0.1.0–v0.6.0 (Continuous) | Early warning system; any warning sign triggers remediation before further feature work |
 | Stretch goals with effort estimates (Part 8) | v0.5.x–v0.6.0 (If Time Permits) | Decision rule gates stretch goal implementation; FR-061 and FR-067 are highest priority if time allows |
 | Test Query Bank — 20 sample questions (Appendix) | v0.5.x (Testing) | Starting point for the formal test query set; covers 20 distinct capability areas |
+| **[v0.0.7]** Ecosystem test fixtures specification (Test Scenario 5) | v0.2.7–v0.2.8 (Ecosystem Implementation) | Defines the exact structure of test ecosystems (multi-file, single-file, broken links) that implementation modules must create as test fixtures |
+| **[v0.0.7]** Ecosystem performance targets (Part 3) | v0.2.7–v0.2.8 (Ecosystem Implementation) | Discovery < 3s, pipeline < 10s, memory overhead < 50MB — implementation must meet these thresholds |
+| **[v0.0.7]** Backward compatibility specification (FR-083, Test Scenario 5) | v0.2.7 (EcosystemPipeline) | Byte-identical output requirement becomes regression test; any ecosystem change must not alter single-file behavior |
 
 ---
 
@@ -868,6 +1087,12 @@ The project is **DONE** when ALL of the following are true:
 
 7. **Test Scenario 4 depends on external API availability.** The integration happy-path test (Part 2, Scenario 4) fetches a real llms.txt file from a production URL (e.g., Stripe). If the URL is unavailable at test time (CDN blocking, site changes, domain migration), the test must fall back to a locally cached specimen file. This limitation was already identified in v0.0.2a (CDN/WAF protections) and the Loader module (FR-030: caching) provides the mitigation.
 
+8. **[v0.0.7] Ecosystem test scenarios use synthetic fixtures, not real-world ecosystems.** Test Scenario 5 creates controlled test directories with known file counts, link structures, and intentional broken links. Real-world documentation ecosystems may have unexpected structures (nested directories, symlinks, non-standard filenames) that synthetic fixtures don't capture. The discovery module (FR-074) should be tested against at least one real-world project directory in addition to synthetic fixtures once implementation begins.
+
+9. **[v0.0.7] Ecosystem scoring uses only 2 of 5 planned health dimensions.** The MVP implements Completeness (FR-081) and optionally Coverage (FR-082, SHOULD priority). The full 5-dimension model (Completeness, Coherence, Coverage, Freshness, Navigability) defined in v0.0.7 Section 4.3 is deferred to post-MVP (OOS-H1). The 2-dimension model provides a meaningful health signal but cannot detect all ecosystem quality issues (e.g., stale content pages, poor navigability).
+
+10. **[v0.0.7] Backward compatibility testing is limited to output comparison.** FR-083 requires byte-identical output for single-file inputs. "Byte-identical" is measured by comparing serialized `ValidationResult` and `QualityScore` objects. Internal implementation details (e.g., timing, memory allocation, intermediate data structures) may differ between ecosystem-wrapped and standalone execution. This is acceptable — the contract is output equivalence, not implementation equivalence.
+
 ---
 
 ## Part 12: User Stories
@@ -882,34 +1107,37 @@ The project is **DONE** when ALL of the following are true:
 
 ## Deliverables
 
-- [x] MVP feature checklist (32 MUST features with acceptance tests, aligned to v0.0.5a)
-- [x] Test scenarios with specific, measurable steps (4 scenarios × 4+ acceptance tests each)
+- [x] MVP feature checklist (45 MUST features with acceptance tests, aligned to v0.0.5a) **[v0.0.7: was 32]**
+- [x] Test scenarios with specific, measurable steps (5 scenarios × 4+ acceptance tests each) **[v0.0.7: was 4]**
 - [x] Acceptance tests in pseudocode/Python (runnable tests for each scenario)
-- [x] Quantitative success metrics with targets (traceable to v0.0.5b NFRs)
+- [x] Quantitative success metrics with targets (traceable to v0.0.5b NFRs + **[v0.0.7]** ecosystem performance targets)
 - [x] Qualitative success criteria (6 dimensions with rubrics)
 - [x] Demo scenario script (2-minute timed walkthrough with section transitions)
-- [x] Definition of Done checklist (5 dimensions + scope gate)
-- [x] Warning signs and stretch goals with effort estimates and decision rules
-- [x] Inputs from Previous Sub-Parts (traceability to v0.0.1–v0.0.5c)
-- [x] Outputs to Next Phase (traceability to v0.1.0–v0.6.0)
-- [x] Limitations & Constraints (7 documented)
+- [x] Definition of Done checklist (5 dimensions + scope gate, **[v0.0.7]** expanded with ecosystem items)
+- [x] Warning signs and stretch goals with effort estimates and decision rules (**[v0.0.7]** 4 ecosystem stretch goals + 4 ecosystem warning signs added)
+- [x] Inputs from Previous Sub-Parts (traceability to v0.0.1–v0.0.7) **[v0.0.7: was v0.0.5c]**
+- [x] Outputs to Next Phase (traceability to v0.1.0–v0.6.0, **[v0.0.7]** including ecosystem implementation targets)
+- [x] Limitations & Constraints (10 documented) **[v0.0.7: was 7]**
 - [x] User Stories (3 personas: solo developer, quality manager, portfolio evaluator)
 
 ---
 
 ## Acceptance Criteria
 
-- [x] Every MUST feature from v0.0.5a is included in MVP checklist (all 32: 7+5+2+4+6+6+2)
-- [x] No SHOULD or COULD features are misclassified as MUST (FR-061 and FR-067 correctly in stretch goals)
+- [x] Every MUST feature from v0.0.5a is included in MVP checklist (all 45: 7+5+2+4+6+6+2+13) **[v0.0.7: was 32: 7+5+2+4+6+6+2]**
+- [x] No SHOULD or COULD features are misclassified as MUST (FR-061, FR-067, FR-075, FR-079, FR-082, FR-085 correctly in stretch goals)
 - [x] Every MVP feature has acceptance test (specific, measurable, testable)
-- [x] Test scenarios are realistic (based on real llms.txt use cases from v0.0.2 specimens)
-- [x] Quantitative metrics have targets (ms, %, points) traceable to v0.0.5b NFRs
+- [x] Test scenarios are realistic (based on real llms.txt use cases from v0.0.2 specimens + **[v0.0.7]** synthetic ecosystem fixtures)
+- [x] Quantitative metrics have targets (ms, %, points) traceable to v0.0.5b NFRs + **[v0.0.7]** ecosystem performance targets
 - [x] Qualitative criteria are well-defined (6 dimensions with verification methods)
 - [x] Demo scenario is timed and scripted (actually fits in 2–3 minutes)
-- [x] D.O.D. checklist is comprehensive and unambiguous (5 dimensions + scope gate)
+- [x] D.O.D. checklist is comprehensive and unambiguous (5 dimensions + scope gate + **[v0.0.7]** ecosystem items)
 - [x] Stretch goals are genuinely optional (not blocking release); decision rule gates implementation
 - [x] Document structure is consistent with v0.0.5a/b/c (includes Inputs, Outputs, Limitations, User Stories)
 - [x] Can answer "Is v0.6.0 done?" with a binary yes/no using the DoD checklist alone
+- [x] **[v0.0.7]** Ecosystem MVP features (Module 8) trace to v0.0.6 and v0.0.7 research
+- [x] **[v0.0.7]** Backward compatibility test (FR-083) is explicit in Test Scenario 5 and DoD checklist
+- [x] **[v0.0.7]** Ecosystem stretch goals (4 SHOULD features) have effort estimates and priority order
 
 ---
 
@@ -920,6 +1148,31 @@ Once this sub-part is approved:
 **v0.1.0 — Project Foundation (Implementation Begins)**
 
 Armed with completed v0.0 research and v0.0.5 requirements, implementation can begin with full confidence in scope, design, and success criteria.
+
+---
+
+## [v0.0.7] Part 13: Revision Change Log
+
+### Change Record: v0.0.7 Ecosystem Pivot (2026-02-07)
+
+| Section | Change | Justification |
+|---|---|---|
+| Sub-Part Overview | Updated FR count (68→85), MVP features (32→45), modules (7→8), test scenarios (4→5) | Reflects v0.0.7 ecosystem pivot additions |
+| Dependencies | Added v0.0.6 and v0.0.7 as new upstream dependencies | New research phases inform ecosystem features |
+| Part 1: MVP Feature Checklist | Added Module 8 with 13 MUST ecosystem features (FR-069–074, FR-076–078, FR-080–081, FR-083–084) | Ecosystem discovery, validation, and scoring are MVP requirements |
+| Part 1: MVP Summary | Updated category counts (MUST 32→45, SHOULD 29→33); added Module 8 to distribution table | Reflects new ecosystem FRs from v0.0.5a Section 10 |
+| Part 2: Test Scenarios | Added Test Scenario 5 (Ecosystem Validation) with 7 test steps and 2 acceptance tests | Ecosystem pipeline needs dedicated integration test coverage |
+| Part 3: Quantitative Metrics | Added 7 ecosystem metrics (discovery time, pipeline time, memory, link accuracy, backward compatibility) | Ecosystem pipeline needs measurable performance targets |
+| Part 6: DoD Checklist | Added 8 ecosystem items across Code, Demo, Metrics, and Scope dimensions | DoD must cover all MVP features including ecosystem |
+| Part 7: Warning Signs | Added 4 ecosystem warning signs (backward compatibility, discovery time, link resolution, pipeline stability) | Ecosystem failures must block release |
+| Part 8: Stretch Goals | Added 4 ecosystem SHOULD features (FR-085, FR-079, FR-082, FR-075) with effort estimates | Ecosystem SHOULD features are genuinely optional post-MVP |
+| Part 9: Inputs | Added v0.0.6 and v0.0.7 rows; updated v0.0.5c row (32→40 OOS, 7→8 categories) | Traceability to new research phases |
+| Part 10: Outputs | Added 3 ecosystem output rows (test fixtures, performance targets, backward compatibility spec) | Implementation needs ecosystem-specific guidance |
+| Part 11: Limitations | Added 3 ecosystem limitations (#8 synthetic fixtures, #9 partial scoring dimensions, #10 output-only backward compat) | Known constraints of ecosystem MVP scope |
+| Deliverables | Updated counts (32→45 MVP, 4→5 scenarios, 7→10 limitations) | Reflects expanded scope |
+| Acceptance Criteria | Added 3 ecosystem acceptance criteria | Ensures ecosystem additions are verifiable |
+
+> **Traceability:** All changes trace to `RR-SPEC-v0.0.7-ecosystem-pivot-specification.md` Section 10.2 (Design Document Revision Schedule) which identified v0.0.5d as a "REVISE" document. Changes are limited to additive ecosystem content — no original content was modified.
 
 ---
 

@@ -1,0 +1,19 @@
+# DocStratum Project
+
+> A comprehensive documentation ecosystem demonstrating proper file organization, internal linking, and metadata structure for LLM-friendly documentation.
+
+## Master Index
+
+- [Getting Started](getting-started.md): Quick start guide for new users
+- [API Reference](api-reference.md): Complete API documentation and method signatures
+- [Configuration](configuration.md): Configuration options and environment setup
+
+## Core Concepts
+
+This ecosystem contains an aggregate file with complete documentation.
+
+- [LLM Full Index](llms-full.txt): Complete aggregated documentation
+
+## Examples
+
+Refer to the Getting Started guide for practical examples and tutorials.

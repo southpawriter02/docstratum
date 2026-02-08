@@ -10,11 +10,21 @@ The code format follows the pattern: {SEVERITY_PREFIX}{NUMBER}
     W001-W011:  Warnings (11 codes) — Deviations from best practices
     I001-I007:  Informational (7 codes) — Observations and suggestions
 
+[v0.0.7] Ecosystem pivot extensions (12 new codes, total 38):
+    E009-E010:  Errors (2 codes) — Ecosystem-level structural failures
+    W012-W018:  Warnings (7 codes) — Ecosystem-level quality deviations
+    I008-I010:  Informational (3 codes) — Ecosystem observations and suggestions
+
+Updated totals: 10 ERROR, 18 WARNING, 10 INFO = 38 total codes.
+
 Research basis:
     v0.0.1a §Error Code Registry (enrichment pass)
     v0.0.4a §Structural Checks (ENC-001/002, STR-001-005, MD-001-003, etc.)
     v0.0.4b §Content Checks (CNT-001-015)
     v0.0.4c §Anti-Pattern Checks (CHECK-001-022)
+    v0.0.7 §5 (New Diagnostic Codes — ecosystem-level)
+
+Traces to: FR-078 (12 new ecosystem diagnostic codes)
 """
 
 import logging
@@ -54,6 +64,9 @@ class DiagnosticCode(StrEnum):
         E001-E008: Structural errors (v0.0.4a checks ENC-001/002, STR-001-005, MD-001, LNK-002)
         W001-W011: Quality warnings (v0.0.4a/b checks NAM-001, CNT-004-009, CNT-015, SIZ-001)
         I001-I007: Informational (v0.0.4b checks CNT-010-014, classification notes)
+        [v0.0.7] E009-E010: Ecosystem errors (ecosystem structural failures)
+        [v0.0.7] W012-W018: Ecosystem warnings (ecosystem quality deviations)
+        [v0.0.7] I008-I010: Ecosystem info (ecosystem observations)
 
     Usage:
         from docstratum.schema.diagnostics import DiagnosticCode
@@ -272,6 +285,113 @@ class DiagnosticCode(StrEnum):
         """Domain-specific jargon used without inline definition.
         Maps to: CNT-014 (v0.0.4b). Severity: INFO.
         Remediation: Define jargon inline or link to a concept definition.""",
+    )
+
+    # ── [v0.0.7] ECOSYSTEM ERRORS (E009-E010): Ecosystem structural failures ─
+    # These indicate fundamental ecosystem-level problems. Emitted by the
+    # Ecosystem Validation stage (Stage 4 of the ecosystem pipeline).
+
+    E009_NO_INDEX_FILE = (
+        "E009",
+        """Ecosystem has no llms.txt file (the required root).
+        Maps to: v0.0.7 §5.1 (Ecosystem-Level Error Codes). Severity: ERROR.
+        Note: An ecosystem without an index file has no entry point for AI agents.
+        Remediation: Create an llms.txt file in the project root with an H1 title and section links.""",
+    )
+
+    E010_ORPHANED_ECOSYSTEM_FILE = (
+        "E010",
+        """A file in the ecosystem is not referenced by any other file.
+        Maps to: v0.0.7 §5.1 (Ecosystem-Level Error Codes). Severity: ERROR.
+        Note: Orphaned files exist in the ecosystem but are invisible to AI agents navigating via the index.
+        Remediation: Add a link to this file from llms.txt or from another content page.""",
+    )
+
+    # ── [v0.0.7] ECOSYSTEM WARNINGS (W012-W018): Ecosystem quality deviations ─
+    # These indicate ecosystem-level quality issues that degrade the
+    # documentation system's effectiveness for AI agents.
+
+    W012_BROKEN_CROSS_FILE_LINK = (
+        "W012",
+        """A link in one file references another file that doesn't exist or is unreachable.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Cross-file diagnostic — includes source_file and related_file context.
+        Remediation: Fix the broken link URL or create the missing target file.""",
+    )
+
+    W013_MISSING_AGGREGATE = (
+        "W013",
+        """Index file token count suggests a project large enough to benefit from llms-full.txt, but none exists.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Threshold is >4,500 tokens of documentation (Comprehensive tier).
+        Remediation: Create an llms-full.txt file containing the full content of all documentation pages.""",
+    )
+
+    W014_AGGREGATE_INCOMPLETE = (
+        "W014",
+        """llms-full.txt does not contain content from all files referenced in the index.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: The aggregate should be a superset of all content pages for large-window model consumption.
+        Remediation: Regenerate llms-full.txt to include content from all ecosystem files.""",
+    )
+
+    W015_INCONSISTENT_PROJECT_NAME = (
+        "W015",
+        """H1 title differs between files in the ecosystem.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Inconsistent naming confuses AI agents about project identity.
+        Remediation: Ensure all files use the same project name in their H1 title.""",
+    )
+
+    W016_INCONSISTENT_VERSIONING = (
+        "W016",
+        """Version metadata differs between files (e.g., one says v2.1, another says v2.0).
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Version drift indicates stale documentation that may provide outdated guidance.
+        Remediation: Update all files to reflect the current version number.""",
+    )
+
+    W017_REDUNDANT_CONTENT = (
+        "W017",
+        """Significant content duplication between files (>60% overlap) beyond expected index-to-full duplication.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Redundancy wastes context window tokens and risks inconsistency.
+        Remediation: Refactor duplicated content into a single source and cross-reference.""",
+    )
+
+    W018_UNBALANCED_TOKEN_DISTRIBUTION = (
+        "W018",
+        """One file consumes >70% of total ecosystem tokens while others are near-empty.
+        Maps to: v0.0.7 §5.2 (Ecosystem-Level Warning Codes). Severity: WARNING.
+        Note: Defeats the purpose of a multi-file strategy.
+        Remediation: Distribute content more evenly across files or consolidate into fewer files.""",
+    )
+
+    # ── [v0.0.7] ECOSYSTEM INFORMATIONAL (I008-I010): Observations ───────────
+    # Non-blocking suggestions for ecosystem improvement.
+
+    I008_NO_INSTRUCTION_FILE = (
+        "I008",
+        """No llms-instructions.txt or LLM Instructions section exists in the ecosystem.
+        Maps to: v0.0.7 §5.3 (Ecosystem-Level Informational Codes). Severity: INFO.
+        Note: Instruction files are the strongest quality differentiator for agent behavior.
+        Remediation: Add an LLM Instructions section to llms.txt or create a dedicated llms-instructions.txt file.""",
+    )
+
+    I009_CONTENT_COVERAGE_GAP = (
+        "I009",
+        """The index references section categories for which no detailed content page exists.
+        Maps to: v0.0.7 §5.3 (Ecosystem-Level Informational Codes). Severity: INFO.
+        Note: Coverage gaps indicate areas where AI agents will lack detailed documentation.
+        Remediation: Create content pages for the missing section categories.""",
+    )
+
+    I010_ECOSYSTEM_SINGLE_FILE = (
+        "I010",
+        """The entire ecosystem consists of just llms.txt with no companion files.
+        Maps to: v0.0.7 §5.3 (Ecosystem-Level Informational Codes). Severity: INFO.
+        Note: Valid but limited — single-file ecosystems cannot leverage multi-file strategies.
+        Remediation: Consider adding llms-full.txt and individual content pages for deeper coverage.""",
     )
 
     @property

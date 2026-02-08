@@ -1,0 +1,18 @@
+# Data Analysis Platform
+
+> Enterprise data analysis and visualization platform. No internal documentation files exist; all resources are external.
+
+## External Resources
+
+- [GitHub Repository](https://github.com/example/data-platform): Source code and issue tracking
+- [Stack Overflow Tag](https://stackoverflow.com/questions/tagged/data-platform): Community Q&A
+- [Official Blog](https://blog.example.com/data-platform): News and updates
+- [YouTube Tutorials](https://www.youtube.com/@dataplatform): Video guides
+
+## Community
+
+Join the community discussions on GitHub and Stack Overflow.
+
+## Support
+
+Visit the official support portal at https://support.example.com/

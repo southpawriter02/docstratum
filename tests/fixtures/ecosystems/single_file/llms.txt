@@ -1,0 +1,17 @@
+# External Documentation Hub
+
+> A documentation index that references only external resources without internal companion files.
+
+## Master Index
+
+- [Python Documentation](https://docs.python.org/3/): Official Python language documentation
+- [GitHub Guides](https://guides.github.com/): Comprehensive Git and GitHub tutorials
+- [Markdown Specification](https://commonmark.org/): CommonMark specification reference
+
+## Resources
+
+All documentation is maintained at external sources. This index serves as a curated navigation point.
+
+## FAQ
+
+For frequently asked questions, visit the Python FAQ at https://docs.python.org/3/faq/

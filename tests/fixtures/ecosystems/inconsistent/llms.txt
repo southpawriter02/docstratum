@@ -1,0 +1,17 @@
+# MyProject
+
+> Project documentation with inconsistent naming across files.
+
+## Getting Started
+
+This is the main documentation index for the project.
+
+## Core Features
+
+- Feature 1
+- Feature 2
+- Feature 3
+
+## References
+
+See the full documentation aggregate for complete information.

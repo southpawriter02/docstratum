@@ -1,12 +1,19 @@
 """Constants for the DocStratum validation engine.
 
 Canonical section names (11), token budget tier definitions (3),
-and the anti-pattern registry (22 patterns across 4 categories).
+and the anti-pattern registry (28 patterns across 5 categories).
 
 All values are derived from empirical research:
     - Section names: frequency analysis of 450+ projects (v0.0.2c, DECISION-012)
     - Token budgets: specimen analysis + gold standard calibration (v0.0.4a, DECISION-013)
     - Anti-patterns: 18 audited implementations + ecosystem survey (v0.0.4c, DECISION-016)
+
+[v0.0.7] Ecosystem pivot extensions:
+    - AntiPatternCategory gains ECOSYSTEM value (5 categories total)
+    - AntiPatternID gains 6 ecosystem patterns AP_ECO_001 through AP_ECO_006
+    - ANTI_PATTERN_REGISTRY gains 6 entries (22 → 28 total)
+
+Traces to: FR-079 (ecosystem anti-pattern detection)
 """
 
 import logging
@@ -169,38 +176,54 @@ TOKEN_ZONE_ANTI_PATTERN: int = 500_000  # Exceeds all current context windows
 
 
 # ── Anti-Pattern Registry ───────────────────────────────────────────────
-# 22 named patterns across 4 severity categories (DECISION-016, v0.0.4c).
+# 28 named patterns across 5 severity categories (DECISION-016, v0.0.4c, v0.0.7).
 
 
 class AntiPatternCategory(StrEnum):
     """Anti-pattern severity categories (DECISION-016).
 
-    The four categories map to the composite scoring pipeline:
+    The original four categories map to the per-file composite scoring pipeline.
+    [v0.0.7] The fifth category (ECOSYSTEM) maps to ecosystem-level validation
+    and affects the EcosystemScore rather than per-file QualityScore.
+
         CRITICAL: Gate the structural score (cap total at 29)
         STRUCTURAL: Reduce the structural dimension
         CONTENT: Reduce the content dimension
         STRATEGIC: Deduction-based penalties
+        ECOSYSTEM: [v0.0.7] Ecosystem-level patterns affecting aggregate health
 
     Example:
         >>> AntiPatternCategory.CRITICAL
         <AntiPatternCategory.CRITICAL: 'critical'>
+        >>> AntiPatternCategory.ECOSYSTEM
+        <AntiPatternCategory.ECOSYSTEM: 'ecosystem'>
+
+    Traces to: v0.0.7 §6.1 (Ecosystem Anti-Pattern Category)
     """
 
     CRITICAL = "critical"
     STRUCTURAL = "structural"
     CONTENT = "content"
     STRATEGIC = "strategic"
+    ECOSYSTEM = "ecosystem"  # [v0.0.7] New — ecosystem-level patterns
 
 
 class AntiPatternID(StrEnum):
-    """All 22 anti-patterns cataloged in v0.0.4c.
+    """All 28 anti-patterns cataloged in v0.0.4c and v0.0.7.
 
     Format: AP-{CATEGORY}-{NUMBER}
     Each maps to a CHECK-{NNN} automated detection rule.
 
+    [v0.0.7] Added 6 ecosystem anti-patterns (AP-ECO-001 through AP-ECO-006)
+    that detect documentation ecosystem structural problems.
+
     Example:
         >>> AntiPatternID.AP_CRIT_001
         <AntiPatternID.AP_CRIT_001: 'AP-CRIT-001'>
+        >>> AntiPatternID.AP_ECO_001
+        <AntiPatternID.AP_ECO_001: 'AP-ECO-001'>
+
+    Traces to: FR-079, v0.0.7 §6.2 (Ecosystem Anti-Patterns)
     """
 
     # Critical (4) — prevent LLM consumption entirely
@@ -232,6 +255,14 @@ class AntiPatternID(StrEnum):
     AP_STRAT_002 = "AP-STRAT-002"  # Monolith Monster
     AP_STRAT_003 = "AP-STRAT-003"  # Meta-Documentation Spiral
     AP_STRAT_004 = "AP-STRAT-004"  # Preference Trap
+
+    # [v0.0.7] Ecosystem (6) — ecosystem-level structural problems
+    AP_ECO_001 = "AP-ECO-001"  # Index Island
+    AP_ECO_002 = "AP-ECO-002"  # Phantom Links
+    AP_ECO_003 = "AP-ECO-003"  # Shadow Aggregate
+    AP_ECO_004 = "AP-ECO-004"  # Duplicate Ecosystem
+    AP_ECO_005 = "AP-ECO-005"  # Token Black Hole
+    AP_ECO_006 = "AP-ECO-006"  # Orphan Nursery
 
 
 class AntiPatternEntry(NamedTuple):
@@ -415,5 +446,48 @@ ANTI_PATTERN_REGISTRY: list[AntiPatternEntry] = [
         AntiPatternCategory.STRATEGIC,
         "CHECK-022",
         "Content crafted to manipulate LLM behavior (trust laundering)",
+    ),
+    # [v0.0.7] Ecosystem (6) — ecosystem-level structural problems
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_001,
+        "Index Island",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-023",
+        "llms.txt exists but links to nothing — no content pages, no aggregate",
+    ),
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_002,
+        "Phantom Links",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-024",
+        ">30% of links in the index reference files that don't exist or return errors",
+    ),
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_003,
+        "Shadow Aggregate",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-025",
+        "llms-full.txt content doesn't match what the index promises",
+    ),
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_004,
+        "Duplicate Ecosystem",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-026",
+        "Multiple llms.txt files in the same project root creating ambiguity",
+    ),
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_005,
+        "Token Black Hole",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-027",
+        "One file consumes >80% of total ecosystem tokens",
+    ),
+    AntiPatternEntry(
+        AntiPatternID.AP_ECO_006,
+        "Orphan Nursery",
+        AntiPatternCategory.ECOSYSTEM,
+        "CHECK-028",
+        "Content pages exist but are not referenced from the index",
     ),
 ]

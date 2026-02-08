@@ -490,7 +490,9 @@ These questions were not answered by the v0.0.x research program and represent a
 | v0.0.3 | Ecosystem & Tooling Survey | 6 | 4 (a–d) | 55/64 (9 Nice deferred) | COMPLETE |
 | v0.0.4 | Best Practices Synthesis | 5 | 4 (a–d) | All phase + sub-part criteria | COMPLETE |
 | v0.0.5 | Requirements Definition | 6 | 4 (a–d) | 52/52 | COMPLETE |
-| **Total** | — | **29** | **20** | — | **ALL COMPLETE** |
+| **[v0.0.7]** v0.0.6 | Platinum Standard Definition | 1 | — | Standalone spec | COMPLETE |
+| **[v0.0.7]** v0.0.7 | Ecosystem Pivot Specification | 1 | — | Standalone spec | COMPLETE |
+| **Total** | — | **31 [v0.0.7: was 29]** | **20** | — | **ALL COMPLETE** |
 
 ### 9.2 Deliverables Inventory
 
@@ -524,17 +526,27 @@ These questions were not answered by the v0.0.x research program and represent a
 - 6 technical innovations (v0.0.4d)
 
 **Requirements Artifacts:**
-- 68 functional requirements with MoSCoW priority and acceptance tests (v0.0.5a)
-- 21 non-functional requirements with measurable targets (v0.0.5b)
+- 85 functional requirements with MoSCoW priority and acceptance tests (v0.0.5a) **[v0.0.7: was 68]**
+- 25 non-functional requirements with measurable targets (v0.0.5b) **[v0.0.7: was 21]**
 - 6 hard constraints (v0.0.5b)
 - 9 trade-off resolutions (v0.0.5b)
-- 32 out-of-scope items with justifications (v0.0.5c)
+- 40 out-of-scope items with justifications (v0.0.5c) **[v0.0.7: was 32]**
 - Scope Fence decision tree + 5-step scope change process (v0.0.5c)
-- 11 deferred features registry (v0.0.5c)
-- 32 MVP features with acceptance tests (v0.0.5d)
-- 4 test scenarios with executable pseudocode (v0.0.5d)
-- Definition of Done: 36 checks across 6 dimensions (v0.0.5d)
+- 14 deferred features registry (v0.0.5c) **[v0.0.7: was 11]**
+- 45 MVP features with acceptance tests (v0.0.5d) **[v0.0.7: was 32]**
+- 5 test scenarios with executable pseudocode (v0.0.5d) **[v0.0.7: was 4]**
+- Definition of Done: 36+ checks across 6 dimensions (v0.0.5d) **[v0.0.7: expanded with ecosystem items]**
 - 2-minute demo scenario script (v0.0.5d)
+
+**[v0.0.7] Ecosystem & Quality Standard Artifacts:**
+- 30-criterion, 5-level Platinum Standard quality framework (v0.0.6)
+- 3-layer ecosystem model: Navigation, Content, Aggregate (v0.0.7)
+- 6 new schema entities: DocumentEcosystem, EcosystemFile, FileRelationship, EcosystemScore, EcosystemHealthDimension, LinkRelationship (v0.0.7)
+- 12 new diagnostic codes (E009–E010, W012–W018, I008–I010) bringing total to 38 (v0.0.7)
+- 6 new ecosystem anti-patterns (AP_ECO_001–006) bringing total to 28 (v0.0.7)
+- 5-stage ecosystem pipeline architecture (v0.0.7)
+- 4-phase migration plan from single-file to ecosystem (v0.0.7)
+- Backward compatibility specification: single-file byte-identical output (v0.0.7)
 
 ### 9.3 Forward Traceability: Research → Implementation
 
@@ -552,6 +564,12 @@ These questions were not answered by the v0.0.x research program and represent a
 | 3-layer architecture (v0.0.4d) | Content Structure module | v0.3.x/v0.4.x |
 | A/B test scenarios (v0.0.5d) | Integration test suite | v0.5.x |
 | Demo script (v0.0.5d) | Streamlit UI | v0.6.0 |
+| **[v0.0.7]** Platinum Standard (v0.0.6) | Validation criteria reference | v0.2.x |
+| **[v0.0.7]** Ecosystem schema entities (v0.0.7) | Ecosystem Pydantic models | v0.1.2 |
+| **[v0.0.7]** Ecosystem pipeline (v0.0.7) | EcosystemPipeline orchestrator | v0.2.7 |
+| **[v0.0.7]** Ecosystem scoring (v0.0.7) | EcosystemScorer | v0.2.8 |
+| **[v0.0.7]** 12 new diagnostic codes (v0.0.7) | Diagnostics enum expansion | v0.2.7 |
+| **[v0.0.7]** Backward compatibility spec (v0.0.7) | Regression test suite | v0.2.7 |
 
 ---
 
@@ -602,6 +620,10 @@ The llms.txt specification defines a workable but incomplete file format for mak
 - [v0.0.5b — Non-Functional Requirements & Constraints](RR-SPEC-v0.0.5b-non-functional-requirements-and-constraints.md)
 - [v0.0.5c — Scope Definition & Out-of-Scope Registry](RR-SPEC-v0.0.5c-scope-definition-and-out-of-scope-registry.md)
 - [v0.0.5d — Success Criteria & MVP Definition](RR-SPEC-v0.0.5d-success-criteria-and-mvp-definition.md)
+
+**[v0.0.7] Ecosystem & Quality Standard Specifications:**
+- [v0.0.6 — Platinum Standard Definition](RR-SPEC-v0.0.6-platinum-standard-definition.md)
+- [v0.0.7 — Ecosystem Pivot Specification](RR-SPEC-v0.0.7-ecosystem-pivot-specification.md)
 
 ### Supporting Documents
 

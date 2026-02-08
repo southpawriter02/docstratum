@@ -1,0 +1,12 @@
+# Cloud Services Platform
+
+> Multi-service cloud platform with selective documentation coverage.
+
+## Primary Documentation
+
+- [API Reference](api-reference.md): Core service APIs and methods
+
+## External Resources
+
+- [GitHub Organization](https://github.com/cloud-services): Source code and releases
+- [Community Forum](https://forum.cloud-services.example.com/): User discussions

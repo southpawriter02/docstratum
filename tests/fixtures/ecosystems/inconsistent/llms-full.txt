@@ -1,0 +1,21 @@
+# My-Project v2
+
+> Complete documentation for My-Project version 2.
+
+## Overview
+
+This is the full aggregate documentation file with a different project name than the main index.
+
+## Installation
+
+```bash
+pip install my-project-v2
+```
+
+## Configuration
+
+Configuration options are available through environment variables.
+
+## API Documentation
+
+All available methods and endpoints are documented here with examples.
