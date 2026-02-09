@@ -61,9 +61,38 @@ Comparing Markdown to JSON/YAML is a category error. JSON and YAML are data seri
 - **DS-DD-003:** GitHub Flavored Markdown (GFM) as Standard — specifies which Markdown flavor the parser targets
 - **DS-DD-002:** 3-Layer Architecture — depends on Markdown's narrative structure for layer definition
 
+## Ecosystem Context: Parallel llms.txt Specifications
+
+The llms.txt format is not governed by a single standards body. Multiple organizations have published specifications that extend the original proposal, each targeting different use cases. DocStratum's ASoT is designed to validate **software documentation** llms.txt files, but practitioners should be aware of the broader ecosystem when authoring or evaluating llms.txt content.
+
+### The Original Proposal (llmstxt.org)
+
+The llms.txt specification was published in September 2024 by Jeremy Howard (founder of fast.ai and Answer.AI). It defines a Markdown file located at `/llms.txt` in a website's root path containing: an H1 with the project or site name (required), a blockquote with a short summary, zero or more Markdown sections of detail, and zero or more H2-delimited sections containing file lists of URLs with optional descriptions. The specification is hosted at https://llmstxt.org and is the foundation that DocStratum's validation criteria are built against.
+
+As of early 2026, over 844,000 websites have implemented some form of llms.txt (per BuiltWith tracking), including Anthropic, Cloudflare, Stripe, and Hugging Face. However, no major LLM provider has officially confirmed that their models read llms.txt at inference time — adoption is driven by forward-looking SEO strategy and documentation best practices rather than confirmed LLM consumption.
+
+### AI Visibility Definition (365i — UK)
+
+The 365i organization (https://www.ai-visibility.org.uk) published an extended llms.txt specification (Version 1.1.0, January 2026) as part of their broader "AI Visibility Definition" framework (currently at v1.3.2). Their specification explicitly adopts and extends the llmstxt.org convention, adding structured business identity use cases.
+
+Key differences from the original proposal and from DocStratum's scope:
+
+1. **Domain focus**: 365i targets business identity (consultancies, agencies, service providers), not software documentation. Their recommended sections include "Team," "Locations," "Certifications," "Awards," "Partners," and "Industries" — none of which overlap with DocStratum's canonical section names (DS-CN-001 through DS-CN-011: Master Index, LLM Instructions, API Reference, etc.).
+
+2. **Content restrictions**: 365i defines explicit "Content Not Permitted" rules — no marketing hyperbole, superlatives ("best," "leading," "world-class"), pricing information, unverifiable claims, competitor references, testimonials, or personal data. This aligns closely with DocStratum's DS-AP-STRAT-004 (Preference Trap), which independently detects manipulative promotional language.
+
+3. **Companion files**: 365i defines additional discovery files beyond llms.txt — including ai.txt (usage permissions), ai.json (machine-parseable interaction guidance), brand.txt (naming conventions), and identity.json (structured identity data). DocStratum does not validate these formats.
+
+4. **Relationship to DocStratum**: The specifications are **complementary, not conflicting**. DocStratum's validation pipeline could score a 365i-compliant file — it would likely pass structural criteria (H1, blockquote, H2 sections, valid links) but score differently on content criteria that expect software-documentation sections. If DocStratum expands beyond software documentation, the 365i section taxonomy would be a valuable reference for defining domain-specific canonical names.
+
+### Implications for DocStratum
+
+The existence of domain-specific llms.txt extensions validates DocStratum's core thesis: that **documentation quality measurement** is an independent concern from **documentation content specification**. Different industries will define different section requirements, but all will benefit from structural validation, anti-pattern detection, and quality scoring. DocStratum's validation pipeline is designed to measure quality within a defined scope (software documentation), and its architecture — scored dimensions, configurable weights, extensible criteria — could accommodate additional domains in future versions.
+
 ## Change History
 
 | ASoT Version | Date | Change |
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.3 |
 | 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |
+| 1.1.0-scaffold | 2026-02-08 | Added Ecosystem Context section documenting parallel llms.txt specifications (llmstxt.org original, 365i AI Visibility Definition v1.1.0) and their relationship to DocStratum |

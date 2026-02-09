@@ -2,7 +2,7 @@
 
 > **Parent:** [standards/](../README.md)
 > **Type:** DS-DD-* (Design Decision)
-> **Total Expected:** 16 decisions (DECISION-001 through DECISION-016)
+> **Total Expected:** 19 decisions (DECISION-001 through DECISION-019)
 
 ## Overview
 
@@ -28,3 +28,6 @@ Design decisions document the inherited constraints from the v0.0.x research pha
 | DS-DD-014 | DECISION-014 | Content Quality Primary Weight | Scoring / Quality | DRAFT |
 | DS-DD-015 | DECISION-015 | MCP as Target Consumer | Entire Validation Philosophy | DRAFT |
 | DS-DD-016 | DECISION-016 | Four-Category Anti-Pattern Severity | Anti-Pattern Detection (AntiPatternCategory) | DRAFT |
+| DS-DD-017 | DECISION-017 | AI Authoring Workflow for ASoT Standards | All future DS-* standard files | DRAFT |
+| DS-DD-018 | DECISION-018 | AI Documentation Generation Workflow | End-user llms.txt documentation | DRAFT |
+| DS-DD-019 | DECISION-019 | Guided Flexibility Authoring Model | All DS-* standard files (compliance tiers) | DRAFT |

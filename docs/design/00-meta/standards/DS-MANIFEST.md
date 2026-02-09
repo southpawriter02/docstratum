@@ -41,6 +41,9 @@
 | DS-DD-013 | DD | decisions/DS-DD-013-token-budget-tiers.md | RATIFIED | 2026-02-08 |
 | DS-DD-015 | DD | decisions/DS-DD-015-mcp-as-target-consumer.md | RATIFIED | 2026-02-08 |
 | DS-DD-016 | DD | decisions/DS-DD-016-four-category-anti-pattern-severity.md | RATIFIED | 2026-02-08 |
+| DS-DD-017 | DD | decisions/DS-DD-017-ai-authoring-workflow-asot-standards.md | DRAFT | 2026-02-08 |
+| DS-DD-018 | DD | decisions/DS-DD-018-ai-documentation-generation-workflow.md | DRAFT | 2026-02-08 |
+| DS-DD-019 | DD | decisions/DS-DD-019-guided-flexibility-authoring-model.md | DRAFT | 2026-02-08 |
 | DS-AP-CRIT-001 | AP | anti-patterns/critical/DS-AP-CRIT-001-ghost-file.md | RATIFIED | 2026-02-08 |
 | DS-QS-DIM-STR | QS | scoring/DS-QS-DIM-STR-structural-dimension.md | RATIFIED | 2026-02-08 |
 | DS-QS-DIM-CON | QS | scoring/DS-QS-DIM-CON-content-dimension.md | RATIFIED | 2026-02-08 |
@@ -158,6 +161,8 @@
 | DS-AP-STRAT-002 | AP | anti-patterns/strategic/DS-AP-STRAT-002-monolith-monster.md | RATIFIED | 2026-02-08 |
 | DS-AP-STRAT-003 | AP | anti-patterns/strategic/DS-AP-STRAT-003-meta-documentation-spiral.md | RATIFIED | 2026-02-08 |
 | DS-AP-STRAT-004 | AP | anti-patterns/strategic/DS-AP-STRAT-004-preference-trap.md | RATIFIED | 2026-02-08 |
+| DS-AP-STRAT-005 | AP | anti-patterns/strategic/DS-AP-STRAT-005-phantom-reference.md | DRAFT | 2026-02-08 |
+| DS-AP-STRAT-006 | AP | anti-patterns/strategic/DS-AP-STRAT-006-template-drift.md | DRAFT | 2026-02-08 |
 | DS-AP-ECO-001 | AP | anti-patterns/ecosystem/DS-AP-ECO-001-index-island.md | RATIFIED | 2026-02-08 |
 | DS-AP-ECO-002 | AP | anti-patterns/ecosystem/DS-AP-ECO-002-phantom-links.md | RATIFIED | 2026-02-08 |
 | DS-AP-ECO-003 | AP | anti-patterns/ecosystem/DS-AP-ECO-003-shadow-aggregate.md | RATIFIED | 2026-02-08 |
@@ -182,7 +187,7 @@ These assertions are verified by the validation pipeline at startup. All must PA
 
 | ID | Assertion | Expected | Status |
 |----|-----------|----------|--------|
-| IA-001 | Total RATIFIED standard files | 144 | PASS |
+| IA-001 | Total standard files (144 RATIFIED + 5 DRAFT) | 149 | PASS |
 | IA-002 | RATIFIED VC (criteria) files | 30 | PASS |
 | IA-003 | RATIFIED DC (diagnostic) files | 38 | PASS |
 | IA-004 | RATIFIED AP (anti-pattern) files | 28 | PASS |
@@ -228,6 +233,9 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | DS-DD-013 | v0.0.4d §Decision Log — DECISION-013 | Constants (TOKEN_BUDGET_TIERS, SizeTier) |
 | DS-DD-015 | v0.0.4d §Decision Log — DECISION-015 | Entire Validation Philosophy (MCP target) |
 | DS-DD-016 | v0.0.4d §Decision Log — DECISION-016 | Anti-Pattern Detection (AntiPatternCategory enum) |
+| DS-DD-017 | Phase E audit findings; Phase A–E workflow observations | AI Authoring Workflow for ASoT Standards |
+| DS-DD-018 | DS-DD-002, DS-DD-014, all 30 VC criteria, calibration specimens | AI Documentation Generation Workflow |
+| DS-DD-019 | Phase E audit findings; user-directed strictness preference | Guided Flexibility Authoring Model |
 | DS-AP-CRIT-001 | constants.py → ANTI_PATTERN_REGISTRY["ghost_file"] | RR-SPEC-v0.0.6 §4.3 |
 | DS-CS-001 | v0.0.2c frequency analysis | https://svelte.dev/llms.txt |
 | DS-CN-001 | constants.py → CanonicalSectionName.MASTER_INDEX | v0.0.2c frequency analysis (87% adoption) |
@@ -320,6 +328,8 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | DS-AP-STRAT-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-002] | v0.0.4c §Anti-Patterns; v0.0.4a §SIZ-003 |
 | DS-AP-STRAT-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-003] | v0.0.4c §Anti-Patterns Catalog |
 | DS-AP-STRAT-004 | constants.py → ANTI_PATTERN_REGISTRY[AP-STRAT-004] | v0.0.4c §Anti-Patterns Catalog |
+| DS-AP-STRAT-005 | Phase E audit — 6 phantom references found across 5 files | AI-specific anti-pattern (cross-reference hallucination) |
+| DS-AP-STRAT-006 | Phase E audit — QS dimension template inconsistencies | AI-specific anti-pattern (template non-compliance) |
 | DS-AP-ECO-001 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-001] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
 | DS-AP-ECO-002 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-002] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
 | DS-AP-ECO-003 | constants.py → ANTI_PATTERN_REGISTRY[AP-ECO-003] | v0.0.7 §6 (Ecosystem Anti-Patterns) |
@@ -371,4 +381,5 @@ These assertions are verified by the validation pipeline at startup. All must PA
 | 0.0.0-scaffold | 2026-02-08 | Phase D.5 complete: 5 new quality scoring framework files authored (3 dimensions, 1 grade thresholds, 1 gating rule). Scoring README index updated. Each file documents scoring logic, weight, criteria mappings, and implementation reference. | DS-QS-DIM-STR, DS-QS-DIM-CON, DS-QS-DIM-APD, DS-QS-GRADE, DS-QS-GATE |
 | 0.0.0-scaffold | 2026-02-08 | Phase D.6 complete: 5 new ecosystem health dimension files authored (Coverage, Consistency, Completeness, Token Efficiency, Freshness). Ecosystem README index updated. Each file documents the measurement approach and related anti-patterns. | DS-EH-COV, DS-EH-CONS, DS-EH-COMP, DS-EH-TOK, DS-EH-FRESH |
 | 0.0.0-scaffold | 2026-02-08 | Phase D.7 complete: 5 new calibration specimen files authored (Pydantic 90, Vercel SDK 90, Shadcn UI 89, Cursor 42, NVIDIA 24). Calibration README index updated. Full quality spectrum coverage from Critical to Exemplary. Total registry entries: 144. Phase D complete. | DS-CS-002 through DS-CS-006 (5 new) |
+| 1.1.0-scaffold | 2026-02-08 | Phase F: AI Authoring Guidelines — 5 new DRAFT standard files added (DS-DD-017, DS-DD-018, DS-DD-019, DS-AP-STRAT-005, DS-AP-STRAT-006). Three design decisions codify AI authoring workflows for ASoT standards (DD-017), llms.txt documentation generation (DD-018), and the guided flexibility compliance model (DD-019). Two new strategic anti-patterns define Phantom Reference (STRAT-005) and Template Drift (STRAT-006). Total registry entries: 149 (144 RATIFIED + 5 DRAFT). | DS-DD-017, DS-DD-018, DS-DD-019, DS-AP-STRAT-005, DS-AP-STRAT-006 |
 | 1.0.0 | 2026-02-08 | Phase E ratification — all 144 files promoted from DRAFT to RATIFIED, version stamped 1.0.0. Integrity fixes: (1) 3 QS dimension files rewritten with correct criteria tables (STR had wrong weights summing to 27, CON had stale criteria set, APD had incorrect deduction-based model), (2) 25 missing provenance entries added (CN-002–011, CS-002–006, all QS, all EH), (3) IA-001 expected count corrected from 146 to 144, (4) IA-014 updated to document L0/ecosystem DC exceptions, (5) DS-CONST-004 broken reference in DD-012 replaced with correct constants.py citation, (6) stale Path B artifact (DS-VC-STR-001-parseable-prerequisites.md) deleted, (7) 70 tags removed from 30 VC files per weight ratification proposal, (8) all 20 integrity assertions verified PASS. | All 144 DS-* files |
