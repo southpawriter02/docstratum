@@ -7,7 +7,7 @@ Model Categories:
     Parsed models       What an existing llms.txt file contains (Markdown AST)
     Validation models   What the validator reports (diagnostics, levels)
     Quality models      How good the file is (composite score, grades)
-    Classification      What type of document it is (Type 1–4)
+    Classification      What type of document it is (Type 1-4)
     Ecosystem models    [v0.0.7] Documentation ecosystem entities and scoring
     Enrichment models   DocStratum-extended schema (concepts, few-shot, instructions)
     Constants           Canonical section names, token budget tiers, check IDs
@@ -40,6 +40,14 @@ from docstratum.schema.ecosystem import (
     EcosystemHealthDimension,
     EcosystemScore,
     FileRelationship,
+)
+from docstratum.schema.enrichment import (
+    Concept,
+    ConceptRelationship,
+    FewShotExample,
+    LLMInstruction,
+    Metadata,
+    RelationshipType,
 )
 from docstratum.schema.parsed import (
     LinkRelationship,
@@ -74,33 +82,40 @@ __all__ = [
     "AntiPatternEntry",
     "AntiPatternID",
     "CanonicalSectionName",
-    "TokenBudgetTier",
+    # [v0.1.2d] Enrichment models
+    "Concept",
+    "ConceptRelationship",
     # Diagnostics
     "DiagnosticCode",
-    "Severity",
+    # Quality models
+    "DimensionScore",
     # Classification
     "DocumentClassification",
+    # [v0.0.7] Ecosystem models
+    "DocumentEcosystem",
     "DocumentType",
-    "SizeTier",
+    "EcosystemFile",
+    "EcosystemHealthDimension",
+    "EcosystemScore",
+    "FewShotExample",
+    "FileRelationship",
+    "LLMInstruction",
     # Parsed models
     "LinkRelationship",
+    "Metadata",
     "ParsedBlockquote",
     "ParsedLink",
     "ParsedLlmsTxt",
     "ParsedSection",
-    # Quality models
-    "DimensionScore",
     "QualityDimension",
     "QualityGrade",
     "QualityScore",
+    "RelationshipType",
+    "Severity",
+    "SizeTier",
+    "TokenBudgetTier",
     # Validation models
     "ValidationDiagnostic",
     "ValidationLevel",
     "ValidationResult",
-    # [v0.0.7] Ecosystem models
-    "DocumentEcosystem",
-    "EcosystemFile",
-    "EcosystemHealthDimension",
-    "EcosystemScore",
-    "FileRelationship",
 ]

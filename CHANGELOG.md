@@ -9,11 +9,101 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+---
+
+## [0.1.5] - 2026-02-09
+
+**Test Infrastructure — Test suite, fixtures, and CI enforcement.**
+
 ### Added
 
-- Schema definition with Pydantic models for llms.txt validation (v0.1.2 — in progress)
+- `tests/test_enrichment.py` — 52 tests covering all 6 enrichment models, field constraints, pattern validation, and public API importability (v0.1.5a)
+- `tests/test_pipeline.py` — Stage contract tests and helper function tests for all 5 pipeline stages (v0.1.5b)
+- `tests/test_pipeline_integration.py` — End-to-end pipeline integration tests on 8 ecosystem fixtures (v0.1.5c)
+- `tests/fixtures/` — 8 synthetic ecosystem fixture directories for multi-file validation testing
+
+### Notes
+
+- **Verification:** 324 tests passing, 93.58% coverage (≥80% floor enforced), all schema modules at 100%.
 
 ---
+
+## [0.1.4] - 2026-02-09
+
+**Ecosystem Pipeline Infrastructure — 5-stage ecosystem pipeline with orchestration.**
+
+### Added
+
+#### Pipeline Contracts (`src/docstratum/pipeline/stages.py`, `__init__.py`)
+
+- `PipelineStage` protocol — standard interface for pipeline stages (v0.1.4a)
+- `PipelineContext` — stage-shared state container with `SingleFileValidator` protocol
+- `StageResult` — per-stage output with timing, diagnostics, and artifacts
+- `StageTimer` — context manager for stage execution timing
+
+#### Discovery Stage (`src/docstratum/pipeline/discovery.py`)
+
+- `DiscoveryStage` — Stage 1: filesystem traversal, `classify_filename()`, E009/I010 emission (v0.1.4b)
+
+#### Relationship Stage (`src/docstratum/pipeline/relationship.py`)
+
+- `RelationshipStage` — Stage 3: link extraction and relationship classification (v0.1.4c)
+
+#### Ecosystem Validator (`src/docstratum/pipeline/ecosystem_validator.py`)
+
+- `EcosystemValidationStage` — Stage 4: 6 ecosystem anti-patterns, W012–W018 emission (v0.1.4d)
+
+#### Ecosystem Scorer (`src/docstratum/pipeline/ecosystem_scorer.py`)
+
+- `ScoringStage` — Stage 5: Completeness + Coverage dimension scoring (v0.1.4e)
+
+#### Pipeline Orchestrator (`src/docstratum/pipeline/orchestrator.py`)
+
+- `EcosystemPipeline.run()` — stoppable 5-stage execution with single-file backward compatibility (v0.1.4f)
+
+---
+
+## [0.1.3] - 2026-02-09
+
+**Output & Governance Specifications — Design specifications for output, remediation, profiles, and scoring calibration.**
+
+> These are _specification documents_ (design contracts), not code implementations.
+> The code for these features arrives in later versions (v0.5.x–v0.8.x).
+
+### Added
+
+#### Specification Documents (`docs/design/02-foundation/`)
+
+- `RR-SPEC-v0.1.3-output-tier-specification.md` — 4-tier output model (Pass/Fail → Audience-Adapted), format-tier compatibility matrix, report metadata schema (v0.1.3a)
+- `RR-SPEC-v0.1.3-remediation-framework.md` — Priority model, grouping strategy, effort estimation, dependency graph, remediation templates, Tier 3/4 boundary (v0.1.3b)
+- `RR-SPEC-v0.1.3-validation-profiles.md` — `ValidationProfile` model, 4 built-in profiles (lint/ci/full/enterprise), tag-based rule composition, inheritance (v0.1.3c)
+- `RR-SPEC-v0.1.3-ecosystem-scoring-calibration.md` — 5 health dimensions, weighting formulas, 4 synthetic calibration specimens (ECO-CS-001–004), grade boundaries (v0.1.3d)
+
+---
+
+## [0.1.2d] - 2026-02-10
+
+**Enrichment Models — Semantic extension schema for concepts, few-shot examples, and LLM instructions.**
+
+### Added
+
+#### Enrichment Models (`src/docstratum/schema/enrichment.py`)
+
+- `RelationshipType(StrEnum)` — 5 typed directed relationships for the Concept Graph (DECISION-005): `depends_on`, `relates_to`, `conflicts_with`, `specializes`, `supersedes`
+- `ConceptRelationship(BaseModel)` — typed, directed edge with `target_id` (DECISION-004 pattern), `relationship_type`, optional `description` (max 200 chars)
+- `Concept(BaseModel)` — Layer 2 semantic concept with 8 fields: `id` (DECISION-004), `name`, `definition` (10–500 chars), `aliases`, `relationships`, `related_page_urls`, `anti_patterns`, `domain`
+- `FewShotExample(BaseModel)` — Layer 3 Q&A pair with 8 fields: `id`, `intent`, `question` (min 10), `ideal_answer` (min 50), `concept_ids`, `difficulty` (beginner/intermediate/advanced), `language`, `source_urls`
+- `LLMInstruction(BaseModel)` — agent behavior directive with `directive_type` (positive/negative/conditional), `instruction`, `context`, `applies_to_concepts`, `priority` (0–100)
+- `Metadata(BaseModel)` — file-level provenance with 7 fields: `schema_version` (semver pattern), `site_name`, `site_url`, `last_updated`, `generator`, `docstratum_version`, `token_budget_tier`
+
+#### Public API
+
+- All 6 enrichment types exported from `docstratum.schema` via `__init__.py`
+
+### Notes
+
+- **Convention:** Uses `X | None` union syntax instead of `Optional[X]` per ruff UP007 (matching v0.1.2b+).
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 324 tests passing, `enrichment.py` at 100% coverage.
 
 ## [0.1.2c] - 2026-02-07
 
