@@ -10,11 +10,12 @@ Modules:
     io          File I/O, encoding detection, and line ending normalization (v0.2.0a).
     tokens      Token type enum and Token model (v0.2.0b).
     tokenizer   Line-by-line Markdown tokenizer (v0.2.0b).
+    populator   Token-to-model populator (v0.2.0c).
 
 Implementation Status:
     - [x] File I/O & Encoding Detection (v0.2.0a)
     - [x] Markdown Tokenization (v0.2.0b)
-    - [ ] Model Population (v0.2.0c)
+    - [x] Model Population (v0.2.0c)
     - [ ] Token Estimation (v0.2.0d)
 
 Related:
@@ -23,6 +24,7 @@ Related:
 """
 
 from docstratum.parser.io import FileMetadata, read_bytes, read_file, read_string
+from docstratum.parser.populator import populate
 from docstratum.parser.tokenizer import tokenize
 from docstratum.parser.tokens import Token, TokenType
 
@@ -30,6 +32,7 @@ __all__ = [
     "FileMetadata",
     "Token",
     "TokenType",
+    "populate",
     "read_bytes",
     "read_file",
     "read_string",

@@ -11,6 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.0c] - 2026-02-11
+
+**Model Population — Parser pipeline stage 3.**
+
+### Added
+
+#### Populator (`src/docstratum/parser/populator.py`)
+
+- `populate(tokens, *, raw_content, source_filename) -> ParsedLlmsTxt` — 5-phase sequential walker: H1 extraction, blockquote collection, body consumption, section/link building (with code fence state tracking), and final assembly (v0.2.0c)
+- `_parse_link_entry(token) -> ParsedLink | None` — Regex-based link parser extracting title, URL, and optional description from `- [title](url): desc` format
+- `_is_syntactically_valid_url(url) -> bool` — Scheme+netloc or relative-path check (syntactic only, reachability is v0.3.2b)
+- `LINK_PATTERN` — Compiled regex: `r'^- \[([^\]]*)\]\(([^)]*)\)(?::\s*(.*))?$'`
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-export for `populate`
+
+#### Tests
+
+- `tests/test_parser_populator.py` — 26 tests covering empty/minimal streams, blockquote extraction (multiline, bare, missing, raw preservation), section building (single/multiple/empty), link parsing (with/without description, empty URL/title, malformed), URL validation (absolute/relative/dotrelative/invalid/empty), code fence suppression, and assembly (source_filename, raw_content, parsed_at)
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 26 tests passing, `populator.py` at 95% coverage.
+- **Spec reference:** Traces to v0.0.1a §Reference Parser Phases 1-5 and §Edge Cases A1-C10.
+
+---
+
 ## [0.2.0b] - 2026-02-11
 
 **Markdown Tokenization — Parser pipeline stage 2.**
