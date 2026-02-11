@@ -19,6 +19,18 @@ This phase builds the CLI entry point (`docstratum validate`) and the profile sy
 | v0.5.1  | Validation Profiles               | Profile model, 4 built-in profiles, tag-based filtering, inheritance   |
 | v0.5.2  | Profile Discovery & Configuration | Profile loading, discovery precedence, CLI overrides, legacy migration |
 
+## 📄 Design Specifications
+
+### v0.5.0 — CLI Foundation
+
+| Spec | Title | Tests |
+|------|-------|-------|
+| [RR-SPEC-v0.5.0](RR-SPEC-v0.5.0-cli-foundation.md) | CLI Foundation (parent) | — |
+| [RR-SPEC-v0.5.0a](RR-SPEC-v0.5.0a-cli-entry-point.md) | CLI Entry Point | 8 |
+| [RR-SPEC-v0.5.0b](RR-SPEC-v0.5.0b-argument-parsing.md) | Argument Parsing | 14 |
+| [RR-SPEC-v0.5.0c](RR-SPEC-v0.5.0c-exit-codes.md) | Exit Codes | 12 |
+| [RR-SPEC-v0.5.0d](RR-SPEC-v0.5.0d-terminal-output.md) | Terminal Output | 16 |
+
 ## 🔗 Dependencies
 
 - **Depends on**: v0.4.x Quality Scoring (requires `QualityScore`)
