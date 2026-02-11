@@ -11,6 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.0a] - 2026-02-11
+
+**File I/O & Encoding Detection — Parser pipeline stage 1.**
+
+### Added
+
+#### Parser I/O Module (`src/docstratum/parser/io.py`)
+
+- `FileMetadata(BaseModel)` — 7-field Pydantic model for file-level encoding metadata: `byte_count`, `encoding`, `has_bom`, `has_null_bytes`, `line_ending_style`, `line_count`, `decoding_error` (v0.2.0a)
+- `read_file(path: str) -> tuple[str, FileMetadata]` — Read file from disk with encoding detection, BOM handling, and line ending normalization
+- `read_string(content: str) -> tuple[str, FileMetadata]` — Wrap raw string with metadata for pipeline compatibility
+- `read_bytes(data: bytes) -> tuple[str, FileMetadata]` — Full encoding detection pipeline: UTF-8 BOM, null byte scan, UTF-8→Latin-1 fallback, line ending detection and normalization
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- New `parser` subpackage with re-exports for `FileMetadata`, `read_file`, `read_string`, `read_bytes`
+
+#### Tests
+
+- `tests/test_parser_io.py` — 19 tests covering UTF-8, UTF-8+BOM, Latin-1 fallback, null byte detection, all 4 line ending styles (LF/CRLF/CR/mixed), line ending normalization, empty files, whitespace-only files, FileNotFoundError, line count, and FileMetadata model constraints
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 19 tests passing, `parser/io.py` at 100% coverage.
+- **Spec reference:** Traces to v0.0.1a §Edge Cases Category D (D1-D5) and v0.0.4a §4 (File Format Requirements).
+
+---
+
 ## [0.1.5] - 2026-02-09
 
 **Test Infrastructure — Test suite, fixtures, and CI enforcement.**
