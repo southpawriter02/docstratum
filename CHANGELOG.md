@@ -11,6 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.0b] - 2026-02-11
+
+**Markdown Tokenization — Parser pipeline stage 2.**
+
+### Added
+
+#### Token Definitions (`src/docstratum/parser/tokens.py`)
+
+- `TokenType(StrEnum)` — 8 structural token types: `H1`, `H2`, `H3_PLUS`, `BLOCKQUOTE`, `LINK_ENTRY`, `CODE_FENCE`, `BLANK`, `TEXT` (v0.2.0b)
+- `Token(BaseModel)` — 3-field Pydantic model: `token_type`, `line_number` (1-indexed, ge=1), `raw_text` (v0.2.0b)
+
+#### Tokenizer (`src/docstratum/parser/tokenizer.py`)
+
+- `tokenize(content: str) -> list[Token]` — Line-by-line Markdown tokenizer with code fence state machine, priority-ordered prefix matching (code fence > H3+ > H2 > H1 > blockquote > link entry > blank > text), 1-indexed line numbers, and raw text preservation (v0.2.0b)
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-exports for `Token`, `TokenType`, and `tokenize`
+
+#### Tests
+
+- `tests/test_parser_tokenizer.py` — 23 tests covering all 8 token types, code fence state toggling/suppression/unclosed fences, classification priority ordering, tab-indented headings, empty content, line number tracking, full document tokenization, and raw text preservation
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 23 tests passing, `tokenizer.py` and `tokens.py` both at 100% coverage.
+- **Spec reference:** Traces to v0.0.1a §ABNF Grammar (lines 74-127) and v0.0.1a §Reference Parser Design Phases 1-4.
+
 ## [0.2.0a] - 2026-02-11
 
 **File I/O & Encoding Detection — Parser pipeline stage 1.**
