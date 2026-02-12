@@ -16,7 +16,7 @@ Implementation Status:
     - [x] File I/O & Encoding Detection (v0.2.0a)
     - [x] Markdown Tokenization (v0.2.0b)
     - [x] Model Population (v0.2.0c)
-    - [ ] Token Estimation (v0.2.0d)
+    - [x] Token Estimation (v0.2.0d)
 
 Related:
     - src/docstratum/schema/parsed.py: Pydantic models this package populates

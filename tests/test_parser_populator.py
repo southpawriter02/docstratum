@@ -1,7 +1,8 @@
-"""Tests for the parser populator module (v0.2.0c).
+"""Tests for the parser populator module (v0.2.0c/d).
 
 Tests cover the 5-phase population walk: H1 extraction, blockquote
-collection, body consumption, section/link building, and assembly.
+collection, body consumption, section/link building, assembly, and
+token estimation.
 See RR-META-testing-standards for naming conventions and fixture patterns.
 """
 
@@ -434,3 +435,105 @@ class TestAssembly:
 
         # Assert
         assert isinstance(doc.parsed_at, datetime)
+
+
+# ── Token Estimation (v0.2.0d) ──────────────────────────────────────
+
+
+class TestTokenEstimation:
+    """Tests for per-section token estimation (v0.2.0d)."""
+
+    def test_section_token_estimate_empty(self):
+        """Verify empty section raw_content produces estimated_tokens=0."""
+        # Arrange
+        tokens = [
+            _tok(TokenType.H2, 1, "## First"),
+            _tok(TokenType.H2, 2, "## Second"),
+        ]
+
+        # Act
+        doc = populate(tokens)
+
+        # Assert
+        assert doc.sections[0].estimated_tokens == 0
+
+    def test_section_token_estimate_short(self):
+        """Verify 11 chars produces estimated_tokens=2 (11 // 4 = 2)."""
+        # Arrange -- "Hello world" is 11 chars
+        tokens = [
+            _tok(TokenType.H2, 1, "## Docs"),
+            _tok(TokenType.TEXT, 2, "Hello world"),
+        ]
+
+        # Act
+        doc = populate(tokens)
+
+        # Assert
+        assert doc.sections[0].estimated_tokens == 2
+
+    def test_section_token_estimate_1000_chars(self):
+        """Verify 1000 chars produces estimated_tokens=250."""
+        # Arrange
+        tokens = [
+            _tok(TokenType.H2, 1, "## Docs"),
+            _tok(TokenType.TEXT, 2, "a" * 1000),
+        ]
+
+        # Act
+        doc = populate(tokens)
+
+        # Assert
+        assert doc.sections[0].estimated_tokens == 250
+
+    def test_section_token_estimate_rounddown(self):
+        """Verify 7 chars floors to estimated_tokens=1 (7 // 4 = 1)."""
+        # Arrange -- "abcdefg" is 7 chars
+        tokens = [
+            _tok(TokenType.H2, 1, "## Docs"),
+            _tok(TokenType.TEXT, 2, "abcdefg"),
+        ]
+
+        # Act
+        doc = populate(tokens)
+
+        # Assert
+        assert doc.sections[0].estimated_tokens == 1
+
+    def test_document_tokens_gte_section_sum(self):
+        """Verify doc.estimated_tokens >= sum of section estimates."""
+        # Arrange
+        raw = "# Title\n> Desc\n## Docs\n- [A](https://a.com): A\n## API\n- [B](https://b.com): B\n"
+        tokens = [
+            _tok(TokenType.H1, 1, "# Title"),
+            _tok(TokenType.BLOCKQUOTE, 2, "> Desc"),
+            _tok(TokenType.H2, 3, "## Docs"),
+            _tok(TokenType.LINK_ENTRY, 4, "- [A](https://a.com): A"),
+            _tok(TokenType.H2, 5, "## API"),
+            _tok(TokenType.LINK_ENTRY, 6, "- [B](https://b.com): B"),
+        ]
+
+        # Act
+        doc = populate(tokens, raw_content=raw)
+
+        # Assert
+        section_sum = sum(s.estimated_tokens for s in doc.sections)
+        assert doc.estimated_tokens >= section_sum
+
+    def test_all_sections_have_tokens_set(self):
+        """Verify all sections have non-negative estimated_tokens."""
+        # Arrange
+        tokens = [
+            _tok(TokenType.H2, 1, "## A"),
+            _tok(TokenType.TEXT, 2, "Some content"),
+            _tok(TokenType.H2, 3, "## B"),
+            _tok(TokenType.TEXT, 4, "More content here"),
+            _tok(TokenType.H2, 5, "## C"),
+        ]
+
+        # Act
+        doc = populate(tokens)
+
+        # Assert
+        assert len(doc.sections) == 3
+        for section in doc.sections:
+            assert section.estimated_tokens >= 0

@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.0d] - 2026-02-11
+
+**Token Estimation -- Parser pipeline stage 4 (final).**
+
+### Added
+
+- `_estimate_section_tokens(doc)` -- sets `estimated_tokens = len(raw_content) // 4` on every `ParsedSection` (chars / 4 heuristic)
+- Integrated as Phase 6 at end of `populate()` in `populator.py`
+- 6 new tests in `test_parser_populator.py` (empty, short, 1000-char, floor rounding, doc >= section sum, all-sections check)
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 32 tests passing (26 v0.2.0c + 6 v0.2.0d).
+- **Parser pipeline complete:** v0.2.0a-d all implemented.
+
+---
+
 ## [0.2.0c] - 2026-02-11
 
 **Model Population — Parser pipeline stage 3.**

@@ -1,6 +1,6 @@
 """Model populator for the DocStratum parser.
 
-Implements v0.2.0c: walks the token stream produced by v0.2.0b and
+Implements v0.2.0c/d: walks the token stream produced by v0.2.0b and
 populates a ``ParsedLlmsTxt`` instance through 5 sequential phases:
 
     1. H1 Title Extraction
@@ -8,6 +8,7 @@ populates a ``ParsedLlmsTxt`` instance through 5 sequential phases:
     3. Body Content Consumption
     4. Section & Link Building (with code fence state tracking)
     5. Final Assembly (raw_content, source_filename, parsed_at)
+    6. Token Estimation (v0.2.0d — chars / 4 heuristic per section)
 
 The populator follows the reference parser design in v0.0.1a and uses
 a cursor-based sequential walk -- each phase advances through the
@@ -20,6 +21,7 @@ Related:
     - src/docstratum/parser/tokenizer.py: Produces the token stream
     - src/docstratum/schema/parsed.py: Models populated by this module
     - docs/design/03-parser/RR-SPEC-v0.2.0c-model-population.md: Design spec
+    - docs/design/03-parser/RR-SPEC-v0.2.0d-token-estimation.md: Design spec
 
 Research basis:
     v0.0.1a Reference Parser Phases 1-5 (lines 222-354)
@@ -125,6 +127,19 @@ def _parse_link_entry(token: Token) -> ParsedLink | None:
         line_number=token.line_number,
         is_valid_url=_is_syntactically_valid_url(url),
     )
+
+
+def _estimate_section_tokens(doc: ParsedLlmsTxt) -> None:
+    """Set estimated_tokens on each ParsedSection.
+
+    Mutates the sections in place. Uses the characters / 4 heuristic
+    consistent with ParsedLlmsTxt.estimated_tokens.
+
+    Args:
+        doc: The fully populated ParsedLlmsTxt (after Phases 1-5).
+    """
+    for section in doc.sections:
+        section.estimated_tokens = len(section.raw_content) // 4
 
 
 def populate(
@@ -279,5 +294,8 @@ def populate(
         section_count,
         link_count,
     )
+
+    # ── Phase 6: Token Estimation (v0.2.0d) ──────────────────────────
+    _estimate_section_tokens(doc)
 
     return doc
