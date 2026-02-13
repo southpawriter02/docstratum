@@ -1,9 +1,10 @@
 """Document type classifier for the DocStratum parser.
 
-Implements v0.2.1a: inspects a parsed document and its file metadata to
-determine which ``DocumentType`` it belongs to. Classification is the
-first enrichment step -- the validator uses the document type to select
-which rule set to apply.
+Implements v0.2.1a/b: inspects a parsed document and its file metadata to
+determine which ``DocumentType`` it belongs to and assigns a ``SizeTier``
+based on estimated token count. Classification is the first enrichment
+step -- the validator uses the document type to select which rule set
+to apply.
 
 The classifier uses a multi-signal decision tree based on empirical
 findings from 11 real-world specimens (v0.0.1a section 6):
@@ -17,11 +18,14 @@ findings from 11 real-world specimens (v0.0.1a section 6):
 
 Functions:
     classify_document_type: Classify a parsed document into a DocumentType.
+    assign_size_tier: Assign a SizeTier from estimated token count.
+    classify_document: Full classification + tier assignment.
 
 Related:
     - src/docstratum/schema/classification.py: DocumentType enum, TYPE_BOUNDARY_BYTES
     - src/docstratum/parser/populator.py: Produces the ParsedLlmsTxt input
     - docs/design/03-parser/RR-SPEC-v0.2.1a-document-type-classification.md: Design spec
+    - docs/design/03-parser/RR-SPEC-v0.2.1b-size-tier-assignment.md: Design spec
 
 Research basis:
     v0.0.1a section 6 Empirical Validation (lines 496-592)
@@ -33,7 +37,11 @@ import logging
 import os
 
 from docstratum.parser.io import FileMetadata
-from docstratum.schema.classification import DocumentClassification, DocumentType
+from docstratum.schema.classification import (
+    DocumentClassification,
+    DocumentType,
+    SizeTier,
+)
 from docstratum.schema.parsed import ParsedLlmsTxt
 
 logger = logging.getLogger(__name__)
@@ -171,3 +179,89 @@ def classify_document_type(
     # Default: structurally conformant but sparse
     logger.info("Classified as TYPE_1_INDEX: default (sparse but conformant)")
     return DocumentType.TYPE_1_INDEX
+
+
+def assign_size_tier(estimated_tokens: int) -> SizeTier:
+    """Assign a SizeTier based on estimated token count.
+
+    Thresholds are derived from DECISION-013 and the SizeTier enum:
+        MINIMAL:       < 1,500 tokens
+        STANDARD:      1,500 - 4,499 tokens
+        COMPREHENSIVE: 4,500 - 11,999 tokens
+        FULL:          12,000 - 49,999 tokens
+        OVERSIZED:     >= 50,000 tokens
+
+    Boundary convention: inclusive lower bound, exclusive upper bound.
+    (e.g., exactly 4,500 tokens -> COMPREHENSIVE, not STANDARD)
+
+    Uses the ``// 4`` heuristic consistent with the parser
+    (see v0.2.1b §3.3 Calibration Decision).
+
+    Args:
+        estimated_tokens: Approximate token count from
+            ParsedLlmsTxt.estimated_tokens.
+
+    Returns:
+        A SizeTier enum value.
+
+    Example:
+        >>> assign_size_tier(3000)
+        <SizeTier.STANDARD: 'standard'>
+        >>> assign_size_tier(4500)
+        <SizeTier.COMPREHENSIVE: 'comprehensive'>
+        >>> assign_size_tier(0)
+        <SizeTier.MINIMAL: 'minimal'>
+    """
+    if estimated_tokens < 1_500:
+        return SizeTier.MINIMAL
+    if estimated_tokens < 4_500:
+        return SizeTier.STANDARD
+    if estimated_tokens < 12_000:
+        return SizeTier.COMPREHENSIVE
+    if estimated_tokens < 50_000:
+        return SizeTier.FULL
+    return SizeTier.OVERSIZED
+
+
+def classify_document(
+    doc: ParsedLlmsTxt,
+    file_meta: FileMetadata,
+) -> DocumentClassification:
+    """Classify and tier a parsed document.
+
+    Combines document type classification (v0.2.1a) and size tier
+    assignment (v0.2.1b) into a single DocumentClassification output.
+
+    Args:
+        doc: Parsed document from v0.2.0.
+        file_meta: File metadata from v0.2.0a.
+
+    Returns:
+        A fully populated DocumentClassification instance.
+
+    Example:
+        >>> classification = classify_document(doc, meta)
+        >>> classification.document_type
+        <DocumentType.TYPE_1_INDEX: 'type_1_index'>
+        >>> classification.size_tier
+        <SizeTier.COMPREHENSIVE: 'comprehensive'>
+    """
+    document_type = classify_document_type(doc, file_meta)
+    estimated_tokens = doc.estimated_tokens
+    size_tier = assign_size_tier(estimated_tokens)
+
+    logger.info(
+        "Document classified: type=%s, tier=%s, tokens=%s, bytes=%s",
+        document_type.value,
+        size_tier.value,
+        estimated_tokens,
+        file_meta.byte_count,
+    )
+
+    return DocumentClassification(
+        document_type=document_type,
+        size_bytes=file_meta.byte_count,
+        estimated_tokens=estimated_tokens,
+        size_tier=size_tier,
+        filename=doc.source_filename,
+    )

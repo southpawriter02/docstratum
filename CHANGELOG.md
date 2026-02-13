@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.1b] - 2026-02-13
+
+**Size Tier Assignment -- Classification & metadata stage 2.**
+
+### Added
+
+- `assign_size_tier(estimated_tokens) -> SizeTier` -- threshold-based tier assignment (MINIMAL < 1,500 < STANDARD < 4,500 < COMPREHENSIVE < 12,000 < FULL < 50,000 < OVERSIZED)
+- `classify_document(doc, file_meta) -> DocumentClassification` -- composes v0.2.1a type classification + v0.2.1b tier assignment into a single `DocumentClassification`
+- 14 new tests in `test_parser_classifier.py` (10 tier boundary tests, 4 assembly tests)
+
+### Notes
+
+- **Calibration:** Uses `// 4` heuristic consistent with parser (see spec §3.3)
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 28 tests passing (14 v0.2.1a + 14 v0.2.1b).
+
+---
+
 ## [0.2.1a] - 2026-02-13
 
 **Document Type Classification -- Classification & metadata stage 1.**

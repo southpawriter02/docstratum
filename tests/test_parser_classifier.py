@@ -1,16 +1,21 @@
-"""Tests for the parser classifier module (v0.2.1a).
+"""Tests for the parser classifier module (v0.2.1a/b).
 
 Tests cover the document type classification decision tree: null byte
 detection, empty/unparseable files, filename conventions, size threshold,
-H1 count, and link density fallback.
+H1 count, link density fallback, size tier assignment, and full
+DocumentClassification assembly.
 See RR-META-testing-standards for naming conventions and fixture patterns.
 """
 
 import copy
 
-from docstratum.parser.classifier import classify_document_type
+from docstratum.parser.classifier import (
+    assign_size_tier,
+    classify_document,
+    classify_document_type,
+)
 from docstratum.parser.io import FileMetadata
-from docstratum.schema.classification import DocumentType
+from docstratum.schema.classification import DocumentType, SizeTier
 from docstratum.schema.parsed import ParsedLink, ParsedLlmsTxt, ParsedSection
 
 # ── Helpers ──────────────────────────────────────────────────────────
@@ -339,3 +344,130 @@ class TestImmutability:
         assert len(doc.sections) == len(doc_copy.sections)
         assert doc.raw_content == doc_copy.raw_content
         assert doc.source_filename == doc_copy.source_filename
+
+
+# ── Size Tier Assignment (v0.2.1b) ──────────────────────────────────
+
+
+class TestSizeTierAssignment:
+    """Tests for assign_size_tier (v0.2.1b)."""
+
+    def test_tier_minimal_zero(self):
+        """Verify 0 tokens -> MINIMAL."""
+        assert assign_size_tier(0) == SizeTier.MINIMAL
+
+    def test_tier_minimal_1499(self):
+        """Verify 1,499 tokens -> MINIMAL (< 1,500)."""
+        assert assign_size_tier(1_499) == SizeTier.MINIMAL
+
+    def test_tier_standard_1500(self):
+        """Verify 1,500 tokens -> STANDARD (inclusive lower bound)."""
+        assert assign_size_tier(1_500) == SizeTier.STANDARD
+
+    def test_tier_standard_4499(self):
+        """Verify 4,499 tokens -> STANDARD (< 4,500)."""
+        assert assign_size_tier(4_499) == SizeTier.STANDARD
+
+    def test_tier_comprehensive_4500(self):
+        """Verify 4,500 tokens -> COMPREHENSIVE (inclusive lower bound)."""
+        assert assign_size_tier(4_500) == SizeTier.COMPREHENSIVE
+
+    def test_tier_comprehensive_11999(self):
+        """Verify 11,999 tokens -> COMPREHENSIVE (< 12,000)."""
+        assert assign_size_tier(11_999) == SizeTier.COMPREHENSIVE
+
+    def test_tier_full_12000(self):
+        """Verify 12,000 tokens -> FULL (inclusive lower bound)."""
+        assert assign_size_tier(12_000) == SizeTier.FULL
+
+    def test_tier_full_49999(self):
+        """Verify 49,999 tokens -> FULL (< 50,000)."""
+        assert assign_size_tier(49_999) == SizeTier.FULL
+
+    def test_tier_oversized_50000(self):
+        """Verify 50,000 tokens -> OVERSIZED (inclusive lower bound)."""
+        assert assign_size_tier(50_000) == SizeTier.OVERSIZED
+
+    def test_tier_oversized_very_large(self):
+        """Verify 1,000,000 tokens -> OVERSIZED."""
+        assert assign_size_tier(1_000_000) == SizeTier.OVERSIZED
+
+
+# ── DocumentClassification Assembly (v0.2.1b) ──────────────────────
+
+
+class TestClassifyDocument:
+    """Tests for classify_document (v0.2.1b)."""
+
+    def test_classify_document_all_fields(self):
+        """Verify all 6 DocumentClassification fields are populated."""
+        # Arrange
+        section = _make_section(links=[_make_link()])
+        doc = _make_doc(
+            title="My App",
+            sections=[section],
+            raw_content="# My App\n## Docs\n- [L](https://x.com)\n",
+            source_filename="llms.txt",
+        )
+        meta = _make_meta(byte_count=5_000)
+
+        # Act
+        result = classify_document(doc, meta)
+
+        # Assert
+        assert result.document_type == DocumentType.TYPE_1_INDEX
+        assert result.size_bytes == 5_000
+        assert result.estimated_tokens == doc.estimated_tokens
+        assert result.size_tier is not None
+        assert result.filename == "llms.txt"
+        assert result.classified_at is not None
+
+    def test_classify_document_uses_parser_tokens(self):
+        """Verify estimated_tokens matches doc.estimated_tokens."""
+        # Arrange
+        raw = "a" * 400  # 400 chars -> 100 tokens via // 4
+        doc = _make_doc(
+            title="Tokens",
+            sections=[_make_section(raw_content=raw)],
+            raw_content="# Tokens\n" + raw,
+        )
+        meta = _make_meta(byte_count=500)
+
+        # Act
+        result = classify_document(doc, meta)
+
+        # Assert
+        assert result.estimated_tokens == doc.estimated_tokens
+
+    def test_classify_document_uses_file_bytes(self):
+        """Verify size_bytes comes from file_meta.byte_count."""
+        # Arrange
+        doc = _make_doc(
+            title="Bytes",
+            sections=[_make_section(links=[_make_link()])],
+            raw_content="# Bytes\n## Docs\n- [L](https://x.com)\n",
+        )
+        meta = _make_meta(byte_count=5_000)
+
+        # Act
+        result = classify_document(doc, meta)
+
+        # Assert
+        assert result.size_bytes == 5_000
+
+    def test_classify_document_sets_filename(self):
+        """Verify filename comes from doc.source_filename."""
+        # Arrange
+        doc = _make_doc(
+            title="Named",
+            sections=[_make_section(links=[_make_link()])],
+            raw_content="# Named\n## Docs\n- [L](https://x.com)\n",
+            source_filename="test.txt",
+        )
+        meta = _make_meta(byte_count=100)
+
+        # Act
+        result = classify_document(doc, meta)
+
+        # Assert
+        assert result.filename == "test.txt"

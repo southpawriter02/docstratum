@@ -19,13 +19,18 @@ Implementation Status:
     - [x] Model Population (v0.2.0c)
     - [x] Token Estimation (v0.2.0d)
     - [x] Document Type Classification (v0.2.1a)
+    - [x] Size Tier Assignment (v0.2.1b)
 
 Related:
     - src/docstratum/schema/parsed.py: Pydantic models this package populates
     - docs/design/03-parser/: Design specifications for this package
 """
 
-from docstratum.parser.classifier import classify_document_type
+from docstratum.parser.classifier import (
+    assign_size_tier,
+    classify_document,
+    classify_document_type,
+)
 from docstratum.parser.io import FileMetadata, read_bytes, read_file, read_string
 from docstratum.parser.populator import populate
 from docstratum.parser.tokenizer import tokenize
@@ -35,6 +40,8 @@ __all__ = [
     "FileMetadata",
     "Token",
     "TokenType",
+    "assign_size_tier",
+    "classify_document",
     "classify_document_type",
     "populate",
     "read_bytes",
