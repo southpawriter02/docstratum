@@ -11,6 +11,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.1c] - 2026-02-13
+
+**Canonical Section Matching -- Classification & metadata stage 3.**
+
+### Added
+
+#### Section Matcher (`src/docstratum/parser/section_matcher.py`) [NEW]
+
+- `match_canonical_sections(doc) -> None` -- in-place enrichment: matches each `ParsedSection.name` against 11 canonical names (case-insensitive) and 32 aliases, setting `canonical_name`
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-export for `match_canonical_sections`
+
+#### Tests
+
+- `tests/test_parser_section_matcher.py` [NEW] -- 23 tests: exact matches (3), case-insensitive (2), aliases (7), non-matching (3), whitespace (3), multi-section (2), comprehensive (all 11 canonical + all 32 aliases), mutation (1)
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 23 tests passing, 100% coverage on `section_matcher.py`.
+
+---
+
 ## [0.2.1b] - 2026-02-13
 
 **Size Tier Assignment -- Classification & metadata stage 2.**
