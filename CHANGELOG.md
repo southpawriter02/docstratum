@@ -11,6 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.1a] - 2026-02-13
+
+**Document Type Classification -- Classification & metadata stage 1.**
+
+### Added
+
+#### Classifier (`src/docstratum/parser/classifier.py`)
+
+- `classify_document_type(doc, file_meta) -> DocumentType` -- multi-signal decision tree: null bytes, empty/unparseable, filename conventions, size threshold (TYPE_BOUNDARY_BYTES=256,000), H1 count, and link density
+- `_count_h1_headings(raw_content) -> int` -- code-fence-aware H1 scanner on raw content
+- `_classify_by_filename(filename) -> DocumentType | None` -- `llms-full.*` -> TYPE_2_FULL, `llms-instructions.*` -> TYPE_4_INSTRUCTIONS
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-export for `classify_document_type`
+
+#### Tests
+
+- `tests/test_parser_classifier.py` -- 14 tests covering UNKNOWN (empty, null bytes), TYPE_1_INDEX (minimal, large, sparse), TYPE_2_FULL (by size, H1 count, filename, boundary exact/+1), TYPE_4_INSTRUCTIONS (by filename), H1 counting (code fences, H2 ignored), and immutability
+
+### Notes
+
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 14 tests passing.
+- **Spec reference:** Traces to v0.0.1a section 6 Empirical Validation.
+
+---
+
 ## [0.2.0d] - 2026-02-11
 
 **Token Estimation -- Parser pipeline stage 4 (final).**

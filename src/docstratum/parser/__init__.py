@@ -11,18 +11,21 @@ Modules:
     tokens      Token type enum and Token model (v0.2.0b).
     tokenizer   Line-by-line Markdown tokenizer (v0.2.0b).
     populator   Token-to-model populator (v0.2.0c).
+    classifier  Document type classifier (v0.2.1a).
 
 Implementation Status:
     - [x] File I/O & Encoding Detection (v0.2.0a)
     - [x] Markdown Tokenization (v0.2.0b)
     - [x] Model Population (v0.2.0c)
     - [x] Token Estimation (v0.2.0d)
+    - [x] Document Type Classification (v0.2.1a)
 
 Related:
     - src/docstratum/schema/parsed.py: Pydantic models this package populates
     - docs/design/03-parser/: Design specifications for this package
 """
 
+from docstratum.parser.classifier import classify_document_type
 from docstratum.parser.io import FileMetadata, read_bytes, read_file, read_string
 from docstratum.parser.populator import populate
 from docstratum.parser.tokenizer import tokenize
@@ -32,6 +35,7 @@ __all__ = [
     "FileMetadata",
     "Token",
     "TokenType",
+    "classify_document_type",
     "populate",
     "read_bytes",
     "read_file",
