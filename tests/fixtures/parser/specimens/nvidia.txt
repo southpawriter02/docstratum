@@ -1,0 +1,229 @@
+# NVIDIA Developer 
+Comprehensive developer portal for NVIDIA’s accelerated computing and AI tools. 
+
+
+## Generative AI
+Create scalable generative AI solutions using neural networks to learn patterns from existing data and generate new, original text, image, audio, and video content.
+- [NeMo Customizer](https://developer.nvidia.com/nemo-customizer.md): Fine-tune LLMs using supervised techniques
+- [NeMo Evaluator](https://developer.nvidia.com/nemo-evaluator.md): Comprehensive evaluation capabilities for LLMs
+- [NeMo Guardrails](https://developer.nvidia.com/nemo-guardrails.md): Safety checks and content moderation
+- [NeMo Agent Toolkit](https://developer.nvidia.com/nemo-agent-toolkit.md): Build AI-powered conversational agents and agentic applications with NeMo
+- [NeMo Retriever](https://developer.nvidia.com/nemo-retriever.md): Multimodal retrieval-augmented generation microservices
+- [NIM](https://developer.nvidia.com/nim.md): Inference microservices for foundation models
+
+
+## Inference Optimization
+Deploy high-performance AI inference workloads.
+- [TensorRT](https://developer.nvidia.com/tensorrt.md): Ecosystem of APIs, compilers, and runtimes for high-performance deep learning inference
+- [Dynamo](https://developer.nvidia.com/dynamo.md): Unified framework for high-performance LLM inference with KV-aware routing and SLA-based auto-scaling
+
+
+## Data Science
+Analyze large-scale data with GPU-accelerated libraries for machine learning and analytics.
+- [CUDA-X Data Science](https://developer.nvidia.com/topics/ai/data-science/cuda-x-data-science-libraries.md): High-performance GPU-accelerated suite for modern data science workflows
+- [cuDF](https://developer.nvidia.com/topics/ai/data-science/cuda-x-data-science-libraries/cudf.md): GPU DataFrame library accelerating pandas workflows
+- [cuML](https://developer.nvidia.com/topics/ai/data-science/cuda-x-data-science-libraries/cuml.md): GPU-accelerated machine learning algorithms compatible with scikit-learn
+- [NeMo Curator](https://developer.nvidia.com/nemo-curator.md): High-speed, scalable data curation and preparation for AI training
+- [Morpheus](https://developer.nvidia.com/morpheus-cybersecurity.md): End-to-end AI pipeline for cybersecurity analytics and processing
+- [cuVS](https://developer.nvidia.com/cuvs.md): GPU-accelerated vector search and clustering to supercharge search and RAG
+
+
+## Healthcare
+Accelerate drug discovery, medical imaging, and clinical AI development with NVIDIA healthcare platforms.
+- [BioNeMo](https://www.nvidia.com/en-us/clara/biopharma/): Generative AI platform and SDK for chemistry, biology, and drug discovery
+- [Clara Guardian](https://developer.nvidia.com/clara-guardian.md): Application framework for building and deploying smart sensors and multimodal AI in healthcare facilities
+- [Isaac for Healthcare](https://developer.nvidia.com/isaac/healthcare.md): Robotics development platform for building AI-powered surgical, diagnostic, and medical automation systems
+-[HoloScan](https://developer.nvidia.com/holoscan-sdk.md): Accelerate AI-powered medical and sensor device development with real-time edge data processing
+
+
+## Quantum Computing
+Simulate quantum circuits and develop hybrid quantum-classical solutions on NVIDIA GPUs.
+- [cuQuantum](https://developer.nvidia.com/cuquantum-sdk.md): Libraries and tools for quantum circuit and device-level simulation
+- [CUDA-Q](https://developer.nvidia.com/cuda-q.md): Open-source quantum development platform for hybrid systems
+- [CUDA-QX](https://developer.nvidia.com/cuda-qx.md): Extension for advanced quantum simulations
+- [cuPQC](https://developer.nvidia.com/cupqc.md): Toolkit for pre-quantum computing R&D
+
+
+## CUDA
+Develop GPU-accelerated applications.
+- [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit.md): Complete development environment for building GPU-accelerated applications
+
+
+## CUDA-X Libraries
+Accelerate core computing and domain-specific workloads with NVIDIA-optimized CUDA-X software libraries.
+- [cuBLAS](https://developer.nvidia.com/cublas.md): Basic Linear Algebra Subprograms
+- [cuDNN](https://developer.nvidia.com/cudnn.md): Deep neural network library
+- [cuFFT](https://developer.nvidia.com/cufft.md): Fast Fourier Transform library
+- [cuPyNumeric](https://developer.nvidia.com/cupynumeric.md): NumPy replacement
+- [NVPL](https://developer.nvidia.com/nvpl.md): NVIDIA Performance Libraries
+- [Thrust](https://developer.nvidia.com/thrust.md): A parallel algorithms library for C++ that resembles the C++ Standard Template Library (STL).
+- [CUB](https://docs.nvidia.com/cuda/cub/index.html): A reusable software components library for building high-performance CUDA kernels.
+- [cuSOLVER](https://developer.nvidia.com/cusolver.md): A GPU-accelerated library for dense and sparse direct solvers.
+- [cuSPARSE](https://developer.nvidia.com/cusparse.md): A GPU-accelerated library for basic linear algebra subroutines with sparse matrices.
+- [cuTENSOR](https://developer.nvidia.com/cutensor.md): A GPU-accelerated tensor linear algebra library.
+- [cuDSS](https://developer.nvidia.com/cudss.md): GPU-accelerated Direct Sparse Solver library for solving linear systems with very sparse matrices.
+- [cuRAND](https://developer.nvidia.com/curand.md): Delivers high performance GPU-accelerated random number generation (RNG).
+- [Nvmath-python](https://developer.nvidia.com/nvmath-python.md): An open source library that gives Python applications high-performance pythonic access to the core mathematical operations implemented in the CUDA-X Math Libraries.
+- [cuEquivariance](https://developer.nvidia.com/cuequivariance.md): Provides optimized NVIDIA CUDA kernels and comprehensive APIs, including those for triangle attention and triangle multiplication, to accelerate geometry-aware neural networks.
+- [cuLitho](https://developer.nvidia.com/culitho.md): A library for accelerating computational lithography and the manufacturing process of semiconductors.
+- [Warp](https://developer.nvidia.com/warp-python.md): Open-source kernel-based spatial computing library for Python, enabling GPU-accelerated simulation, differentiable programming, and advanced data generation for ML, robotics, and Omniverse digital twins
+
+
+## Multi-GPU and Multi-Node Communication
+Build scalable, high-performance applications that coordinate data exchange and computation across multiple GPUs and systems with NVIDIA’s communication libraries.
+- [NCCL](https://developer.nvidia.com/nccl.md): Implement fast, topology-aware collective and point-to-point communication for multi-GPU and multinode systems
+- [NVSHMEM](https://developer.nvidia.com/nvshmem.md): Enable scalable, efficient one-sided and GPU-initiated communication with a partitioned global address space for multi-GPU clusters
+- [GPUDirect Storage](https://developer.nvidia.com/gpudirect-storage.md): Direct GPU-storage path
+- [Magnum IO](https://developer.nvidia.com/magnum-io.md): Unify networking, storage, and compute IO management for large multi-GPU, multi-node data centers at scale
+- [Legate](https://docs.nvidia.com/legate/latest/index.html): Distributed programming framework
+
+
+## Networking
+Build advanced, high-performance data center networks and communication frameworks with NVIDIA’s accelerated networking platforms, SDKs, and communication libraries.
+- [NVIDIA Networking Platforms](https://developer.nvidia.com/networking.md): Solutions for InfiniBand and Ethernet connectivity, smart DPUs, and networking hardware integration for AI, HPC, and data analytics at massive scale.
+- [DOCA Software Framework](https://developer.nvidia.com/networking/doca.md): SDK and runtime for developing software-defined, secure, GPU- and DPU-accelerated networking, storage, and security services across data centers.
+- [NVIDIA Aerial](https://developer.nvidia.com/aerial.md): Platform and tools to build accelerated, software-defined 5G/6G radio access networks and wireless AI systems leveraging GPUs and DPUs.
+- [HPC-X](https://developer.nvidia.com/networking/hpc-x.md): Complete communication stack with MPI, SHMEM, PGAS libraries, and performance-boosting collectives for InfiniBand- and Ethernet-enabled HPC clusters.
+- [Magnum IO](https://developer.nvidia.com/magnum-io.md): Developer SDK for optimizing I/O and communication for AI, HPC, data science, and visualization—supporting storage, network, and GPU data movement at scale.
+- [Rivermax](https://developer.nvidia.com/networking/rivermax.md): Optimized IP-based SDK for high-throughput, low-latency media and data streaming, SMPTE 2110 compliance, and direct NIC-to-GPU transfer for video and sensor applications.
+- [InfiniBand](https://developer.nvidia.com/networking/infiniband-software.md): High-speed interconnect
+- [Ethernet Switch SDK](https://developer.nvidia.com/networking/ethernet-switch-sdk.md): Develop high-performance, programmable Ethernet switches with advanced routing, switching, and abstraction APIs
+
+
+## Game Development and Graphics SDKs
+Render photorealistic visuals and accelerate ray-traced graphics with NVIDIA’s industry-leading real-time ray tracing toolkits.
+- [CloudXR SDK](https://developer.nvidia.com/cloudxr-sdk.md): XR streaming platform
+- [RTX Kit](https://developer.nvidia.com/rtx-kit.md): Suite of neural rendering and ray tracing technologies for real-time, photorealistic graphics and advanced game development
+- [DLSS](https://developer.nvidia.com/rtx/dlss.md): Deep Learning Super Sampling to boost frame rates and image quality using AI-powered upscaling
+- [OptiX](https://developer.nvidia.com/rtx/ray-tracing/optix.md): GPU-accelerated ray tracing engine and programming framework for rendering and visualization
+- [ACE](https://developer.nvidia.com/ace-for-games.md): Avatar Cloud Engine for building AI-powered, conversational digital characters in games
+- [NVIDIA VRWorks™ Graphics](https://developer.nvidia.com/vrworks.md): Graphics APIs and tools for building industry-leading virtual reality experiences
+- [PhysX SDK](https://developer.nvidia.com/physx-sdk.md): Open-source multi-physics engine for realistic simulation of rigid bodies, soft bodies, cloth, fluids, character controllers, vehicle dynamics, and destruction effects. 
+
+
+## RTX AI Apps & SDKs
+Build and deploy AI locally on RTX PCs with NVIDIA’s end-to-end developer toolkits, SDKs, and pre-trained models.
+- [RTX AI Toolkit](https://developer.nvidia.com/rtx/ai-toolkit.md): Suite for customizing, optimizing, and deploying AI models on RTX PCs; delivers 3x smaller, 4x faster models, seamless local/cloud deployment, and integration with leading LLM/dev platforms
+- [AI Apps for RTX PCs](https://developer.nvidia.com/ai-apps-for-rtx-pcs.md): Developer hub for building, experimenting, and delivering advanced AI apps locally using the broadest ecosystem of SDKs, models, and tools for RTX Windows
+- [AI Inference Backends](https://developer.nvidia.com/ai-apps-for-rtx-pcs/inference-backends.md): Unified resource and comparison for high-performance inferencing via TensorRT for RTX, Windows ML, Ollama, PyTorch, and NVIDIA NIM
+- [AI SDKs and Models for RTX PC Apps](https://developer.nvidia.com/ai-apps-for-rtx-pcs/sdks-models.md): Collection of NVIDIA SDKs (DLSS, OptiX, ACE, Maxine) and curated, pre-trained models for production-ready AI features—vision, speech, generative, and more
+
+
+## AI Cloud Infrastructure
+Deploy enterprise-scale AI workloads with fully supported NVIDIA DGX platforms and managed cloud AI infrastructure.
+- [DGX Cloud](https://developer.nvidia.com/dgx-cloud.md): Fully managed, unified AI platform for mission-critical development, training, and inference in the cloud
+- [DGX Cloud Serverless Inference](https://developer.nvidia.com/dgx-cloud/serverless-inference.md): Serverless, auto-scaling inference platform for deploying AI workloads with on-demand GPU utilization and multi-cloud flexibility
+- [DGX Cloud Benchmarking](https://developer.nvidia.com/dgx-cloud/benchmarking.md): Benchmark and optimize AI platform performance with ready-to-use benchmarking templates, recipes, and performance dashboards
+
+
+## Data Center Management
+Monitor, control, and automate data center GPU infrastructure using NVIDIA’s management libraries for health, diagnostics, and large-scale operational efficiency.
+- [DCGM](https://developer.nvidia.com/dcgm.md): Data Center GPU Manager for active health monitoring, diagnostics, power management, and automated GPU governance in cluster environments.
+- [NVML](https://developer.nvidia.com/management-library-nvml.md): C-based programmatic interface for querying, monitoring, and controlling states of NVIDIA data center GPUs, used by tools like nvidia-smi.
+
+
+## CPU & Data Processing Units
+Power advanced computational workflows with NVIDIA CPUs for accelerated, energy-efficient AI, HPC, and cloud computing.
+- [Grace CPU](https://developer.nvidia.com/grace-cpu.md): High-performance Arm-based CPU for data center, scientific computing, and analytics; compatible with the Arm ecosystem and tuned for efficiency in enterprise and hyperscale environments.
+
+
+## Robotics
+Simulate, train, and deploy intelligent robots using NVIDIA’s end-to-end robotics development platforms.
+- [Isaac ROS](https://developer.nvidia.com/isaac/ros.md): A collection of hardware-accelerated packages for the Robot Operating System (ROS) that improve performance for perception, navigation, and manipulation.
+- [Isaac Sim](https://developer.nvidia.com/isaac/sim.md): A scalable robotics simulation application and synthetic data generation tool for developing, testing, and managing AI-based robots.
+- [Isaac Manipulator](https://developer.nvidia.com/isaac/manipulator.md): A collection of foundation models and modular libraries for robotic manipulation, including motion generation and perception.
+- [Isaac Perceptor](https://developer.nvidia.com/isaac/perceptor.md): A collection of AI models and reference workflows for the development of autonomous mobile robots (AMRs).
+- [Isaac GR00T](https://developer.nvidia.com/isaac/gr00t.md): A research initiative and development platform for general-purpose robot foundation models.
+- [Isaac Lab](https://developer.nvidia.com/isaac/lab.md): A sample application built on Isaac Sim and optimized for robot learning and foundation model training.
+
+
+## Edge / Embedded
+Build and deploy AI-powered solutions at the edge using NVIDIA’s Jetson and IGX platforms, SDKs, and sensor processing tools.
+- [Jetson Platform](https://developer.nvidia.com/embedded/jetson-developer-kits.md): Developer kits and modules for edge AI, robotics, IoT, and embedded computing
+- [JetPack SDK](https://developer.nvidia.com/embedded/jetpack.md): End-to-end SDK for developing AI-powered applications on NVIDIA Jetson hardware
+- [DeepStream SDK](https://developer.nvidia.com/deepstream-sdk.md): GPU-accelerated pipeline toolkit for building multi-sensor vision AI and streaming analytics at the edge
+- [NVIDIA IGX Orin](https://developer.nvidia.com/igx-downloads.md): Industrial-grade edge AI platform for healthcare, industrial, and safety-critical environments
+- [Holoscan SDK](https://developer.nvidia.com/holoscan-sdk.md): Real-time AI sensor processing platform for edge and data center applications
+- [Fleet Command](https://developer.nvidia.com/fleet-command.md): Securely deploy, manage, and scale AI at the edge with managed cloud-based fleet orchestration
+
+
+## Automotive
+Develop safe, scalable autonomous vehicles and in-vehicle AI solutions using NVIDIA’s comprehensive automotive software and hardware stack.
+- [DRIVE Platform](https://developer.nvidia.com/drive.md): End-to-end platform for autonomous vehicle development, validation, and deployment
+- [DRIVE OS](https://developer.nvidia.com/drive/os.md): Safety-certified operating system powering AI, computer vision, and autonomous driving workloads
+- [DRIVEWorks](https://developer.nvidia.com/drive/driveworks.md): SDK providing foundational modules for sensor abstraction, perception, and autonomous driving pipelines
+- [DRIVE AGX](https://developer.nvidia.com/drive/agx.md): Production-ready developer kit combining hardware, SDKs, and sample apps for autonomous vehicle innovation
+
+
+## Research & Scientific Computing
+Accelerate scientific discovery and real-world modeling with advanced simulation, high-performance computing, and AI-driven physics frameworks from NVIDIA.
+- [HPC SDK](https://developer.nvidia.com/hpc-sdk.md): Comprehensive suite of compilers, libraries, and tools for developing GPU-accelerated HPC applications in C, C++, and Fortran, with support for standard parallel programming models, GPU math libraries, and multi-node scaling.
+- [PhysicsNeMo](https://docs.nvidia.com/physicsnemo/index.html): Deep learning framework for building, training, and deploying physics-informed neural networks (PINNs) and neural operators for real-time, high-fidelity scientific and engineering simulations.
+
+
+## Debugging and Profiling Tools
+Diagnose, analyze, and optimize CUDA and GPU-accelerated software with NVIDIA’s flexible debugging and performance instrumentation suite.
+- [CUDA-GDB](https://developer.nvidia.com/cuda-gdb.md): Command-line debugger purpose-built for CUDA GPU and CPU code, enabling breakpoints, single-stepping, and simultaneous interactive debugging of device and host code.
+- [Nsight Compute](https://developer.nvidia.com/nsight-compute.md): Interactive kernel profiler for CUDA and OptiX applications, delivering detailed hardware metrics and guided performance analysis.
+- [Nsight Systems](https://developer.nvidia.com/nsight-systems.md): System-wide performance analysis tool for visualizing algorithms and cross-CPU/GPU bottleneck optimization, with timeline views and full-scale correlation.
+- [Nsight Graphics](https://developer.nvidia.com/nsight-graphics.md): Standalone application for frame debugging, profiling, pixel/geometry inspection, and real-time visualization across multiple graphics APIs.
+- [Nsight Visual Studio Code Edition](https://developer.nvidia.com/nsight-visual-studio-code-edition.md): Visual Studio Code extension for CUDA development and debugging—including kernel breakpoints, GPU state inspection, and cluster environment support.
+- [Compute Sanitizer](https://developer.nvidia.com/compute-sanitizer.md): Suite of correctness and memory/race-checking tools to identify memory access errors, leaks, synchronization hazards, and uninitialized access in CUDA code.
+- [Nsight Aftermath](https://developer.nvidia.com/nsight-aftermath.md): SDK for generating GPU “mini-dumps” and crash diagnostics to debug and resolve pipeline exceptions and crashes in D3D12/Vulkan applications.
+- [Nsight Deep Learning Designer](https://developer.nvidia.com/nsight-dl-designer.md): IDE for designing, profiling, and optimizing deep neural network models, featuring GUI-based editing and built-in inference profilers.
+- [Nsight Perf SDK](https://developer.nvidia.com/nsight-perf-sdk.md): Graphics profiling toolkit for programmatically collecting and analyzing GPU performance metrics in DirectX, Vulkan, and OpenGL environments.
+- [Nsight Copilot](https://developer.nvidia.com/nsight-copilot.md): AI-powered code assistant that accelerates CUDA software development with intelligent suggestions and debugging assistance.
+- [CUPTI](https://developer.nvidia.com/cupti.md): Profiling and tracing API library enabling custom CUDA profilers and analysis tools with deep insight into GPU/CPU execution and kernel performance.
+- [NVCC](https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html): CUDA compiler
+- [SDK Manager](https://docs.nvidia.com/sdk-manager/index.html): Development kit installer
+
+
+## Conversational AI
+Build customizable, real-time conversational AI applications with state-of-the-art speech recognition, text-to-speech, and language translation using NVIDIA’s Riva SDK.
+- [Riva](https://developer.nvidia.com/riva.md): GPU-accelerated SDK providing automatic speech recognition (ASR), text-to-speech (TTS), and neural machine translation (NMT) for multilingual, production-grade conversational AI applications, optimized for scalable deployment across cloud, data center, edge, and embedded platforms.
+
+
+## Physical AI
+Simulate physically accurate 3D worlds with NVIDIA’s platforms for industrial digitalization and world model development.
+- [Omniverse](https://developer.nvidia.com/omniverse.md): Modular development platform of APIs, SDKs, and microservices for building, operating, and streaming 3D applications and physically accurate simulations at scale, powered by OpenUSD and RTX rendering.
+- [OpenUSD](https://developer.nvidia.com/usd.md): Open-source framework for creating, simulating, and collaborating in 3D worlds; foundational for data interoperability, scene composition, and real-time workflows across Omniverse and industry platforms.
+- [Cosmos](https://developer.nvidia.com/cosmos.md): Platform of generative world foundation models (WFMs), advanced tokenizers, and data curation pipelines for accelerating physical AI, simulation, and world model training in robotics and autonomous systems.
+
+
+## Video and Image
+Process and analyze, and accelerate video and image workloads.
+- [Metropolis](https://developer.nvidia.com/metropolis.md): End-to-end platform for building secure, scalable smart spaces and intelligent video analytics solutions
+- [DeepStream SDK](https://developer.nvidia.com/deepstream-sdk.md): GPU-accelerated toolkit for real-time video analytics, multi-sensor fusion, and application development at scale
+- [CV-CUDA](https://developer.nvidia.com/cv-cuda.md): High-performance computer vision library for fast image and video pre-processing and augmentation pipelines on GPUs
+- [nvJPEG](https://developer.nvidia.com/nvjpeg.md): Accelerated JPEG decoding and encoding library designed for ultra-fast batch image processing and AI data loading
+- [NPP](https://developer.nvidia.com/npp.md): GPU-accelerated primitives for image, signal, and video processing, including filtering, geometric transforms, color conversions, and more
+- [Video Codec SDK](https://developer.nvidia.com/video-codec-sdk.md): Comprehensive API suite for GPU-accelerated H.264/H.265 and AV1 video encoding, decoding, transcoding, and processing workflows
+- [Optical Flow SDK](https://developer.nvidia.com/optical-flow-sdk.md): Library for efficient, hardware-accelerated dense optical flow estimation and motion analysis on NVIDIA GPUs
+
+
+## Developer Industry Solutions
+- [Automotive Industry](https://developer.nvidia.com/drive.md): Developer hub for autonomous vehicles, in-car AI, visualization, and simulation
+- [Healthcare Industry](https://developer.nvidia.com/industries/healthcare.md): Main resource hub for healthcare imaging, genomics, analytics, and clinical AI
+- [Financial Services Industry](https://developer.nvidia.com/industries/financial-services.md): Developer portal for banking, trading, payments, and fintech
+- [Manufacturing & Industrial Industry](https://developer.nvidia.com/industries/manufacturing.md): Accelerated design, simulation, digital twins, robotics, and factory AI workflows
+- [Energy Industry](https://developer.nvidia.com/industries/energy.md): Resources, frameworks, and SDKs for energy analytics, grid management, and AI-powered engineering
+- [Retail Industry](https://developer.nvidia.com/industries/retail-consumer-packaged-goods-cpg.md): Store analytics, checkout automation, and retail intelligence solutions
+- [Telecommunications Industry](https://developer.nvidia.com/industries/telecommunications.md): Edge AI and wireless network SDKs for 5G/6G, RAN, and networking automation
+- [Media & Entertainment Industry](https://developer.nvidia.com/industries/media-and-entertainment.md): Advanced graphics, content creation, and live event/broadcast solutions
+- [Robotics Industry](https://developer.nvidia.com/industries/manufacturing/developer-resources-robotics-and-edge-ai-applications.md): Developer platforms for simulation, AMRs, industrial robots, and warehouse automation
+- [Education & Research Industry](https://developer.nvidia.com/higher-education-and-research.md): Academic programs, research tools, and curriculum for AI, HPC, and accelerated computing
+- [Public Sector](https://developer.nvidia.com/industries/public-sector.md): Developer hub for government, defense, and civic AI solutions
+
+
+## Resources
+- [Documentation](https://docs.nvidia.com/cuda/archive/): NVIDIA documentation
+- [Downloads] (https://developer.nvidia.com/downloads.md): Download hub
+- [Technical Blog](https://developer.nvidia.com/blog): Technical articles
+- [GTC Sessions](https://www.nvidia.com/en-us/on-demand/): Conference recordings
+- [NVIDIA On Demand](https://www.nvidia.com/en-us/on-demand/): Access to recorded sessions from NVIDIA events
+- [Deep Learning Institute](https://www.nvidia.com/en-us/training/): Training courses
+- [Support Portal](https://www.nvidia.com/en-us/support/): Technical support
+- [NVIDIA Developer Program](https://developer.nvidia.com/developer-program): Join the NVIDIA developer community
+- [NVIDIA Developer Discord](https://discord.gg/nvidiadeveloper): Official Discord server for developer discussions
+- [NVIDIA Inception for Startups](https://www.nvidia.com/en-us/startups/): Program providing technical resources, partner offers, training, and growth support for AI, HPC, and accelerated computing startups.
+

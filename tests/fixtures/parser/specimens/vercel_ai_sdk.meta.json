@@ -1,0 +1,8 @@
+{
+  "specimen_id": "DS-CS-003",
+  "project": "Vercel AI SDK",
+  "source": "https://ai-sdk.dev/llms.txt",
+  "snapshot_date": "2026-02-14",
+  "byte_count": 1364136,
+  "notes": "Fetched from public URL (redirected from sdk.vercel.ai), no modifications. Content is a full documentation dump (1.36 MB) with YAML frontmatter and multiple H1 headings, not a typical index."
+}

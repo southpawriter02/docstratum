@@ -1,0 +1,8 @@
+{
+  "specimen_id": "DS-CS-005",
+  "project": "Cursor",
+  "source": "https://cursor.com/llms.txt",
+  "snapshot_date": "2026-02-14",
+  "byte_count": 7592,
+  "notes": "Fetched from public URL, no modifications. Uses bare URL format (no link titles or descriptions)."
+}

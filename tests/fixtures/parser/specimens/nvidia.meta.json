@@ -1,0 +1,8 @@
+{
+  "specimen_id": "DS-CS-006",
+  "project": "NVIDIA",
+  "source": "https://developer.nvidia.com/llms.txt",
+  "snapshot_date": "2026-02-14",
+  "byte_count": 25332,
+  "notes": "Fetched from public URL, no modifications"
+}

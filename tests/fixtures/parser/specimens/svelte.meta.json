@@ -1,0 +1,8 @@
+{
+  "specimen_id": "DS-CS-001",
+  "project": "Svelte",
+  "source": "https://svelte.dev/llms.txt",
+  "snapshot_date": "2026-02-14",
+  "byte_count": 1679,
+  "notes": "Fetched from public URL, no modifications"
+}

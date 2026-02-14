@@ -11,6 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.2b] - 2026-02-14
+
+**Real-World Specimen Parsing — Parser testing & calibration stage 2.**
+
+### Added
+
+#### Specimen Fixtures (`tests/fixtures/parser/specimens/`)
+
+- 6 gold-standard calibration specimens fetched from public llms.txt URLs: Svelte (DS-CS-001), Pydantic (DS-CS-002), Vercel AI SDK (DS-CS-003), Shadcn UI (DS-CS-004), Cursor (DS-CS-005), NVIDIA (DS-CS-006) (v0.2.2b)
+- Each specimen has a companion `.meta.json` with source URL, snapshot date, and byte count
+
+#### Regression Tests (`tests/test_parser_specimens.py`)
+
+- 6 regression tests exercising the full parser pipeline: `read_file` → `tokenize` → `populate` → `classify_document` → `match_canonical_sections` → `extract_metadata` (v0.2.2b)
+- Structural assertions: title text, section count (≥N ranges), blockquote presence, document type classification
+- Tests verify parser correctness (structural extraction), not quality scores or diagnostic codes
+
+### Notes
+
+- **Vercel AI SDK specimen** is a full documentation dump (~1.36 MB) with YAML frontmatter and multiple H1 headings, classifying as TYPE_2_FULL via the file size threshold. The test uses flexible assertions to accommodate content drift.
+- **Cursor specimen** uses bare URL format (`- https://...`) instead of `- [title](url)` links, so parsed link count is 0. Has two H1 headings triggering TYPE_2_FULL classification.
+- **No external dependencies added.**
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 6 tests passing.
+- **Environment:** Virtualenv rebuilt with Python 3.14 (previously broken symlink to removed Python 3.11). All 480 tests passing.
+
+---
+
 ## [0.2.2a] - 2026-02-13
 
 **Synthetic Test Fixtures — Parser testing & calibration stage 1.**
