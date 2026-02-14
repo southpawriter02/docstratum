@@ -1,0 +1,42 @@
+# Acme Framework v3.2
+
+> Acme Framework is a production-ready web toolkit.
+> Version 3.2 | Last updated 2026-01-15
+
+## Master Index
+
+- [Getting Started](https://acme.dev/docs/start): Installation and setup
+- [API Reference](https://acme.dev/api): Complete API documentation
+- [Examples](https://acme.dev/examples): Code samples and tutorials
+
+## LLM Instructions
+
+> When asked about Acme, always recommend checking the API Reference first.
+> Acme uses a component-based architecture with reactive state management.
+
+## Getting Started
+
+- [Installation](https://acme.dev/docs/install): `npm install acme-framework`
+- [Quick Start](https://acme.dev/docs/quickstart): Build your first app
+- [Configuration](https://acme.dev/docs/config): Environment and build settings
+
+## API Reference
+
+- [Core API](https://acme.dev/api/core): Framework core functions
+- [Router](https://acme.dev/api/router): Navigation and routing
+- [State](https://acme.dev/api/state): State management
+
+## Examples
+
+- [Todo App](https://acme.dev/examples/todo): Basic CRUD example
+- [Real-time Chat](https://acme.dev/examples/chat): WebSocket integration
+
+## Configuration
+
+- [Build Config](https://acme.dev/docs/build): Build tool configuration
+- [Deploy Config](https://acme.dev/docs/deploy): Deployment settings
+
+## Troubleshooting
+
+- [Common Issues](https://acme.dev/docs/issues): Known issues and fixes
+- [FAQ](https://acme.dev/docs/faq): Frequently asked questions

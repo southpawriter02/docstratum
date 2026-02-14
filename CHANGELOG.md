@@ -11,6 +11,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.2a] - 2026-02-13
+
+**Synthetic Test Fixtures — Parser testing & calibration stage 1.**
+
+### Added
+
+#### Synthetic Fixtures (`tests/fixtures/parser/synthetic/`)
+
+- 5 hand-crafted fixtures: L0 (fail/empty), L1 (minimal), L2 (content), L3 (best practices), L4 (extended with YAML frontmatter)
+- Each fixture validates specific parser capabilities at increasing structural complexity
+
+#### Tests
+
+- `tests/test_parser_fixtures.py` [NEW] — 5 end-to-end pipeline tests: `read_file` → `tokenize` → `populate` → `classify_document` → `match_canonical_sections` → `extract_metadata`
+- Assertions verify title, blockquote, section count, link count, canonical name matching, classification, and metadata extraction
+
+### Notes
+
+- **No external dependencies added.**
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 5 tests passing.
+
+---
+
 ## [0.2.1d] - 2026-02-13
 
 **Metadata Extraction -- Classification & metadata stage 4 (final).**

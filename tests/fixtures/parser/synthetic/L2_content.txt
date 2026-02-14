@@ -1,0 +1,20 @@
+# Acme Framework
+
+> Acme Framework is a modern web development toolkit for building
+> scalable applications with built-in routing and state management.
+
+## Getting Started
+
+- [Installation Guide](https://acme.dev/docs/install): Step-by-step setup instructions
+- [Quick Start](https://acme.dev/docs/quickstart): Build your first app in 5 minutes
+
+## API Reference
+
+- [Router API](https://acme.dev/api/router): Application routing and navigation
+- [State API](https://acme.dev/api/state): Reactive state management
+- [Component API](https://acme.dev/api/components): UI component lifecycle
+
+## Examples
+
+- [Todo App](https://acme.dev/examples/todo): Basic CRUD application
+- [Dashboard](https://acme.dev/examples/dashboard): Real-time data visualization

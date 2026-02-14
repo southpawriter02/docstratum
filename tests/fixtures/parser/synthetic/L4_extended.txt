@@ -1,0 +1,36 @@
+---
+schema_version: "0.2.0"
+site_name: "Acme Framework"
+site_url: "https://acme.dev"
+last_updated: "2026-01-15"
+generator: "docstratum"
+docstratum_version: "0.2.2"
+token_budget_tier: "comprehensive"
+---
+
+# Acme Framework
+
+> Acme Framework is a production-ready web toolkit for building
+> modern, scalable web applications.
+
+## Master Index
+
+- [Getting Started](https://acme.dev/docs/start): Installation and first steps
+- [API Reference](https://acme.dev/api): Complete API documentation
+
+## Getting Started
+
+- [Installation](https://acme.dev/docs/install): Setup guide
+- [Quick Start](https://acme.dev/docs/quickstart): Build your first app
+
+## API Reference
+
+- [Core API](https://acme.dev/api/core): Core functions and utilities
+
+## Examples
+
+- [Demo](https://acme.dev/examples/demo): Interactive demonstration
+
+## FAQ
+
+- [FAQ Page](https://acme.dev/faq): Frequently asked questions
