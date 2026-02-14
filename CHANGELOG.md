@@ -11,6 +11,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.2c] - 2026-02-14
+
+**Edge Case Coverage — Parser testing & calibration stage 3.**
+
+### Added
+
+#### Edge Case Tests (`tests/test_parser_edge_cases.py`)
+
+- 33 test cases covering all edge cases from v0.0.1a §Edge Cases (v0.2.2c)
+- Category A (structural, 10): empty file, blank-only, no H1, multiple H1, H2 before H1, no sections, H3+ headers, empty H2, fenced code blocks, large document >256 KB
+- Category B (link format, 8): missing closing paren, empty URL, relative URLs, malformed URL, duplicate URLs, empty title, non-list links, bare URLs
+- Category C (content, 10): multiline blockquote, Unicode, long lines, mixed indentation, trailing whitespace, nested lists, entries without descriptions, consecutive blank lines, HTML comments, mixed prose/link content
+- Category D (encoding, 5): UTF-8 BOM, non-UTF-8 (Latin-1 fallback), null bytes, Windows CRLF, legacy Mac CR-only
+
+### Notes
+
+- **Ambiguous behaviors documented:** A5 (H2 before H1 → title=None), B7 (non-list links → STRICT, 0 links), C4/C6 (indented/nested links → STRICT, top-level only)
+- **No external dependencies added.**
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 33 tests passing, 513 total tests passing.
+
+---
+
 ## [0.2.2b] - 2026-02-14
 
 **Real-World Specimen Parsing — Parser testing & calibration stage 2.**
