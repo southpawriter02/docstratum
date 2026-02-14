@@ -13,6 +13,7 @@ Modules:
     populator   Token-to-model populator (v0.2.0c).
     classifier       Document type classifier (v0.2.1a/b).
     section_matcher  Canonical section name matching (v0.2.1c).
+    metadata         YAML frontmatter extraction (v0.2.1d).
 
 Implementation Status:
     - [x] File I/O & Encoding Detection (v0.2.0a)
@@ -22,6 +23,7 @@ Implementation Status:
     - [x] Document Type Classification (v0.2.1a)
     - [x] Size Tier Assignment (v0.2.1b)
     - [x] Canonical Section Matching (v0.2.1c)
+    - [x] Metadata Extraction (v0.2.1d)
 
 Related:
     - src/docstratum/schema/parsed.py: Pydantic models this package populates
@@ -34,6 +36,7 @@ from docstratum.parser.classifier import (
     classify_document_type,
 )
 from docstratum.parser.io import FileMetadata, read_bytes, read_file, read_string
+from docstratum.parser.metadata import extract_metadata
 from docstratum.parser.populator import populate
 from docstratum.parser.section_matcher import match_canonical_sections
 from docstratum.parser.tokenizer import tokenize
@@ -46,6 +49,7 @@ __all__ = [
     "assign_size_tier",
     "classify_document",
     "classify_document_type",
+    "extract_metadata",
     "match_canonical_sections",
     "populate",
     "read_bytes",

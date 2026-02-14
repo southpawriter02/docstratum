@@ -11,6 +11,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.1d] - 2026-02-13
+
+**Metadata Extraction -- Classification & metadata stage 4 (final).**
+
+### Added
+
+#### Metadata Extractor (`src/docstratum/parser/metadata.py`) [NEW]
+
+- `extract_metadata(raw_content) -> Metadata | None` -- YAML frontmatter detection, `yaml.safe_load` parsing, and mapping of 7 recognized keys to `Metadata` model
+- Helper functions: `_extract_frontmatter_text`, `_parse_yaml`, `_map_to_metadata`
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-export for `extract_metadata`
+
+#### Tests
+
+- `tests/test_parser_metadata.py` [NEW] -- 20 tests: no frontmatter (8), valid frontmatter (6), key handling (2), edge cases (3), safe_load verification (1)
+
+### Notes
+
+- **External dependency:** `pyyaml>=6.0` (already installed)
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 20 tests passing.
+
+---
+
 ## [0.2.1c] - 2026-02-13
 
 **Canonical Section Matching -- Classification & metadata stage 3.**
