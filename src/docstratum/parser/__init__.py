@@ -11,9 +11,10 @@ Modules:
     tokens      Token type enum and Token model (v0.2.0b).
     tokenizer   Line-by-line Markdown tokenizer (v0.2.0b).
     populator   Token-to-model populator (v0.2.0c).
-    classifier       Document type classifier (v0.2.1a/b).
-    section_matcher  Canonical section name matching (v0.2.1c).
-    metadata         YAML frontmatter extraction (v0.2.1d).
+    classifier           Document type classifier (v0.2.1a/b).
+    section_matcher      Canonical section name matching (v0.2.1c).
+    metadata             YAML frontmatter extraction (v0.2.1d).
+    validator_adapter    SingleFileValidator adapter (v0.2.2d).
 
 Implementation Status:
     - [x] File I/O & Encoding Detection (v0.2.0a)
@@ -24,6 +25,7 @@ Implementation Status:
     - [x] Size Tier Assignment (v0.2.1b)
     - [x] Canonical Section Matching (v0.2.1c)
     - [x] Metadata Extraction (v0.2.1d)
+    - [x] SingleFileValidator Integration (v0.2.2d)
 
 Related:
     - src/docstratum/schema/parsed.py: Pydantic models this package populates
@@ -41,9 +43,11 @@ from docstratum.parser.populator import populate
 from docstratum.parser.section_matcher import match_canonical_sections
 from docstratum.parser.tokenizer import tokenize
 from docstratum.parser.tokens import Token, TokenType
+from docstratum.parser.validator_adapter import ParserAdapter
 
 __all__ = [
     "FileMetadata",
+    "ParserAdapter",
     "Token",
     "TokenType",
     "assign_size_tier",

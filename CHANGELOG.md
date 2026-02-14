@@ -11,6 +11,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [0.2.2d] - 2026-02-14
+
+**Pipeline Integration — Parser testing & calibration stage 4 (final).**
+
+### Added
+
+#### Pipeline Adapter (`src/docstratum/parser/validator_adapter.py`) [NEW]
+
+- `ParserAdapter` class implementing the `SingleFileValidator` protocol (v0.2.2d)
+- `parse()` runs the full parser pipeline: `read_string` -> strip frontmatter -> `tokenize` -> `populate` -> `match_canonical_sections` -> `extract_metadata`
+- `classify()` delegates to `classify_document()` with cached or reconstructed `FileMetadata`
+- `validate()` returns stub `ValidationResult` with `level_achieved=L0_PARSEABLE` and empty diagnostics (v0.3.x not yet implemented)
+- `score()` returns stub `QualityScore` with `total_score=0` and `grade=CRITICAL` (v0.4.x not yet implemented)
+
+#### Parser Package (`src/docstratum/parser/__init__.py`)
+
+- Added re-export for `ParserAdapter`
+
+#### Integration Tests (`tests/test_parser_integration.py`) [NEW]
+
+- 10 tests: protocol compliance (1), parse behavior (3), classify (1), validate/score stubs (2), full pipeline integration (3)
+- Pipeline tests exercise `EcosystemPipeline(validator=ParserAdapter())` end-to-end on ecosystem fixtures
+- Verifies `EcosystemFile.parsed` and `classification` populated, `project_name` extracted from index H1
+
+### Notes
+
+- **Spec deviations:** (1) `parse_string` function does not exist — uses `read_string` + `tokenize` + `populate` chain instead. (2) `ParsedLlmsTxt` has no `metadata` field — `extract_metadata` result stashed on adapter. (3) `QualityGrade` has no `"N/A"` value — uses `CRITICAL` (0-29 range) for `total_score=0`.
+- **No external dependencies added.**
+- **Verification:** `black --check` (zero reformatting), `ruff check` (zero violations), 10 tests passing, 523 total tests passing, 96.96% total coverage, `validator_adapter.py` at 98% coverage.
+
+---
+
 ## [0.2.2c] - 2026-02-14
 
 **Edge Case Coverage — Parser testing & calibration stage 3.**
