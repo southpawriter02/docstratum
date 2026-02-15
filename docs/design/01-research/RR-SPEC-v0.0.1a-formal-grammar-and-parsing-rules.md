@@ -14,6 +14,8 @@ This sub-part provides a formal, implementation-ready specification for parsing 
 
 While the official llms.txt specification (v0.0.1) defines a file structure at a high level, it lacks formal grammar rules, parsing guidelines, and edge-case handling mechanisms. This omission creates ambiguity in how consumers (LLM loaders, validators, crawlers) interpret and process these files. This sub-part fills that gap with a rigorous treatment.
 
+> **Reference Implementation Note (added February 2026):** The `AnswerDotAI/llms-txt` repository contains a canonical Python parser (`miniparse.py`) whose behavior serves as the de facto standard. Analysis of this code revealed several behavioral details that the ABNF grammar below accounts for — and in some cases deliberately extends beyond. Where this grammar's rules extend beyond the reference parser's behavior (e.g., multi-line blockquote support), these extensions are noted inline. See `RR-SPEC-v0.0.1 § Reference Parser Behavior` for the full behavioral analysis.
+
 ### Success Looks Like
 
 - A complete ABNF grammar definition for the llms.txt format
@@ -91,6 +93,9 @@ title-text        = 1*VISIBLE-CHAR *(SP / VISIBLE-CHAR)
 
 ; --- Blockquote Description (Optional) ---
 ; A blockquote immediately following the H1 provides a short summary.
+; NOTE: DocStratum extension — the reference parser (miniparse.py) only captures
+; a single-line blockquote via ^>\s*(?P<summary>.+?$). This grammar allows
+; multi-line blockquotes (1*blockquote-line) as a deliberate superset.
 blockquote-desc   = 1*blockquote-line
 blockquote-line   = "> " description-text CRLF
 description-text  = 1*PRINTABLE-CHAR

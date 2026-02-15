@@ -133,11 +133,25 @@ The spec also proposes:
 
 The spec does **NOT** mandate how to process the file. Examples include:
 
-### FastHTML's Approach
+### FastHTML's Approach (Reference Implementation)
 
-- Uses `llms_txt2ctx` CLI tool
-- Creates XML-structured expanded files
-- Two versions: with/without Optional URLs
+- Uses `llms_txt2ctx` CLI tool (from `AnswerDotAI/llms-txt` package)
+- Creates XML-structured expanded files using fastcore's FT (FastTags): `<project>` root → `<section_name>` per H2 → `<doc>` per linked document
+- Two versions: with/without Optional URLs (default is **without** — `optional=False`)
+- Strips HTML comments and base64 images from fetched content
+- Supports parallel document fetching via `n_workers`
+
+### Reference Parser Behavior (from `miniparse.py`)
+
+Analysis of the canonical Python parser reveals behavioral details not explicit in the spec text:
+
+- **Blockquote capture is single-line.** The regex `^>\s*(?P<summary>.+?$)` matches only one line. Multi-line blockquotes are not handled by the reference parser.
+- **Section splitting is H2-only.** The regex `^##\s*(.*?$)` creates sections at H2 headings exclusively. H3+ headings are content within the parent H2 section.
+- **"Optional" matching is case-sensitive and exact.** The check `k != 'Optional'` (capital O) does not recognize aliases.
+- **Link parsing regex:** `-\s*\[(?P<title>[^\]]+)\]\((?P<url>[^\)]+)\)(?::\s*(?P<desc>.*))?`
+- **Freeform content** between the blockquote and first H2 is captured as a single "info" blob via `(?P<info>.*)` with `re.DOTALL`.
+
+> **Implications for DocStratum:** Several of DocStratum's design decisions extend beyond the reference parser's behavior. Multi-line blockquote support, Optional section aliases (supplementary, appendix, extras), and H3 sub-section awareness are all DocStratum extensions. These should be explicitly labeled as such in the standards documentation to distinguish between "spec-compliant behavior" and "DocStratum-extended behavior."
 
 ---
 
@@ -195,6 +209,10 @@ The spec does **NOT** mandate how to process the file. Examples include:
 - ❌ Multi-language support
 - ❌ Concept/terminology definitions
 - ❌ Example Q&A pairs
+- ❌ Formal grammar or parsing rules (the reference parser is regex-based with no formal spec)
+- ❌ Error handling for malformed input (the reference parser silently fails or crashes)
+- ❌ Multi-line blockquote handling (reference parser only captures single-line)
+- ❌ Sub-section semantics (H3+ headings are undefined — treated as content by reference parser)
 
 ### Opportunities for DocStratum
 
