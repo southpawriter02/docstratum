@@ -19,13 +19,15 @@ Optional content includes appendices, extras, supplementary references, and non-
 
 ## Recognized Aliases
 
+> **DocStratum Extension:** Alias support is a DocStratum extension not present in the reference implementation. The canonical Python parser (`miniparse.py` in `AnswerDotAI/llms-txt`) matches the section name `'Optional'` exactly, with case-sensitive comparison (`k != 'Optional'`). It does not recognize alternative names. DocStratum's alias normalization is a usability extension that allows documentation authors to use conventional names like "Appendix" while still receiving Optional-section treatment in validation and context generation. See `DS-AUDIT-extension-labeling.md` for the full extension classification.
+
 The following alternative names are normalized to "Optional" by the validator:
 
-| Alias | Source |
-|-------|--------|
-| `supplementary` | Emphasizes non-essential supporting role |
-| `appendix` | Traditional documentation convention |
-| `extras` | Colloquial term for additional material |
+| Alias | Source | `spec_origin` |
+|-------|--------|---------------|
+| `supplementary` | Emphasizes non-essential supporting role | `EXT` |
+| `appendix` | Traditional documentation convention | `EXT` |
+| `extras` | Colloquial term for additional material | `EXT` |
 
 These aliases are defined in `SECTION_NAME_ALIASES` in `src/docstratum/schema/constants.py`.
 
@@ -51,3 +53,4 @@ These aliases are defined in `SECTION_NAME_ALIASES` in `src/docstratum/schema/co
 |--------------|------|--------|
 | 0.0.0-scaffold | 2026-02-08 | Initial draft — Phase D.4 |
 | 1.0.0 | 2026-02-08 | Phase E ratification — status DRAFT→RATIFIED, version 0.0.0-scaffold→1.0.0 |
+| 1.1.0 | 2026-02-16 | Extension Labeling Audit (Story 2.5a): Added `spec_origin` classifications to alias table. Added DocStratum Extension callout noting that alias support diverges from the reference parser's exact case-sensitive matching. Cross-referenced DS-AUDIT-extension-labeling.md. |

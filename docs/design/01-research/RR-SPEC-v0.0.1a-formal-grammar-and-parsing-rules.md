@@ -137,7 +137,7 @@ URI               = <URI per RFC 3986>
 2. **Encoding:** The spec does not state an encoding. DocStratum assumes UTF-8 (the de facto standard for Markdown files).
 3. **Section ordering:** The grammar enforces H1 first, then optional blockquote, then optional body, then one or more H2 sections. H2 sections cannot precede the H1.
 4. **Special "Optional" section:** The grammar does not structurally distinguish the "Optional" H2 from other H2s. Semantic handling is a parser responsibility (see Section 3 below).
-5. **Document type classification (empirical):** The grammar above defines what we now classify as **Type 1: Index** documents — single H1, optional blockquote, H2 sections with curated link entries. Empirical analysis of 11 real-world specimens (see §6) reveals a second document type, **Type 2: Full**, which embeds complete documentation content inline (multiple H1 headers, extensive prose, fenced code blocks, nested lists). Type 2 documents (e.g., `claude-llms-full.txt`, `ai-sdk-llms.txt`) are structurally incompatible with this grammar and require separate handling. The grammar as defined is authoritative for Type 1 only.
+5. **Document type classification (empirical):** *DocStratum extension — the spec does not distinguish document types.* The grammar above defines what we now classify as **Type 1: Index** documents — single H1, optional blockquote, H2 sections with curated link entries. Empirical analysis of 11 real-world specimens (see §6) reveals a second document type, **Type 2: Full**, which embeds complete documentation content inline (multiple H1 headers, extensive prose, fenced code blocks, nested lists). Type 2 documents (e.g., `claude-llms-full.txt`, `ai-sdk-llms.txt`) are structurally incompatible with this grammar and require separate handling. The grammar as defined is authoritative for Type 1 only.
 6. **H3+ nesting in Type 1:** While the grammar defines `file-list-section` content as flat `file-entry` or `content-line` items, real-world Type 1 Index files occasionally use H3 headers (`###`) as sub-section organizers within an H2 section. Neon's specimen uses 5 H3 headers to subdivide its 21 H2 sections. Parsers should treat H3+ as prose content (I001) but may optionally interpret them as nested section delimiters for enhanced navigation.
 
 ---
@@ -314,6 +314,11 @@ def parse_llms_txt(content: str) -> LlmsTxtDocument:
         h2_match = H2_PATTERN.match(line)
         if h2_match:
             section_name = h2_match.group(1).strip()
+            # NOTE: DocStratum extension — case-insensitive Optional matching.
+            # The reference parser (core.py) uses case-sensitive matching:
+            # k != 'Optional' (capital O). This pseudocode uses .lower()
+            # for usability, accepting "optional", "OPTIONAL", etc.
+            # This diverges from reference behavior intentionally.
             current_section = Section(
                 name=section_name,
                 is_optional=(section_name.lower() == "optional"),
